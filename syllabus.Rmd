@@ -1,0 +1,70 @@
+---
+title: "Syllabus"
+description: |
+  Course syllabus (PSYC 575, 2021 Fall)
+output: 
+  distill::distill_article:
+    toc: true
+    fig_caption: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+!["Logo of the University of Southern California"](https://identity.usc.edu/files/2012/01/primaryshieldwordmark.png)
+
+# Multilevel Modeling PSYC 575
+
+**Units:** 4
+
+**Term--Day--Time:** Fall 2021--Tues & Thurs--10:00-11:50 am
+
+**Location:** WPH 205
+
+**Instructor**: Hok Chio (Mark) Lai
+
+**Office Hours:** Tues 12:00--1:00 pm, and by appointment.
+
+**Contact Info:** Email: [hokchiol@usc.edu](mailto:hokchiol@usc.edu).   
+Timeline for replying to emails: within 48 hours.
+
+## Course Description
+  
+This is a graduate-level class in statistical methods on multilevel modeling, a popular technique in behavioral and social science research. The course covers topics in multilevel modeling including two- and three-level hierarchical linear models (HLM), random intercepts and slopes, longitudinal models and growth curve models, as well as some recent development in multilevel modeling.
+
+The course begins with a brief overview of the ubiquity of multilevel data and the problems of using conventional methods to handle such data and then transitions to the conceptual and statistical foundations of two-level multilevel models. Students will be exposed to real data examples and are required to perform analyses using real data of their own or that the instructor provides. Later material covers the use of multilevel modeling as a general framework for longitudinal data analysis, and other modeling considerations such as categorical data, non-hierarchical (e.g., cross-classified) data structure, and study designs. Students are also encouraged to provide input in suggesting topics to be covered for this course.
+
+## Learning Objectives
+  
+After the successful completion of this course, students will be able to . . .
+
+1. Explain the problems of analyzing clustered data with multiple regression/ANOVA;
+2. Identify the types of multilevel data structure in different research scenarios;
+3. Describe the statistical and conceptual foundations of multilevel modeling;
+4. Independently analyze real data using statistical software for multilevel modeling;
+5. Evaluate published research that uses multilevel modeling;
+6. Apply multilevel modeling in a research project, and effectively communicate findings/products in an oral research presentation or a written research report.
+
+**Prerequisite(s):** None
+
+**Co-Requisite(s):** None
+
+**Concurrent Enrollment:** None
+
+**Recommended Preparation:** PSYC 503: Regression and the General Linear Model (or a similar regression class); Experience with statistical software (preferably R)
+
+## Course Notes
+
+This class will be fully online and will follow a [flipped course design](https://cet.usc.edu/wp-content/uploads/2021/05/flipped-course-model.docx). The benefit of a flipped course model is that the lecturer can spend more time with students to go through applications of concepts and hands-on exercises of data analyses. 
+
+The lecture videos and course materials will be available at <url> by 9:00 am of each Monday, and students are expected to review these materials and the assigned readings on their own. Please note that the lecture slides only serve to guide class discussions and cannot replace the assigned readings. 
+
+With the exception of Week 1, the **Tuesday meetings** will be optional **Q&A sessions** where students can bring their questions so that the instructor and the class can discuss unclear concepts. During the **mandatory Thursday meetings**, students will work on quizzes, in-class exercises, and discuss questions regarding the learning materials and homework assignments. **Students are expected to have reviewed the posted materials for that week before attending that week's synchronous session.** 
+<!-- The synchronous sessions will be recorded and be posted on Slack. -->
+Before attending the Thursday sessions, students are expected to have 
+
+1. Completed the assigned readings and reviewed the posted videos. 
+2. Identified questions that come up in their learning. 
+3. Started working on the homework problems. 
+

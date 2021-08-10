@@ -1,0 +1,118 @@
+---
+title: "Week 1"
+description: |
+  Overview of Multilevel Models
+output: 
+  distill::distill_article:
+    toc: true
+---
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+```
+
+Before you start the materials for week 1, make sure you have reviewed the [course overview video](../) and the [syllabus](../syllabus). 
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Identify alternative names for multilevel modeling (MLM)
+- Describe the types of data MLM can handle
+- Knit a simple R Markdown file
+
+## Task Lists
+
+1. Install/Update R and RStudio on your computer
+2. Review the resources (lecture videos and slides)
+3. Complete the assigned readings
+    * Snijders & Bosker chapters 1 and [2][4] (they're relatively short)
+    * [R Markdown Intro][1]
+    * [Markdown Quick Reference][2]
+4. Introduce yourself on the #introduce-ourselves Slack channel (as part of [HW 1](../homework-1))
+5. Attend the synchronous Zoom session to learn more about R Markdown
+6. Complete [Homework 1](../homework-1)
+
+[1]: https://vimeo.com/178485416
+[2]: https://web.mit.edu/r/current/RStudio/resources/markdown_help.html
+[4]: https://us.sagepub.com/sites/default/files/upm-assets/44075_book_item_44075.pdf
+
+# Lecture
+
+```{r, echo=FALSE}
+add_youtube("ufvCUaUkYOA")
+```
+
+```{r, include=FALSE}
+library(checkdown)
+right_ans <- "Correct :+1:"
+wrong_ans <- "That is not correct. Rewatch the video if needed"
+```
+
+***
+
+Check your learning: How would you describe the data structure in the video?
+
+```{r echo=FALSE, results="asis"}
+check_question("hierarchical", 
+               options = c("observational", "educational", "hierarchical"), 
+               type = "radio", 
+               right = right_ans, 
+               wrong = wrong_ans, 
+               alignment = TRUE)
+```
+
+***
+
+```{r, echo=FALSE}
+add_youtube("9Ax8W6VPgmk")
+```
+
+***
+
+Check your learning: What is another name for multilevel modeling? 
+
+```{r echo=FALSE, results="asis"}
+check_question(c("mixed-effect modeling"),  
+               options = c("mixed-effect modeling", "hierarchical regression", 
+                           "fixed-effect modeling"), 
+               type = "radio", 
+               right = right_ans, 
+               wrong = wrong_ans)
+```
+
+***
+
+```{r, echo=FALSE}
+add_youtube("4fl2chIkDy4")
+```
+
+***
+
+Check your learning: In the data structure where there are multiple measurements for the same person, which level is level 1? 
+
+```{r echo=FALSE, results="asis"}
+check_question(c("measurement"),  
+               options = c("measurement", "person"), 
+               type = "radio", 
+               right = right_ans, 
+               wrong = wrong_ans, 
+               alignment = TRUE)
+```
+
+***
+
+# R Codes
+
+```{r, echo=FALSE}
+add_youtube("G-IjAC-2uik")
+```
+
+```{r, echo=FALSE}
+add_youtube("-PdycAVwMuY")
+```
+
+```{r r-code, child='rcodes/week1-intro-RMarkdown.RMarkdown'}
+
+```

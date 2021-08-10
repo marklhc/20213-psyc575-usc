@@ -1,0 +1,19 @@
+name: "."
+title: "PSYC 575 Multilevel Modeling (2021 Fall)"
+description: |
+  PSYC 575 Multilevel Modeling (2021 Fall)
+output_dir: "_site"
+include: ["helper.R"]
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+    - text: "Syllabus"
+      href: syllabus.html
+    - text: "Lectures"
+      menu:
+        - text: "Week 1"
+          href: week1.html
+output: distill::distill_article
