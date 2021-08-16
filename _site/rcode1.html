@@ -86,29 +86,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall)</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 1)</title>
 
-  <meta property="description" itemprop="description" content="Welcome to the website. Let&#39;s have a great semester!"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 1)"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Welcome to the website. Let&#39;s have a great semester!"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
-  <meta property="twitter:description" content="Welcome to the website. Let&#39;s have a great semester!"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 1)"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["PSYC 575 Multilevel Modeling (2021 Fall)"]},{"type":"character","attributes":{},"value":["Welcome to the website. Let's have a great semester!\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["R Codes (Week 1)"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2033,15 +2030,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="site_libs/header-attrs/header-attrs.js"></script>
+  <script src="site_libs/twitter-widget/widgets.js"></script>
+  <script src="site_libs/popper/popper.min.js"></script>
+  <link href="site_libs/tippy/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor/anchor.min.js"></script>
+  <script src="site_libs/bowser/bowser.min.js"></script>
+  <script src="site_libs/webcomponents/webcomponents.js"></script>
+  <script src="site_libs/distill/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
   <script type="text/javascript" cookie-consent="tracking">
@@ -2060,7 +2058,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"PSYC 575 Multilevel Modeling (2021 Fall)","description":"Welcome to the website. Let's have a great semester!","authors":[]}
+{"title":"R Codes (Week 1)","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2084,22 +2082,207 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>PSYC 575 Multilevel Modeling (2021 Fall)</h1>
+<h1>R Codes (Week 1)</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Welcome to the website. Let’s have a great semester!</p></p>
+
 </div>
 
 
 <div class="d-article">
-<p>This is the course website for PSYC 575 in the 2021 Fall semester. The course follows a flipped course model so that students will review assigned readings and prerecorded lecture videos at their own time, while the class meeting time will be dedicated to Q&amp;A and exercises. You will find the syllabus, lecture materials, and R codes in the navigation bar in the top right corner. Homework submission will be through <a href="https://blackboard.usc.edu">Blackboard</a>.</p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
 <ul>
-<li>The lecture videos are licensed under the standard YouTube License</li>
-<li>Code content is licensed under the MIT license</li>
-<li>Other course materials are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a><br />
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></li>
+<li><a href="#rstudio-intro">RStudio Intro</a>
+<ul>
+<li><a href="#recommended-options">Recommended Options</a></li>
+</ul></li>
+<li><a href="#r-markdown">R Markdown</a>
+<ul>
+<li><a href="#yaml-options">YAML options</a></li>
+<li><a href="#chunk-options">Chunk options</a></li>
+</ul></li>
+<li><a href="#including-plots">Including Plots</a></li>
+<li><a href="#install-packages">Install packages</a></li>
+<li><a href="#load-a-package">Load a package</a></li>
+<li><a href="#data-frame">Data Frame</a></li>
+<li><a href="#basic-markdown-elements">Basic Markdown Elements</a>
+<ul>
+<li><a href="#italic-and-bolded-texts">Italic and bolded texts</a></li>
+<li><a href="#lists-ordered-and-unordered">Lists (Ordered and Unordered)</a></li>
+<li><a href="#equations-latex">Equations (LaTeX)</a></li>
+</ul></li>
+<li><a href="#cheatsheet">Cheatsheet</a></li>
+<li><a href="#exercise">Exercise</a></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+</nav>
+</div>
+<p>Click here to download the Rmd file: <a href="rcodes/week1-intro-RMarkdown.Rmd">week1-intro-RMarkdown.Rmd</a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/G-IjAC-2uik" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/-PdycAVwMuY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<h2 id="rstudio-intro">RStudio Intro</h2>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png" /><!-- --></p>
+</div>
+<!-- ![](https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png) -->
+<ul>
+<li>If you’re new to R, follow the online ModernDrive chapter <a href="https://moderndive.netlify.app/1-getting-started.html" class="uri">https://moderndive.netlify.app/1-getting-started.html</a></li>
+<li>Four Panes:
+<ol type="1">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ol></li>
+<li></li>
+</ul>
+<h3 id="recommended-options">Recommended Options</h3>
+<pre><code>Tools --&gt; Global Options --&gt; 
+- Uncheck &quot;Restore .RData into workspace at startup&quot;.
+- Set &quot;Save workspace to .RData on exit&quot; to &quot;Never&quot;.  
+- (Optional) R Markdown --&gt; Set &quot;Show output preview in&quot; to &quot;Viewer Pane&quot;.
+
+Use Project</code></pre>
+<h2 id="r-markdown">R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<blockquote>
+<p>Note: R is case sensitive. So <code>Cars</code> and <code>cars</code> are different.</p>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  </code></pre>
+</div>
+<h3 id="yaml-options">YAML options</h3>
+<h3 id="chunk-options">Chunk options</h3>
+<ul>
+<li></li>
+</ul>
+<h2 id="including-plots">Including Plots</h2>
+<p>You can also embed plots, for example:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="rcode1_files/figure-html5/pressure-1.png" width="624" /></p>
+</div>
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<h2 id="install-packages">Install packages</h2>
+<div class="layout-chunk" data-layout="l-body">
+<blockquote class="twitter-tweet" data-width="550" data-lang="en" data-dnt="true" data-theme="light"><p lang="en" dir="ltr">Students struggle with install vs library every semester, and keep including their install code in the RMarkdown report. Hope this meme might help in the future <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/I8xg053y0x">pic.twitter.com/I8xg053y0x</a></p>&mdash; Dr Di Cook (@visnut) <a href="https://twitter.com/visnut/status/1248087845589274624?ref_src=twsrc%5Etfw">April 9, 2020</a></blockquote>
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg" /><!-- --></p>
+</div>
+<!-- ![](https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg) -->
+<p>Check out <a href="https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/" class="uri">https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/</a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Install the tidyverse "meta" package</span>
+
+<span class='co'># Install the lme4 package</span>
+</code></pre>
+</div>
+</div>
+<h2 id="load-a-package">Load a package</h2>
+<blockquote>
+<p>Hint: Try the (PC) <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> shortcut.</p>
+</blockquote>
+<blockquote>
+<p>Hint: Use <kbd>Tab</kbd> for code completeion</p>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Load tidyverse</span>
+
+<span class='co'># Load lme4</span>
+</code></pre>
+</div>
+</div>
+<h2 id="data-frame">Data Frame</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Load SleepStudy</span>
+
+<span class='co'># Extract one column</span>
+
+<span class='co'># Extract column by index</span>
+
+<span class='co'># Extract two rows</span>
+
+<span class='co'># Compute the mean and sd, and chain them together</span>
+
+<span class='co'># Correlation matrix with psych::pairs.panel()</span>
+
+<span class='co'># Find out what a function does (use `?function_name`, e.g., `?pairs.panel`)</span>
+</code></pre>
+</div>
+</div>
+<h2 id="basic-markdown-elements">Basic Markdown Elements</h2>
+<p>From RStudio, click . . .</p>
+<h3 id="italic-and-bolded-texts">Italic and bolded texts</h3>
+<h3 id="lists-ordered-and-unordered">Lists (Ordered and Unordered)</h3>
+<h3 id="equations-latex">Equations (LaTeX)</h3>
+<p>Inline: The correlation between . . .</p>
+<p>Display:</p>
+<h2 id="cheatsheet">Cheatsheet</h2>
+<p>More detailed cheatsheet <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf" class="uri">https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf</a></p>
+<hr />
+<h2 id="exercise">Exercise</h2>
+<ol type="1">
+<li>Once you get to the breakout room, select a group reporter</li>
+<li>Get to know everyone in the group</li>
+<li>Complete the following in this R Markdown document:
+<ol type="a">
+<li><p>Copy the following LaTex equation to below: <code>A_1 = \pi r^2</code>. How does this say about writing Greek letters and subscripts/superscripts? <span class="math display">\[[Insert equation here]\]</span></p></li>
+<li><p>Install and then load the <code>modelsummary</code> package, and run the following. You’ll need to remove <code>eval=FALSE</code> so that it runs. Find out what this code chunk does.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Install and load the modelsummary package first; otherwise it won't run</span>
+ <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>
+ <span class='va'>fm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>dist</span> <span class='op'>~</span> <span class='va'>speed</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
+ <span class='va'>fm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>dist</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='fl'>2</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
+ <span class='va'>fm3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
+ <span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fm1</span>, <span class='va'>fm2</span>, <span class='va'>fm3</span><span class='op'>)</span><span class='op'>)</span>
+ </code></pre>
+</div>
+</div></li>
+<li><p>Run the following. You’ll need to remove <code>eval=FALSE</code> so that it runs. Find out what this code chunk does.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+   <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='op'>)</span>
+ </code></pre>
+</div>
+</div></li>
+<li><p>Knit the document to HTML, PDF, and Word. If you run into an error when knitting to any one of the formats, record the error message. Which format do you prefer?</p></li>
+<li><p>Go to the top of this Rmd file, and change the line inside YAML</p>
+<pre><code>  html_document: default</code></pre>
+<p>to</p>
+<pre><code>  html_document: 
+      toc: TRUE</code></pre>
+<p>Knit the document again. What does it do?</p></li>
+</ol></li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2107,6 +2290,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
