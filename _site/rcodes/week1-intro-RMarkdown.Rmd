@@ -1,29 +1,38 @@
 ---
 title: "Introduction to R Markdown"
-author: "Hok Chio (Mark) Lai"
-date: "August 3, 2020, updated on August 9, 2021"
+author: "Your Name"
+date: "8/26/2021"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## RStudio Intro
 
-```{r RvsRStudio, eval=!knitr::is_latex_output(), echo=FALSE}
-knitr::include_graphics("https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png")
+```{r}
+print("This is Thursday.")
 ```
 
 
-<!-- ![](https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png) -->
+```{r RvsRStudio, eval = !knitr::is_latex_output(), echo = FALSE}
+knitr::include_graphics("https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png")
+```
+
+<!-- Markdown syntax for including images
+![](https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png)
+-->
 
 - If you're new to R, follow the online ModernDrive chapter https://moderndive.netlify.app/1-getting-started.html
 - Four Panes:
-    1.  
-    2. 
-    3. 
-    4. 
-- 
+    1. Source panel
+    2. Console
+    3. Global environment
+    4. Files/Plots/Packages/Help/Viewer
 
 ### Recommended Options
 
@@ -44,21 +53,26 @@ When you click the **Knit** button a document will be generated that includes bo
 
 > Note: R is case sensitive. So `Cars` and `cars` are different. 
 
-```{r cars}
-summary(cars)
+```{r cars, results = 'hide'}
+summary(cars[-(1:4), ])
 ```
 
 ### YAML options
 
+- `title`, `author`, `date`, `output`
+
 ### Chunk options
 
-- 
+- `include`
+- `echo`
+- `eval`
+- `results = 'hide'`
 
 ## Including Plots
 
 You can also embed plots, for example:
 
-```{r pressure, echo=FALSE}
+```{r pressure, echo = FALSE}
 plot(pressure)
 ```
 
@@ -66,32 +80,34 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Install packages
 
-```{r tweet-by-Di-Cook, echo=FALSE}
+```{r tweet-by-Di-Cook}
 tweetrmd::include_tweet("https://twitter.com/visnut/status/1248087845589274624")
 ```
 
-```{r change-a-light-bulb, eval=!knitr::is_latex_output(), echo=FALSE}
+```{r change-a-light-bulb, eval = !knitr::is_latex_output(), echo = FALSE}
 knitr::include_graphics("https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg")
 ```
-
-<!-- ![](https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg) -->
 
 Check out https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/
 
 ```{r install-tidyverse-lme4}
 # Install the tidyverse "meta" package
-
+# install.packages("tidyverse")
 # Install the lme4 package
-
+# install.packages("lme4")
 ```
 
 ## Load a package
 
-> Hint: Try the (PC) <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> shortcut. 
+> Tip 1: Try the (PC) <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> shortcut for a new code chunk 
 
-> Hint: Use <kbd>Tab</kbd> for code completeion
+> Tip 2: Use <kbd>Tab</kbd> for code completeion
 
-```{r load-packages}
+> Tip 3: Use <kbd>Ctrl</kbd> + <kbd>Enter</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Return</kbd> for running a line of R code
+
+> Tip 4: Set `message = FALSE` to suppress messages in loading packages
+
+```{r load-package}
 # Load tidyverse
 
 # Load lme4
@@ -105,7 +121,7 @@ Check out https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/
 
 # Extract one column
 
-# Extract column by index
+# Extract column by index (same as last line)
 
 # Extract two rows
 
@@ -119,33 +135,40 @@ Check out https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/
 
 ## Basic Markdown Elements
 
-From RStudio, click . . . 
+From RStudio, click `Help` --> `Markdown Quick Reference`
 
 ### Italic and bolded texts
 
+This is *italic*
+
 ### Lists (Ordered and Unordered)
+
+- Item 1
+- Item 2
 
 ### Equations (LaTeX)
 
-Inline: The correlation between . . . 
+Inline: The correlation between $a = b + c + \tau$
 
 Display: 
 
+$$a = b + c + \tau$$
+
 ## Cheatsheet
 
-More detailed cheatsheet https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf
+More detailed cheatsheet https://rmarkdown.rstudio.com/lesson-15.HTML
 
 ***
 
 ## Exercise
 
-1. Once you get to the breakout room, select a group reporter
-2. Get to know everyone in the group
+1. Download the Rmd file for the exercise on Blackboard
+2. Insert your name on line 3.
 3. Complete the following in this R Markdown document:
     a. Copy the following LaTex equation to below: `A_1 = \pi r^2`. How does this say about writing Greek letters and subscripts/superscripts?
         $$[Insert equation here]$$
-    b. Install and then load the `modelsummary` package, and run the following. You'll need to remove `eval=FALSE` so that it runs. Find out what this code chunk does.
-```{r modelsummary, indent='        ', eval=FALSE}
+    b. Install and then load the `modelsummary` package, and run the following. You'll need to remove `eval = FALSE` so that it runs. Find out what this code chunk does.
+```{r modelsummary, indent='        ', eval = FALSE}
 # Install and load the modelsummary package first; otherwise it won't run
 library(modelsummary)
 fm1 <- lm(dist ~ speed, data = cars)
@@ -153,8 +176,8 @@ fm2 <- lm(dist ~ poly(speed, 2), data = cars)
 fm3 <- lm(log(dist) ~ log(speed), data = cars)
 msummary(list(fm1, fm2, fm3))
 ```
-    c. Run the following. You'll need to remove `eval=FALSE` so that it runs. Find out what this code chunk does.
-```{r scatter-plot, indent='        ', eval=FALSE}
+    c. Run the following. You'll need to remove `eval = FALSE` so that it runs. Find out what this code chunk does.
+```{r scatter-plot, indent='        ', eval = FALSE}
 ggplot(cars, aes(x = log(speed), y = log(dist))) + 
   geom_point() + 
   geom_smooth()
@@ -176,4 +199,4 @@ ggplot(cars, aes(x = log(speed), y = log(dist))) +
         ```
         
         Knit the document again. What does it do?
-        
+    f. Submit the knitted document to Blackboard in your preferred format (HTML, PDF, or WORD)

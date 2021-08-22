@@ -10,16 +10,3 @@ add_youtube <- function(src) {
         )
     )
 }
-
-# Convert HTML slides to PDF
-purrr::map(list.files("slides",
-                      pattern = "*.Rmd", full.names = TRUE),
-           pagedown::chrome_print)
-for (f in list.files("static/slides/psyc575", pattern = "*.html",
-                     full.names = TRUE)) {
-  render_it = function()
-    pagedown::chrome_print(f, browser = "chromium-browser")
-  pdf_file = xfun::with_ext(f, "pdf")
-  if (!file.exists(pdf_file) || file_test("-ot", pdf_file, f))
-    render_it()
-}

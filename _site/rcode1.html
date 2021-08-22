@@ -2030,16 +2030,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs/header-attrs.js"></script>
-  <script src="site_libs/twitter-widget/widgets.js"></script>
-  <script src="site_libs/popper/popper.min.js"></script>
-  <link href="site_libs/tippy/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor/anchor.min.js"></script>
-  <script src="site_libs/bowser/bowser.min.js"></script>
-  <script src="site_libs/webcomponents/webcomponents.js"></script>
-  <script src="site_libs/distill/template.v2.js"></script>
+  <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+  <script src="site_libs/twitter-widget-0.0.1/widgets.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
   <script type="text/javascript" cookie-consent="tracking">
@@ -2071,8 +2071,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="nav-right">
 <a href="index.html">Home</a>
 <a href="syllabus.html">Syllabus</a>
-<span class="nav-dropdown-header">Lectures</span>
-<span class="nav-dropdown-header">R Codes</span>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Lectures
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="week1.html">Week 1</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+R Codes
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="rcode1.html">Week 1 R Code</a>
+</div>
+</div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
 </div>
 </nav>
@@ -2131,19 +2149,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <h2 id="rstudio-intro">RStudio Intro</h2>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"This is Thursday."</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;This is Thursday.&quot;</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
 <p><img src="https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png" /><!-- --></p>
 </div>
-<!-- ![](https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png) -->
+<!-- Markdown syntax for including images
+![](https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png)
+-->
 <ul>
 <li>If you’re new to R, follow the online ModernDrive chapter <a href="https://moderndive.netlify.app/1-getting-started.html" class="uri">https://moderndive.netlify.app/1-getting-started.html</a></li>
 <li>Four Panes:
 <ol type="1">
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>Source panel</li>
+<li>Console</li>
+<li>Global environment</li>
+<li>Files/Plots/Packages/Help/Viewer</li>
 </ol></li>
-<li></li>
 </ul>
 <h3 id="recommended-options">Recommended Options</h3>
 <pre><code>Tools --&gt; Global Options --&gt; 
@@ -2160,21 +2186,20 @@ Use Project</code></pre>
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>[</span><span class='op'>-</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>, <span class='op'>]</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>     speed           dist       
- Min.   : 4.0   Min.   :  2.00  
- 1st Qu.:12.0   1st Qu.: 26.00  
- Median :15.0   Median : 36.00  
- Mean   :15.4   Mean   : 42.98  
- 3rd Qu.:19.0   3rd Qu.: 56.00  
- Max.   :25.0   Max.   :120.00  </code></pre>
 </div>
 <h3 id="yaml-options">YAML options</h3>
+<ul>
+<li><code>title</code>, <code>author</code>, <code>date</code>, <code>output</code></li>
+</ul>
 <h3 id="chunk-options">Chunk options</h3>
 <ul>
-<li></li>
+<li><code>include</code></li>
+<li><code>echo</code></li>
+<li><code>eval</code></li>
+<li><code>results = 'hide'</code></li>
 </ul>
 <h2 id="including-plots">Including Plots</h2>
 <p>You can also embed plots, for example:</p>
@@ -2184,28 +2209,38 @@ Use Project</code></pre>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
 <h2 id="install-packages">Install packages</h2>
 <div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tweetrmd</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/tweetrmd/man/include_tweet.html'>include_tweet</a></span><span class='op'>(</span><span class='st'>"https://twitter.com/visnut/status/1248087845589274624"</span><span class='op'>)</span>
+</code></pre>
+</div>
 <blockquote class="twitter-tweet" data-width="550" data-lang="en" data-dnt="true" data-theme="light"><p lang="en" dir="ltr">Students struggle with install vs library every semester, and keep including their install code in the RMarkdown report. Hope this meme might help in the future <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/I8xg053y0x">pic.twitter.com/I8xg053y0x</a></p>&mdash; Dr Di Cook (@visnut) <a href="https://twitter.com/visnut/status/1248087845589274624?ref_src=twsrc%5Etfw">April 9, 2020</a></blockquote>
 
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg" /><!-- --></p>
 </div>
-<!-- ![](https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg) -->
 <p>Check out <a href="https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/" class="uri">https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Install the tidyverse "meta" package</span>
-
+<span class='co'># install.packages("tidyverse")</span>
 <span class='co'># Install the lme4 package</span>
+<span class='co'># install.packages("lme4")</span>
 </code></pre>
 </div>
 </div>
 <h2 id="load-a-package">Load a package</h2>
 <blockquote>
-<p>Hint: Try the (PC) <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> shortcut.</p>
+<p>Tip 1: Try the (PC) <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> shortcut for a new code chunk</p>
 </blockquote>
 <blockquote>
-<p>Hint: Use <kbd>Tab</kbd> for code completeion</p>
+<p>Tip 2: Use <kbd>Tab</kbd> for code completeion</p>
+</blockquote>
+<blockquote>
+<p>Tip 3: Use <kbd>Ctrl</kbd> + <kbd>Enter</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Return</kbd> for running a line of R code</p>
+</blockquote>
+<blockquote>
+<p>Tip 4: Set <code>message = FALSE</code> to suppress messages in loading packages</p>
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2222,7 +2257,7 @@ Use Project</code></pre>
 
 <span class='co'># Extract one column</span>
 
-<span class='co'># Extract column by index</span>
+<span class='co'># Extract column by index (same as last line)</span>
 
 <span class='co'># Extract two rows</span>
 
@@ -2235,23 +2270,29 @@ Use Project</code></pre>
 </div>
 </div>
 <h2 id="basic-markdown-elements">Basic Markdown Elements</h2>
-<p>From RStudio, click . . .</p>
+<p>From RStudio, click <code>Help</code> –&gt; <code>Markdown Quick Reference</code></p>
 <h3 id="italic-and-bolded-texts">Italic and bolded texts</h3>
+<p>This is <em>italic</em></p>
 <h3 id="lists-ordered-and-unordered">Lists (Ordered and Unordered)</h3>
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+</ul>
 <h3 id="equations-latex">Equations (LaTeX)</h3>
-<p>Inline: The correlation between . . .</p>
+<p>Inline: The correlation between <span class="math inline">\(a = b + c + \tau\)</span></p>
 <p>Display:</p>
+<p><span class="math display">\[a = b + c + \tau\]</span></p>
 <h2 id="cheatsheet">Cheatsheet</h2>
-<p>More detailed cheatsheet <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf" class="uri">https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf</a></p>
+<p>More detailed cheatsheet <a href="https://rmarkdown.rstudio.com/lesson-15.HTML" class="uri">https://rmarkdown.rstudio.com/lesson-15.HTML</a></p>
 <hr />
 <h2 id="exercise">Exercise</h2>
 <ol type="1">
-<li>Once you get to the breakout room, select a group reporter</li>
-<li>Get to know everyone in the group</li>
+<li>Download the Rmd file for the exercise on Blackboard</li>
+<li>Insert your name on line 3.</li>
 <li>Complete the following in this R Markdown document:
 <ol type="a">
 <li><p>Copy the following LaTex equation to below: <code>A_1 = \pi r^2</code>. How does this say about writing Greek letters and subscripts/superscripts? <span class="math display">\[[Insert equation here]\]</span></p></li>
-<li><p>Install and then load the <code>modelsummary</code> package, and run the following. You’ll need to remove <code>eval=FALSE</code> so that it runs. Find out what this code chunk does.</p>
+<li><p>Install and then load the <code>modelsummary</code> package, and run the following. You’ll need to remove <code>eval = FALSE</code> so that it runs. Find out what this code chunk does.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Install and load the modelsummary package first; otherwise it won't run</span>
@@ -2263,7 +2304,7 @@ Use Project</code></pre>
  </code></pre>
 </div>
 </div></li>
-<li><p>Run the following. You’ll need to remove <code>eval=FALSE</code> so that it runs. Find out what this code chunk does.</p>
+<li><p>Run the following. You’ll need to remove <code>eval = FALSE</code> so that it runs. Find out what this code chunk does.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
@@ -2279,10 +2320,11 @@ Use Project</code></pre>
 <pre><code>  html_document: 
       toc: TRUE</code></pre>
 <p>Knit the document again. What does it do?</p></li>
-</ol></li>
+<li><p>Submit the knitted document to Blackboard in your preferred format (HTML, PDF, or WORD)</p></li>
 </ol>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
+</ol>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
