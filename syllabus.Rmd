@@ -6,15 +6,24 @@ output:
   distill::distill_article:
     toc: true
     fig_caption: false
+  # pdf_document:
+  #   toc: false
+  #   fig_caption: false
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-![Logo of the University of Southern California](https://identity.usc.edu/files/2012/01/primaryshieldwordmark.png)
+```{r usc-logo, echo = FALSE, fig.alt = "Logo of the University of Southern California", out.width = "50%"}
+if (knitr::is_latex_output()) {
+  knitr::include_graphics("primaryshieldwordmark.png")
+} else {
+  knitr::include_graphics("https://identity.usc.edu/files/2012/01/primaryshieldwordmark.png")
+}
+```
 
-# Multilevel Modeling PSYC 575
+# PSYC 575 Multilevel Modeling
 
 **Units:** 4  
 **Term--Day--Time:** Fall 2021--Tues & Thurs--10:00-11:50 am
@@ -206,7 +215,7 @@ The following applies to both in-person and online communications (e.g., Slack d
 
 ## COVID-19 Guidance
 
-Students should consult the latest COVID-19 testing and health protocol requirements for on-campus courses. Continuously updated requirements can be found on the USC COVID-19 resource center website at https://coronavirus.usc.edu/students/
+Students should consult the latest COVID-19 testing and health protocol requirements for on-campus courses. Continuously updated requirements can be found on the USC COVID-19 resource center website at https://coronavirus.usc.edu/ and https://we-are.usc.edu/.
 
 ## Course Evaluation
 
