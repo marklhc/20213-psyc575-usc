@@ -1,0 +1,25 @@
+---
+title: "R Codes (Week 1)"
+output: 
+  distill::distill_article:
+    toc: true
+---
+
+```{r rcode-setup, include=FALSE}
+source("helper.R")
+source("render_slides.R")
+```
+
+Click here to download the Rmd file: [week1-intro-RMarkdown.Rmd](rcodes/week1-intro-RMarkdown.Rmd)
+
+```{r, echo=FALSE}
+add_youtube("G-IjAC-2uik")
+```
+
+```{r, echo=FALSE}
+add_youtube("-PdycAVwMuY")
+```
+
+```{r r-code, child='rcodes/week1-intro-RMarkdown.Rmd'}
+
+```
