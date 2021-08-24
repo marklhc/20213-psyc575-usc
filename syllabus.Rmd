@@ -71,7 +71,7 @@ After the successful completion of this course, students will be able to . . .
 
 This class will be fully online and will follow a [flipped course design](https://cet.usc.edu/wp-content/uploads/2021/05/flipped-course-model.docx). The benefit of a flipped course model is that the lecturer can spend more time with students to go through applications of concepts and hands-on exercises of data analyses. 
 
-The lecture videos and course materials will be available at <url> by 9:00 am of each Monday, and students are expected to review these materials and the assigned readings on their own. Please note that the lecture slides only serve to guide class discussions and cannot replace the assigned readings. 
+The lecture videos and course materials will be available at https://psyc575-2021fall.netlify.app by 9:00 am of each Monday, and students are expected to review these materials and the assigned readings on their own. Please note that the lecture slides only serve to guide class discussions and cannot replace the assigned readings. 
 
 Except for Week 1, the **Tuesday meetings** will be optional **Q&A sessions** where students can bring their questions so that the instructor and the class can discuss unclear concepts. During the **mandatory Thursday meetings**, students will work on quizzes, in-class exercises, and discuss questions regarding the learning materials and homework assignments. **Students are expected to have reviewed the posted materials for that week before attending that week's group exercise session.** 
 
@@ -131,7 +131,7 @@ You must submit your work electronically to Blackboard by **Friday 11:59 p.m. Pa
     There are three grading components for your final project:
   
     - Prospectus (5%)  
-    A prospectus about your project should be submitted by **Monday, October 11, 9:00 a.m. Pacific Time**. The prospectus should contain a concise description of what you (or your group) plan to do for your project, including a preliminary plan for statistical analysis. The prospectus should be limited to 1 single-spaced page (excluding tables, figures, references, and other supplemental materials).
+    A prospectus about your project should be submitted by **Monday, October 25, 9:00 a.m. Pacific Time**. The prospectus should contain a concise description of what you (or your group) plan to do for your project, including a preliminary plan for statistical analysis. The prospectus should be limited to 1 single-spaced page (excluding tables, figures, references, and other supplemental materials).
 
     - Peer Review (5%)  
     After the individual meeting with the instructor, each individual/group will refine their research questions and post a summary of their research questions and preliminary analyses to the dedicated forum on the Discussion Board by **Friday, November 5**. Each student will then give specific comments to the summaries of two other students/groups by **Monday, November 15**. More information on what feedback to give will be included in the grading rubric.  
