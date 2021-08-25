@@ -156,7 +156,7 @@ $$a = b + c + \tau$$
 
 ## Cheatsheet
 
-More detailed cheatsheet https://rmarkdown.rstudio.com/lesson-15.HTML
+More detailed cheatsheet: https://rmarkdown.rstudio.com/lesson-15.HTML
 
 ***
 
@@ -168,7 +168,7 @@ More detailed cheatsheet https://rmarkdown.rstudio.com/lesson-15.HTML
     a. Copy the following LaTex equation to below: `A_1 = \pi r^2`. How does this say about writing Greek letters and subscripts/superscripts?
         $$[Insert equation here]$$
     b. Install and then load the `modelsummary` package, and run the following. You'll need to remove `eval = FALSE` so that it runs. Find out what this code chunk does.
-```{r modelsummary, indent='        ', eval = FALSE}
+```{r modelsummary, indent = '        ', eval = FALSE}
 # Install and load the modelsummary package first; otherwise it won't run
 library(modelsummary)
 fm1 <- lm(dist ~ speed, data = cars)
@@ -177,15 +177,17 @@ fm3 <- lm(log(dist) ~ log(speed), data = cars)
 msummary(list(fm1, fm2, fm3))
 ```
     c. Run the following. You'll need to remove `eval = FALSE` so that it runs. Find out what this code chunk does.
-```{r scatter-plot, indent='        ', eval = FALSE}
-ggplot(cars, aes(x = log(speed), y = log(dist))) + 
-  geom_point() + 
+```{r scatter-plot, indent = '        ', eval = FALSE}
+ggplot(cars, aes(x = log(speed), y = log(dist))) +
+  geom_point() +
   geom_smooth()
 ```
-    d. Knit the document to HTML, PDF, and Word. If you run into an error when
+    d. Add a code chunk below to show the output of running `sessionInfo()`, which prints out the session information of your computer. Make the code chunk to show only the output, but not the code.
+    
+    e. Knit the document to HTML, PDF, and Word. If you run into an error when
     knitting to any one of the formats, record the error message. Which format
     do you prefer?
-    e. Go to the top of this Rmd file, and change the line inside YAML
+    f. Go to the top of this Rmd file, and change the line inside YAML
     
         ```
           html_document: default
@@ -199,4 +201,4 @@ ggplot(cars, aes(x = log(speed), y = log(dist))) +
         ```
         
         Knit the document again. What does it do?
-    f. Submit the knitted document to Blackboard in your preferred format (HTML, PDF, or WORD)
+    g. Submit the knitted document to Blackboard in your preferred format (HTML, PDF, or WORD)

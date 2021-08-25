@@ -2283,7 +2283,7 @@ Use Project</code></pre>
 <p>Display:</p>
 <p><span class="math display">\[a = b + c + \tau\]</span></p>
 <h2 id="cheatsheet">Cheatsheet</h2>
-<p>More detailed cheatsheet <a href="https://rmarkdown.rstudio.com/lesson-15.HTML" class="uri">https://rmarkdown.rstudio.com/lesson-15.HTML</a></p>
+<p>More detailed cheatsheet: <a href="https://rmarkdown.rstudio.com/lesson-15.HTML" class="uri">https://rmarkdown.rstudio.com/lesson-15.HTML</a></p>
 <hr />
 <h2 id="exercise">Exercise</h2>
 <ol type="1">
@@ -2307,12 +2307,13 @@ Use Project</code></pre>
 <li><p>Run the following. You’ll need to remove <code>eval = FALSE</code> so that it runs. Find out what this code chunk does.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='op'>)</span>
  </code></pre>
 </div>
 </div></li>
+<li><p>Add a code chunk below to show the output of running <code>sessionInfo()</code>, which prints out the session information of your computer. Make the code chunk to show only the output, but not the code.</p></li>
 <li><p>Knit the document to HTML, PDF, and Word. If you run into an error when knitting to any one of the formats, record the error message. Which format do you prefer?</p></li>
 <li><p>Go to the top of this Rmd file, and change the line inside YAML</p>
 <pre><code>  html_document: default</code></pre>
