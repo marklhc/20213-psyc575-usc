@@ -86,29 +86,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 1</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 2</title>
 
-  <meta property="description" itemprop="description" content="Overview of Multilevel Models"/>
+  <meta property="description" itemprop="description" content="Review of Regression"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 1"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 2"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Overview of Multilevel Models"/>
+  <meta property="og:description" content="Review of Regression"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 1"/>
-  <meta property="twitter:description" content="Overview of Multilevel Models"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 2"/>
+  <meta property="twitter:description" content="Review of Regression"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Week 1"]},{"type":"character","attributes":{},"value":["Overview of Multilevel Models\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slides"]}},"value":[{"type":"character","attributes":{},"value":["01_intro"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Week 2"]},{"type":"character","attributes":{},"value":["Review of Regression\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slides"]}},"value":[{"type":"character","attributes":{},"value":["02_review_regression"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2060,7 +2060,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Week 1","description":"Overview of Multilevel Models","authors":[]}
+{"title":"Week 2","description":"Review of Regression","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2104,10 +2104,10 @@ R Codes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Week 1</h1>
+<h1>Week 2</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Overview of Multilevel Models</p></p>
+<p><p>Review of Regression</p></p>
 </div>
 
 
@@ -2123,87 +2123,159 @@ R Codes
 <li><a href="#lecture">Lecture</a>
 <ul>
 <li><a href="#slides">Slides</a></li>
-<li><a href="#multilevel-data-structure">Multilevel Data Structure</a></li>
-<li><a href="#name-and-history">Name and History</a></li>
-<li><a href="#usage-of-mlm">Usage of MLM</a></li>
+<li><a href="#statistical-model">Statistical Model</a></li>
+<li><a href="#import-data">Import Data</a></li>
+<li><a href="#linear-regression">Linear Regression</a>
+<ul>
+<li><a href="#sample-regression-line">Sample regression line</a></li>
+<li><a href="#centering">Centering</a></li>
+</ul></li>
+<li><a href="#categorical-predictor">Categorical Predictor</a></li>
+<li><a href="#multiple-regression">Multiple Regression</a></li>
+<li><a href="#interaction">Interaction</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
-<p>Before you start the materials for week 1, make sure you have reviewed the <a href="syllabus.html">syllabus</a>.</p>
 <h1 id="week-learning-objectives">Week Learning Objectives</h1>
 <p>By the end of this module, you will be able to</p>
 <ul>
-<li>Identify alternative names for multilevel modeling (MLM)</li>
-<li>Describe the types of data MLM can handle</li>
-<li>Knit a simple R Markdown file</li>
+<li>Describe the statistical model for regression</li>
+<li>Write out the model equations</li>
+<li>Simulate data based on a regression model</li>
+<li>Plot interactions</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
 <ol type="1">
-<li>Attend the Tuesday session for course introduction and Q&amp;A</li>
-<li>Install/Update R and RStudio on your computer</li>
-<li>Review the resources (lecture videos and slides)</li>
+<li>If you have questions, attend the Tuesday Q&amp;A session</li>
 <li>Complete the assigned readings
 <ul>
-<li>Snijders &amp; Bosker chapters 1 and <a href="https://us.sagepub.com/sites/default/files/upm-assets/44075_book_item_44075.pdf">2</a> (they’re relatively short)</li>
-<li><a href="https://vimeo.com/178485416">R Markdown Intro</a></li>
-<li><a href="https://web.mit.edu/r/current/RStudio/resources/markdown_help.html">Markdown Quick Reference</a></li>
+<li><a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/07/raos_overview.pdf">Gelman et al. ch 1.1, 1.2, 1.4</a></li>
+<li>Gelman et al. ch 4.1, 4.2, 4.4, 4.5</li>
+<li><a href="https://statmodeling.stat.columbia.edu/wp-content/uploads/2020/07/raos_tips.pdf">10 quick tips to improve your regression modeling</a></li>
 </ul></li>
-<li>Introduce yourself on the #introduction Slack channel (as part of HW 1)</li>
 <li>Attend the Thursday session and participate in the class exercise</li>
-<li>Complete Homework 1</li>
+<li>Complete Homework 2</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p>You can view and download the slides here: <a href="slides/01_intro.html" target="_blank">HTML</a> <a href="slides/01_intro.pdf" target="_blank">PDF</a></p>
-<h2 id="multilevel-data-structure">Multilevel Data Structure</h2>
+<p>You can view and download the slides here: <a href="slides/02_review_regression.html" target="_blank">HTML</a> <a href="slides/02_review_regression.pdf" target="_blank">PDF</a></p>
+<h2 id="statistical-model">Statistical Model</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-<iframe src="https://www.youtube.com/embed/ufvCUaUkYOA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+<iframe src="https://www.youtube.com/embed/axg_AshO7qM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: How would you describe the data structure in the video?</p>
+<p>Check your learning: In the example in the video, why do we need a random component?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_24997" onsubmit="return validate_form_24997()" method="post">
-<input type="radio" name="answer_24997" id="24997_1" value="observational"><label for="1">observational</label> <input type="radio" name="answer_24997" id="24997_2" value="educational"><label for="2">educational</label> <input type="radio" name="answer_24997" id="24997_3" value="hierarchical"><label for="3">hierarchical</label> <br><input type="submit" value="check">
+<form name="form_45915" onsubmit="return validate_form_45915()" method="post">
+<input type="radio" name="answer_45915" id="45915_1" value="Because there is only one predictor"><label for="1">Because there is only one predictor</label><br><input type="radio" name="answer_45915" id="45915_2" value="Because the relation between the variables is linear"><label for="2">Because the relation between the variables is linear</label><br><input type="radio" name="answer_45915" id="45915_3" value="Because people who spend the same amount of time studying do not always have the same mastery level"><label for="3">Because people who spend the same amount of time studying do not always have the same mastery level</label><br><input type="submit" value="check">
 </form>
-<p id="result_24997">
+<p id="result_45915">
 </p>
-<script> function validate_form_24997() {var x, text; var x = document.forms["form_24997"]["answer_24997"].value;if (x == "hierarchical"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_24997').innerHTML = text; return false;} </script>
+<script> function validate_form_45915() {var x, text; var x = document.forms["form_45915"]["answer_45915"].value;if (x == "Because people who spend the same amount of time studying do not always have the same mastery level"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_45915').innerHTML = text; return false;} </script>
 </div>
-<h2 id="name-and-history">Name and History</h2>
+<hr />
+<h2 id="import-data">Import Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-<iframe src="https://www.youtube.com/embed/9Ax8W6VPgmk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+<iframe src="https://www.youtube.com/embed/NgjdsKxLMbI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: What is another name for multilevel modeling?</p>
+<p>Check your learning: What is the coding for the <code>sex</code> variable?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_97647" onsubmit="return validate_form_97647()" method="post">
-<input type="radio" name="answer_97647" id="97647_1" value="mixed-effect modeling"><label for="1">mixed-effect modeling</label><br><input type="radio" name="answer_97647" id="97647_2" value="hierarchical regression"><label for="2">hierarchical regression</label><br><input type="radio" name="answer_97647" id="97647_3" value="fixed-effect modeling"><label for="3">fixed-effect modeling</label><br><input type="submit" value="check">
+<form name="form_46999" onsubmit="return validate_form_46999()" method="post">
+<input type="radio" name="answer_46999" id="46999_1" value="1 = male, 2 = female"><label for="1">1 = male, 2 = female</label><br><input type="radio" name="answer_46999" id="46999_2" value="2 = male, 1 = female"><label for="2">2 = male, 1 = female</label><br><input type="radio" name="answer_46999" id="46999_3" value="0 = female, 1 = male"><label for="3">0 = female, 1 = male</label><br><input type="radio" name="answer_46999" id="46999_4" value="0 = male, 1 = female"><label for="4">0 = male, 1 = female</label><br><input type="submit" value="check">
 </form>
-<p id="result_97647">
+<p id="result_46999">
 </p>
-<script> function validate_form_97647() {var x, text; var x = document.forms["form_97647"]["answer_97647"].value;if (x == "mixed-effect modeling"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_97647').innerHTML = text; return false;} </script>
+<script> function validate_form_46999() {var x, text; var x = document.forms["form_46999"]["answer_46999"].value;if (x == "0 = male, 1 = female"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_46999').innerHTML = text; return false;} </script>
 </div>
-<h2 id="usage-of-mlm">Usage of MLM</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-<iframe src="https://www.youtube.com/embed/4fl2chIkDy4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+<iframe src="https://www.youtube.com/embed/UfFhGF3mJGk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<blockquote>
-<p>Another example that relates to ecological fallacies is the <a href="https://esrc.ukri.org/about-us/50-years-of-esrc/50-achievements/the-easterlin-paradox/">“happiness paradox”</a> in economics, which says that income is related to happiness in a cross-sectional analysis (i.e., between-person level) but not in a longitudinal/time series analysis (i.e., within-person level).</p>
-</blockquote>
-<p>Check your learning: In the data structure where there are multiple measurements for the same person, which level is level 1?</p>
+<p>Take a pause and look at the scatterplot matrix. Ask yourself the following:</p>
+<ul>
+<li>How does the distribution of <code>salary</code> look?</li>
+<li>Are there more males or females in the data?</li>
+<li>How would you describe the relationship between number of publications and salary?</li>
+</ul>
+<hr />
+<h2 id="linear-regression">Linear Regression</h2>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_25543" onsubmit="return validate_form_25543()" method="post">
-<input type="radio" name="answer_25543" id="25543_1" value="measurement"><label for="1">measurement</label> <input type="radio" name="answer_25543" id="25543_2" value="person"><label for="2">person</label> <br><input type="submit" value="check">
-</form>
-<p id="result_25543">
-</p>
-<script> function validate_form_25543() {var x, text; var x = document.forms["form_25543"]["answer_25543"].value;if (x == "measurement"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_25543').innerHTML = text; return false;} </script>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/JcmmFSruAZA" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
+</div>
+<h3 id="sample-regression-line">Sample regression line</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/GIRtlYGVOXk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: How would you translate the regression line <span class="math inline">\(y = \beta_0 + \beta_1 \text{predictor1}\)</span> into R?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_58019" onsubmit="return validate_form_58019()" method="post">
+<input type="radio" name="answer_58019" id="58019_1" value="y ~ 0 + predictor1"><label for="1">y ~ 0 + predictor1</label><br><input type="radio" name="answer_58019" id="58019_2" value="predictor1 ~ 1 + y"><label for="2">predictor1 ~ 1 + y</label><br><input type="radio" name="answer_58019" id="58019_3" value="y ~ predictor1"><label for="3">y ~ predictor1</label><br><input type="submit" value="check">
+</form>
+<p id="result_58019">
+</p>
+<script> function validate_form_58019() {var x, text; var x = document.forms["form_58019"]["answer_58019"].value;if (x == "y ~ predictor1"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_58019').innerHTML = text; return false;} </script>
+</div>
+<h3 id="centering">Centering</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/s19aoHq53zw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: The mean of the <code>pub</code> variable is 18.2. If we call the mean-centered version of it as <code>pub_c</code>, what should be the value of <code>pub_c</code> for someone with 10 publications?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_92982" onsubmit="return validate_form_92982()" method="post">
+<input type="radio" name="answer_92982" id="92982_1" value=" 8.2"><label for="1"> 8.2</label> <input type="radio" name="answer_92982" id="92982_2" value=" 1.8"><label for="2"> 1.8</label> <input type="radio" name="answer_92982" id="92982_3" value=" -8.2"><label for="3"> -8.2</label> <input type="radio" name="answer_92982" id="92982_4" value=" 1.82"><label for="4"> 1.82</label> <br><input type="submit" value="check">
+</form>
+<p id="result_92982">
+</p>
+<script> function validate_form_92982() {var x, text; var x = document.forms["form_92982"]["answer_92982"].value;if (x == " -8.2"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_92982').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="categorical-predictor">Categorical Predictor</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/k2nNMfJ2Xn0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: In a regression analysis, assume that there is a binary predictor that indicates whether a school is public (coded as 0) or private (coded as 1). If the coefficient for that predictor is 1.5, which category has a higher predicted score?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_59423" onsubmit="return validate_form_59423()" method="post">
+<input type="radio" name="answer_59423" id="59423_1" value="private"><label for="1">private</label> <input type="radio" name="answer_59423" id="59423_2" value="public"><label for="2">public</label> <br><input type="submit" value="check">
+</form>
+<p id="result_59423">
+</p>
+<script> function validate_form_59423() {var x, text; var x = document.forms["form_59423"]["answer_59423"].value;if (x == "private"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_59423').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="multiple-regression">Multiple Regression</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/O2ob6wC91w0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Think more: the coefficient of <code>pub_c</code> becomes smaller after adding <code>time</code> into the equation. Why do you think that is the case?</p>
+<hr />
+<h2 id="interaction">Interaction</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/cqGZD8s5WvU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/vK-2xMftORM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Pratice yourself: from the interaction model obtain the regression line when <code>pub</code> = 50.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2212,6 +2284,15 @@ R Codes
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
