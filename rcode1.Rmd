@@ -7,7 +7,6 @@ output:
 
 ```{r rcode-setup, include=FALSE}
 source("helper.R")
-source("render_slides.R")
 ```
 
 Click here to download the Rmd file: [week1-intro-RMarkdown.Rmd](rcodes/week1-intro-RMarkdown.Rmd)
