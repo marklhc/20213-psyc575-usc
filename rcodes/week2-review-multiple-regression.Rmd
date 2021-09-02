@@ -404,7 +404,7 @@ sjPlot::plot_model(m3, type = "pred", show.data = TRUE,
 ### Interpretations
 
 > Faculty who have worked *longer* tended to have *more* publications
-> **For faculty who graduate around the same time**, a difference of 1 publication is associated with an estimated difference in salary of $133.0, 95% CI [$-52.6, $318.6], which was not significant. 
+> **For faculty who graduate around the same time**, a difference of 1 publication is associated with an estimated difference in salary of \$133.0, 95\% CI [\$-52.6, \$318.6], which was not significant. 
 
 ### Diagnostics
 
@@ -412,10 +412,12 @@ sjPlot::plot_model(m3, type = "pred", show.data = TRUE,
 car::mmps(m3)  # marginal model plots for linearity assumptions
 ```
 
+The red line is the implied association based on the model, whereas the blue line is a non-parametric smoother not based on the model. If the two lines show big discrepancies (especially if in the middle), it may suggest the linearity assumptions in the model does not hold.
+
 ### Effect size
 
 ```{r r2}
-# Extract the R^22 number (it's sometimes tricky to 
+# Extract the R^2 number (it's sometimes tricky to 
 # figure out whether R stores the numbers you need)
 summary(m3)$r.squared
 # Adjusted R^2
