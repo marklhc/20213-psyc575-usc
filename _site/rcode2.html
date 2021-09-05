@@ -2081,6 +2081,7 @@ Lectures
 <div class="nav-dropdown-content">
 <a href="week1.html">Week 1</a>
 <a href="week2.html">Week 2</a>
+<a href="week3.html">Week 3</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2092,6 +2093,7 @@ R Codes
 <div class="nav-dropdown-content">
 <a href="rcode1.html">Week 1 R Code</a>
 <a href="rcode2.html">Week 2 R Code</a>
+<a href="rcode3.html">Week 3 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2148,9 +2150,15 @@ R Codes
 <li><a href="#interaction-plots">Interaction Plots</a></li>
 </ul></li>
 <li><a href="#tabulate-the-regression-results">5. Tabulate the Regression Results</a></li>
+<li><a href="#bonus-matrix-form-of-regression">Bonus: Matrix Form of Regression</a></li>
 <li><a href="#bonus-more-options-in-formatting-tables">Bonus: More Options in Formatting Tables</a></li>
 </ul>
 </nav>
+</div>
+<div class="hidden">
+<p><span class="math display">\[
+\newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
+\]</span></p>
 </div>
 <p>Click here to download the Rmd file: <a href="rcodes/week2-review-multiple-regression.Rmd">week2-review-multiple-regression.Rmd</a></p>
 <h2 id="simulation">Simulation</h2>
@@ -2423,12 +2431,12 @@ R Codes
 </code></pre>
 </div>
 <pre><code>&gt;#   id time pub sex citation salary    sim_1
-&gt;# 1  1    3  18   1       50  51876 51220.42
-&gt;# 2  2    6   3   1       26  54511 54714.87
-&gt;# 3  3    3   2   1       50  53425 47461.96
-&gt;# 4  4    8  17   0       34  61863 40431.28
-&gt;# 5  5    9  11   1       41  52926 63595.36
-&gt;# 6  6    6   6   0       37  47034 59469.00</code></pre>
+&gt;# 1  1    3  18   1       50  51876 51047.35
+&gt;# 2  2    6   3   1       26  54511 47074.54
+&gt;# 3  3    3   2   1       50  53425 49010.13
+&gt;# 4  4    8  17   0       34  61863 64235.96
+&gt;# 5  5    9  11   1       41  52926 49844.51
+&gt;# 6  6    6   6   0       37  47034 51161.96</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the data (add on to the population)</span>
 <span class='va'>p_pop</span> <span class='op'>+</span> 
@@ -2728,7 +2736,7 @@ R Codes
 <h3 id="effect-size">Effect size</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Extract the R^22 number (it's sometimes tricky to </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Extract the R^2 number (it's sometimes tricky to </span>
 <span class='co'># figure out whether R stores the numbers you need)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>r.squared</span>
 </code></pre>
@@ -3170,6 +3178,69 @@ F
 </tbody>
 </table>
 </div>
+<h2 id="bonus-matrix-form-of-regression">Bonus: Matrix Form of Regression</h2>
+<p>The regression model can be represented more succintly in matrix form: <span class="math display">\[\bv y = \bv X \bv \beta + \bv e,\]</span> where <span class="math inline">\(\bv y\)</span> is a column vector (which can be considered a <span class="math inline">\(N \times 1\)</span> matrix). For example, for our data</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>salary_dat</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#   id time pub    sex citation salary       pub_c     time_c
+&gt;# 1  1    3  18 female       50  51876  -0.1774194 -3.7903226
+&gt;# 2  2    6   3 female       26  54511 -15.1774194 -0.7903226
+&gt;# 3  3    3   2 female       50  53425 -16.1774194 -3.7903226
+&gt;# 4  4    8  17   male       34  61863  -1.1774194  1.2096774
+&gt;# 5  5    9  11 female       41  52926  -7.1774194  2.2096774
+&gt;# 6  6    6   6   male       37  47034 -12.1774194 -0.7903226</code></pre>
+</div>
+<p>So <span class="math display">\[\bv y = \begin{bmatrix}
+            51,876 \\
+            54,511 \\
+            53,425 \\
+            \vdots
+          \end{bmatrix}\]</span> <span class="math inline">\(\bv X\)</span> is the predictor matrix (sometimes also called the design matrix), where the first column is the constant 1, and each subsequent column represent a predictor. You can see this in R</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/model.matrix.html'>model.matrix</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#   (Intercept)       pub_c time
+&gt;# 1           1  -0.1774194    3
+&gt;# 2           1 -15.1774194    6
+&gt;# 3           1 -16.1774194    3
+&gt;# 4           1  -1.1774194    8
+&gt;# 5           1  -7.1774194    9
+&gt;# 6           1 -12.1774194    6</code></pre>
+</div>
+<p>The coefficient <span class="math inline">\(\bv \beta\)</span> is a vector, with elements <span class="math inline">\(\beta_0, \beta_1, \ldots\)</span>. The least square estimation method is used to find estimates of <span class="math inline">\(\beta\)</span> that minimizes the sum of squared differences between <span class="math inline">\(\bv y\)</span> and <span class="math inline">\(\bv X \hat{\bv \beta}\)</span>, which can be written as <span class="math display">\[(\bv y - \bv X \bv \beta)^\top(\bv y - \bv X \bv \beta).\]</span> The above means that: for each value observation, subtract the predicted value of <span class="math inline">\(y\)</span> from the observed <span class="math inline">\(y\)</span> (i.e., <span class="math inline">\(y_i - \beta_0 + \beta_1 x_{1i} + \ldots\)</span>), then squared the value (<span class="math inline">\([y_i - \beta_0 + \beta_1 x_{1i} + \ldots]^2\)</span>), then sum these squared values across observations. Or sometimes you’ll see it written as <span class="math display">\[\lVert\bv y - \bv X \bv \beta)\rVert^2\]</span> It can be shown that the least square estimates can be obtained as <span class="math display">\[(\bv X^\top \bv X)^{-1} \bv X^\top \bv y\]</span> You can do the matrix form in R:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>salary</span>
+<span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/model.matrix.html'>model.matrix</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span>
+<span class='co'># beta = (X'X)^{-1} X'y</span>
+<span class='co'># solve() is matrix inverse; t(X) is the transpose of X; use `%*%` for matrix multiplication</span>
+<span class='op'>(</span><span class='va'>betahat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/solve.html'>solve</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>X</span>, <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># same as the coefficients in m3</span>
+</code></pre>
+</div>
+<pre><code>&gt;#                   [,1]
+&gt;# (Intercept) 47373.3792
+&gt;# pub_c         132.9984
+&gt;# time         1096.0273</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Sum of squared residual</span>
+<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# [1] 3500978295</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Root mean squared residual (Residual standard error)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>59</span><span class='op'>)</span>  <span class='co'># same as in R</span>
+</code></pre>
+</div>
+<pre><code>&gt;# [1] 7703.156</code></pre>
+</div>
 <h2 id="bonus-more-options-in-formatting-tables">Bonus: More Options in Formatting Tables</h2>
 <p>Here’s some code you can explore to make the table output from <code>msummary()</code> to look more lik APA style (with an example here: <a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression" class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>). However, for this course I don’t recommend spending too much time on tailoring the tables; something clear and readable will be good enough.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3271,8 +3342,8 @@ Publications x Time
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
