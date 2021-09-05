@@ -21,10 +21,14 @@ navbar:
           href: week1.html
         - text: "Week 2"
           href: week2.html
+        - text: "Week 3"
+          href: week3.html
     - text: "R Codes"
       menu:
         - text: "Week 1 R Code"
           href: rcode1.html
         - text: "Week 2 R Code"
           href: rcode2.html
+        - text: "Week 3 R Code"
+          href: rcode3.html
 output: distill::distill_article
