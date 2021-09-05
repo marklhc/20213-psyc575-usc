@@ -5,6 +5,8 @@ output:
     df_print: paged
     toc: true
     toc_float: true
+header-includes:
+  - \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 ---
 
 ```{r setup, include=FALSE}
@@ -495,6 +497,51 @@ msummary(list(
 ),
 fmt = "%.1f"
 ) # keep one digit
+```
+
+## Bonus: Matrix Form of Regression
+
+The regression model can be represented more succintly in matrix form:
+$$\bv y = \bv X \bv \beta + \bv e,$$
+where $\bv y$ is a column vector (which can be considered a $N \times 1$ matrix). For example, for our data
+
+```{r head-y}
+head(salary_dat)
+```
+
+So
+$$\bv y = \begin{bmatrix}
+            51,876 \\
+            54,511 \\
+            53,425 \\
+            \vdots
+          \end{bmatrix}$$
+$\bv X$ is the predictor matrix (sometimes also called the design matrix), where the first column is the constant 1, and each subsequent column represent a predictor. You can see this in R
+
+```{r predictor-matrix}
+head(
+  model.matrix(m3)
+)
+```
+
+The coefficient $\bv \beta$ is a vector, with elements $\beta_0, \beta_1, \ldots$. The least square estimation method is used to find estimates of $\beta$ that minimizes the sum of squared differences between $\bv y$ and $\bv X \hat{\bv \beta}$, which can be written as
+$$(\bv y - \bv X \bv \beta)^\top(\bv y - \bv X \bv \beta).$$
+The above means that: for each value observation, subtract the predicted value of $y$ from the observed $y$ (i.e., $y_i - \beta_0 + \beta_1 x_{1i} + \ldots$), then squared the value ($[y_i - \beta_0 + \beta_1 x_{1i} + \ldots]^2$), then sum these squared values across observations. Or sometimes you'll see it written as
+$$\lVert\bv y - \bv X \bv \beta)\rVert^2$$
+It can be shown that the least square estimates can be obtained as
+$$(\bv X^\top \bv X)^{-1} \bv X^\top \bv y$$
+You can do the matrix form in R:
+
+```{r lm-matrix}
+y <- salary_dat$salary
+X <- model.matrix(m3)
+# beta = (X'X)^{-1} X'y
+# solve() is matrix inverse; t(X) is the transpose of X; use `%*%` for matrix multiplication
+(betahat <- solve(t(X) %*% X, t(X) %*% y))  # same as the coefficients in m3
+# Sum of squared residual
+sum((y - X %*% betahat)^2)
+# Root mean squared residual (Residual standard error)
+sqrt(sum((y - X %*% betahat)^2) / 59)  # same as in R
 ```
 
 ## Bonus: More Options in Formatting Tables
