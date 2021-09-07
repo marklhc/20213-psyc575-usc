@@ -65,9 +65,9 @@ The `lme4` package require input in the format of
 outcome ~ fixed + (random | cluster ID)
 ``` 
 For our data, the combined equation is 
-$$\text{mathach}_{ij} = \gamma_{0j} + u_{0j} + e_{ij}, $$
+$$\text{mathach}_{ij} = \gamma_{00} + u_{0j} + e_{ij}, $$
 which we can explicitly write
-$$\color{red}{\text{mathach}}_{ij} = \color{green}{\gamma_{0j} (1)} 
+$$\color{red}{\text{mathach}}_{ij} = \color{green}{\gamma_{00} (1)} 
                                      + \color{blue}{u_{0j} (1)}
                                      + e_{ij}. $$
 With that, we can see

@@ -2198,7 +2198,7 @@ R Codes
 <h3 id="running-the-model-in-r">Running the model in R</h3>
 <p>The <code>lme4</code> package require input in the format of</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>outcome <span class="sc">~</span> fixed <span class="sc">+</span> (random <span class="sc">|</span> cluster ID)</span></code></pre></div>
-<p>For our data, the combined equation is <span class="math display">\[\text{mathach}_{ij} = \gamma_{0j} + u_{0j} + e_{ij}, \]</span> which we can explicitly write <span class="math display">\[\color{red}{\text{mathach}}_{ij} = \color{green}{\gamma_{0j} (1)} 
+<p>For our data, the combined equation is <span class="math display">\[\text{mathach}_{ij} = \gamma_{00} + u_{0j} + e_{ij}, \]</span> which we can explicitly write <span class="math display">\[\color{red}{\text{mathach}}_{ij} = \color{green}{\gamma_{00} (1)} 
                                      + \color{blue}{u_{0j} (1)}
                                      + e_{ij}. \]</span> With that, we can see</p>
 <ul>
