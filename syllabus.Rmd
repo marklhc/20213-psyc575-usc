@@ -69,7 +69,7 @@ After the successful completion of this course, students will be able to . . .
 
 ## Course Notes
 
-This class will be fully online and will follow a [flipped course design](https://cet.usc.edu/wp-content/uploads/2021/05/flipped-course-model.docx). The benefit of a flipped course model is that the lecturer can spend more time with students to go through applications of concepts and hands-on exercises of data analyses. 
+This class will be in-person and will follow a [flipped course design](https://cet.usc.edu/wp-content/uploads/2021/05/flipped-course-model.docx). The benefit of a flipped course model is that the lecturer can spend more time with students to go through applications of concepts and hands-on exercises of data analyses. 
 
 The lecture videos and course materials will be available at https://psyc575-2021fall.netlify.app by 9:00 am of each Monday, and students are expected to review these materials and the assigned readings on their own. Please note that the lecture slides only serve to guide class discussions and cannot replace the assigned readings. 
 
