@@ -1,0 +1,24 @@
+---
+title: "R Codes (Week 4)"
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  rmd_file: "week4-level-1-predictor"
+---
+
+::: {.hidden}
+$$
+\newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
+$$
+:::
+
+```{r rcode-setup, include=FALSE}
+source("helper.R")
+```
+
+Click here to download the Rmd file: [`r paste0(params$rmd_file, ".Rmd")`](`r file.path("rcodes", paste0(params$rmd_file, ".Rmd"))`)
+
+```{r r-code, child=file.path("rcodes", paste0(params$rmd_file, ".Rmd"))}
+
+```
