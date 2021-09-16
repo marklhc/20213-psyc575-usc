@@ -126,12 +126,12 @@ If you need resources to successfully participate in your classes, such as a lap
 1. In-class exercises (10%). During the Thursday sessions, students will participate in group exercises. If students miss a session for any reason, they can complete the exercise posted on Blackboard within 36 hours (i.e., Friday by end of day, Pacific Time) to get credits. 
 2. Homework problems (60%). There will be 10 homework assignments for students to apply the concepts and techniques discussed in class to analytic problems. The assignments typically involve performing data analyses using data sets of your own or provided by the instructor, and interpreting the results with some guided questions.  
 You must submit your work electronically to Blackboard by **Friday 11:59 p.m. Pacific Time** on the assigned due date. See policy on [late work](#late-work).
-1. Final project (30%: 5% prospectus, 5% peer review, 20% presentation/final paper). You will complete a research project related to multilevel modeling, typically a research report of an empirical study using real data or a theoretical/methodological paper about certain aspects of multilevel modeling. Students interested in other project ideas (e.g., software package development) should discuss their ideas with the instructor. Each student can choose to work on their own or in a group of up to three people. Each student/group will schedule an appointment with the instructor to talk about their project during week 8 (October 5--9).
+1. Final project (30%: 5% prospectus, 5% peer review, 20% presentation/final paper). You will complete a research project related to multilevel modeling, typically a research report of an empirical study using real data or a theoretical/methodological paper about certain aspects of multilevel modeling. Students interested in other project ideas (e.g., software package development) should discuss their ideas with the instructor. Each student can choose to work on their own or in a group of up to three people. Each student/group will schedule an appointment with the instructor to talk about their project during week 9 (October 18--22).
 
     There are three grading components for your final project:
   
     - Prospectus (5%)  
-    A prospectus about your project should be submitted by **Monday, October 25, 9:00 a.m. Pacific Time**. The prospectus should contain a concise description of what you (or your group) plan to do for your project, including a preliminary plan for statistical analysis. The prospectus should be limited to 1 single-spaced page (excluding tables, figures, references, and other supplemental materials).
+    A prospectus about your project should be submitted by <span style="color:red">**the day before the individual meeting**</span>. The prospectus should contain a concise description of what you (or your group) plan to do for your project, including a preliminary plan for statistical analysis. The prospectus should be limited to 1 single-spaced page (excluding tables, figures, references, and other supplemental materials).
 
     - Peer Review (5%)  
     After the individual meeting with the instructor, each individual/group will refine their research questions and post a summary of their research questions and preliminary analyses to the dedicated forum on the Discussion Board by **Friday, November 5**. Each student will then give specific comments to the summaries of two other students/groups by **Monday, November 15**. More information on what feedback to give will be included in the grading rubric.  
@@ -255,7 +255,7 @@ dates <- paste(
 | Week 3\            | - The Random Intercept | - SB ch 3.1--3.4, 4.1--4.5, 4.8       | - Exercise: Empirical Bayes estimates  |
 | Sep 7 & 9          | Model                  |                                       | - HW 3                                 |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
-| Week 4\            | - Effect Decomposition | - SB ch 4.6, 5.1--5.3                 | - Exercise: Effect decomposition       |
+| Week 4\            | - Effect Decomposition | - SB ch 4.6, 5.1--5.3                 | - Exercise: Cross-level interaction    |
 | Sep 14 & 16        | - Random Coefficient   |                                       | - HW 4                                 |
 |                    | Model                  |                                       |                                        |
 |                    | - Cross-level          |                                       |                                        |
@@ -278,14 +278,13 @@ dates <- paste(
 | Oct 12 ~~&         | Longitudinal Data I    |                                       |                                        |
 | 14~~ (Fall recess) | - Using GitHub         |                                       |                                        |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
-| Week 9\            | - Models for           | - [Hoffman (2014) ch 8][11]           | - Exercise: Autoregressive             |
-| Oct 19 & 21        | Longitudinal Data II   |                                       | and lagged effects                     |
-|                    |                        |                                       | - HW 8                                 |
-|                    |                        |                                       | - Prospectus (due Oct 25)              |
-+--------------------+------------------------+---------------------------------------+----------------------------------------+
-| Week 10\           | Individual meeting     |                                       |                                        |
-| Oct 26 & 28        | on final research      |                                       |                                        |
+| Week 9\            | Individual meeting     |                                       | - Prospectus (due day before meeting)  |
+| Oct 19 & 21        | on final research      |                                       |                                        |
 |                    | project                |                                       |                                        |
++--------------------+------------------------+---------------------------------------+----------------------------------------+
+| Week 10\           | - Models for           | - [Hoffman (2014) ch 8][11]           | - Exercise: Autoregressive             |
+| Oct 26 & 28        | Longitudinal Data II   |                                       | and lagged effects                     |
+|                    |                        |                                       | - HW 8                                 |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
 | Week 11\           | - Predictive Modeling  | - [Yarkoni & Westfall (2017)][12]     | - Exercise: Model averaging            |
 | Nov 2 & 4          |                        |                                       | - Post draft for peer review           |
