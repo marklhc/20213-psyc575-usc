@@ -33,7 +33,7 @@ By the end of this module, you will be able to
     * Snijders & Bosker ch 4.6, 5.1--5.3
 3. Attend the Thursday session and participate in the class exercise
 4. Complete Homework 4
-5. Now that you have learned the basics of MLM, start thinking about your project (Prospectus due Oct 25)
+5. Now that you have learned the basics of MLM, start thinking about your project (Prospectus due around Oct 18)
 
 # Lecture
 
