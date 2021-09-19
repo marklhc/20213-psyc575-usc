@@ -86,26 +86,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 1)</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 5</title>
 
+  <meta property="description" itemprop="description" content="Model Estimation and Model Testing"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 1)"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 5"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Model Estimation and Model Testing"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 1)"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 5"/>
+  <meta property="twitter:description" content="Model Estimation and Model Testing"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output"]}},"value":[{"type":"character","attributes":{},"value":["R Codes (Week 1)"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Week 5"]},{"type":"character","attributes":{},"value":["Model Estimation and Model Testing\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slides"]}},"value":[{"type":"character","attributes":{},"value":["05_model_estimation_and_testing"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2031,7 +2034,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-  <script src="site_libs/twitter-widget-0.0.1/widgets.js"></script>
+  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2058,7 +2062,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"R Codes (Week 1)","authors":[]}
+{"title":"Week 5","description":"Model Estimation and Model Testing","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2108,10 +2112,10 @@ R Codes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>R Codes (Week 1)</h1>
+<h1>Week 5</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-
+<p><p>Model Estimation and Model Testing</p></p>
 </div>
 
 
@@ -2120,220 +2124,325 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#rstudio-intro">RStudio Intro</a>
+<li><a href="#week-learning-objectives">Week Learning Objectives</a>
 <ul>
-<li><a href="#recommended-options">Recommended Options</a></li>
+<li><a href="#task-lists">Task Lists</a></li>
 </ul></li>
-<li><a href="#r-markdown">R Markdown</a>
+<li><a href="#lecture">Lecture</a>
 <ul>
-<li><a href="#yaml-options">YAML options</a></li>
-<li><a href="#chunk-options">Chunk options</a></li>
-</ul></li>
-<li><a href="#including-plots">Including Plots</a></li>
-<li><a href="#install-packages">Install packages</a></li>
-<li><a href="#load-a-package">Load a package</a></li>
-<li><a href="#data-frame">Data Frame</a></li>
-<li><a href="#basic-markdown-elements">Basic Markdown Elements</a>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#estimation-methods">Estimation Methods</a>
 <ul>
-<li><a href="#italic-and-bolded-texts">Italic and bolded texts</a></li>
-<li><a href="#lists-ordered-and-unordered">Lists (Ordered and Unordered)</a></li>
-<li><a href="#equations-latex">Equations (LaTeX)</a></li>
+<li><a href="#maximum-likelihood">Maximum likelihood</a></li>
+<li><a href="#estimation-methods-for-mlm">Estimation methods for MLM</a></li>
 </ul></li>
-<li><a href="#cheatsheet">Cheatsheet</a></li>
-<li><a href="#exercise">Exercise</a></li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#likelihood-ratio-test-lrt-for-fixed-effects">Likelihood ratio test (LRT) for fixed effects</a></li>
+<li><a href="#f-test-with-small-sample-correction"><span class="math inline">\(F\)</span> test with small-sample correction</a></li>
+<li><a href="#lrt-for-random-slope-variance">LRT for random slope variance</a></li>
+</ul></li>
+<li><a href="#multilevel-bootstrap">Multilevel bootstrap</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week1-intro-RMarkdown.Rmd">week1-intro-RMarkdown.Rmd</a></p>
-<div class="layout-chunk" data-layout="l-body">
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-<iframe src="https://www.youtube.com/embed/G-IjAC-2uik" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
-</div>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-<iframe src="https://www.youtube.com/embed/-PdycAVwMuY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
-</div>
-</div>
-<h2 id="rstudio-intro">RStudio Intro</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='st'>"This is Thursday."</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] &quot;This is Thursday.&quot;</code></pre>
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png" /><!-- --></p>
-</div>
-<!-- Markdown syntax for including images
-![](https://moderndive.netlify.app/images/shutterstock/R_vs_RStudio_1.png)
--->
+<h1 id="week-learning-objectives">Week Learning Objectives</h1>
+<p>By the end of this module, you will be able to</p>
 <ul>
-<li>If you’re new to R, follow the online ModernDrive chapter <a href="https://moderndive.netlify.app/1-getting-started.html" class="uri">https://moderndive.netlify.app/1-getting-started.html</a></li>
-<li>Four Panes:
+<li>Describe conceptually what <strong>likelihood function</strong> and maximum likelihood estimation are</li>
+<li>Describe the differences between <strong>maximum likelihood</strong> and <strong>restricted maximum likelihood</strong></li>
+<li>Conduct statistical tests for fixed effects</li>
+<li>Test fixed effects using the F-test with the small-sample correction when the number of clusters is small</li>
+<li>Use the <strong>likelihood ratio test</strong> to test random slopes</li>
+</ul>
+<h2 id="task-lists">Task Lists</h2>
 <ol type="1">
-<li>Source panel</li>
-<li>Console</li>
-<li>Global environment</li>
-<li>Files/Plots/Packages/Help/Viewer</li>
-</ol></li>
-</ul>
-<h3 id="recommended-options">Recommended Options</h3>
-<pre><code>Tools --&gt; Global Options --&gt; 
-- Uncheck &quot;Restore .RData into workspace at startup&quot;.
-- Set &quot;Save workspace to .RData on exit&quot; to &quot;Never&quot;.  
-- (Optional) R Markdown --&gt; Set &quot;Show output preview in&quot; to &quot;Viewer Pane&quot;.
-
-Use Project</code></pre>
-<h2 id="r-markdown">R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<blockquote>
-<p>Note: R is case sensitive. So <code>Cars</code> and <code>cars</code> are different.</p>
-</blockquote>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>cars</span><span class='op'>[</span><span class='op'>-</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>)</span>, <span class='op'>]</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="yaml-options">YAML options</h3>
+<li>Review the resources (lecture videos and slides)</li>
+<li>Complete the assigned readings
 <ul>
-<li><code>title</code>, <code>author</code>, <code>date</code>, <code>output</code></li>
-</ul>
-<h3 id="chunk-options">Chunk options</h3>
-<ul>
-<li><code>include</code></li>
-<li><code>echo</code></li>
-<li><code>eval</code></li>
-<li><code>results = 'hide'</code></li>
-</ul>
-<h2 id="including-plots">Including Plots</h2>
-<p>You can also embed plots, for example:</p>
+<li>Snijders &amp; Bosker ch 4.7, 6</li>
+</ul></li>
+<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Complete Homework 5</li>
+<li>(Optional) Fill out the early/mid-semester feedback survey on Blackboard</li>
+</ol>
+<h1 id="lecture">Lecture</h1>
+<h2 id="slides">Slides</h2>
+<p>You can view and download the slides here: <a href="slides/05_model_estimation_and_testing.html" target="_blank">HTML</a> <a href="slides/05_model_estimation_and_testing.pdf" target="_blank">PDF</a></p>
+<h2 id="estimation-methods">Estimation Methods</h2>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="rcode1_files/figure-html5/pressure-1.png" width="624" /></p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/xhR-WPB3f7w" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
-<h2 id="install-packages">Install packages</h2>
+</div>
+<p>Check your learning: The values you obtained from MLM software (e.g., <code>lme4</code>) are</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>tweetrmd</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/tweetrmd/man/include_tweet.html'>include_tweet</a></span><span class='op'>(</span><span class='st'>"https://twitter.com/visnut/status/1248087845589274624"</span><span class='op'>)</span>
-</code></pre>
+<form name="form_58342" onsubmit="return validate_form_58342()" method="post">
+<input type="radio" name="answer_58342" id="58342_1" value="Parameter values"><label for="1">Parameter values</label><br><input type="radio" name="answer_58342" id="58342_2" value="Sample estimates"><label for="2">Sample estimates</label><br><input type="submit" value="check">
+</form>
+<p id="result_58342">
+</p>
+<script> function validate_form_58342() {var x, text; var x = document.forms["form_58342"]["answer_58342"].value;if (x == "Sample estimates"){text = 'Your statistical knowledge is getting better and better :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_58342').innerHTML = text; return false;} </script>
 </div>
-<blockquote class="twitter-tweet" data-width="550" data-lang="en" data-dnt="true" data-theme="light"><p lang="en" dir="ltr">Students struggle with install vs library every semester, and keep including their install code in the RMarkdown report. Hope this meme might help in the future <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/I8xg053y0x">pic.twitter.com/I8xg053y0x</a></p>&mdash; Dr Di Cook (@visnut) <a href="https://twitter.com/visnut/status/1248087845589274624?ref_src=twsrc%5Etfw">April 9, 2020</a></blockquote>
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<p><img src="https://pbs.twimg.com/media/EVIZRvPU0AAwgdH?format=jpg" /><!-- --></p>
-</div>
-<p>Check out <a href="https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/" class="uri">https://rladiessydney.org/courses/ryouwithme/01-basicbasics-2/</a></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Install the tidyverse "meta" package</span>
-<span class='co'># install.packages("tidyverse")</span>
-<span class='co'># Install the lme4 package</span>
-<span class='co'># install.packages("lme4")</span>
-</code></pre>
-</div>
-</div>
-<h2 id="load-a-package">Load a package</h2>
-<blockquote>
-<p>Tip 1: Try the (PC) <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Option</kbd> + <kbd>I</kbd> shortcut for a new code chunk</p>
-</blockquote>
-<blockquote>
-<p>Tip 2: Use <kbd>Tab</kbd> for code completeion</p>
-</blockquote>
-<blockquote>
-<p>Tip 3: Use <kbd>Ctrl</kbd> + <kbd>Enter</kbd>/(Mac) <kbd>Cmd</kbd> + <kbd>Return</kbd> for running a line of R code</p>
-</blockquote>
-<blockquote>
-<p>Tip 4: Set <code>message = FALSE</code> to suppress messages in loading packages</p>
-</blockquote>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Load tidyverse</span>
-
-<span class='co'># Load lme4</span>
-</code></pre>
-</div>
-</div>
-<h2 id="data-frame">Data Frame</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Load SleepStudy</span>
-
-<span class='co'># Extract one column</span>
-
-<span class='co'># Extract column by index (same as last line)</span>
-
-<span class='co'># Extract two rows</span>
-
-<span class='co'># Compute the mean and sd, and chain them together</span>
-
-<span class='co'># Correlation matrix with psych::pairs.panel()</span>
-
-<span class='co'># Find out what a function does (use `?function_name`, e.g., `?pairs.panel`)</span>
-</code></pre>
-</div>
-</div>
-<h2 id="basic-markdown-elements">Basic Markdown Elements</h2>
-<p>From RStudio, click <code>Help</code> –&gt; <code>Markdown Quick Reference</code></p>
-<h3 id="italic-and-bolded-texts">Italic and bolded texts</h3>
-<p>This is <em>italic</em></p>
-<h3 id="lists-ordered-and-unordered">Lists (Ordered and Unordered)</h3>
-<ul>
-<li>Item 1</li>
-<li>Item 2</li>
-</ul>
-<h3 id="equations-latex">Equations (LaTeX)</h3>
-<p>Inline: The correlation between <span class="math inline">\(a = b + c + \tau\)</span></p>
-<p>Display:</p>
-<p><span class="math display">\[a = b + c + \tau\]</span></p>
-<h2 id="cheatsheet">Cheatsheet</h2>
-<p>More detailed cheatsheet: <a href="https://rmarkdown.rstudio.com/lesson-15.HTML" class="uri">https://rmarkdown.rstudio.com/lesson-15.HTML</a></p>
 <hr />
-<h2 id="exercise">Exercise</h2>
-<ol type="1">
-<li>Download the Rmd file for the exercise on Blackboard</li>
-<li>Insert your name on line 3.</li>
-<li>Complete the following in this R Markdown document:
-<ol type="a">
-<li><p>Copy the following LaTex equation to below: <code>A_1 = \pi r^2</code>. How does this say about writing Greek letters and subscripts/superscripts? <span class="math display">\[[Insert equation here]\]</span></p></li>
-<li><p>Install and then load the <code>modelsummary</code> package, and run the following. You’ll need to remove <code>eval = FALSE</code> so that it runs. Find out what this code chunk does.</p>
+<h3 id="maximum-likelihood">Maximum likelihood</h3>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Install and load the modelsummary package first; otherwise it won't run</span>
- <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>
- <span class='va'>fm1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>dist</span> <span class='op'>~</span> <span class='va'>speed</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
- <span class='va'>fm2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>dist</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span><span class='op'>(</span><span class='va'>speed</span>, <span class='fl'>2</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
- <span class='va'>fm3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>cars</span><span class='op'>)</span>
- <span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>fm1</span>, <span class='va'>fm2</span>, <span class='va'>fm3</span><span class='op'>)</span><span class='op'>)</span>
- </code></pre>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/SMXoJWWAVtg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
-</div></li>
-<li><p>Run the following. You’ll need to remove <code>eval = FALSE</code> so that it runs. Find out what this code chunk does.</p>
+</div>
+<p>Check your learning: Using R, verify that, if <span class="math inline">\(\mu = 10\)</span> and <span class="math inline">\(\sigma = 8\)</span> for a normally distributed population, the probability (joint density) of getting students with scores of 23, 16, 5, 14, 7.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>cars</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>speed</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>dist</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-   <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='op'>)</span>
- </code></pre>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/usrdjkqzCkg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
-</div></li>
-<li><p>Add a code chunk below to show the output of running <code>sessionInfo()</code>, which prints out the session information of your computer. Make the code chunk to show only the output, but not the code.</p></li>
-<li><p>Knit the document to HTML, PDF, and Word. If you run into an error when knitting to any one of the formats, record the error message. Which format do you prefer?</p></li>
-<li><p>Go to the top of this Rmd file, and change the line inside YAML</p>
-<pre><code>  html_document: default</code></pre>
-<p>to</p>
-<pre><code>  html_document: 
-      toc: TRUE</code></pre>
-<p>Knit the document again. What does it do?</p></li>
-<li><p>Submit the knitted document to Blackboard in your preferred format (HTML, PDF, or WORD)</p></li>
-</ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
-</ol>
+</div>
+<p>Check your learning: Using the principle of maximum likelihood, the best estimate for a parameter is one that</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_72330" onsubmit="return validate_form_72330()" method="post">
+<input type="radio" name="answer_72330" id="72330_1" value="results in the least squared error"><label for="1">results in the least squared error</label><br><input type="radio" name="answer_72330" id="72330_2" value="is the sample mean"><label for="2">is the sample mean</label><br><input type="radio" name="answer_72330" id="72330_3" value="maximizes the log-likelihood function"><label for="3">maximizes the log-likelihood function</label><br><input type="submit" value="check">
+</form>
+<p id="result_72330">
+</p>
+<script> function validate_form_72330() {var x, text; var x = document.forms["form_72330"]["answer_72330"].value;if (x == "maximizes the log-likelihood function"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_72330').innerHTML = text; return false;} </script>
+</div>
+<p>Thought exercise: Because a probability is less than 1, the logarithm of it will be a negative number. By that logic, if the log-likelihood is -16.5 with <span class="math inline">\(N = 5\)</span>, what should it be with a larger sample size (e.g., <span class="math inline">\(N = 50\)</span>)?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_8789" onsubmit="return validate_form_8789()" method="post">
+<input type="radio" name="answer_8789" id="8789_1" value="more negative (e.g., -160.5)"><label for="1">more negative (e.g., -160.5)</label><br><input type="radio" name="answer_8789" id="8789_2" value="unchanged (i.e., -16.5"><label for="2">unchanged (i.e., -16.5</label><br><input type="radio" name="answer_8789" id="8789_3" value="more positive (e.g., -1.65)"><label for="3">more positive (e.g., -1.65)</label><br><input type="submit" value="check">
+</form>
+<p id="result_8789">
+</p>
+<script> function validate_form_8789() {var x, text; var x = document.forms["form_8789"]["answer_8789"].value;if (x == "more negative (e.g., -160.5)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_8789').innerHTML = text; return false;} </script>
+</div>
+<h4 id="more-about-maximum-likelihood-estimation">More about maximum likelihood estimation</h4>
+<p>If <span class="math inline">\(\sigma\)</span> is not known, the maximum likelihood estimate is <span class="math display">\[\hat \sigma = \sqrt{\frac{\sum_{i = 1}^N (Y_i - \bar X)^2}{N}},\]</span> which uses <span class="math inline">\(N\)</span> in the denominator instead of <span class="math inline">\(N - 1\)</span>. Because of this, in small sample, maximum likelihood estimate tends to be biased, meaning that on average it tends to underestimate the population variance.</p>
+<p>One useful property of maximum likelihood estimation is that the standard error can be approximated by the inverse of the curvature of the likelihood function at the peak. The two graphs below show that with a larger sample, the likelihood function has a higher curvature (i.e., steeper around the peak), which results in a smaller estimated standard error.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="week5_files/figure-html5/mle-curve-1.png" width="624" /></p>
+</div>
+<hr />
+<h3 id="estimation-methods-for-mlm">Estimation methods for MLM</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/dEQoz5-xBOs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: The deviance is</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_5777" onsubmit="return validate_form_5777()" method="post">
+<input type="radio" name="answer_5777" id="5777_1" value="2 x likelihood"><label for="1">2 x likelihood</label><br><input type="radio" name="answer_5777" id="5777_2" value="2 x log-likelihood"><label for="2">2 x log-likelihood</label><br><input type="radio" name="answer_5777" id="5777_3" value="-2 x log-likelihood"><label for="3">-2 x log-likelihood</label><br><input type="submit" value="check">
+</form>
+<p id="result_5777">
+</p>
+<script> function validate_form_5777() {var x, text; var x = document.forms["form_5777"]["answer_5777"].value;if (x == "-2 x log-likelihood"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_5777').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="testing">Testing</h2>
+<h3 id="likelihood-ratio-test-lrt-for-fixed-effects">Likelihood ratio test (LRT) for fixed effects</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/_CnSRV_hmqE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>The LRT has been used widely across many statistical methods, so it’s useful to get familiar to doing it by hand (as it may not be available in all software in all procedures).</p>
+<p>Practice yourself: Consider the two models below</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Model 1
+</th>
+<th style="text-align:center;">
+Model 2
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+12.650
+</td>
+<td style="text-align:center;">
+12.662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.148)
+</td>
+<td style="text-align:center;">
+(0.148)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+meanses
+</td>
+<td style="text-align:center;">
+5.863
+</td>
+<td style="text-align:center;">
+3.674
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.359)
+</td>
+<td style="text-align:center;">
+(0.375)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__(Intercept)
+</td>
+<td style="text-align:center;">
+1.610
+</td>
+<td style="text-align:center;">
+1.627
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__Observation
+</td>
+<td style="text-align:center;">
+6.258
+</td>
+<td style="text-align:center;">
+6.084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ses
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+2.191
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.109)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+46967.1
+</td>
+<td style="text-align:center;">
+46573.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+46994.6
+</td>
+<td style="text-align:center;">
+46608.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+−23479.554
+</td>
+<td style="text-align:center;">
+−23281.902
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Using R and the <code>pchisq()</code> function, what is the <span class="math inline">\(\chi^2\)</span> (or X2) test statistic and the <span class="math inline">\(p\)</span> value for the fixed effect coefficient for <code>ses</code>?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_47043" onsubmit="return validate_form_47043()" method="post">
+<input type="radio" name="answer_47043" id="47043_1" value="X2 = 395.3, df = 1, p < .001"><label for="1">X2 = 395.3, df = 1, p &lt; .001</label><br><input type="radio" name="answer_47043" id="47043_2" value="X2 = 198, df = 1, p < .001"><label for="2">X2 = 198, df = 1, p &lt; .001</label><br><input type="radio" name="answer_47043" id="47043_3" value="F = 20.1, df = 1, p < .001"><label for="3">F = 20.1, df = 1, p &lt; .001</label><br><input type="submit" value="check">
+</form>
+<p id="result_47043">
+</p>
+<script> function validate_form_47043() {var x, text; var x = document.forms["form_47043"]["answer_47043"].value;if (x == "X2 = 395.3, df = 1, p < .001"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_47043').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h3 id="f-test-with-small-sample-correction"><span class="math inline">\(F\)</span> test with small-sample correction</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/YvwiNHqiJI0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: From the results below, what is the test statistic and the <span class="math inline">\(p\)</span> value for the fixed effect coefficient for <code>meanses</code>?</p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code>Type III Analysis of Variance Table with Kenward-Roger&#39;s method
+         Sum Sq Mean Sq NumDF  DenDF F value    Pr(&gt;F)    
+meanses  324.39  324.39     1  15.51  9.9573  0.006317 ** 
+ses     1874.34 1874.34     1 669.03 57.5331 1.116e-13 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_38879" onsubmit="return validate_form_38879()" method="post">
+<input type="radio" name="answer_38879" id="38879_1" value="F(1) = 57.53, p < .001"><label for="1">F(1) = 57.53, p &lt; .001</label><br><input type="radio" name="answer_38879" id="38879_2" value="X2 = 324.39, df = 15.51, p = .006"><label for="2">X2 = 324.39, df = 15.51, p = .006</label><br><input type="radio" name="answer_38879" id="38879_3" value="F(1, 15.51) = 9.96, p = .006"><label for="3">F(1, 15.51) = 9.96, p = .006</label><br><input type="submit" value="check">
+</form>
+<p id="result_38879">
+</p>
+<script> function validate_form_38879() {var x, text; var x = document.forms["form_38879"]["answer_38879"].value;if (x == "F(1, 15.51) = 9.96, p = .006"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_38879').innerHTML = text; return false;} </script>
+</div>
+<p>For more information on REML and K-R, check out</p>
+<ul>
+<li>McNeish, D. (2017). Small sample methods for multilevel modeling: A colloquial elucidation of REML and the Kenward-Roger correction.</li>
+</ul>
+<hr />
+<h3 id="lrt-for-random-slope-variance">LRT for random slope variance</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/inNGu6fqDtE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: When testing whether the variance of a random slope term is zero, what needs to be done?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_45586" onsubmit="return validate_form_45586()" method="post">
+<input type="radio" name="answer_45586" id="45586_1" value="The p value needs to be divided by 2, because the random slope variance can only be zero or positive"><label for="1">The p value needs to be divided by 2, because the random slope variance can only be zero or positive</label><br><input type="radio" name="answer_45586" id="45586_2" value="The p value needs to be divided by 2 so that the results will be a two-tailed test"><label for="2">The p value needs to be divided by 2 so that the results will be a two-tailed test</label><br><input type="radio" name="answer_45586" id="45586_3" value="The p value needs to be divided by 2, because it is a two degrees of freedom test"><label for="3">The p value needs to be divided by 2, because it is a two degrees of freedom test</label><br><input type="submit" value="check">
+</form>
+<p id="result_45586">
+</p>
+<script> function validate_form_45586() {var x, text; var x = document.forms["form_45586"]["answer_45586"].value;if (x == "The p value needs to be divided by 2, because the random slope variance can only be zero or positive"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_45586').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="multilevel-bootstrap">Multilevel bootstrap</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/JnAdJw3gglU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
