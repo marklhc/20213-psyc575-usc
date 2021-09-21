@@ -222,6 +222,8 @@ library(lmerTest)
 crlv_int_test <- as_lmerModLmerTest(crlv_int)
 # Try anova()
 anova(crlv_int_test, ddf = "Kenward-Roger")
+# Summary will print t test results
+summary(crlv_int_test, ddf = "Kenward-Roger")
 ```
 
 You can see now `sector` was actually not significant (although it's part of an interaction so the test of the conditional effect may not be very meaningful). Note KR requires using REML. 
