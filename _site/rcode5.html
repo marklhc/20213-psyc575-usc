@@ -2136,7 +2136,10 @@ R Codes
 <ul>
 <li><a href="#fixed-effects">Fixed Effects</a></li>
 <li><a href="#variance-components">Variance Components</a></li>
-<li><a href="#r2"><span class="math inline">\(R^2\)</span></a></li>
+<li><a href="#r2"><span class="math inline">\(R^2\)</span></a>
+<ul>
+<li><a href="#bonus-bias-corrected-estimates">Bonus: Bias-corrected estimates</a></li>
+</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -3191,7 +3194,7 @@ REMLcrit
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># This again takes a few minutes</span>
-<span class='va'>boot_r2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/bootmlm/man/bootstrap_mer.html'>bootstrap_mer</a></span><span class='op'>(</span><span class='va'>crlv_int</span>, <span class='fu'>MuMIn</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span>, nsim <span class='op'>=</span> <span class='fl'>999</span>, 
+<span class='va'>boot_r2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/bootmlm/man/bootstrap_mer.html'>bootstrap_mer</a></span><span class='op'>(</span><span class='va'>crlv_int</span>, <span class='fu'>MuMIn</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span>, nsim <span class='op'>=</span> <span class='fl'>999</span>,
                          type <span class='op'>=</span> <span class='st'>"residual"</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/pkg/boot/man/boot.ci.html'>boot.ci</a></span><span class='op'>(</span><span class='va'>boot_r2</span>, index <span class='op'>=</span> <span class='fl'>1</span>, type <span class='op'>=</span> <span class='st'>"perc"</span><span class='op'>)</span>  <span class='co'># index = 1 for marginal R2</span>
 </code></pre>
@@ -3215,8 +3218,46 @@ REMLcrit
 </div>
 <p><img src="rcode5_files/figure-html5/plot-boot-r2-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h3 id="bonus-bias-corrected-estimates">Bonus: Bias-corrected estimates</h3>
+<p>The bootstrap method is commonly used for obtaining standard errors and confidence intervals. You can get the bootstrap standard error:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>boot_r2</span>
+</code></pre>
+</div>
+<pre><code>&gt;# 
+&gt;# ORDINARY NONPARAMETRIC BOOTSTRAP
+&gt;# 
+&gt;# 
+&gt;# Call:
+&gt;# bootstrap_mer(x = crlv_int, FUN = MuMIn::r.squaredGLMM, nsim = 999, 
+&gt;#     type = &quot;residual&quot;)
+&gt;# 
+&gt;# 
+&gt;# Bootstrap Statistics :
+&gt;#      original      bias    std. error
+&gt;# t1* 0.2480355 0.006134328  0.04270708
+&gt;# t2* 0.2991689 0.006499805  0.04570885</code></pre>
+</div>
+<p>The above also showed the original estimate for the marginal <span class="math inline">\(R^2\)</span> (in row 1), 0.2480355, and the estimated bias using the bootstrap, which suggested that the bias is slightly upward. Therefore, one can obtain the bias-corrected estimate by</p>
+<p><span class="math display">\[\text{Bias-corrected estimate} = \text{Original estimate} - \text{Bias}\]</span></p>
+<p>You can also use the following R code:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Bias</span>
+<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>-</span> <span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t0</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>  <span class='co'># the first index is marginal R^2; second is conditional R^2</span>
+</code></pre>
+</div>
+<pre><code>&gt;# [1] 0.006134328</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Bias-corrected estimate</span>
+<span class='fl'>2</span> <span class='op'>*</span> <span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t0</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# [1] 0.2419011</code></pre>
+</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
