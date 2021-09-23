@@ -452,7 +452,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -2030,7 +2030,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2166,7 +2166,7 @@ R Codes
 <p>In addition, because the table obtained from <code>modelsummary::msummary()</code> mixed up the ordering of the fixed- and the random-effect coefficients, I provided a quick fix to that by defining the <code>msummary_mixed()</code> function, which you need to load every time if you want to use it:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>msummary_mixed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>models</span>, <span class='va'>coef_map</span> <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>msummary_mixed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>models</span>, <span class='va'>output</span> <span class='op'>=</span> <span class='st'>"default"</span>, <span class='va'>coef_map</span> <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='st'>"list"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
       <span class='va'>models</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span>
@@ -2191,7 +2191,13 @@ R Codes
   <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
     <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>
   <span class='op'>}</span>
-  <span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='va'>models</span>, coef_map <span class='op'>=</span> <span class='va'>coef_map</span>, add_rows <span class='op'>=</span> <span class='va'>rows</span>, <span class='va'>...</span><span class='op'>)</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='va'>output</span> <span class='op'>==</span> <span class='st'>"latex"</span> <span class='op'>||</span> <span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/output_type.html'>is_latex_output</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>gsub</a></span><span class='op'>(</span><span class='st'>"_"</span>, <span class='st'>"-"</span>, <span class='va'>coef_map</span><span class='op'>)</span>
+  <span class='op'>}</span>
+  <span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='va'>models</span>,
+    output <span class='op'>=</span> <span class='va'>output</span>, coef_map <span class='op'>=</span> <span class='va'>coef_map</span>,
+    add_rows <span class='op'>=</span> <span class='va'>rows</span>, <span class='va'>...</span>
+  <span class='op'>)</span>
 <span class='op'>}</span>
 </code></pre>
 </div>
@@ -2824,6 +2830,239 @@ REMLcrit
 &gt;# sctr:ss_cmc -0.178  0.007  0.232 -0.701
 &gt;# optimizer (nloptwrap) convergence code: 0 (OK)
 &gt;# boundary (singular) fit: see ?isSingular</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Table (need to specify the `ddf` argument)</span>
+<span class='fu'>msummary_mixed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>REML <span class='op'>=</span> <span class='va'>crlv_int</span>, `REML-KR` <span class='op'>=</span> <span class='va'>crlv_int_test</span><span class='op'>)</span>, 
+               ddf <span class='op'>=</span> <span class='st'>"Kenward-Roger"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+REML
+</th>
+<th style="text-align:center;">
+REML-KR
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Fixed Effects
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+11.728
+</td>
+<td style="text-align:center;">
+11.728
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.670)
+</td>
+<td style="text-align:center;">
+(0.670)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+meanses
+</td>
+<td style="text-align:center;">
+6.633
+</td>
+<td style="text-align:center;">
+6.633
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(1.139)
+</td>
+<td style="text-align:center;">
+(1.220)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sector
+</td>
+<td style="text-align:center;">
+1.890
+</td>
+<td style="text-align:center;">
+1.890
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.903)
+</td>
+<td style="text-align:center;">
+(0.905)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ses_cmc
+</td>
+<td style="text-align:center;">
+2.860
+</td>
+<td style="text-align:center;">
+2.860
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.464)
+</td>
+<td style="text-align:center;">
+(0.480)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sector:ses_cmc
+</td>
+<td style="text-align:center;">
+−0.885
+</td>
+<td style="text-align:center;">
+−0.885
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.661)
+</td>
+<td style="text-align:center;">
+(0.679)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Random Effects
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__(Intercept)
+</td>
+<td style="text-align:center;">
+1.520
+</td>
+<td style="text-align:center;">
+1.520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cor__(Intercept).ses_cmc
+</td>
+<td style="text-align:center;">
+1.000
+</td>
+<td style="text-align:center;">
+1.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__ses_cmc
+</td>
+<td style="text-align:center;">
+0.354
+</td>
+<td style="text-align:center;">
+0.354
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+sd__Observation
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+5.698
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+5.698
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+4365.1
+</td>
+<td style="text-align:center;">
+4365.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+4405.9
+</td>
+<td style="text-align:center;">
+4405.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+−2173.563
+</td>
+<td style="text-align:center;">
+−2173.563
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+REMLcrit
+</td>
+<td style="text-align:center;">
+4347.125
+</td>
+<td style="text-align:center;">
+4347.125
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>You can see now <code>sector</code> was actually not significant (although it’s part of an interaction so the test of the conditional effect may not be very meaningful). Note KR requires using REML.</p>
 <hr />
@@ -2868,7 +3107,7 @@ REMLcrit
 &gt;# ses_cmc in (ses_cmc | id)    5 -2178.4 4366.8 0.014322  2     0.9929</code></pre>
 </div>
 <h1 id="bootstrap">Bootstrap</h1>
-<p>The bootstrap is a simulation-based method to approximate the sampling distribution of parameter estimates. Indeed, you’ve already seen a version of it in previous weeks when we talk about simulation. In the previous weeks, we generated data assuming that the sample model perfectly described the population, which notably includes the normality assumption. That simulation method is also called <em>parametric bootstrap</em>. Here we’ll use another version of the bootstrap, called the <em>residual bootstrap</em>, which does not assume that the normality assumptions hold for the population. You can check out <a href="https://doi.org/10.1080/00273171.2020.1746902">Lai (2020)</a>.</p>
+<p>The bootstrap is a simulation-based method to approximate the sampling distribution of parameter estimates. Indeed, you’ve already seen a version of it in previous weeks when we talk about simulation. In the previous weeks, we generated data assuming that the sample model perfectly described the population, which notably includes the normality assumption. That simulation method is also called <em>parametric bootstrap</em>. Here we’ll use another version of the bootstrap, called the <em>residual bootstrap</em>, which does not assume that the normality assumptions hold for the population. You can check out <a href="https://doi.org/10.1080/00273171.2020.1746902">Lai (2021)</a>.</p>
 <p>To perform the bootstrap, you’ll need to supply functions that extract different parameter estimates or other quantities (e.g., effect sizes) from a fitted model. Below are some examples:</p>
 <h2 id="fixed-effects">Fixed Effects</h2>
 <div class="layout-chunk" data-layout="l-body">

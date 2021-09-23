@@ -31,7 +31,7 @@ theme_set(theme_bw())  # Theme; just my personal preference
 In addition, because the table obtained from `modelsummary::msummary()` mixed up the ordering of the fixed- and the random-effect coefficients, I provided a quick fix to that by defining the `msummary_mixed()` function, which you need to load every time if you want to use it:
 
 ```{r msummary_mixed}
-msummary_mixed <- function(models, coef_map = NULL, ...) {
+msummary_mixed <- function(models, output = "default", coef_map = NULL, ...) {
   if (is.null(coef_map)) {
     if (!"list" %in% class(models)) {
       models <- list(models)
@@ -56,7 +56,13 @@ msummary_mixed <- function(models, coef_map = NULL, ...) {
   } else {
     attr(rows, "position") <- c(1, (length_fes + 1) * 2)
   }
-  modelsummary::msummary(models, coef_map = coef_map, add_rows = rows, ...)
+  if (output == "latex" || knitr::is_latex_output()) {
+    coef_map <- gsub("_", "-", coef_map)
+  }
+  modelsummary::msummary(models,
+    output = output, coef_map = coef_map,
+    add_rows = rows, ...
+  )
 }
 ```
 
@@ -222,6 +228,11 @@ library(lmerTest)
 crlv_int_test <- as_lmerModLmerTest(crlv_int)
 # Try anova()
 anova(crlv_int_test, ddf = "Kenward-Roger")
+# Summary will print t test results
+summary(crlv_int_test, ddf = "Kenward-Roger")
+# Table (need to specify the `ddf` argument)
+msummary_mixed(list(REML = crlv_int, `REML-KR` = crlv_int_test), 
+               ddf = "Kenward-Roger")
 ```
 
 You can see now `sector` was actually not significant (although it's part of an interaction so the test of the conditional effect may not be very meaningful). Note KR requires using REML. 
@@ -256,7 +267,7 @@ ranova(ran_slp)
 
 # Bootstrap
 
-The bootstrap is a simulation-based method to approximate the sampling distribution of parameter estimates. Indeed, you've already seen a version of it in previous weeks when we talk about simulation. In the previous weeks, we generated data assuming that the sample model perfectly described the population, which notably includes the normality assumption. That simulation method is also called *parametric bootstrap*. Here we'll use another version of the bootstrap, called the *residual bootstrap*, which does not assume that the normality assumptions hold for the population. You can check out [Lai (2020)](https://doi.org/10.1080/00273171.2020.1746902). 
+The bootstrap is a simulation-based method to approximate the sampling distribution of parameter estimates. Indeed, you've already seen a version of it in previous weeks when we talk about simulation. In the previous weeks, we generated data assuming that the sample model perfectly described the population, which notably includes the normality assumption. That simulation method is also called *parametric bootstrap*. Here we'll use another version of the bootstrap, called the *residual bootstrap*, which does not assume that the normality assumptions hold for the population. You can check out [Lai (2021)](https://doi.org/10.1080/00273171.2020.1746902). 
 
 To perform the bootstrap, you'll need to supply functions that extract different parameter estimates or other quantities (e.g., effect sizes) from a fitted model. Below are some examples:
 
