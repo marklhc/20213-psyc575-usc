@@ -455,7 +455,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -2033,7 +2033,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2087,6 +2087,7 @@ Lectures
 <a href="week3.html">Week 3</a>
 <a href="week4.html">Week 4</a>
 <a href="week5.html">Week 5</a>
+<a href="week6.html">Week 6</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2101,6 +2102,7 @@ R Codes
 <a href="rcode3.html">Week 3 R Code</a>
 <a href="rcode4.html">Week 4 R Code</a>
 <a href="rcode5.html">Week 5 R Code</a>
+<a href="rcode6.html">Week 6 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2153,7 +2155,7 @@ R Codes
 <li>Describe conceptually what <strong>likelihood function</strong> and maximum likelihood estimation are</li>
 <li>Describe the differences between <strong>maximum likelihood</strong> and <strong>restricted maximum likelihood</strong></li>
 <li>Conduct statistical tests for fixed effects</li>
-<li>Test fixed effects using the F-test with the small-sample correction when the number of clusters is small</li>
+<li>Test fixed effects using the F-test with the <strong>small-sample correction</strong> when the number of clusters is small</li>
 <li>Use the <strong>likelihood ratio test</strong> to test random slopes</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
@@ -2178,12 +2180,12 @@ R Codes
 </div>
 <p>Check your learning: The values you obtained from MLM software (e.g., <code>lme4</code>) are</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_58342" onsubmit="return validate_form_58342()" method="post">
-<input type="radio" name="answer_58342" id="58342_1" value="Parameter values"><label for="1">Parameter values</label><br><input type="radio" name="answer_58342" id="58342_2" value="Sample estimates"><label for="2">Sample estimates</label><br><input type="submit" value="check">
+<form name="form_59542" onsubmit="return validate_form_59542()" method="post">
+<input type="radio" name="answer_59542" id="59542_1" value="Parameter values"><label for="1">Parameter values</label><br><input type="radio" name="answer_59542" id="59542_2" value="Sample estimates"><label for="2">Sample estimates</label><br><input type="submit" value="check">
 </form>
-<p id="result_58342">
+<p id="result_59542">
 </p>
-<script> function validate_form_58342() {var x, text; var x = document.forms["form_58342"]["answer_58342"].value;if (x == "Sample estimates"){text = 'Your statistical knowledge is getting better and better :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_58342').innerHTML = text; return false;} </script>
+<script> function validate_form_59542() {var x, text; var x = document.forms["form_59542"]["answer_59542"].value;if (x == "Sample estimates"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_59542').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="maximum-likelihood">Maximum likelihood</h3>
@@ -2200,21 +2202,21 @@ R Codes
 </div>
 <p>Check your learning: Using the principle of maximum likelihood, the best estimate for a parameter is one that</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_72330" onsubmit="return validate_form_72330()" method="post">
-<input type="radio" name="answer_72330" id="72330_1" value="results in the least squared error"><label for="1">results in the least squared error</label><br><input type="radio" name="answer_72330" id="72330_2" value="is the sample mean"><label for="2">is the sample mean</label><br><input type="radio" name="answer_72330" id="72330_3" value="maximizes the log-likelihood function"><label for="3">maximizes the log-likelihood function</label><br><input type="submit" value="check">
+<form name="form_73748" onsubmit="return validate_form_73748()" method="post">
+<input type="radio" name="answer_73748" id="73748_1" value="results in the least squared error"><label for="1">results in the least squared error</label><br><input type="radio" name="answer_73748" id="73748_2" value="is the sample mean"><label for="2">is the sample mean</label><br><input type="radio" name="answer_73748" id="73748_3" value="maximizes the log-likelihood function"><label for="3">maximizes the log-likelihood function</label><br><input type="submit" value="check">
 </form>
-<p id="result_72330">
+<p id="result_73748">
 </p>
-<script> function validate_form_72330() {var x, text; var x = document.forms["form_72330"]["answer_72330"].value;if (x == "maximizes the log-likelihood function"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_72330').innerHTML = text; return false;} </script>
+<script> function validate_form_73748() {var x, text; var x = document.forms["form_73748"]["answer_73748"].value;if (x == "maximizes the log-likelihood function"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_73748').innerHTML = text; return false;} </script>
 </div>
 <p>Thought exercise: Because a probability is less than 1, the logarithm of it will be a negative number. By that logic, if the log-likelihood is -16.5 with <span class="math inline">\(N = 5\)</span>, what should it be with a larger sample size (e.g., <span class="math inline">\(N = 50\)</span>)?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_8789" onsubmit="return validate_form_8789()" method="post">
-<input type="radio" name="answer_8789" id="8789_1" value="more negative (e.g., -160.5)"><label for="1">more negative (e.g., -160.5)</label><br><input type="radio" name="answer_8789" id="8789_2" value="unchanged (i.e., -16.5"><label for="2">unchanged (i.e., -16.5</label><br><input type="radio" name="answer_8789" id="8789_3" value="more positive (e.g., -1.65)"><label for="3">more positive (e.g., -1.65)</label><br><input type="submit" value="check">
+<form name="form_38581" onsubmit="return validate_form_38581()" method="post">
+<input type="radio" name="answer_38581" id="38581_1" value="more negative (e.g., -160.5)"><label for="1">more negative (e.g., -160.5)</label><br><input type="radio" name="answer_38581" id="38581_2" value="unchanged (i.e., -16.5"><label for="2">unchanged (i.e., -16.5</label><br><input type="radio" name="answer_38581" id="38581_3" value="more positive (e.g., -1.65)"><label for="3">more positive (e.g., -1.65)</label><br><input type="submit" value="check">
 </form>
-<p id="result_8789">
+<p id="result_38581">
 </p>
-<script> function validate_form_8789() {var x, text; var x = document.forms["form_8789"]["answer_8789"].value;if (x == "more negative (e.g., -160.5)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_8789').innerHTML = text; return false;} </script>
+<script> function validate_form_38581() {var x, text; var x = document.forms["form_38581"]["answer_38581"].value;if (x == "more negative (e.g., -160.5)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_38581').innerHTML = text; return false;} </script>
 </div>
 <h4 id="more-about-maximum-likelihood-estimation">More about maximum likelihood estimation</h4>
 <p>If <span class="math inline">\(\sigma\)</span> is not known, the maximum likelihood estimate is <span class="math display">\[\hat \sigma = \sqrt{\frac{\sum_{i = 1}^N (Y_i - \bar X)^2}{N}},\]</span> which uses <span class="math inline">\(N\)</span> in the denominator instead of <span class="math inline">\(N - 1\)</span>. Because of this, in small sample, maximum likelihood estimate tends to be biased, meaning that on average it tends to underestimate the population variance.</p>
@@ -2231,12 +2233,12 @@ R Codes
 </div>
 <p>Check your learning: The deviance is</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_5777" onsubmit="return validate_form_5777()" method="post">
-<input type="radio" name="answer_5777" id="5777_1" value="2 x likelihood"><label for="1">2 x likelihood</label><br><input type="radio" name="answer_5777" id="5777_2" value="2 x log-likelihood"><label for="2">2 x log-likelihood</label><br><input type="radio" name="answer_5777" id="5777_3" value="-2 x log-likelihood"><label for="3">-2 x log-likelihood</label><br><input type="submit" value="check">
+<form name="form_18316" onsubmit="return validate_form_18316()" method="post">
+<input type="radio" name="answer_18316" id="18316_1" value="2 x likelihood"><label for="1">2 x likelihood</label><br><input type="radio" name="answer_18316" id="18316_2" value="2 x log-likelihood"><label for="2">2 x log-likelihood</label><br><input type="radio" name="answer_18316" id="18316_3" value="-2 x log-likelihood"><label for="3">-2 x log-likelihood</label><br><input type="submit" value="check">
 </form>
-<p id="result_5777">
+<p id="result_18316">
 </p>
-<script> function validate_form_5777() {var x, text; var x = document.forms["form_5777"]["answer_5777"].value;if (x == "-2 x log-likelihood"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_5777').innerHTML = text; return false;} </script>
+<script> function validate_form_18316() {var x, text; var x = document.forms["form_18316"]["answer_18316"].value;if (x == "-2 x log-likelihood"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_18316').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="testing">Testing</h2>
@@ -2384,12 +2386,12 @@ Log.Lik.
 </div>
 <p>Using R and the <code>pchisq()</code> function, what is the <span class="math inline">\(\chi^2\)</span> (or X2) test statistic and the <span class="math inline">\(p\)</span> value for the fixed effect coefficient for <code>ses</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_47043" onsubmit="return validate_form_47043()" method="post">
-<input type="radio" name="answer_47043" id="47043_1" value="X2 = 395.3, df = 1, p < .001"><label for="1">X2 = 395.3, df = 1, p &lt; .001</label><br><input type="radio" name="answer_47043" id="47043_2" value="X2 = 198, df = 1, p < .001"><label for="2">X2 = 198, df = 1, p &lt; .001</label><br><input type="radio" name="answer_47043" id="47043_3" value="F = 20.1, df = 1, p < .001"><label for="3">F = 20.1, df = 1, p &lt; .001</label><br><input type="submit" value="check">
+<form name="form_94361" onsubmit="return validate_form_94361()" method="post">
+<input type="radio" name="answer_94361" id="94361_1" value="X2 = 395.3, df = 1, p < .001"><label for="1">X2 = 395.3, df = 1, p &lt; .001</label><br><input type="radio" name="answer_94361" id="94361_2" value="X2 = 198, df = 1, p < .001"><label for="2">X2 = 198, df = 1, p &lt; .001</label><br><input type="radio" name="answer_94361" id="94361_3" value="F = 20.1, df = 1, p < .001"><label for="3">F = 20.1, df = 1, p &lt; .001</label><br><input type="submit" value="check">
 </form>
-<p id="result_47043">
+<p id="result_94361">
 </p>
-<script> function validate_form_47043() {var x, text; var x = document.forms["form_47043"]["answer_47043"].value;if (x == "X2 = 395.3, df = 1, p < .001"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_47043').innerHTML = text; return false;} </script>
+<script> function validate_form_94361() {var x, text; var x = document.forms["form_94361"]["answer_94361"].value;if (x == "X2 = 395.3, df = 1, p < .001"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_94361').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="f-test-with-small-sample-correction"><span class="math inline">\(F\)</span> test with small-sample correction</h3>

@@ -86,29 +86,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall): About this site</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 6</title>
 
-  <meta property="description" itemprop="description" content="Some additional details about the website"/>
+  <meta property="description" itemprop="description" content="Model Diagnostics and Results Reporting"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): About this site"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 6"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the website"/>
+  <meta property="og:description" content="Model Diagnostics and Results Reporting"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): About this site"/>
-  <meta property="twitter:description" content="Some additional details about the website"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 6"/>
+  <meta property="twitter:description" content="Model Diagnostics and Results Reporting"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this site"]},{"type":"character","attributes":{},"value":["Some additional details about the website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Week 6"]},{"type":"character","attributes":{},"value":["Model Diagnostics and Results Reporting\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slides"]}},"value":[{"type":"character","attributes":{},"value":["06_model_diagnostics"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2060,7 +2060,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this site","description":"Some additional details about the website","authors":[]}
+{"title":"Week 6","description":"Model Diagnostics and Results Reporting","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2112,14 +2112,177 @@ R Codes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this site</h1>
+<h1>Week 6</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Some additional details about the website</p></p>
+<p><p>Model Diagnostics and Results Reporting</p></p>
 </div>
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#week-learning-objectives">Week Learning Objectives</a>
+<ul>
+<li><a href="#task-lists">Task Lists</a></li>
+</ul></li>
+<li><a href="#lecture">Lecture</a>
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#model-diagnostics">Model Diagnostics</a>
+<ul>
+<li><a href="#assumptions-of-a-multilevel-model">Assumptions of a Multilevel Model</a></li>
+<li><a href="#additional-issues">Additional issues</a></li>
+</ul></li>
+<li><a href="#handling-convergence-issues">Handling Convergence Issues</a></li>
+<li><a href="#reporting-results">Reporting Results</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="week-learning-objectives">Week Learning Objectives</h1>
+<p>By the end of this module, you will be able to</p>
+<ul>
+<li>Describe the major <strong>assumptions</strong> in basic multilevel models</li>
+<li>Conduct analyses to decide whether <strong>cluster means</strong> and <strong>random slopes</strong> should be included</li>
+<li>Use graphical tools to diagnose assumptions of <strong>linearity</strong>, <strong>homoscedasticity</strong> (equal variance), and <strong>normality</strong></li>
+<li>Solve some basic <strong>convergence issues</strong></li>
+<li><strong>Report</strong> results of a multilevel analysis based on established guidelines</li>
+</ul>
+<h2 id="task-lists">Task Lists</h2>
+<ol type="1">
+<li>Review the resources (lecture videos and slides)</li>
+<li>Complete the assigned readings
+<ul>
+<li>Snijders &amp; Bosker ch 10</li>
+<li>Meteyard &amp; Davies (2020; to be shared on Slack)</li>
+<li><a href="https://www-taylorfrancis-com.libproxy2.usc.edu/books/e/9781315755649/chapters/10.4324/9781315755649-22">McCoach (2019 chapter)</a> (USC SSO required)</li>
+</ul></li>
+<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Complete Homework 6</li>
+</ol>
+<h1 id="lecture">Lecture</h1>
+<h2 id="slides">Slides</h2>
+<p>You can view and download the slides here: <a href="slides/06_model_diagnostics.html" target="_blank">HTML</a> <a href="slides/06_model_diagnostics.pdf" target="_blank">PDF</a></p>
+<h2 id="model-diagnostics">Model Diagnostics</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/YcwLBSTY8aw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: Homoscedasticity means</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_51160" onsubmit="return validate_form_51160()" method="post">
+<input type="radio" name="answer_51160" id="51160_1" value="Equal variance of errors"><label for="1">Equal variance of errors</label><br><input type="radio" name="answer_51160" id="51160_2" value="Each cluster has the same mean"><label for="2">Each cluster has the same mean</label><br><input type="radio" name="answer_51160" id="51160_3" value="The model resembles the data"><label for="3">The model resembles the data</label><br><input type="submit" value="check">
+</form>
+<p id="result_51160">
+</p>
+<script> function validate_form_51160() {var x, text; var x = document.forms["form_51160"]["answer_51160"].value;if (x == "Equal variance of errors"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_51160').innerHTML = text; return false;} </script>
+</div>
+<h3 id="assumptions-of-a-multilevel-model">Assumptions of a Multilevel Model</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/dhh5twY9pwE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Note: <span class="math inline">\(\mathrm{E}(Y)\)</span> can also be written as <span class="math inline">\(\hat Y\)</span>, the predicted value of <span class="math inline">\(Y\)</span> based on the predictor values.</p>
+<p>The linear model is also flexible as it can allow predictors that are curvillinear terms, such as <span class="math inline">\(Y = b_0 + b_1 X_1 + b_2 X_1^2\)</span>, or <span class="math inline">\(Y = b_0 + b_1 \log(X_1)\)</span>, or more generally <span class="math display">\[Y = b_0 + \sum_{i}^p b_i f(x_1, x_2, \ldots)\]</span> The “linear” part in a linear model actually means that <span class="math inline">\(Y\)</span> is a linear function of the coefficients <span class="math inline">\(b_1, b_2, \ldots\)</span>.</p>
+<p>The second functional form in the slide, however, is a truly nonlinear function.</p>
+<p>Check your learning: Which of the following is <strong>NOT</strong> a linear model?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_47086" onsubmit="return validate_form_47086()" method="post">
+<input type="radio" name="answer_47086" id="47086_1" value="Y = X1 + X2"><label for="1">Y = X1 + X2</label><br><input type="radio" name="answer_47086" id="47086_2" value="Y = b0 + b1 * X1 + b2 * X2 + b3 * X1 * X2"><label for="2">Y = b0 + b1 * X1 + b2 * X2 + b3 * X1 * X2</label><br><input type="radio" name="answer_47086" id="47086_3" value="Y = b0 * exp(b1 * X1 + b2 * X2)"><label for="3">Y = b0 * exp(b1 * X1 + b2 * X2)</label><br><input type="submit" value="check">
+</form>
+<p id="result_47086">
+</p>
+<script> function validate_form_47086() {var x, text; var x = document.forms["form_47086"]["answer_47086"].value;if (x == "Y = b0 * exp(b1 * X1 + b2 * X2)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_47086').innerHTML = text; return false;} </script>
+</div>
+<p>Check your learning: What is implied when the model specifies that the variance of <span class="math inline">\(u_{0j}\)</span> is <span class="math inline">\(\tau^2_0\)</span>?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_8416" onsubmit="return validate_form_8416()" method="post">
+<input type="radio" name="answer_8416" id="8416_1" value="The intercept variance is constant across different clusters"><label for="1">The intercept variance is constant across different clusters</label><br><input type="radio" name="answer_8416" id="8416_2" value="The slope is different across clusters"><label for="2">The slope is different across clusters</label><br><input type="radio" name="answer_8416" id="8416_3" value="The intercept variance is different for different types of schools"><label for="3">The intercept variance is different for different types of schools</label><br><input type="submit" value="check">
+</form>
+<p id="result_8416">
+</p>
+<script> function validate_form_8416() {var x, text; var x = document.forms["form_8416"]["answer_8416"].value;if (x == "The intercept variance is constant across different clusters"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_8416').innerHTML = text; return false;} </script>
+</div>
+<h4 id="remember-the-lines">Remember the “LINES”</h4>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/lh_5-2Cri-4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: What does “I” stand for?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_12839" onsubmit="return validate_form_12839()" method="post">
+<input type="radio" name="answer_12839" id="12839_1" value="Increasing trend of outcome"><label for="1">Increasing trend of outcome</label><br><input type="radio" name="answer_12839" id="12839_2" value="Independence of errors"><label for="2">Independence of errors</label><br><input type="radio" name="answer_12839" id="12839_3" value="Independence of predictors"><label for="3">Independence of predictors</label><br><input type="submit" value="check">
+</form>
+<p id="result_12839">
+</p>
+<script> function validate_form_12839() {var x, text; var x = document.forms["form_12839"]["answer_12839"].value;if (x == "Independence of errors"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_12839').innerHTML = text; return false;} </script>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/TXwXrqbK8vE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: What is shown in a marginal model plot?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_52577" onsubmit="return validate_form_52577()" method="post">
+<input type="radio" name="answer_52577" id="52577_1" value="Whether the model shows a linear association between a predictor and the outcome"><label for="1">Whether the model shows a linear association between a predictor and the outcome</label><br><input type="radio" name="answer_52577" id="52577_2" value="Whether the model-implied association is similar to the model-free (i.e., marginal) association"><label for="2">Whether the model-implied association is similar to the model-free (i.e., marginal) association</label><br><input type="radio" name="answer_52577" id="52577_3" value="Whether the margin of error in the model is small enough"><label for="3">Whether the margin of error in the model is small enough</label><br><input type="submit" value="check">
+</form>
+<p id="result_52577">
+</p>
+<script> function validate_form_52577() {var x, text; var x = document.forms["form_52577"]["answer_52577"].value;if (x == "Whether the model-implied association is similar to the model-free (i.e., marginal) association"){text = 'Your statistical knowledge is getting better and better :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_52577').innerHTML = text; return false;} </script>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/2kf5g_WzGhk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/4GKjDRYcWyM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Check your learning: Which assumption(s) are likely violated in the following plot?</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="week6_files/figure-html5/practice-assumption-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_87326" onsubmit="return validate_form_87326()" method="post">
+<input type="radio" name="answer_87326" id="87326_1" value="linearity"><label for="1">linearity</label><br><input type="radio" name="answer_87326" id="87326_2" value="equal variance of errors"><label for="2">equal variance of errors</label><br><input type="radio" name="answer_87326" id="87326_3" value="normality"><label for="3">normality</label><br><input type="radio" name="answer_87326" id="87326_4" value="linearity and equal variance of errors"><label for="4">linearity and equal variance of errors</label><br><input type="submit" value="check">
+</form>
+<p id="result_87326">
+</p>
+<script> function validate_form_87326() {var x, text; var x = document.forms["form_87326"]["answer_87326"].value;if (x == "linearity and equal variance of errors"){text = 'Your statistical knowledge is getting better and better :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_87326').innerHTML = text; return false;} </script>
+</div>
+<h3 id="additional-issues">Additional issues</h3>
+<ul>
+<li>Outliers/influential observations
+<ul>
+<li>Check coding error</li>
+<li>Don’t drop outliers unless you adjust the standard errors accordingly, or use robust models</li>
+</ul></li>
+<li>Reliability (e.g., <span class="math inline">\(\alpha\)</span> coefficient)
+<ul>
+<li>Reliability may be high at one level but low at another level</li>
+<li>See Lai (2021, doi: 10.1037/met0000287) for level-specific reliability
+<ul>
+<li>You can use the <code>multilevel_alpha()</code> function from <a href="https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R" class="uri">https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R</a></li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="handling-convergence-issues">Handling Convergence Issues</h2>
+<p>See <a href="rcode6.html#convergence">R codes for this week</a></p>
+<h2 id="reporting-results">Reporting Results</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/12tK6d468u0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2128,6 +2291,15 @@ R Codes
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

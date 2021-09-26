@@ -29,7 +29,7 @@ knit_hooks$set(output = function(x, options) {
   }
   x <- unlist(strsplit(x, "\n"))
   more <- "..."
-  if (length(lines)==1) {        # first n lines
+  if (length(lines) == 1) {        # first n lines
     if (length(x) > lines) {
       # truncate the output, but add ....
       x <- c(head(x, lines), more)
@@ -57,9 +57,9 @@ theme_set(theme_bw())
 
 - Conduct statistical tests for fixed effects
 
-- Use the **likelihood ratio test** to test random slopes
+- Test fixed effects using the F-test with the **small-sample correction** when the number of clusters is small
 
-- Report results of a multilevel analysis based on established guidelines
+- Use the **likelihood ratio test** to test random slopes
 
 ---
 
