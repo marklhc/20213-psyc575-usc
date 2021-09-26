@@ -23,7 +23,7 @@ By the end of this module, you will be able to
 - Describe conceptually what **likelihood function** and maximum likelihood estimation are
 - Describe the differences between **maximum likelihood** and **restricted maximum likelihood**
 - Conduct statistical tests for fixed effects
-- Test fixed effects using the F-test with the small-sample correction when the number of clusters is small
+- Test fixed effects using the F-test with the **small-sample correction** when the number of clusters is small
 - Use the **likelihood ratio test** to test random slopes
 
 ## Task Lists

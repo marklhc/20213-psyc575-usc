@@ -261,13 +261,13 @@ dates <- paste(
 |                    | - Cross-level          |                                       |                                        |
 |                    | Interactions           |                                       |                                        |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
-| Week 5\            | - Model Estimation     | - SB ch 4.7, 6                        | - Exercise: Maximum likelihood         |
-| Sep 21 & 23        | - Model Testing        |                                       | estimation (MLE)                       |
-|                    | - Reporting Results    |                                       | - HW 5                                 |
+| Week 5\            | - Model Estimation     | - SB ch 4.7, 6                        | - Exercise: Practicing Analysis        |
+| Sep 21 & 23        | - Model Testing        |                                       |                                        |
+|                    |                        |                                       | - HW 5                                 |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
 | Week 6\            | - Model Assumptions    | - SB ch 10                            | - Exercise: TBD                        |
 | Sep 28 &           | and Diagnostics        |                                       | - HW 6                                 |
-| 30                 |                        |                                       |                                        |
+| 30                 | - Reporting Results    |                                       |                                        |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
 | Week 7\            | - MLM for Experimental | - SB ch 13.1                          | - Exercise: Identifying data structure |
 | Oct 5 & 7          | Designs                | - [Hoffman & Rovine (2007)][3]        | - HW 7                                 |
