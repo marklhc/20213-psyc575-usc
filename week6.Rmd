@@ -1,0 +1,200 @@
+---
+title: "Week 6"
+description: |
+  Model Diagnostics and Results Reporting
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  slides: "06_model_diagnostics"
+---
+
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+source("render_slides.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Describe the major **assumptions** in basic multilevel models
+- Conduct analyses to decide whether **cluster means** and **random slopes** should be included
+- Use graphical tools to diagnose assumptions of **linearity**, **homoscedasticity** (equal variance), and **normality**
+- Solve some basic **convergence issues**
+- **Report** results of a multilevel analysis based on established guidelines
+
+## Task Lists
+
+1. Review the resources (lecture videos and slides)
+2. Complete the assigned readings
+    * Snijders & Bosker ch 10
+    * Meteyard & Davies (2020; to be shared on Slack)
+    * [McCoach (2019 chapter)](https://www-taylorfrancis-com.libproxy2.usc.edu/books/e/9781315755649/chapters/10.4324/9781315755649-22) (USC SSO required)
+3. Attend the Thursday session and participate in the class exercise
+4. Complete Homework 6
+
+# Lecture
+
+## Slides
+
+You can view and download the slides here: 
+[HTML](`r file.path("slides", paste0(params$slides, ".html"))`){target="_blank"}  [PDF](`r file.path("slides", paste0(params$slides, ".pdf"))`){target="_blank"}
+
+```{r, include=FALSE}
+library(checkdown)
+right_ans <- c("Nice job :+1:",
+               "Your statistical knowledge is getting better and better :+1:")
+wrong_ans <- "Try again. You can do it!"
+```
+
+## Model Diagnostics
+
+```{r, echo=FALSE}
+add_youtube("YcwLBSTY8aw")
+```
+
+Check your learning: Homoscedasticity means
+
+```{r echo=FALSE, results="asis"}
+check_question("Equal variance of errors",
+               options = c("Equal variance of errors",
+                           "Each cluster has the same mean",
+                           "The model resembles the data"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+### Assumptions of a Multilevel Model
+
+```{r, echo=FALSE}
+add_youtube("dhh5twY9pwE")
+```
+
+Note: $\mathrm{E}(Y)$ can also be written as $\hat Y$, the predicted value of $Y$ based on the predictor values.
+
+The linear model is also flexible as it can allow predictors that are curvillinear terms, such as $Y = b_0 + b_1 X_1 + b_2 X_1^2$, or $Y = b_0 + b_1 \log(X_1)$, or more generally
+$$Y = b_0 + \sum_{i}^p b_i f(x_1, x_2, \ldots)$$
+The "linear" part in a linear model actually means that $Y$ is a linear function of the coefficients $b_1, b_2, \ldots$.
+
+The second functional form in the slide, however, is a truly nonlinear function.
+
+Check your learning: Which of the following is **NOT** a linear model?
+
+```{r echo=FALSE, results="asis"}
+check_question("Y = b0 * exp(b1 * X1 + b2 * X2)",
+               options = c("Y = X1 + X2",
+                           "Y = b0 + b1 * X1 + b2 * X2 + b3 * X1 * X2",
+                           "Y = b0 * exp(b1 * X1 + b2 * X2)"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+Check your learning: What is implied when the model specifies that the variance of $u_{0j}$ is $\tau^2_0$?
+
+```{r echo=FALSE, results="asis"}
+check_question("The intercept variance is constant across different clusters",
+               options = c("The intercept variance is constant across different clusters",
+                           "The slope is different across clusters",
+                           "The intercept variance is different for different types of schools"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+#### Remember the "LINES" 
+
+```{r, echo=FALSE}
+add_youtube("lh_5-2Cri-4")
+```
+
+Check your learning: What does "I" stand for?
+
+```{r echo=FALSE, results="asis"}
+check_question("Independence of errors",
+               options = c("Increasing trend of outcome",
+                           "Independence of errors",
+                           "Independence of predictors"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+```{r, echo=FALSE}
+add_youtube("TXwXrqbK8vE")
+```
+
+Check your learning: What is shown in a marginal model plot?
+
+```{r echo=FALSE, results="asis"}
+check_question("Whether the model-implied association is similar to the model-free (i.e., marginal) association",
+               options = c("Whether the model shows a linear association between a predictor and the outcome",
+                           "Whether the model-implied association is similar to the model-free (i.e., marginal) association",
+                           "Whether the margin of error in the model is small enough"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+```{r, echo=FALSE}
+add_youtube("2kf5g_WzGhk")
+```
+
+```{r, echo=FALSE}
+add_youtube("4GKjDRYcWyM")
+```
+
+Check your learning: Which assumption(s) are likely violated in the following plot?
+
+```{r practice-assumption, message=FALSE, echo=FALSE}
+library(tidyverse)
+library(lme4)
+library(broom.mixed)
+set.seed(10)
+u0 <- abs(rnorm(20))
+x <- runif(200)
+e <- rnorm(200, sd = pmin(1 / sqrt(x), 5))
+id <- rep(seq_len(20), each = 10)
+y <- 0.5 + 2 * log(x) + u0[id] + e
+m1 <- lmer(y ~ x + (1 | id))
+augment(m1) %>%
+  mutate(.std_resid = resid(m1, scaled = TRUE)) %>%
+  ggplot(aes(x = x, y = .std_resid)) +
+  geom_point() +
+  geom_smooth(se = FALSE)
+```
+
+```{r echo=FALSE, results="asis"}
+check_question("linearity and equal variance of errors",
+               options = c("linearity",
+                           "equal variance of errors",
+                           "normality",
+                           "linearity and equal variance of errors"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+### Additional issues
+
+- Outliers/influential observations
+    * Check coding error
+    * Don't drop outliers unless you adjust the standard errors accordingly, or use robust models
+- Reliability (e.g., $\alpha$ coefficient)
+    * Reliability may be high at one level but low at another level
+    * See Lai (2021, doi: 10.1037/met0000287) for level-specific reliability
+        * You can use the `multilevel_alpha()` function from https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R
+
+## Handling Convergence Issues
+
+See [R codes for this week](rcode6.html#convergence)
+
+## Reporting Results
+
+```{r, echo=FALSE}
+add_youtube("12tK6d468u0")
+```

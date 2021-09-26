@@ -1,0 +1,444 @@
+---
+title: "Model Diagnostics"
+output:
+  html_document:
+    df_print: paged
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = ">#")
+```
+
+In R, there are many quite a few diagnostic tools for MLM, although they are 
+not necessarily straightforward to use. In this note I will show some basic 
+tools. 
+
+## Load Packages and Import Data
+
+```{r load-pkg, message=FALSE}
+# To install a package, run the following ONCE (and only once on your computer)
+# install.packages("psych")  
+library(here)  # makes reading data more consistent
+library(tidyverse)  # for data manipulation and plotting
+library(haven)  # for importing SPSS/SAS/Stata data
+library(lme4)  # for multilevel analysis
+library(lmerTest)  # for testing in small samples
+library(splines)  # for nonlinear trend
+library(broom.mixed)  # for getting predicted values/residuals
+library(modelsummary)  # for plotting
+theme_set(theme_bw())  # Theme; just my personal preference
+```
+
+Here's a function I created for marginal model plots
+
+```{r mmps_lmer}
+mmps_lmer <- function(object) {
+  plot_df <- object@frame
+  form <- formula(object)
+  xvar <- attr(attr(plot_df, "terms"), "varnames.fixed")[-1]
+  plot_df$.fitted_x <- fitted(object)
+  plot_df$.fitted <- plot_df$.fitted_x
+  plot_df$.rowid <- seq_len(nrow(plot_df))
+  plot_df_long <- reshape(plot_df, direction = "long",
+                          varying = c(xvar, ".fitted_x"),
+                          v.names = "xvar",
+                          idvar = ".rowid")
+  plot_df_long$varname <- rep(c(xvar, ".fitted"),
+                              each = nrow(plot_df))
+  ggplot(
+    data = plot_df_long,
+    aes_string(x = "xvar", y = paste(form[[2]]))
+  ) +
+    geom_point(size = 0.5, alpha = 0.3) +
+    geom_smooth(aes(col = "data"), se = FALSE) +
+    geom_smooth(aes(y = .fitted, col = "model"),
+      linetype = "dashed", se = FALSE
+    ) +
+    facet_wrap(~ varname, scales = "free_x") +
+    labs(color = NULL, x = NULL) +
+    scale_color_manual(values = c("data" = "blue",
+                                  "model" = "red")) +
+    theme(legend.position = "bottom")
+}
+```
+
+```{r import_sav, message=FALSE}
+# Read in the data (pay attention to the directory)
+hsball <- read_sav(here("data_files", "hsball.sav"))
+# Cluster-mean centering
+hsball <- hsball %>%
+  group_by(id) %>%  # operate within schools
+  mutate(ses_cm = mean(ses),  # create cluster means (the same as `meanses`)
+         ses_cmc = ses - ses_cm) %>%  # cluster-mean centered
+  ungroup()  # exit the "editing within groups" mode
+```
+
+The discussion will follow chapter 10 of Snijders & Bosker (2012)
+
+## Fitting the model
+
+We will first use a model with `ses` and `sector`, without contextual effects or random slopes.
+
+```{r m1}
+m1 <- lmer(mathach ~ sector + ses + (1 | id),
+           data = hsball)
+```
+
+# Diagnostics
+
+## Does the fixed part contain the right variables?
+
+### Cluster means for lower-level variables
+
+One can test whether `ses_cm` should be included in the model, in addition to the raw level-1 variable. Let's use likelihood ratio tests for it:
+
+```{r m1_cm}
+m1_cm <- lmer(mathach ~ sector + ses + ses_cm + (1 | id),
+  data = hsball
+)
+confint(m1_cm)
+```
+
+So it looks like we need `ses_cm`. 
+
+### Omitted variables
+
+If there are any potential confounding variable, those should be included as well. This requires knowledge of the research question under investigation. One good thing is that if one is interested in effects at a lower level, doing cluster-mean centering or including the cluster mean will rule out potential confounders at a higher level. This is because one is now comparing individuals within the same school (or the same level-2 unit), so any confounders that are related to school characteristics can be ruled out, as they will be held constant. 
+
+### Linearity
+
+A quick way to check whether there are any unmodelled non-linear trends is to use marginal model plots, which shows the outcome variable against each individual predictor. The plot shows two lines: one shows a nonparametric smoother that does not depend on the model, and the other shows the implied association based on the model. If the two lines are close to each other, then there is no need to include extra curvillinear terms of the predictors; otherwise, one may need to consider adding quadratic or other non-linear terms. 
+
+```{r m2}
+m2 <- lmer(mathach ~ sector + ses + ses_cm + (1 | id),
+  data = hsball
+)
+```
+
+```{r mmp-ses, fig.width = 4}
+# SES
+augment(m2) %>%
+  ggplot(aes(x = ses, y = mathach)) +
+  geom_point(size = 0.7, alpha = 0.3) +
+  geom_smooth(col = "blue", se = FALSE) + # blue line from data
+  geom_smooth(aes(y = .fitted),
+    col = "red",
+    se = FALSE, linetype = "dashed"
+  )  # red line from model
+```
+
+The above shows some deviation between the model (red line) and the data (blue line), but the discrepancy is mostly driven by two data points, one on the left and one on the right. So this is mostly fine, although it is possible to check whether the results are similar without those two points. You can modify the code to check all other predictors as well. To make things easier, I've made a small function, `mmps_lmer()`, defined in the beginning of the file, that automatically generates the marginal model plots for all predictors:
+
+```{r mmps-m2, fig.asp = 1}
+mmps_lmer(m2)
+```
+
+There are two things to note. First, for binary predictors `female` and `sector`, the plot is not meaningful, as there are only two possible values in the predictor. Second, the plot labelled `.fitted` is one where it plots the outcome against the *linear precictor*, which is the predicted value of the outcome based on the predictors (i.e., $\gamma_{00} + \gamma_{01}$). You can think about it as a combination of all predictors. 
+
+To show what it is like when linearity is violated, I simulate some data by adding a quadratic term:
+
+```{r mmp2-m2_quad, fig.asp = 1}
+## Fake example: Add quadratic trend for ses
+hsball_quad <- hsball %>%
+  mutate(mathach = mathach + ses^2)
+m2_quad <- refit(m2, newresp = hsball_quad$mathach)
+mmps_lmer(m2_quad)
+```
+
+The above shows a misfit for the plot with `ses`.
+
+#### What to do if linearity is violated?
+
+- Include non-linear terms (e.g., quadratic)
+- Include interactions (but note that interactions can be present even when linearity is not violated)
+- Using smoothing splines. Below is an example:
+
+```{r m2_spline}
+# Need the `spline` package; bs() for cubic spline
+m2_spline <- lmer(mathach ~ sector + bs(ses) + bs(ses_cm) + (1 | id),
+  data = hsball
+)
+# See whether nonlinear trend is needed
+anova(m2, m2_spline)  # not statistically significant
+# So insufficient evidence for a nonlinear trend for `ses` and `ses_cm`
+```
+
+## Does the random part contain the right variables?
+
+### Testing for random slopes
+
+```{r m3}
+m3 <- lmer(mathach ~ sector + ses + ses_cm + (ses | id),
+           data = hsball)
+ranova(m3)
+```
+
+The random slope for `ses` was significant, so it should be included.
+
+## Residual Plots
+
+Residuals can be used to check a lot of assumptions, including linearity, homoscedasticity, normality, and outliers
+
+### Residuals across clusters
+
+The following computes the standardized residuals and plot them across different clusters. The following plot shows:
+
+- Most of the standardized residuals are between -3 and 3, so not a lot of outliers;
+- The variability of the residuals is similar across clusters, so heteroscedastisticity is likely not an issue across clusters.
+
+```{r std_resid-id, fig.asp = 2.4}
+augment(m3) %>%
+  ggplot(aes(x = factor(id), y = .resid)) +
+  geom_boxplot() +
+  coord_flip()
+```
+
+### Level-1 residuals across predictors
+
+The plot below shows that heteroscedastisticity is likely not a problem, as we do not see clearly bigger/smaller variance at certain levels of the predictors. 
+
+```{r std_resid-pred}
+augment(m3) %>%
+  mutate(.std_resid = resid(m3, scaled = TRUE)) %>%
+  ggplot(aes(x = ses, y = .std_resid)) +
+  geom_point(size = 0.7, alpha = 0.5) +
+  geom_smooth(se = FALSE)
+augment(m3) %>%
+  mutate(.std_resid = resid(m3, scaled = TRUE)) %>%
+  ggplot(aes(x = ses_cm, y = .std_resid)) +
+  geom_point(size = 0.7, alpha = 0.5) +
+  geom_smooth(se = FALSE)
+augment(m3) %>%
+  mutate(.std_resid = resid(m3, scaled = TRUE)) %>%
+  ggplot(aes(x = sector, y = .std_resid)) +
+  # use `geom_jitter` for discrete predictor
+  geom_jitter(size = 0.7, alpha = 0.5, width = 0.05)
+```
+
+### Level-2 residuals across lv-2 predictors
+
+```{r resid-lv2}
+resid_lv2 <- ranef(m3)$id
+resid_lv2_var <- attr(resid_lv2, "postVar")
+resid_lv2_sd <- sqrt(cbind(
+  resid_lv2_var[1, 1, ],
+  resid_lv2_var[2, 2, ]
+))
+std_resid_lv2 <- resid_lv2 %>%
+  rownames_to_column("id") %>%
+  transmute(id = id,
+            u0 = `(Intercept)` / resid_lv2_sd[, 1],
+            u1 = ses / resid_lv2_sd[, 2])
+# Merge lv-2 data with lv-2 standardized residuals
+hsball_lv2 <- hsball %>%
+  group_by(id) %>%
+  summarise(ses_cm = ses_cm[1]) %>%
+  left_join(
+    std_resid_lv2
+  )
+# Plot lv-2 residual against `ses_cm`
+ggplot(hsball_lv2, aes(x = ses_cm, y = u0)) +
+  geom_point(size = 0.7, alpha = 0.5) +
+  geom_smooth(se = FALSE)
+ggplot(hsball_lv2, aes(x = ses_cm, y = u1)) +
+  geom_point(size = 0.7, alpha = 0.5) +
+  geom_smooth(se = FALSE)
+```
+
+### Q-Q Plot for Lv-1 Residuals
+
+For: normality
+
+You want to see the points line up nicely along the 45 degree line
+
+```{r qq_lv1}
+library(lattice)  # need this package to use the built-in functions
+qqmath(m3)  # just use the `qqmath()` function on the fitted model
+```
+
+There are some deviations from normality on the two tail areas, which is likely
+due to less kurtosis because of the boundedness of the outcome variable. 
+Generally the impact of kurtosis is not as severe as skewness, and the above 
+plot did not suggest a major issue to the results. 
+
+### Q-Q Plot for Lv-2 Residuals
+
+For: normality
+
+At level 2 there can be more then one set of residuals. For example, in this 
+model, we have one set for the random intercept, and the other set for the 
+random slope
+
+```{r qq_lv2}
+# the code is a bit more complex in order to add the reference line, but you 
+# only need to replace `m3` with the name of your own model to get the
+# plots for your own analyses
+qqmath(ranef(m3, condVar = FALSE),
+       panel = function(x) {
+         panel.qqmath(x)
+         panel.qqmathline(x)
+       })
+```
+
+
+Normality does not appear to be an issue at level 2. 
+
+## Bonus: Variance Inflation Factor (VIF)
+
+For: multicollinearity
+
+```{r vif_model, message=FALSE}
+library(car)
+car::vif(m3)
+```
+
+As a rule of thumb, one would worry about multicollinearity in the predictors 
+when VIF > 4, and VIF > 10 indicates strong multicollinearity. 
+
+## Bonus: Influence Index Plots
+
+For: leverage points and outliers
+
+To examine whether some cases gives disproportionately strong influence on the
+results, we can look at influence index plot and dfbeta
+
+```{r influence_plots, fig.asp = 1.6}
+# It seems that the influence() function only supports object of class `data.frame`, so we need to 
+# change the data class and refit the model
+hsball_2 <- as.data.frame(hsball)
+m3_2 <- lmer(mathach ~ sector + ses + ses_cm + (ses | id),
+           data = hsball_2)
+inf_m3 <- influence(m3_2, "id")  # get cluster-level influence statistics
+car::infIndexPlot(inf_m3)
+```
+
+If you need some cutoffs, the cutoff for dfbeta is $2 / \sqrt{job}$, which would
+be `r 2 / sqrt(160)` in our example; cutoff for Cook's distance is 
+$4 / (J - 2)$, which would be `r 4 / (160 - 2)` in our example. So while some of the clusters exert more influence on the results than others, they all seem to be within the normal sampling variability that one would expect. If some clusters are above the cutoffs, then you may want to take a look on those clusters to see whether there are coding errors, or whether there is something unique about them. You can do a sensitivity analysis with and without those clusters. 
+
+## Bonus: Bayesian Robust MLM
+
+There has not been a lot of discussion on MLM that is robust to outliers. One useful technique, however, is to use a heavy-tailed distribution for the errors and random effects. Instead of assuming that they follow normal distributions, we assume them to follow Student's $t$ distributions, which have heavier tails. What it does is to allow for a higher probability of extreme value, so that those extreme values will have less influence on estimating the pattern of the data. You will need to use the `brms` package. The installation of this package, however, is not straightforward (https://github.com/paul-buerkner/brms), so if you are not able to run it here, don't worry as we don't need it for the remainder of the class.
+
+```{r brm_m3, cache = TRUE, results = 'hide'}
+library(brms)
+# Same syntax; just change `lmer()` to `brm()`
+m3_robust <- brm(
+  mathach ~ sector + ses + ses_cm +
+    # Assume random effects follow a t distribution
+    (ses | gr(id, dist = "student")),
+  # Assume the errors follow a t distribution
+  family = student(),
+  data = hsball,
+  chains = 2,
+  control = list(adapt_delta = .95)
+)
+```
+
+The results are similar, so the regular MLM should be fine here
+
+```{r msummary-m3-robust}
+msummary(list(
+  `Normal MLM` = m3,
+  `Robust MLM` = m3_robust
+))
+```
+
+# Convergence
+
+It's not uncommon to run into convergence issues when the model contains two or more random slopes, or when the sample size (i.e., number of clusters) is small.
+
+## Multiple Random Slopes
+
+Here I include `female` and its random slopes
+
+```{r m_complex}
+m_complex <- lmer(
+  mathach ~ sector + ses + ses_cm + female + (ses + female | id),
+  data = hsball
+)
+```
+
+You will see the above warning. This almost always happens with two or more random slopes. 
+
+You can consult https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#troubleshooting regarding some suggestions on what to do (and I recommend that you save this page for your future reference). 
+
+The first thing you can do is to do centering and scaling. For scaling, it means making the predictors to have a smaller range. For example, if one of your predictor is income in dollars, I would suggest dividing income by $10,000 so that the resulting values are smaller. For centering, we can try using the cluster-mean centered variables:
+
+```{r center-female}
+# Cluster-mean centering
+hsball <- hsball %>%
+  group_by(id) %>%
+  mutate(female_cm = mean(female),
+         female_cmc = female - female_cm) %>%
+  ungroup()  # exit the "editing within groups" mode
+```
+
+```{r m_complex2}
+m_complex2 <- lmer(
+  mathach ~ sector + ses_cmc + ses_cm + female_cmc + female_cm +
+    (ses_cmc + female_cmc | id),
+  data = hsball
+)
+```
+
+The warning actually goes away now. If it does not, the next thing you can do is to try a different optimizer:
+
+```{r allFit-m_complex}
+m_complex_all <- lme4::allFit(m_complex)
+ss <- summary(m_complex_all)  # this shows everything
+# Check which optimizer work
+ss$which.OK
+# Compare the converged log-likelihood from different optimizers
+ss$llik
+# Compare the fixed effects
+ss$fixef
+```
+
+So it looks like the `bobyqa` optimizer (the default) converge to a different solution than other optimizers. The log-likelihood value is better (i.e., less negative) for the other optimizers than the default, so we should try those. Let's use `nlminbwrap`
+
+```{r refit-m_complex}
+m_complex <- lmer(
+  mathach ~ sector + ses + ses_cm + female + (ses + female | id),
+  data = hsball,
+  control = lmerControl(optimizer = "nlminbwrap")
+)
+```
+
+The warning goes away.
+
+## Singular Models
+
+Especially in small samples, you will run into a message of singular model fit, like
+
+```{r hsbsub}
+# Randomly select 10 school ids
+set.seed(1059)  # use the same seed so that the same 10 schools are selected
+random_ids <- sample(unique(hsball$id), size = 10)
+hsbsub <- hsball %>%
+    filter(id %in% random_ids)
+# Fit a model
+m3_small <- lmer(mathach ~ sector + ses + ses_cm + (ses | id),
+                 data = hsbsub)
+summary(m3_small)
+```
+
+If you look at the random effect matrix, the correlation between the random intercepts and the random slopes is -1, which is small. Usually this is not a big problem for the fixed effects. If you have a highly complex model with a small sample, then the recommendation would be to simplify the model a bit by taking out one of the random slope term. An alternative is to use Bayesian estimation, which is less prone to small sample estimation problems. For example, I will use the `rstanarm` package
+
+```{r m3_small_bayes, results = 'hide', cache = TRUE}
+# Same syntax; just replace `lmer` with `brm`
+m3_small_bayes <- brm(
+  mathach ~ sector + ses + ses_cm + (ses | id),
+  data = hsbsub
+)
+```
+
+```{r msummary-m3-small}
+msummary(list(
+  REML = m3_small,
+  Bayes = m3_small_bayes
+))
+```
+
+If the two are similar, then the REML results should be fine. Otherwise, as is the case here, the Bayesian result should be more trustworthy. 
