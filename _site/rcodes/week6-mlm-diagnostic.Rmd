@@ -246,6 +246,55 @@ ggplot(hsball_lv2, aes(x = ses_cm, y = u1)) +
   geom_smooth(se = FALSE)
 ```
 
+### Bonus: Modeling heteroscedastisticity
+
+You can model $\log(\sigma_{ij}) = \gamma^{s}_{00} + \gamma^{s}_{10} x_{ij} + \gamma^{s}_{01} w_{j}$
+
+Let's model the variance as a function of `sector`.
+
+```{r m3_heter}
+library(glmmTMB)
+# Assume homoscedasticity
+m3_tmb <- glmmTMB(mathach ~ sector + ses + ses_cm + (ses | id),
+  data = hsball
+)
+# Modeling heteroscedasticity
+m3_heter_tmb <- glmmTMB(
+  mathach ~ sector + ses + ses_cm + (ses | id),
+  dispformula = ~ sector,  # difference variance for different sectors
+  data = hsball
+)
+summary(m3_heter_tmb)  # catholic school has a larger variance
+# Compare the two models
+anova(m3_tmb, m3_heter_tmb)  # the heteroscedastic model has a better deviance
+# The fixed effects are pretty comparable
+msummary(list(
+  `Homoscedastic` = m3_tmb,
+  `Heteroscedastic` = m3_heter_tmb
+))
+```
+
+### Bonus: Heteroscedasticity-consistent (HC) variance estimates
+
+If you suspect that heteroscedastisticity may be a problem, you can also use the heteroskedasticity-consistent variance estimators with the `clubSandwich` package, which computes the HC correction for the test results
+
+```{r m3-hc}
+library(clubSandwich)
+# Sampling variances of fixed effects from REML
+vcov_m3 <- vcov(m3)
+# Sampling variances from HC
+vcovcr_m3 <- vcovCR(m3, type = "CR2")
+# Compare standard errors: REML-SE and HC-SE
+cbind(
+  "REML-SE" = sqrt(diag(vcov_m3)),
+  "HC-SE" = sqrt(diag(vcovcr_m3))
+)
+# Testing fixed effects adjusting for heteroscedasticity
+coef_test(m3, vcov = "CR2")
+```
+
+Note: To my knowledge, currently it is not possible to combine HC estimator with the small-sample Kenward-Roger correction. 
+
 ### Q-Q Plot for Lv-1 Residuals
 
 For: normality
