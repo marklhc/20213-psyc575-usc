@@ -2142,6 +2142,8 @@ R Codes
 <li><a href="#residuals-across-clusters">Residuals across clusters</a></li>
 <li><a href="#level-1-residuals-across-predictors">Level-1 residuals across predictors</a></li>
 <li><a href="#level-2-residuals-across-lv-2-predictors">Level-2 residuals across lv-2 predictors</a></li>
+<li><a href="#bonus-modeling-heteroscedastisticity">Bonus: Modeling heteroscedastisticity</a></li>
+<li><a href="#bonus-heteroscedasticity-consistent-hc-variance-estimates">Bonus: Heteroscedasticity-consistent (HC) variance estimates</a></li>
 <li><a href="#q-q-plot-for-lv-1-residuals">Q-Q Plot for Lv-1 Residuals</a></li>
 <li><a href="#q-q-plot-for-lv-2-residuals">Q-Q Plot for Lv-2 Residuals</a></li>
 </ul></li>
@@ -2452,6 +2454,292 @@ R Codes
 </div>
 <p><img src="rcode6_files/figure-html5/resid-lv2-2.png" width="624" /></p>
 </div>
+<h3 id="bonus-modeling-heteroscedastisticity">Bonus: Modeling heteroscedastisticity</h3>
+<p>You can model <span class="math inline">\(\log(\sigma_{ij}) = \gamma^{s}_{00} + \gamma^{s}_{10} x_{ij} + \gamma^{s}_{01} w_{j}\)</span></p>
+<p>Let’s model the variance as a function of <code>sector</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/glmmTMB/glmmTMB'>glmmTMB</a></span><span class='op'>)</span>
+<span class='co'># Assume homoscedasticity</span>
+<span class='va'>m3_tmb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='va'>ses_cm</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>hsball</span>
+<span class='op'>)</span>
+<span class='co'># Modeling heteroscedasticity</span>
+<span class='va'>m3_heter_tmb</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span>
+  <span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='va'>ses_cm</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  dispformula <span class='op'>=</span> <span class='op'>~</span> <span class='va'>sector</span>,  <span class='co'># difference variance for different sectors</span>
+  data <span class='op'>=</span> <span class='va'>hsball</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m3_heter_tmb</span><span class='op'>)</span>  <span class='co'># catholic school has a larger variance</span>
+</code></pre>
+</div>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          mathach ~ sector + ses + ses_cm + (ses | id)
+&gt;# Dispersion:               ~sector
+&gt;# Data: hsball
+&gt;# 
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#  46531.3  46593.2 -23256.6  46513.3     7176 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev. Corr 
+&gt;#  id       (Intercept) 2.372    1.5402        
+&gt;#           ses         0.458    0.6767   0.21 
+&gt;#  Residual                NA        NA        
+&gt;# Number of obs: 7185, groups:  id, 160
+&gt;# 
+&gt;# Conditional model:
+&gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)  12.0682     0.2189   55.12  &lt; 2e-16 ***
+&gt;# sector        1.3528     0.3609    3.75 0.000178 ***
+&gt;# ses           2.1476     0.1227   17.51  &lt; 2e-16 ***
+&gt;# ses_cm        3.2171     0.3982    8.08 6.55e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&gt;# 
+&gt;# Dispersion model:
+&gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)  3.69133    0.02391  154.40  &lt; 2e-16 ***
+&gt;# sector      -0.18333    0.03400   -5.39 6.96e-08 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compare the two models</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>m3_tmb</span>, <span class='va'>m3_heter_tmb</span><span class='op'>)</span>  <span class='co'># the heteroscedastic model has a better deviance</span>
+</code></pre>
+</div>
+<pre><code>&gt;# Data: hsball
+&gt;# Models:
+&gt;# m3_tmb: mathach ~ sector + ses + ses_cm + (ses | id), zi=~0, disp=~1
+&gt;# m3_heter_tmb: mathach ~ sector + ses + ses_cm + (ses | id), zi=~0, disp=~sector
+&gt;#              Df   AIC   BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)
+&gt;# m3_tmb        8 46558 46613 -23271    46542                         
+&gt;# m3_heter_tmb  9 46531 46593 -23257    46513 29.009      1  7.203e-08
+&gt;#                 
+&gt;# m3_tmb          
+&gt;# m3_heter_tmb ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The fixed effects are pretty comparable</span>
+<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+  `Homoscedastic` <span class='op'>=</span> <span class='va'>m3_tmb</span>,
+  `Heteroscedastic` <span class='op'>=</span> <span class='va'>m3_heter_tmb</span>
+<span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Homoscedastic
+</th>
+<th style="text-align:center;">
+Heteroscedastic
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+12.044
+</td>
+<td style="text-align:center;">
+12.068
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.216)
+</td>
+<td style="text-align:center;">
+(0.219)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sector
+</td>
+<td style="text-align:center;">
+1.409
+</td>
+<td style="text-align:center;">
+1.353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.360)
+</td>
+<td style="text-align:center;">
+(0.361)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ses
+</td>
+<td style="text-align:center;">
+2.196
+</td>
+<td style="text-align:center;">
+2.148
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.122)
+</td>
+<td style="text-align:center;">
+(0.123)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ses_cm
+</td>
+<td style="text-align:center;">
+3.151
+</td>
+<td style="text-align:center;">
+3.217
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.396)
+</td>
+<td style="text-align:center;">
+(0.398)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__(Intercept)
+</td>
+<td style="text-align:center;">
+1.538
+</td>
+<td style="text-align:center;">
+1.540
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__ses
+</td>
+<td style="text-align:center;">
+0.675
+</td>
+<td style="text-align:center;">
+0.677
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cor__(Intercept).ses
+</td>
+<td style="text-align:center;">
+0.276
+</td>
+<td style="text-align:center;">
+0.205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+sd__Observation
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+6.065
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+46558.3
+</td>
+<td style="text-align:center;">
+46531.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+46613.3
+</td>
+<td style="text-align:center;">
+46593.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+−23271.137
+</td>
+<td style="text-align:center;">
+−23256.632
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="bonus-heteroscedasticity-consistent-hc-variance-estimates">Bonus: Heteroscedasticity-consistent (HC) variance estimates</h3>
+<p>If you suspect that heteroscedastisticity may be a problem, you can also use the heteroskedasticity-consistent variance estimators with the <code>clubSandwich</code> package, which computes the HC correction for the test results</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jepusto/clubSandwich'>clubSandwich</a></span><span class='op'>)</span>
+<span class='co'># Sampling variances of fixed effects from REML</span>
+<span class='va'>vcov_m3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/vcov.html'>vcov</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span>
+<span class='co'># Sampling variances from HC</span>
+<span class='va'>vcovcr_m3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/clubSandwich/man/vcovCR.html'>vcovCR</a></span><span class='op'>(</span><span class='va'>m3</span>, type <span class='op'>=</span> <span class='st'>"CR2"</span><span class='op'>)</span>
+<span class='co'># Compare standard errors: REML-SE and HC-SE</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span>
+  <span class='st'>"REML-SE"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>vcov_m3</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='st'>"HC-SE"</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>vcovcr_m3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#               REML-SE     HC-SE
+&gt;# (Intercept) 0.2016592 0.1779908
+&gt;# sector      0.3090955 0.3157639
+&gt;# ses         0.1223825 0.1287679
+&gt;# ses_cm      0.3880834 0.3659749</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Testing fixed effects adjusting for heteroscedasticity</span>
+<span class='fu'><a href='https://rdrr.io/pkg/clubSandwich/man/coef_test.html'>coef_test</a></span><span class='op'>(</span><span class='va'>m3</span>, vcov <span class='op'>=</span> <span class='st'>"CR2"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#         Coef. Estimate    SE t-stat  d.f. p-val (Satt) Sig.
+&gt;# 1 (Intercept)    12.04 0.178  67.66  84.8       &lt;0.001  ***
+&gt;# 2      sector     1.41 0.316   4.46  99.0       &lt;0.001  ***
+&gt;# 3         ses     2.20 0.129  17.05 146.9       &lt;0.001  ***
+&gt;# 4      ses_cm     3.16 0.366   8.62  62.2       &lt;0.001  ***</code></pre>
+</div>
+<p>Note: To my knowledge, currently it is not possible to combine HC estimator with the small-sample Kenward-Roger correction.</p>
 <h3 id="q-q-plot-for-lv-1-residuals">Q-Q Plot for Lv-1 Residuals</h3>
 <p>For: normality</p>
 <p>You want to see the points line up nicely along the 45 degree line</p>
@@ -2472,7 +2760,7 @@ R Codes
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the code is a bit more complex in order to add the reference line, but you </span>
 <span class='co'># only need to replace `m3` with the name of your own model to get the</span>
 <span class='co'># plots for your own analyses</span>
-<span class='fu'><a href='https://rdrr.io/pkg/lattice/man/qqmath.html'>qqmath</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/ranef.html'>ranef</a></span><span class='op'>(</span><span class='va'>m3</span>, condVar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>,
+<span class='fu'><a href='https://rdrr.io/pkg/lattice/man/qqmath.html'>qqmath</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/ranef.glmmTMB.html'>ranef</a></span><span class='op'>(</span><span class='va'>m3</span>, condVar <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>,
        panel <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
          <span class='fu'><a href='https://rdrr.io/pkg/lattice/man/panel.qqmath.html'>panel.qqmath</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
          <span class='fu'><a href='https://rdrr.io/pkg/lattice/man/panel.qqmathline.html'>panel.qqmathline</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -3223,8 +3511,8 @@ REMLcrit
 </table>
 </div>
 <p>If the two are similar, then the REML results should be fine. Otherwise, as is the case here, the Bayesian result should be more trustworthy.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
