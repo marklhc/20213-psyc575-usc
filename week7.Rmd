@@ -1,0 +1,186 @@
+---
+title: "Week 7"
+description: |
+  Multilevel Models for Experimental Data
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  slides: "07_mlm_for_experimental_data"
+---
+
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Identify the correct levels with experimental studies
+- Describe designs with crossed random levels
+- Assign variables to appropriate levels, and tell which variables can have random slopes at which levels
+- Compute a version of effect size ($R^2$) for experimental data
+
+Note: In the video the slides use $d$ for effect size, but we will use $R^2$ in this class.
+
+## Task Lists
+
+1. Review the resources (lecture videos and slides)
+2. Complete the assigned readings
+    * Snijders & Bosker 13.1
+    * [Hoffman & Rovine (2007)](https://link.springer.com/content/pdf/10.3758/BF03192848.pdf)
+3. Attend the Thursday session and participate in the class exercise
+4. Complete Homework 7
+5. Think about your project---Prospectus will be due in two weeks
+6. Additional resources for learning MLM for experimental designs
+    * [This paper](https://www.annualreviews.org/doi/abs/10.1146/annurev-psych-122414-033702) by Judd et al. 
+
+# Lecture
+
+## Slides
+
+You can view and download the slides here: 
+[PDF](`r file.path("slides", paste0(params$slides, ".pdf"))`){target="_blank"}
+
+```{r, include = FALSE}
+library(checkdown)
+right_ans <- c("You got it :+1:", 
+               "Great job :+1:")
+wrong_ans <- "Try again. You can do it!"
+```
+
+## Multilevel Experiments
+
+```{r, echo=FALSE}
+add_youtube("9btZ_FrDGus")
+```
+
+***
+
+Check your learning: In a research study, 10 hospitals are randomly assigned to a treatment condition to adopt a new drug, whereas the other 10 hospitals use the conventional method. What is the design of this study?
+
+```{r echo=FALSE, results="asis"}
+check_question("A cluster-randomized trial", 
+               options = c("A cluster-randomized trial", 
+                           "A multisite trial", 
+                           "A within-subjects design"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Example
+
+```{r, echo=FALSE}
+add_youtube("4baFBogxmAs")
+```
+
+***
+
+Check your learning: In the data set, how many observations are there at level 1?
+
+```{r echo=FALSE, results="asis"}
+check_question("7,803", 
+               options = c("7,803", 
+                           "153", 
+                           "51"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans, 
+               alignment = TRUE)
+```
+
+***
+
+## Long vs. Wide data set
+
+```{r, echo=FALSE}
+add_youtube("NsRnhNz3-10")
+```
+
+***
+
+Check your learning: In the following data, `hvltt` to `hvltt4` are the test score of a verbal learning test across four time points. Is this a long or a wide data set?
+
+```{r, message=FALSE}
+library(tidyverse)
+read.csv("https://books.psychstat.org/rdata/data/active.csv",
+         header = TRUE) %>%
+  select(id, hvltt:hvltt4) %>%
+  rmarkdown::paged_table()
+```
+
+
+```{r echo=FALSE, results="asis"}
+check_question("wide", 
+               options = c("long", 
+                           "wide"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans, 
+               alignment = TRUE)
+```
+
+## Crossed Random Levels
+
+```{r, echo=FALSE}
+add_youtube("Vgv78TgDWgA")
+```
+
+***
+
+Think more: What is the data structure if there are 1,000 students from 100 schools and 30 neighborhoods, and each school has students from multiple neighborhoods?
+
+***
+
+### Unconditional model
+
+```{r, echo=FALSE}
+add_youtube("zECzzA4H_uo")
+```
+
+***
+
+Practice yourself: Compute the design effects for the person level and for the item level. Do the design effects suggest the need for both levels? (That is, are both design effects > 1.1?)
+
+Answer: See the computation in the [R code](rcode7.html#intraclass-correlations-and-design-effects)
+
+***
+
+## Cross-Classified Random-Effect Model With Random Slopes
+
+```{r, echo=FALSE}
+add_youtube("dyDKHC0sugE")
+```
+
+***
+
+Check your learning: If in the experiment, each person respond to each item 3 times, each time with a different `duration`. At what level(s) can `duration` have random slopes?
+
+```{r echo=FALSE, results="asis"}
+check_question("Both person and item", 
+               options = c("Both person and item", 
+                           "Person only", 
+                           "Item only", 
+                           "Within-cell"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Full Model
+
+```{r, echo=FALSE}
+add_youtube("bIrEtjB91gk")
+```
+
+## Effect Size
+
+Please check out the slides and the examples in the [R code](rcode7.html#effect-size)
