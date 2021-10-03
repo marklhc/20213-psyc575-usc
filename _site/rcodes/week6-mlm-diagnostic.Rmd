@@ -152,7 +152,7 @@ The above shows a misfit for the plot with `ses`.
 
 - Include non-linear terms (e.g., quadratic)
 - Include interactions (but note that interactions can be present even when linearity is not violated)
-- Using smoothing splines. Below is an example:
+- Using splines. Below is an example:
 
 ```{r m2_spline}
 # Need the `spline` package; bs() for cubic spline
