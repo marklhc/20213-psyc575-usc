@@ -1,0 +1,223 @@
+---
+title: "Week 8"
+description: |
+  Models for Longitudinal Data I
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  slides: "08_longitudinal_analysis_1"
+---
+
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Describe the similarities and differences between longitudinal data and cross-sectional clustered data
+- Perform some basic **attrition analyses**
+- Specify and run **growth curve analysis**
+- Analyze models with **time-invariant covariates** (i.e., lv-2 predictors) and interpret the results
+
+Note: In the video the slides use $d$ for effect size, but we will use $R^2$ in this class.
+
+## Task Lists
+
+1. Review the resources (lecture videos and slides)
+2. Complete the assigned readings
+    * Snijders & Bosker ch 15 (you can skip 15.1.3 and 15.1.4)
+3. Prepare the prospectus and schedule a meeting with the instructor
+4. Additional resources for learning MLM for longitudinal data analysis
+    * [This excellent book by Hoffman (2014)](https://www-taylorfrancis-com.libproxy2.usc.edu/books/9781315744094) (USC SSO required)
+
+# Lecture
+
+## Slides
+
+<span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span>
+
+You can view and download the slides here: 
+[PDF](`r file.path("slides", paste0(params$slides, ".pdf"))`){target="_blank"}
+
+```{r, include=FALSE}
+library(checkdown)
+right_ans <- c("Correct :+1:", 
+               "Great job :+1:")
+wrong_ans <- "Try again. You can do it!"
+```
+
+## Longitudinal Data Analysis
+
+```{r, echo = FALSE}
+add_youtube("bdDrcmktBnE")
+```
+
+***
+
+Check your learning: In a research study, data were collected for a group of patients on symptoms of eating disorder on a weekly interval across 5 weeks. What type of data is this?
+
+```{r echo = FALSE, results = "asis"}
+check_question("Panel data", 
+               options = c("Panel data", 
+                           "Intensive longitudinal data", 
+                           "Cross-sectional data"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Example data
+
+```{r, echo = FALSE}
+add_youtube("3PDA_ur1sOU")
+```
+
+***
+
+Check your learning: In the data set, at what level is `homecog`, which is a measure of mother's cognitive stimulation at baseline?
+
+```{r echo = FALSE, results = "asis"}
+check_question("Level 2", 
+               options = c("Level 1", 
+                           "Level 2"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans, 
+               alignment = TRUE)
+```
+
+***
+
+### Basic attrition analysis
+
+```{r, echo = FALSE}
+add_youtube("b2dto5JwRQ8")
+```
+
+See the [R code section](../rcode8/#attrition-analyses). 
+
+***
+
+Check your learning: In the spaghetti plot, what does the average trend line mean?
+
+```{r echo = FALSE, results = "asis"}
+check_question("That the sample average reading score increased across time", 
+               options = c("That every child showed an increasing trend", 
+                           "That the sample average reading score increased across time", 
+                           "That there is no variability in individual trajectories"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Growth Curve Modeling
+
+<span style="color:red">Note that in the video, the function `brm()` from the `brms` package was used for Bayesian analyses. However, in this class we will use the `glmmTMB()` function instead (see the updated slides). The parameter estimates and interpretations are basically the same.</span>
+
+```{r, echo = FALSE}
+add_youtube("iT7kzf2gIUs")
+```
+
+***
+
+Thinking exercise: In a growth model, what does it mean when $\tau_1 = 0$?
+
+```{r echo = FALSE, results = "asis"}
+check_question("That every participant has the same rate of change", 
+               options = c("That on average, there is no change on the outcome across time", 
+                           "That every participant has the same rate of change", 
+                           "That every participant has the same outcome score"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+### Linear growth
+
+<span style="color:red">Note that what is labelled as SD~post~ is the Bayesian analogue of the standard error.</span>
+
+```{r, echo = FALSE}
+add_youtube("4xHz4OIPVh8")
+```
+
+***
+
+Check you learning: What is the advantage of having time to start at 0?
+
+```{r echo = FALSE, results = "asis"}
+check_question("The intercept corresponds to the predicted score at the first time point", 
+               options = c("The intercept corresponds to the predicted score at the first time point", 
+                           "So that tau_1 will be the SD of the slopes"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+### Piecewise linear growth
+
+```{r, echo = FALSE}
+add_youtube("p6TQdUzi1d0")
+```
+
+***
+
+Practice yourself: What should the coding of phase 1 and phase 2 be if the turning point is set at `time` = 2?
+
+***
+
+<span style="color:red">Instead of using the LOOIC in the Bayesian analysis as discussed in the video, we can use the more popular AIC statistic to compare the two models.</span>
+
+```{r, echo = FALSE}
+add_youtube("MbDcv05wOrU")
+```
+
+Note: In this example, the turning point was chosen mostly based on the spaghetti plot and was arbitrary. For your research, you should justify your choice. 
+
+***
+
+Check your learning: If a piecewise growth model has an AIC of 23745, and a linear growth model has an AIC of 23650, which model should be preferred?
+
+```{r echo = FALSE, results = "asis"}
+check_question("Linear",
+               options = c("Piecewise", 
+                           "Linear"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans, 
+               alignment = TRUE)
+```
+
+***
+
+## Time-Invariant Covariates 
+
+```{r, echo = FALSE}
+add_youtube("fI6XJnVQ3pg")
+```
+
+***
+
+Thinking exercise: What does the coefficient for `phase1` mean when the model includes an interaction between `phase1` and `homecog9`?
+
+```{r echo = FALSE, results = "asis"}
+check_question("The average slope from time 0 to time 1 for kids with homecog = 9",
+               options = c("The average slope from time 0 to time 1",
+                           "The average slope from time 0 to time 1 for kids with homecog = 9",
+                           "The average slope from time 0 to time 1, holding constant homecog"),
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
