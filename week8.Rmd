@@ -224,4 +224,12 @@ check_question("The average slope from time 0 to time 1 for kids with homecog = 
 
 ## Varying Occasions
 
-Instead of using `time` as the duration since a particular point in history (e.g., when the study started), one can use some other ways of quantifying time, such as the duration since one is born (i.e., chronological age). See R code. I may add a new video explaining it in the next few days.
+Instead of using `time` as the duration since a particular point in history (e.g., when the study started), one can use some other ways of quantifying time, such as the duration since one is born (i.e., chronological age). See R code.
+
+```{r, echo = FALSE}
+add_youtube("XsbxN2m_si4")
+```
+
+```{r, echo = FALSE}
+add_youtube("PYyMVi292DM")
+```

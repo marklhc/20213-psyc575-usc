@@ -456,7 +456,7 @@ Here is an example:
 
 ```{r plot-age}
 # Subtract age by 6
-curran_long <- curran_long %>% 
+curran_long <- curran_long %>%
   mutate(kidagetv = kidage + time * 2,
          # Compute the age for each time point
          kidage6tv = kidagetv - 6)
