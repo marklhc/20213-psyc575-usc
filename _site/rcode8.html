@@ -86,26 +86,26 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 4)</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 8)</title>
 
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 4)"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 8)"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 4)"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 8)"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["R Codes (Week 4)"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["rmd_file"]}},"value":[{"type":"character","attributes":{},"value":["week4-level-1-predictor"]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["R Codes (Week 8)"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["rmd_file"]}},"value":[{"type":"character","attributes":{},"value":["week8-longitudinal-1"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2059,7 +2059,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"R Codes (Week 4)","authors":[]}
+{"title":"R Codes (Week 8)","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2115,7 +2115,7 @@ R Codes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>R Codes (Week 4)</h1>
+<h1>R Codes (Week 8)</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -2129,41 +2129,26 @@ R Codes
 <ul>
 <li><a href="#load-packages-and-import-data">Load Packages and Import Data</a>
 <ul>
-<li><a href="#import-data">Import Data</a></li>
+<li><a href="#wide-to-long">Wide to Long</a></li>
 </ul></li>
-<li><a href="#between-within-decomposition">Between-Within Decomposition</a>
+<li><a href="#data-exploration">Data Exploration</a>
 <ul>
-<li><a href="#cluster-mean-centering">Cluster-mean centering</a></li>
-<li><a href="#model-equation">Model Equation</a></li>
-<li><a href="#running-in-r">Running in R</a></li>
+<li><a href="#spaghetti-plot">Spaghetti Plot</a></li>
+<li><a href="#temporal-covariances-and-correlations">Temporal Covariances and Correlations</a></li>
+<li><a href="#attrition-analyses">Attrition Analyses</a></li>
 </ul></li>
-<li><a href="#contextual-effect">Contextual Effect</a>
+<li><a href="#unconditional-model">Unconditional Model</a></li>
+<li><a href="#linear-growth-models">Linear Growth Models</a>
 <ul>
-<li><a href="#model-equation-1">Model Equation</a></li>
-<li><a href="#running-in-r-1">Running in R</a></li>
+<li><a href="#linear-model-with-time">Linear Model With Time</a></li>
 </ul></li>
-<li><a href="#random-coefficients-model">Random-Coefficients Model</a>
+<li><a href="#piecewise-growth-model">Piecewise Growth Model</a>
 <ul>
-<li><a href="#explore-variations-in-slopes">Explore Variations in Slopes</a></li>
-<li><a href="#model-equation-2">Model Equation</a></li>
-<li><a href="#running-in-r-2">Running in R</a></li>
-<li><a href="#plotting-random-slopes">Plotting Random Slopes</a>
-<ul>
-<li><a href="#including-the-effect-of-meanses">Including the effect of <code>meanses</code></a></li>
+<li><a href="#plotting-the-predicted-trajectories">Plotting the predicted trajectories</a></li>
 </ul></li>
-<li><a href="#effect-size">Effect Size</a></li>
-</ul></li>
-<li><a href="#analyzing-cross-level-interactions">Analyzing Cross-Level Interactions</a>
+<li><a href="#time-invariant-covariates">Time-Invariant Covariates</a>
 <ul>
-<li><a href="#model-equation-3">Model Equation</a></li>
-<li><a href="#running-in-r-3">Running in R</a></li>
-<li><a href="#effect-size-1">Effect Size</a></li>
-<li><a href="#simple-slopes">Simple Slopes</a></li>
-<li><a href="#plotting-the-interactions">Plotting the Interactions</a></li>
-</ul></li>
-<li><a href="#summaizing-analyses-in-a-table">Summaizing Analyses in a Table</a>
-<ul>
-<li><a href="#bonus-more-apa-like-table">Bonus: More “APA-like” Table</a></li>
+<li><a href="#table-of-coefficients">Table of Coefficients</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2173,7 +2158,7 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week4-level-1-predictor.Rmd">week4-level-1-predictor.Rmd</a></p>
+<p>Click here to download the Rmd file: <a href="rcodes/week8-longitudinal-1.Rmd">week8-longitudinal-1.Rmd</a></p>
 <h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2183,483 +2168,653 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>  <span class='co'># for data manipulation and plotting</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span>  <span class='co'># for importing SPSS/SAS/Stata data</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/lme4/lme4/'>lme4</a></span><span class='op'>)</span>  <span class='co'># for multilevel analysis</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>  <span class='co'># for plotting effects</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>MuMIn</span><span class='op'>)</span>  <span class='co'># for computing r-squared</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/bbolker/broom.mixed'>broom.mixed</a></span><span class='op'>)</span>  <span class='co'># for summarizing results</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/glmmTMB/glmmTMB'>glmmTMB</a></span><span class='op'>)</span>  <span class='co'># for longitudinal analysis</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for plotting interactions</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for interaction plots</span>
 <span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>msummary_mixed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>models</span>, <span class='va'>coef_map</span> <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='st'>"list"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-      <span class='va'>models</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span>
-    <span class='op'>}</span>
-    <span class='kw'>for</span> <span class='op'>(</span><span class='va'>model</span> <span class='kw'>in</span> <span class='va'>models</span><span class='op'>)</span> <span class='op'>{</span>
-      <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>union</a></span><span class='op'>(</span><span class='va'>coef_map</span>, <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span><span class='op'>$</span><span class='va'>term</span><span class='op'>)</span>
-    <span class='op'>}</span>
-    <span class='va'>ranef_index</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span><span class='op'>(</span><span class='st'>"^(sd|cor)__"</span>, x <span class='op'>=</span> <span class='va'>coef_map</span><span class='op'>)</span>
-    <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>[</span><span class='op'>-</span><span class='va'>ranef_index</span><span class='op'>]</span>, <span class='va'>coef_map</span><span class='op'>[</span><span class='va'>ranef_index</span><span class='op'>]</span><span class='op'>)</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>coef_map</span>
-  <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
-    <span class='va'>ranef_index</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span><span class='op'>(</span><span class='st'>"^(sd|cor)__"</span>, x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='op'>}</span>
-  <span class='va'>rows</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>term <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Fixed Effects"</span>, <span class='st'>"Random Effects"</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='va'>rows</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span>,
-    <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='op'>)</span><span class='op'>)</span>
-  <span class='va'>length_fes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>ranef_index</span><span class='op'>)</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='st'>"statistic"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>$</span><span class='va'>statistic</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>
-  <span class='op'>}</span>
-  <span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='va'>models</span>, coef_map <span class='op'>=</span> <span class='va'>coef_map</span>, add_rows <span class='op'>=</span> <span class='va'>rows</span>, <span class='va'>...</span><span class='op'>)</span>
-<span class='op'>}</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data from gitHub (need Internet access)</span>
+<span class='va'>curran_wide</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span><span class='st'>"https://github.com/MultiLevelAnalysis/Datasets-third-edition-Multilevel-book/raw/master/chapter%205/Curran/CurranData.sav"</span><span class='op'>)</span>
+<span class='co'># Make id a factor</span>
+<span class='va'>curran_wide</span>  <span class='co'># print the data</span>
 </code></pre>
 </div>
+<pre><code>&gt;# # A tibble: 405 × 15
+&gt;#       id anti1 anti2 anti3 anti4 read1 read2 read3 read4    kidgen
+&gt;#    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+lbl&gt;
+&gt;#  1    22     1     2    NA    NA   2.1   3.9  NA    NA    0 [girl]
+&gt;#  2    34     3     6     4     5   2.1   2.9   4.5   4.5  1 [boy] 
+&gt;#  3    58     0     2     0     1   2.3   4.5   4.2   4.6  0 [girl]
+&gt;#  4   122     0     3     1     1   3.7   8    NA    NA    1 [boy] 
+&gt;#  5   125     1     1     2     1   2.3   3.8   4.3   6.2  0 [girl]
+&gt;#  6   133     3     4     3     5   1.8   2.6   4.1   4    1 [boy] 
+&gt;#  7   163     5     4     5     5   3.5   4.8   5.8   7.5  1 [boy] 
+&gt;#  8   190     0    NA    NA     0   2.9   6.1  NA    NA    0 [girl]
+&gt;#  9   227     0     0     2     1   1.8   3.8   4    NA    0 [girl]
+&gt;# 10   248     1     2     2     0   3.5   5.7   7     6.9  0 [girl]
+&gt;# # … with 395 more rows, and 5 more variables: momage &lt;dbl&gt;,
+&gt;# #   kidage &lt;dbl&gt;, homecog &lt;dbl&gt;, homeemo &lt;dbl&gt;, nmis &lt;dbl&gt;</code></pre>
 </div>
-<h3 id="import-data">Import Data</h3>
+<h3 id="wide-to-long">Wide to Long</h3>
+<p>To perform multilevel analysis, we need to restructure the data from a wide format to a long format:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data (pay attention to the directory)</span>
-<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"data_files"</span>, <span class='st'>"hsball.sav"</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using the new `tidyr::pivot_longer()` function</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pivot_longer</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>anti1</span><span class='op'>:</span><span class='va'>anti4</span>, <span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span>,  <span class='co'># variables that are repeated measures</span>
+    <span class='co'># Convert 8 columns to 3: 2 columns each for anti/read (.value), and</span>
+    <span class='co'># one column for time</span>
+    names_to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>".value"</span>, <span class='st'>"time"</span><span class='op'>)</span>,
+    <span class='co'># Extract the names "anti"/"read" from the names of the variables for the</span>
+    <span class='co'># value columns, and then the number to the "time" column</span>
+    names_pattern <span class='op'>=</span> <span class='st'>"(anti|read)([1-4])"</span>,
+    <span class='co'># Convert the "time" column to integers</span>
+    names_transform <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>time <span class='op'>=</span> <span class='va'>as.integer</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='va'>curran_long</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>anti</span>, <span class='va'>read</span>, <span class='va'>time</span>, <span class='fu'>everything</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code>&gt;# # A tibble: 1,620 × 10
+&gt;#       id  anti  read  time  kidgen momage kidage homecog homeemo  nmis
+&gt;#    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl+l&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+&gt;#  1    22     1   2.1     1 0 [gir…     28   6.08      13      10     4
+&gt;#  2    22     2   3.9     2 0 [gir…     28   6.08      13      10     4
+&gt;#  3    22    NA  NA       3 0 [gir…     28   6.08      13      10     4
+&gt;#  4    22    NA  NA       4 0 [gir…     28   6.08      13      10     4
+&gt;#  5    34     3   2.1     1 1 [boy]     28   6.83       9       9     0
+&gt;#  6    34     6   2.9     2 1 [boy]     28   6.83       9       9     0
+&gt;#  7    34     4   4.5     3 1 [boy]     28   6.83       9       9     0
+&gt;#  8    34     5   4.5     4 1 [boy]     28   6.83       9       9     0
+&gt;#  9    58     0   2.3     1 0 [gir…     28   6.5        9       6     0
+&gt;# 10    58     2   4.5     2 0 [gir…     28   6.5        9       6     0
+&gt;# # … with 1,610 more rows</code></pre>
 </div>
-<h1 id="between-within-decomposition">Between-Within Decomposition</h1>
-<h2 id="cluster-mean-centering">Cluster-mean centering</h2>
-<p>To separate the effects of a lv-1 predictor into different levels, one needs to first center the predictor on the cluster means:</p>
+<h1 id="data-exploration">Data Exploration</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># operate within schools</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,   <span class='co'># create cluster means (the same as `meanses`)</span>
-         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># cluster-mean centered</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
-<span class='co'># The meanses variable already exists in the original data, but it's slightly</span>
-<span class='co'># different from computing it by hand</span>
-<span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>ses</span>, <span class='va'>meanses</span>, <span class='va'>ses_cm</span>, <span class='va'>ses_cmc</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>select</span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>kidage</span>, <span class='va'>homecog</span>, <span class='va'>anti</span>, <span class='va'>read</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>psych</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psych/man/pairs.panels.html'>pairs.panels</a></span><span class='op'>(</span>jiggle <span class='op'>=</span> <span class='cn'>TRUE</span>, factor <span class='op'>=</span> <span class='fl'>0.5</span>, ellipses <span class='op'>=</span> <span class='cn'>FALSE</span>,
+                        cex.cor <span class='op'>=</span> <span class='fl'>1</span>, cex <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# # A tibble: 7,185 × 5
-&gt;#    id       ses meanses ses_cm ses_cmc
-&gt;#    &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-&gt;#  1 1224  -1.53   -0.428 -0.434 -1.09  
-&gt;#  2 1224  -0.588  -0.428 -0.434 -0.154 
-&gt;#  3 1224  -0.528  -0.428 -0.434 -0.0936
-&gt;#  4 1224  -0.668  -0.428 -0.434 -0.234 
-&gt;#  5 1224  -0.158  -0.428 -0.434  0.276 
-&gt;#  6 1224   0.022  -0.428 -0.434  0.456 
-&gt;#  7 1224  -0.618  -0.428 -0.434 -0.184 
-&gt;#  8 1224  -0.998  -0.428 -0.434 -0.564 
-&gt;#  9 1224  -0.888  -0.428 -0.434 -0.454 
-&gt;# 10 1224  -0.458  -0.428 -0.434 -0.0236
-&gt;# # … with 7,175 more rows</code></pre>
+<p><img src="rcode8_files/figure-html5/pairs-data-1.png" width="624" /></p>
 </div>
-<h2 id="model-equation">Model Equation</h2>
-<p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
-<p>Lv-2:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
-  \beta_{1j} &amp; = \gamma_{10}
-\end{aligned}
-\]</span> where</p>
-<ul>
-<li><span class="math inline">\(\gamma_{10}\)</span> = regression coefficient of student-level <code>ses</code> representing the expected difference in student achievement between two students <em>in the same school</em> with one unit difference in <code>ses</code>,<br />
-</li>
-<li><span class="math inline">\(\gamma_{01}\)</span> = between-school effect, which is the expected difference in mean achievement between two schools with one unit difference in <code>meanses</code>.</li>
-</ul>
-<h2 id="running-in-r">Running in R</h2>
-<p>We can specify the model as:</p>
+<p>What distinguishes longitudinal data from usual cross-sectional multilevel data is the <em>temporal ordering</em>. In the example of students nested within schools, we don’t say that student 1 is naturally before student 2, and it doesn’t really matter if one just reorder the students. However, in longitudinal data such temporal sequence is very important, and we cannot simply rearrange the observation at time 2 to be at time 1. A related concern is the presence of autocorrelation, with which observations closer in time will be more similar to each other.</p>
+<h2 id="spaghetti-plot">Spaghetti Plot</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m_bw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plotting</span>
+<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>curran_long</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
+  <span class='co'># add a mean trajectory</span>
+  <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span>
+<span class='va'>p1</span>
 </code></pre>
 </div>
+<p><img src="rcode8_files/figure-html5/p1-1.png" width="624" /></p>
 </div>
-<p>You can summarize the results using</p>
+<p>We can see that on average there is an increasing trend across time, but also there is a lot of variations in each individual’s starting point and the trajectory of change.</p>
+<p>We can also plot the trajectory for a random sample of individuals:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_bw</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Randomly sample 40 individuals</span>
+<span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1349</span><span class='op'>)</span>
+<span class='va'>sampled_id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>curran_long</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, <span class='fl'>40</span><span class='op'>)</span>
+<span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>sampled_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
-&gt;# Formula: mathach ~ meanses + ses_cmc + (1 | id)
-&gt;#    Data: hsball
-&gt;# 
-&gt;# REML criterion at convergence: 46568.6
-&gt;# 
-&gt;# Scaled residuals: 
-&gt;#     Min      1Q  Median      3Q     Max 
-&gt;# -3.1666 -0.7253  0.0174  0.7557  2.9453 
-&gt;# 
-&gt;# Random effects:
-&gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept)  2.692   1.641   
-&gt;#  Residual             37.019   6.084   
-&gt;# Number of obs: 7185, groups:  id, 160
-&gt;# 
-&gt;# Fixed effects:
-&gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6481     0.1494   84.68
-&gt;# meanses       5.8662     0.3617   16.22
-&gt;# ses_cmc       2.1912     0.1087   20.16
-&gt;# 
-&gt;# Correlation of Fixed Effects:
-&gt;#         (Intr) meanss
-&gt;# meanses -0.004       
-&gt;# ses_cmc  0.000  0.000</code></pre>
+<p><img src="rcode8_files/figure-html5/facet-traj-1.png" width="624" /></p>
 </div>
-<h1 id="contextual-effect">Contextual Effect</h1>
-<p>With a level-1 predictor like <code>ses</code>, which has both student-level and school-level variance, we can include both the level-1 variable and the school mean variable as predictors. When the level-1 predictor is present, the coefficient for the group mean variable becomes the <em>contextual</em> effect.</p>
-<h2 id="model-equation-1">Model Equation</h2>
-<p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses}_{ij} + e_{ij}\]</span></p>
-<p>Lv-2:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
-  \beta_{1j} &amp; = \gamma_{10}
-\end{aligned}
-\]</span> where</p>
-<ul>
-<li><span class="math inline">\(\gamma_{10}\)</span> = regression coefficient of student-level <code>ses</code> representing the expected difference in student achievement between two students <em>in the same school</em> with one unit difference in <code>ses</code>,<br />
-</li>
-<li><span class="math inline">\(\gamma_{01}\)</span> = contextual effect, which is the expected difference in student achievement between two students <em>with the same <code>ses</code></em> but from two schools with one unit difference in <code>meanses</code>.</li>
-</ul>
-<h2 id="running-in-r-1">Running in R</h2>
-<p>We can specify the model as:</p>
+<h2 id="temporal-covariances-and-correlations">Temporal Covariances and Correlations</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>contextual</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Easier with the wide data set</span>
+<span class='co'># Covariance matrix:</span>
+<span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>"read"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"complete"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># listwise deletion</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>  <span class='co'># two decimal places</span>
 </code></pre>
 </div>
+<pre><code>&gt;#       read1 read2 read3 read4
+&gt;# read1  0.77  0.55  0.52  0.48
+&gt;# read2  0.55  1.01  0.90  0.92
+&gt;# read3  0.52  0.90  1.22  1.09
+&gt;# read4  0.48  0.92  1.09  1.48</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Correlation matrix</span>
+<span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>"read"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"complete"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># listwise deletion</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>  <span class='co'># two decimal places</span>
+</code></pre>
 </div>
-<p>You can summarize the results using</p>
+<pre><code>&gt;#       read1 read2 read3 read4
+&gt;# read1  1.00  0.62  0.53  0.45
+&gt;# read2  0.62  1.00  0.81  0.75
+&gt;# read3  0.53  0.81  1.00  0.81
+&gt;# read4  0.45  0.75  0.81  1.00</code></pre>
+</div>
+<p>You can see the variances increase over time, and the correlation is generally stronger for observations closer in time.</p>
+<h2 id="attrition-analyses">Attrition Analyses</h2>
+<p>To see whether those who dropped out or had missing data differed in some characteristics as those who did not drop out, let’s identify the group with complete data on <code>read</code>, and the group without complete data on <code>read</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>contextual</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create grouping</span>
+<span class='va'>curran_wide</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Compute summaries by rows</span>
+  <span class='fu'>rowwise</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># First compute the number of missing occasions</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>nmis_read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='fu'>c_across</span><span class='op'>(</span><span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+         <span class='co'># Complete only when nmis_read = 0</span>
+         complete <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>nmis_read</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='st'>"complete"</span>, <span class='st'>"incomplete"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+<span class='co'># Compare the differences</span>
+<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/datasummary.html'>datasummary</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>anti1</span> <span class='op'>+</span> <span class='va'>read1</span> <span class='op'>+</span> <span class='va'>kidgen</span> <span class='op'>+</span> <span class='va'>momage</span> <span class='op'>+</span> <span class='va'>kidage</span> <span class='op'>+</span> <span class='va'>homecog</span> <span class='op'>+</span> <span class='va'>homeemo</span><span class='op'>)</span> <span class='op'>~</span>
+              <span class='va'>complete</span> <span class='op'>*</span> <span class='op'>(</span><span class='va'>Mean</span> <span class='op'>+</span> <span class='va'>SD</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_wide</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
-&gt;# Formula: mathach ~ meanses + ses + (1 | id)
-&gt;#    Data: hsball
-&gt;# 
-&gt;# REML criterion at convergence: 46568.6
-&gt;# 
-&gt;# Scaled residuals: 
-&gt;#     Min      1Q  Median      3Q     Max 
-&gt;# -3.1666 -0.7253  0.0174  0.7557  2.9453 
-&gt;# 
-&gt;# Random effects:
-&gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept)  2.692   1.641   
-&gt;#  Residual             37.019   6.084   
-&gt;# Number of obs: 7185, groups:  id, 160
-&gt;# 
-&gt;# Fixed effects:
-&gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6613     0.1494  84.763
-&gt;# meanses       3.6750     0.3777   9.731
-&gt;# ses           2.1912     0.1087  20.164
-&gt;# 
-&gt;# Correlation of Fixed Effects:
-&gt;#         (Intr) meanss
-&gt;# meanses -0.005       
-&gt;# ses      0.004 -0.288</code></pre>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1">
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+complete
 </div>
-<p>If you compare the <code>REML criterion at convergence</code> number you can see this is the same as the between-within model. The estimated contextual effect is the coefficient of <code>meanses</code> minus the coefficient of <code>ses_cmc</code>, which is the same as what you will get in the contextual effect model.</p>
-<h1 id="random-coefficients-model">Random-Coefficients Model</h1>
-<h2 id="explore-variations-in-slopes">Explore Variations in Slopes</h2>
+</th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2">
+<div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">
+incomplete
+</div>
+</th>
+</tr>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+anti1
+</td>
+<td style="text-align:right;">
+1.49
+</td>
+<td style="text-align:right;">
+1.54
+</td>
+<td style="text-align:right;">
+1.89
+</td>
+<td style="text-align:right;">
+1.78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+read1
+</td>
+<td style="text-align:right;">
+2.50
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:right;">
+2.55
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+kidgen
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+<td style="text-align:right;">
+0.48
+</td>
+<td style="text-align:right;">
+0.50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+momage
+</td>
+<td style="text-align:right;">
+25.61
+</td>
+<td style="text-align:right;">
+1.85
+</td>
+<td style="text-align:right;">
+25.42
+</td>
+<td style="text-align:right;">
+1.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+kidage
+</td>
+<td style="text-align:right;">
+6.90
+</td>
+<td style="text-align:right;">
+0.62
+</td>
+<td style="text-align:right;">
+6.97
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homecog
+</td>
+<td style="text-align:right;">
+9.09
+</td>
+<td style="text-align:right;">
+2.46
+</td>
+<td style="text-align:right;">
+8.63
+</td>
+<td style="text-align:right;">
+2.70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+homeemo
+</td>
+<td style="text-align:right;">
+9.35
+</td>
+<td style="text-align:right;">
+2.23
+</td>
+<td style="text-align:right;">
+9.01
+</td>
+<td style="text-align:right;">
+2.41
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The two groups are pretty similar, except that the group with missing seem to have higher baseline antisocial score, and lower <code>homecog</code>. In actually analyses, you may want to adjust for these variables by including them in the model (as covariates), if you suspect the results may be confounded by higher probability of dropping out.</p>
+<p>Of course, the two groups could still be different in important characteristics that are not included in the data. It requires careful investigation of why the data were missing</p>
+<h1 id="unconditional-model">Unconditional Model</h1>
+<p>You can use the <code>lme4</code> package for the basic model:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-  <span class='co'># randomly sample 16 schools</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>, <span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>id</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m00_lme4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_long</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m00_lme4</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="rcode4_files/figure-html5/var-in-slopes-1.png" width="624" /></p>
-</div>
-<h2 id="model-equation-2">Model Equation</h2>
-<p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
-<p>Lv-2:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
-  \beta_{1j} &amp; = \gamma_{10} + u_{1j}  
-\end{aligned}
-\]</span> The additional term is <span class="math inline">\(u_{1j}\)</span>, which represents the deviation of the slope of school <span class="math inline">\(j\)</span> from the average slope (i.e., <span class="math inline">\(\gamma_{10}\)</span>).</p>
-<h2 id="running-in-r-2">Running in R</h2>
-<p>We have to put <code>ses</code> in the random part:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ran_slp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>You can summarize the results using</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
-&gt;# Formula: mathach ~ meanses + ses_cmc + (ses_cmc | id)
-&gt;#    Data: hsball
+<pre><code>&gt;# Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
+&gt;# lmerModLmerTest]
+&gt;# Formula: read ~ (1 | id)
+&gt;#    Data: curran_long
 &gt;# 
-&gt;# REML criterion at convergence: 46557.7
-&gt;# 
-&gt;# Scaled residuals: 
-&gt;#     Min      1Q  Median      3Q     Max 
-&gt;# -3.1768 -0.7269  0.0160  0.7560  2.9406 
-&gt;# 
-&gt;# Random effects:
-&gt;#  Groups   Name        Variance Std.Dev. Corr 
-&gt;#  id       (Intercept)  2.6931  1.6411        
-&gt;#           ses_cmc      0.6858  0.8281   -0.19
-&gt;#  Residual             36.7132  6.0591        
-&gt;# Number of obs: 7185, groups:  id, 160
-&gt;# 
-&gt;# Fixed effects:
-&gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6454     0.1492   84.74
-&gt;# meanses       5.8963     0.3600   16.38
-&gt;# ses_cmc       2.1913     0.1280   17.11
-&gt;# 
-&gt;# Correlation of Fixed Effects:
-&gt;#         (Intr) meanss
-&gt;# meanses -0.004       
-&gt;# ses_cmc -0.088  0.004</code></pre>
-</div>
-<h2 id="plotting-random-slopes">Plotting Random Slopes</h2>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># augmented data (adding EB estimates)</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Predicted mathach"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-</code></pre>
-</div>
-<p><img src="rcode4_files/figure-html5/plot-ran-slp-1.png" width="624" /></p>
-</div>
-<h3 id="including-the-effect-of-meanses">Including the effect of <code>meanses</code></h3>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># augmented data (adding EB estimates)</span>
-<span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Add points</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Add within-cluster lines</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
-              method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Add group means</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>,
-                   fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span>,
-               color <span class='op'>=</span> <span class='st'>"red"</span>,  <span class='co'># add border</span>
-               fun <span class='op'>=</span> <span class='va'>mean</span>, 
-               geom <span class='op'>=</span> <span class='st'>"point"</span>,
-               shape <span class='op'>=</span> <span class='fl'>24</span>,
-               <span class='co'># use triangles</span>
-               size <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Add between coefficient</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
-              method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>,
-              color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Math Achievement"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Suppress legend</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span>, fill <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-</code></pre>
-</div>
-<p><img src="rcode4_files/figure-html5/plot-ran-slp-meanses-1.png" width="624" /></p>
-</div>
-<p>Or on separate graphs:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create a common base graph</span>
-<span class='va'>pbase</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Add points</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Math Achievement"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Suppress legend</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
-<span class='co'># Lv-1 effect</span>
-<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='va'>pbase</span> <span class='op'>+</span> 
-  <span class='co'># Add within-cluster lines</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
-              method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
-<span class='co'># Lv-2 effect</span>
-<span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='va'>pbase</span> <span class='op'>+</span>
-  <span class='co'># Add group means</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
-               fun <span class='op'>=</span> <span class='va'>mean</span>,
-               geom <span class='op'>=</span> <span class='st'>"point"</span>,
-               shape <span class='op'>=</span> <span class='fl'>17</span>,
-               <span class='co'># use triangles</span>
-               size <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='co'># Add between coefficient</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
-              method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>,
-              color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
-<span class='co'># Put the two graphs together (need the gridExtra package)</span>
-<span class='fu'>gridExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html'>grid.arrange</a></span><span class='op'>(</span><span class='va'>p1</span>, <span class='va'>p2</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>  <span class='co'># in two columns</span>
-</code></pre>
-</div>
-<p><img src="rcode4_files/figure-html5/plot-ran-slp-meanses-arrange-1.png" width="624" /></p>
-</div>
-<h2 id="effect-size">Effect Size</h2>
-<p>As discussed in the previous week, we can obtain the effect size (<span class="math inline">\(R^2\)</span>) for the model:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>r2_ran_slp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>&gt;#            R2m       R2c
-&gt;# [1,] 0.1684161 0.2310862</code></pre>
-</div>
-<h1 id="analyzing-cross-level-interactions">Analyzing Cross-Level Interactions</h1>
-<p><code>sector</code> is added to the level-2 intercept and slope equations</p>
-<h2 id="model-equation-3">Model Equation</h2>
-<p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
-<p>Lv-2:</p>
-<p><span class="math display">\[
-\begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + 
-                 \gamma_{02} \text{sector}_j + u_{0j}  \\
-  \beta_{1j} &amp; = \gamma_{10} + \gamma_{11} \text{sector}_j + u_{1j}  
-\end{aligned}
-\]</span> where - <span class="math inline">\(\gamma_{02}\)</span> = regression coefficient of school-level <code>sector</code> variable representing the expected difference in achievement between two students with the same SES level and from two schools with the same school-level SES, but one is a catholic school and the other a private school. - <span class="math inline">\(\gamma_{11}\)</span> = cross-level interaction coefficient of the expected <em>slope</em> difference between a catholic and a private school with the same school-level SES.</p>
-<h2 id="running-in-r-3">Running in R</h2>
-<p>We have to put the <code>sector * ses</code> interaction to the fixed part:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The first step is optional, but let's recode sector into a factor variable</span>
-<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>sector <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sector</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
-                         labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Public"</span>, <span class='st'>"Catholic"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>crlv_int</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>sector</span> <span class='op'>*</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
-                 data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<p>You can summarize the results using</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>crlv_int</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
-&gt;# Formula: mathach ~ meanses + sector * ses_cmc + (ses_cmc | id)
-&gt;#    Data: hsball
-&gt;# 
-&gt;# REML criterion at convergence: 46514.5
+&gt;# REML criterion at convergence: 5055.9
 &gt;# 
 &gt;# Scaled residuals: 
 &gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -3.11560 -0.72905  0.01592  0.75280  3.01543 
+&gt;# -2.21699 -0.79402  0.02351  0.72466  2.34342 
 &gt;# 
 &gt;# Random effects:
-&gt;#  Groups   Name        Variance Std.Dev. Corr
-&gt;#  id       (Intercept)  2.3807  1.5430       
-&gt;#           ses_cmc      0.2716  0.5212   0.24
-&gt;#  Residual             36.7077  6.0587       
-&gt;# Number of obs: 7185, groups:  id, 160
+&gt;#  Groups   Name        Variance Std.Dev.
+&gt;#  id       (Intercept) 0.3005   0.5482  
+&gt;#  Residual             2.3903   1.5461  
+&gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Fixed effects:
-&gt;#                        Estimate Std. Error t value
-&gt;# (Intercept)             12.0846     0.1987   60.81
-&gt;# meanses                  5.2450     0.3682   14.24
-&gt;# sectorCatholic           1.2523     0.3062    4.09
-&gt;# ses_cmc                  2.7877     0.1559   17.89
-&gt;# sectorCatholic:ses_cmc  -1.3478     0.2348   -5.74
+&gt;#              Estimate Std. Error        df t value Pr(&gt;|t|)    
+&gt;# (Intercept)   4.11279    0.05093 379.71115   80.75   &lt;2e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<p>However, <code>lme4</code> has some limitations with longitudinal data analysis, as it assumes that what is called a compound symmetry error covariance structure. Basically that means that the within-person (level-1) error has constant variance (i.e., <span class="math inline">\(\sigma^2\)</span>) over time, and the errors from one time point to the next is not correlated after conditioning on the fixed and random effects. In other words, whatever that causes one to has a higher (or lower) score than predicted for today will not carry over for tomorrow.</p>
+<p>There are a few more flexible packages for handling longitudinal data. You will see people use <code>nlme</code> a lot. There are also packages with Bayesian estimation, such as <code>MCMCglmm</code> and <code>brms</code>. For this class, we will use <code>glmmTMB</code>, a package that has a lot of the features for longitudinal data and has a very similar structure as <code>lme4</code>. Let’s replicate the results from <code>lme4</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Default in glmmTMB is ML; need to specify REML is desired</span>
+<span class='va'>m00</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_long</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m00</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          read ~ (1 | id)
+&gt;# Data: curran_long
 &gt;# 
-&gt;# Correlation of Fixed Effects:
-&gt;#             (Intr) meanss sctrCt ss_cmc
-&gt;# meanses      0.245                     
-&gt;# sectorCthlc -0.697 -0.355              
-&gt;# ses_cmc      0.071 -0.002 -0.046       
-&gt;# sctrCthlc:_ -0.048 -0.001  0.071 -0.664</code></pre>
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#   5061.9   5077.5  -2528.0   5055.9     1323 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev.
+&gt;#  id       (Intercept) 0.3005   0.5482  
+&gt;#  Residual             2.3903   1.5461  
+&gt;# Number of obs: 1325, groups:  id, 405
+&gt;# 
+&gt;# Dispersion estimate for gaussian family (sigma^2): 2.39 
+&gt;# 
+&gt;# Conditional model:
+&gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)   4.1128     0.0513   80.18   &lt;2e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<h2 id="effect-size-1">Effect Size</h2>
-<p>By comparing the <span class="math inline">\(R^2\)</span> of this model (with interaction) and the previous model (without the interaction), we can obtain the proportion of variance accounted for by the cross-level interaction:</p>
+<p>You can see that the results are similar. Let’s look at the ICC (i.e., proportion of variance at the between-person level).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>r2_crlv_int</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>crlv_int</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>vc_m00</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m00</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># shows the random effect SDs</span>
 </code></pre>
 </div>
-<pre><code>&gt;#            R2m       R2c
-&gt;# [1,] 0.1759122 0.2284431</code></pre>
+<pre><code>&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Std.Dev.
+&gt;#  id       (Intercept) 0.54816 
+&gt;#  Residual             1.54606</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Change</span>
-<span class='va'>r2_crlv_int</span> <span class='op'>-</span> <span class='va'>r2_ran_slp</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>  <span class='co'># intercept variance (tau_0^2)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#              R2m          R2c
-&gt;# [1,] 0.007496143 -0.002643047</code></pre>
+<pre><code>&gt;# [1] 0.3004824</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>  <span class='co'># lv-1 error variance (sigma^2)</span>
+</code></pre>
 </div>
-<p>Therefore, the cross-level interaction between sector and SES accounted for an effect size of <span class="math inline">\(\Delta R^2\)</span> = 0.7%. This is usually considered a small effect size (i.e., &lt; 1%), but interpreting the magnitude of an effect size needs to take into account the area of research, the importance of the outcome, and the effect sizes when using other predictors to predict the same outcome.</p>
-<h2 id="simple-slopes">Simple Slopes</h2>
-<p>With a cross-level interaction, the slope between <code>ses_cmc</code> and <code>mathach</code> depends on a moderator, <code>sector</code>. To find out what the model suggests to be the slope at a particular level of <code>sector</code>, which is also called a <em>simple slope</em> in the literature, you just need to look at the equation for <span class="math inline">\(\beta_{1j}\)</span>, which shows that the predicted slope is <span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} \text{sector}.\]</span> So when <code>sector</code> = 0 (public school), the simple slope is <span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} (0),\]</span> or 2.7877417. When <code>sector</code> = 1 (private school), the simple slope is <span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} (1),\]</span> or 2.7877417 + (-1.3477638)(1) = 1.4399779.</p>
-<h2 id="plotting-the-interactions">Plotting the Interactions</h2>
+<pre><code>&gt;# [1] 2.390294</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># ICC: tau_0^2 / (tau_0^2 + sigma^2)</span>
+<span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span> 
+  <span class='op'>(</span><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# [1] 0.1116713</code></pre>
+</div>
+<h1 id="linear-growth-models">Linear Growth Models</h1>
+<h2 id="linear-model-with-time">Linear Model With Time</h2>
+<p>Level 1: Within-Person</p>
+<p><span class="math display">\[\text{read}_{ti} = \beta_{0i} + \beta_{1i} \text{time}_{ti} + e_{ti}\]</span></p>
+<p>Level 2: Between-Person</p>
+<p><span class="math display">\[
+  \begin{aligned}
+    \beta_{0i} = \gamma_{00} + u_{0i}  \\
+    \beta_{1i} = \gamma_{10} + u_{1i}
+  \end{aligned}
+\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>crlv_int</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>
-    x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>,
-    color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sector</span><span class='op'>)</span>  <span class='co'># use `sector` for coloring lines</span>
-  <span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Predicted mathach"</span>, color <span class='op'>=</span> <span class='st'>"sector"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Make 0 the initial time</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>time <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='co'># Fit a linear growth model with no random slopes (not commonly done)</span>
+<span class='va'>m_gca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='va'>time</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>time</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_long</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_gca</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="rcode4_files/figure-html5/plot-crlv_int-slopes-1.png" width="624" /></p>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          read ~ time + (time | id)
+&gt;# Data: curran_long
+&gt;# 
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#   3394.0   3425.1  -1691.0   3382.0     1321 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev. Corr 
+&gt;#  id       (Intercept) 0.57310  0.7570        
+&gt;#           time        0.07459  0.2731   0.29 
+&gt;#  Residual             0.34584  0.5881        
+&gt;# Number of obs: 1325, groups:  id, 405
+&gt;# 
+&gt;# Dispersion estimate for gaussian family (sigma^2): 0.346 
+&gt;# 
+&gt;# Conditional model:
+&gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)  2.69609    0.04531   59.50   &lt;2e-16 ***
+&gt;# time         1.11915    0.02183   51.27   &lt;2e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>You can also use the <code>interactions::interact_plot()</code> function for just the fixed effects:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://interactions.jacob-long.com/reference/interact_plot.html'>interact_plot</a></span><span class='op'>(</span><span class='va'>crlv_int</span>, 
-              pred <span class='op'>=</span> <span class='st'>"ses_cmc"</span>,
-              modx <span class='op'>=</span> <span class='st'>"sector"</span>,
-              modx.labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Public"</span>, <span class='st'>"Catholic"</span><span class='op'>)</span>, 
-              plot.points <span class='op'>=</span> <span class='cn'>TRUE</span>, 
-              point.size <span class='op'>=</span> <span class='fl'>0.5</span>, 
-              point.alpha <span class='op'>=</span> <span class='fl'>0.2</span>, 
-              facet.modx <span class='op'>=</span> <span class='cn'>TRUE</span>,  <span class='co'># use this to make two panels</span>
-              x.label <span class='op'>=</span> <span class='st'>"SES (cluster-mean centered)"</span>, 
-              y.label <span class='op'>=</span> <span class='st'>"Math achievement"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>random_persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>curran_long</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>
+<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_gca</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Select only the 24 participants</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># Add 95% confidence band</span>
+  <span class='fu'>geom_ribbon</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
+                  ymax <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span><span class='op'>)</span>,
+              alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="rcode4_files/figure-html5/plot-crlv_int-1.png" width="624" /></p>
+<p><img src="rcode8_files/figure-html5/plot-m_gca-1.png" width="624" /></p>
 </div>
-<h1 id="summaizing-analyses-in-a-table">Summaizing Analyses in a Table</h1>
-<p>You can again use the <code>msummary()</code> function from the <code>modelsummary</code> package to quickly summarize the results in a table. However, there is an issue as the order of the coefficients are messed up, as shown below.</p>
+<h1 id="piecewise-growth-model">Piecewise Growth Model</h1>
+<p>A piecewise linear growth assumes that there are two or more phases of linear change across time. For example, we can assume that, for our data, phase 1 is from Time 0 to Time 1, and phase 2 is from Time 1 to Time 3.</p>
+<p>Because we’re estimating two slopes, we need two predictors: <code>phase1</code> represents the initial slope from Time 0 to Time 1, and <code>phase2</code> represents the slope from Time 1 to Time 3. The coding is shown below:</p>
+<p><span class="math display">\[\begin{bmatrix}
+    \textrm{phase1} &amp; \textrm{phase2} \\
+    0 &amp; 0 \\
+    1 &amp; 0 \\
+    1 &amp; 1 \\
+    1 &amp; 2
+  \end{bmatrix}\]</span></p>
+<p>To understand the coding, in <code>phase1</code> the line changes from Time 0 to Time 1, but stays there. <code>phase2</code> has 0 from Time 0 to Time 1 as nothing should have happened. Then, From Time 1 to Time 3 it starts to increase linearly.</p>
+<blockquote>
+<p>One way to check whether you’ve specified the coding correctly is to sum the numbers in every row, which you should get back 0, 1, 2, 3, . . .</p>
+</blockquote>
+<p>Below is an example where intercept = 1, growth in phase 1 = 0.5, growth in phase 2 = 0.8. The dashed line shows the contribution from phase1 (plus the intercept). The red dotted line shows the contribution from phase2.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Basic table from `modelsummary` (ordering messed up)</span>
-<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='st'>"Between-within"</span> <span class='op'>=</span> <span class='va'>m_bw</span>,
-  <span class='st'>"Contextual"</span> <span class='op'>=</span> <span class='va'>contextual</span>,
-  <span class='st'>"Random slope"</span> <span class='op'>=</span> <span class='va'>ran_slp</span>,
-  <span class='st'>"Cross-level interaction"</span> <span class='op'>=</span> <span class='va'>crlv_int</span>
-<span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>demo_df</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>TIME <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>demo_df</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>TIME</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>0.5</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span>, 
+                linetype <span class='op'>=</span> <span class='st'>"dashed"</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>0.8</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, 
+                linetype <span class='op'>=</span> <span class='st'>"dotted"</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>0.5</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0.8</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode8_files/figure-html5/piecewise_demo-1.png" width="624" /></p>
+</div>
+<p>Now, we assume Time 0 to Time 1 has one slope, and Time 1 to Time 3 has another slope.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute phase1 and phase2</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='fl'>1</span><span class='op'>)</span>,  <span class='co'># anything bigger than 1 becomes 1</span>
+         phase2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># set time to start at TIME 1, and then make</span>
+<span class='co'># anything smaller than 0 to 0</span>
+<span class='co'># Check the coding:</span>
+<span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>phase1</span>, <span class='va'>phase2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>distinct</span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# # A tibble: 4 × 3
+&gt;#    time phase1 phase2
+&gt;#   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+&gt;# 1     0      0      0
+&gt;# 2     1      1      0
+&gt;# 3     2      1      1
+&gt;# 4     3      1      2</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Fit the piecewise growth model</span>
+<span class='va'>m_pw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>curran_long</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='co'># The default optimizer did not converge; try optim</span>
+  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMBControl.html'>glmmTMBControl</a></span><span class='op'>(</span>
+    optimizer <span class='op'>=</span> <span class='va'>optim</span>,
+    optArgs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"BFGS"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="plotting-the-predicted-trajectories">Plotting the predicted trajectories</h3>
+<p>Average predicted trajectory on the spaghetti plot:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the predicted growth shape (in blue):</span>
+<span class='co'># `tibble()` is used to create a tibble object, which is the data frame used in</span>
+<span class='co'># tidyverse</span>
+<span class='va'>pred_pw</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>time <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>,
+                  phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>,
+                  phase2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>,
+                  id <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
+<span class='va'>pred_pw</span> <span class='op'>&lt;-</span> <span class='va'>pred_pw</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m_pw</span>, newdata <span class='op'>=</span> <span class='va'>pred_pw</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>p1</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_pw</span>, col <span class='op'>=</span> <span class='st'>"blue"</span>, size <span class='op'>=</span> <span class='fl'>2</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode8_files/figure-html5/ave-traj-pw-1.png" width="624" /></p>
+</div>
+<p>Predicted trajectories at the individual level</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Add predicted lines to individual trajectories</span>
+<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># compute the original time</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>time <span class='op'>=</span> <span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Select only the 24 participants</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># Add 95% confidence band</span>
+  <span class='fu'>geom_ribbon</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
+                  ymax <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span><span class='op'>)</span>,
+              alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode8_files/figure-html5/pred-traj-1.png" width="624" /></p>
+</div>
+<h1 id="time-invariant-covariates">Time-Invariant Covariates</h1>
+<p>Time-invariant covariate = Another way to say a level-2 variable</p>
+<p>You can add <code>homecog</code> and its interaction to the model with age as predictor. Just that now there are two interaction terms: one with the first piece and the other with the second piece.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Add `homecog` and its interaction with growth</span>
+<span class='co'># First, center homecog to 9</span>
+<span class='va'>curran_long</span><span class='op'>$</span><span class='va'>homecog9</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span><span class='op'>$</span><span class='va'>homecog</span> <span class='op'>-</span> <span class='fl'>9</span>
+<span class='va'>m_pw_homecog</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span>
+  <span class='va'>read</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>homecog9</span> <span class='op'>+</span>
+    <span class='op'>(</span><span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>curran_long</span>,
+  REML <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='co'># The default optimizer did not converge; try optim</span>
+  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMBControl.html'>glmmTMBControl</a></span><span class='op'>(</span>
+    optimizer <span class='op'>=</span> <span class='va'>optim</span>,
+    optArgs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"BFGS"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_pw_homecog</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Interaction plot (phase1:homecog)</span>
+<span class='fu'><a href='https://interactions.jacob-long.com/reference/interact_plot.html'>interact_plot</a></span><span class='op'>(</span><span class='va'>m_pw_homecog</span>,
+              pred <span class='op'>=</span> <span class='st'>"phase1"</span>,
+              modx <span class='op'>=</span> <span class='st'>"homecog9"</span>,
+              modx.values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>9</span>, <span class='fl'>14</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>9</span>,
+              modx.labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>9</span>, <span class='fl'>14</span><span class='op'>)</span>,
+              plot.points <span class='op'>=</span> <span class='cn'>TRUE</span>,
+              point.size <span class='op'>=</span> <span class='fl'>0.5</span>,
+              point.alpha <span class='op'>=</span> <span class='fl'>0.2</span>,
+              jitter <span class='op'>=</span> <span class='fl'>0.02</span>,
+              x.label <span class='op'>=</span> <span class='st'>"Phase 1"</span>,
+              y.label <span class='op'>=</span> <span class='st'>"Reading Score"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="rcode8_files/figure-html5/interact-plot-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Interaction plot (phase2:homecog)</span>
+<span class='fu'><a href='https://interactions.jacob-long.com/reference/interact_plot.html'>interact_plot</a></span><span class='op'>(</span><span class='va'>m_pw_homecog</span>,
+              pred <span class='op'>=</span> <span class='st'>"phase2"</span>,
+              modx <span class='op'>=</span> <span class='st'>"homecog9"</span>,
+              modx.values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>9</span>, <span class='fl'>14</span><span class='op'>)</span> <span class='op'>-</span> <span class='fl'>9</span>,
+              modx.labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>9</span>, <span class='fl'>14</span><span class='op'>)</span>,
+              plot.points <span class='op'>=</span> <span class='cn'>TRUE</span>,
+              point.size <span class='op'>=</span> <span class='fl'>0.5</span>,
+              point.alpha <span class='op'>=</span> <span class='fl'>0.2</span>,
+              jitter <span class='op'>=</span> <span class='fl'>0.02</span>,
+              x.label <span class='op'>=</span> <span class='st'>"Phase 2"</span>,
+              y.label <span class='op'>=</span> <span class='st'>"Reading Score"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode8_files/figure-html5/interact-plot-2.png" width="624" /></p>
+</div>
+<h2 id="table-of-coefficients">Table of Coefficients</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+    <span class='st'>"Compound Symmetry"</span> <span class='op'>=</span> <span class='va'>m00</span>,
+    <span class='st'>"GCA"</span> <span class='op'>=</span> <span class='va'>m_gca</span>,
+    <span class='st'>"Piecewise"</span> <span class='op'>=</span> <span class='va'>m_pw</span>,
+    <span class='st'>"Piecewise + homecog"</span> <span class='op'>=</span> <span class='va'>m_pw_homecog</span>
+  <span class='op'>)</span>,
+  group <span class='op'>=</span> <span class='va'>group</span> <span class='op'>+</span> <span class='va'>term</span> <span class='op'>~</span> <span class='va'>model</span>
+<span class='op'>)</span>
 </code></pre>
 </div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -2667,160 +2822,70 @@ R Codes
 <tr>
 <th style="text-align:left;">
 </th>
-<th style="text-align:center;">
-Between-within
+<th style="text-align:left;">
 </th>
 <th style="text-align:center;">
-Contextual
+Compound Symmetry
 </th>
 <th style="text-align:center;">
-Random slope
+GCA
 </th>
 <th style="text-align:center;">
-Cross-level interaction
+Piecewise
+</th>
+<th style="text-align:center;">
+Piecewise + homecog
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td style="text-align:left;">
+</td>
 <td style="text-align:left;">
 (Intercept)
 </td>
 <td style="text-align:center;">
-12.648
+4.113
 </td>
 <td style="text-align:center;">
-12.661
+2.696
 </td>
 <td style="text-align:center;">
-12.645
+2.523
 </td>
 <td style="text-align:center;">
-12.085
+2.527
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
-<td style="text-align:center;">
-(0.149)
-</td>
-<td style="text-align:center;">
-(0.149)
-</td>
-<td style="text-align:center;">
-(0.149)
-</td>
-<td style="text-align:center;">
-(0.199)
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
-meanses
 </td>
 <td style="text-align:center;">
-5.866
+(0.051)
 </td>
 <td style="text-align:center;">
-3.675
+(0.045)
 </td>
 <td style="text-align:center;">
-5.896
+(0.046)
 </td>
 <td style="text-align:center;">
-5.245
+(0.046)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
-<td style="text-align:center;">
-(0.362)
-</td>
-<td style="text-align:center;">
-(0.378)
-</td>
-<td style="text-align:center;">
-(0.360)
-</td>
-<td style="text-align:center;">
-(0.368)
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
-ses_cmc
-</td>
-<td style="text-align:center;">
-2.191
+time
 </td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-2.191
-</td>
-<td style="text-align:center;">
-2.788
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.109)
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-(0.128)
-</td>
-<td style="text-align:center;">
-(0.156)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sd__(Intercept)
-</td>
-<td style="text-align:center;">
-1.641
-</td>
-<td style="text-align:center;">
-1.641
-</td>
-<td style="text-align:center;">
-1.641
-</td>
-<td style="text-align:center;">
-1.543
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sd__Observation
-</td>
-<td style="text-align:center;">
-6.084
-</td>
-<td style="text-align:center;">
-6.084
-</td>
-<td style="text-align:center;">
-6.059
-</td>
-<td style="text-align:center;">
-6.059
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ses
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-2.191
+1.119
 </td>
 <td style="text-align:center;">
 </td>
@@ -2830,321 +2895,12 @@ ses
 <tr>
 <td style="text-align:left;">
 </td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-(0.109)
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-cor__(Intercept).ses_cmc
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-−0.195
-</td>
-<td style="text-align:center;">
-0.244
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sd__ses_cmc
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-0.828
-</td>
-<td style="text-align:center;">
-0.521
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sectorCatholic
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-1.252
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-(0.306)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sectorCatholic × ses_cmc
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-−1.348
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-(0.235)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AIC
-</td>
-<td style="text-align:center;">
-46578.6
-</td>
-<td style="text-align:center;">
-46578.6
-</td>
-<td style="text-align:center;">
-46571.7
-</td>
-<td style="text-align:center;">
-46532.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BIC
-</td>
-<td style="text-align:center;">
-46613.0
-</td>
-<td style="text-align:center;">
-46613.0
-</td>
-<td style="text-align:center;">
-46619.8
-</td>
-<td style="text-align:center;">
-46594.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Log.Lik.
-</td>
-<td style="text-align:center;">
-−23284.289
-</td>
-<td style="text-align:center;">
-−23284.290
-</td>
-<td style="text-align:center;">
-−23278.825
-</td>
-<td style="text-align:center;">
-−23257.264
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-REMLcrit
-</td>
-<td style="text-align:center;">
-46568.577
-</td>
-<td style="text-align:center;">
-46568.580
-</td>
-<td style="text-align:center;">
-46557.651
-</td>
-<td style="text-align:center;">
-46514.529
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>I’ve made a function <code>msummary_mixed()</code>, defined in the beginning of this page, as a hack to get a nicer table. Basically, you can just replace <code>msummary()</code> with <code>msummary_mixed()</code>, with everything else being the same:</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Basic table using `msummary_mixed`</span>
-<span class='fu'>msummary_mixed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='st'>"Between-within"</span> <span class='op'>=</span> <span class='va'>m_bw</span>,
-  <span class='st'>"Contextual"</span> <span class='op'>=</span> <span class='va'>contextual</span>,
-  <span class='st'>"Random slope"</span> <span class='op'>=</span> <span class='va'>ran_slp</span>,
-  <span class='st'>"Cross-level interaction"</span> <span class='op'>=</span> <span class='va'>crlv_int</span>
-<span class='op'>)</span><span class='op'>)</span>
-</code></pre>
-</div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
-Between-within
-</th>
-<th style="text-align:center;">
-Contextual
-</th>
-<th style="text-align:center;">
-Random slope
-</th>
-<th style="text-align:center;">
-Cross-level interaction
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Fixed Effects
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-12.648
-</td>
-<td style="text-align:center;">
-12.661
-</td>
-<td style="text-align:center;">
-12.645
-</td>
-<td style="text-align:center;">
-12.085
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.149)
-</td>
-<td style="text-align:center;">
-(0.149)
-</td>
-<td style="text-align:center;">
-(0.149)
-</td>
-<td style="text-align:center;">
-(0.199)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-meanses
-</td>
-<td style="text-align:center;">
-5.866
-</td>
-<td style="text-align:center;">
-3.675
-</td>
-<td style="text-align:center;">
-5.896
-</td>
-<td style="text-align:center;">
-5.245
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.362)
-</td>
-<td style="text-align:center;">
-(0.378)
-</td>
-<td style="text-align:center;">
-(0.360)
-</td>
-<td style="text-align:center;">
-(0.368)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ses_cmc
-</td>
-<td style="text-align:center;">
-2.191
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-2.191
-</td>
-<td style="text-align:center;">
-2.788
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.109)
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-(0.128)
-</td>
-<td style="text-align:center;">
-(0.156)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ses
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-2.191
+(0.022)
 </td>
 <td style="text-align:center;">
 </td>
@@ -3154,31 +2910,23 @@ ses
 <tr>
 <td style="text-align:left;">
 </td>
+<td style="text-align:left;">
+phase1
+</td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-(0.109)
 </td>
 <td style="text-align:center;">
+1.562
 </td>
 <td style="text-align:center;">
+1.567
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-sectorCatholic
 </td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-1.252
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
@@ -3186,434 +2934,357 @@ sectorCatholic
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
+(0.043)
 </td>
 <td style="text-align:center;">
-(0.306)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sectorCatholic:ses_cmc
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-−1.348
+(0.042)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
-<td style="text-align:center;">
+<td style="text-align:left;">
+phase2
 </td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-(0.235)
+0.879
+</td>
+<td style="text-align:center;">
+0.880
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-Random Effects
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
+(0.025)
 </td>
 <td style="text-align:center;">
+(0.025)
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+homecog9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.044
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.018)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+phase1 × homecog9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.017)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+phase2 × homecog9
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.011
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+(0.010)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+id
+</td>
 <td style="text-align:left;">
 sd__(Intercept)
 </td>
 <td style="text-align:center;">
-1.641
+0.548
 </td>
 <td style="text-align:center;">
-1.641
+0.757
 </td>
 <td style="text-align:center;">
-1.641
+0.778
 </td>
 <td style="text-align:center;">
-1.543
+0.771
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sd__time
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.273
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+cor__(Intercept).time
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.286
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sd__phase1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.476
+</td>
+<td style="text-align:center;">
+0.464
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sd__phase2
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.232
+</td>
+<td style="text-align:center;">
+0.230
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+cor__(Intercept).phase1
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.129
+</td>
+<td style="text-align:center;">
+0.104
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+cor__(Intercept).phase2
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+−0.154
+</td>
+<td style="text-align:center;">
+−0.168
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+cor__phase1.phase2
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.957
+</td>
+<td style="text-align:center;">
+0.961
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+Residual
+</td>
+<td style="text-align:left;box-shadow: 0px 1px">
 sd__Observation
 </td>
-<td style="text-align:center;">
-6.084
+<td style="text-align:center;box-shadow: 0px 1px">
+1.546
 </td>
-<td style="text-align:center;">
-6.084
+<td style="text-align:center;box-shadow: 0px 1px">
+0.588
 </td>
-<td style="text-align:center;">
-6.059
+<td style="text-align:center;box-shadow: 0px 1px">
+0.501
 </td>
-<td style="text-align:center;">
-6.059
+<td style="text-align:center;box-shadow: 0px 1px">
+0.502
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-cor__(Intercept).ses_cmc
 </td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-−0.195
-</td>
-<td style="text-align:center;">
-0.244
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1px">
-sd__ses_cmc
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-0.828
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-0.521
-</td>
-</tr>
-<tr>
 <td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
-46578.6
+5061.9
 </td>
 <td style="text-align:center;">
-46578.6
+3394.0
 </td>
 <td style="text-align:center;">
-46571.7
+3229.7
 </td>
 <td style="text-align:center;">
-46532.5
+3236.7
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+</td>
 <td style="text-align:left;">
 BIC
 </td>
 <td style="text-align:center;">
-46613.0
+5077.5
 </td>
 <td style="text-align:center;">
-46613.0
+3425.1
 </td>
 <td style="text-align:center;">
-46619.8
+3281.6
 </td>
 <td style="text-align:center;">
-46594.4
+3304.1
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+</td>
 <td style="text-align:left;">
 Log.Lik.
 </td>
 <td style="text-align:center;">
-−23284.289
+−2527.974
 </td>
 <td style="text-align:center;">
-−23284.290
+−1691.000
 </td>
 <td style="text-align:center;">
-−23278.825
+−1604.869
 </td>
 <td style="text-align:center;">
-−23257.264
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-REMLcrit
-</td>
-<td style="text-align:center;">
-46568.577
-</td>
-<td style="text-align:center;">
-46568.580
-</td>
-<td style="text-align:center;">
-46557.651
-</td>
-<td style="text-align:center;">
-46514.529
+−1605.341
 </td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="bonus-more-apa-like-table">Bonus: More “APA-like” Table</h2>
-<p>Make it look like the table at <a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression" class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>. You can see a recent recommendation in <a href="https://doi.org/10.1016/j.jml.2020.104092">this paper published in the Journal of Memory and Language</a></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Step 1. Create a map for the predictors and the terms in the model.</span>
-<span class='co'># Need to use '\\( \\)' to show math.</span>
-<span class='co'># Rename and reorder the rows. Need to use '\\( \\)' to</span>
-<span class='co'># show math. If this does not work for you, don't worry about it.</span>
-<span class='va'>cm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"(Intercept)"</span> <span class='op'>=</span> <span class='st'>"Intercept"</span>,
-        <span class='st'>"meanses"</span> <span class='op'>=</span> <span class='st'>"school mean SES"</span>,
-        <span class='st'>"ses_cmc"</span> <span class='op'>=</span> <span class='st'>"SES (cluster-mean centered)"</span>,
-        <span class='st'>"sectorCatholic"</span> <span class='op'>=</span> <span class='st'>"Catholic school"</span>,
-        <span class='st'>"sectorCatholic:ses_cmc"</span> <span class='op'>=</span> <span class='st'>"Catholic school x SES (cmc)"</span>,
-        <span class='st'>"sd__(Intercept)"</span> <span class='op'>=</span> <span class='st'>"\\(\\tau_0\\)"</span>,
-        <span class='st'>"sd__ses_cmc"</span> <span class='op'>=</span> <span class='st'>"\\(\\tau_1\\) (SES)"</span>,
-        <span class='st'>"sd__Observation"</span> <span class='op'>=</span> <span class='st'>"\\(\\sigma\\)"</span><span class='op'>)</span>
-<span class='co'># Step 2. Create a list of models to have one column for coef, </span>
-<span class='co'># one for SE, one for CI, and one for p</span>
-<span class='va'>models</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
-  <span class='st'>"Estimate"</span> <span class='op'>=</span> <span class='va'>crlv_int</span>,
-  <span class='st'>"SE"</span> <span class='op'>=</span> <span class='va'>crlv_int</span>,
-  <span class='st'>"95% CI"</span> <span class='op'>=</span> <span class='va'>crlv_int</span>
-<span class='op'>)</span>
-<span class='co'># Step 3. Add rows to say fixed and random effects</span>
-<span class='co'># (Need same number of columns as the table)</span>
-<span class='va'>new_rows</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
-  term <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Fixed effects"</span>, <span class='st'>"Random effects"</span><span class='op'>)</span>,
-  est <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>""</span><span class='op'>)</span>,
-  se <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>""</span><span class='op'>)</span>,
-  ci <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>""</span><span class='op'>)</span>
-<span class='op'>)</span>
-<span class='co'># Specify which rows to add</span>
-<span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>new_rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>7</span><span class='op'>)</span>
-<span class='co'># Step 4. Render the table</span>
-<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='va'>models</span>,
-         estimate <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"estimate"</span>, <span class='st'>"std.error"</span>,
-                      <span class='st'>"[{conf.low}, {conf.high}]"</span><span class='op'>)</span>,
-         statistic <span class='op'>=</span> <span class='cn'>NULL</span>,  <span class='co'># suppress the extra rows for SEs</span>
-         coef_map <span class='op'>=</span> <span class='va'>cm</span>,
-         add_rows <span class='op'>=</span> <span class='va'>new_rows</span><span class='op'>)</span>
-</code></pre>
-</div>
-<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
-Estimate
-</th>
-<th style="text-align:center;">
-SE
-</th>
-<th style="text-align:center;">
-95% CI
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Fixed effects
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Intercept
-</td>
-<td style="text-align:center;">
-12.085
-</td>
-<td style="text-align:center;">
-0.199
-</td>
-<td style="text-align:center;">
-[11.695, 12.474]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-school mean SES
-</td>
-<td style="text-align:center;">
-5.245
-</td>
-<td style="text-align:center;">
-0.368
-</td>
-<td style="text-align:center;">
-[4.523, 5.967]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-SES (cluster-mean centered)
-</td>
-<td style="text-align:center;">
-2.788
-</td>
-<td style="text-align:center;">
-0.156
-</td>
-<td style="text-align:center;">
-[2.482, 3.093]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Catholic school
-</td>
-<td style="text-align:center;">
-1.252
-</td>
-<td style="text-align:center;">
-0.306
-</td>
-<td style="text-align:center;">
-[0.652, 1.852]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Catholic school x SES (cmc)
-</td>
-<td style="text-align:center;">
-−1.348
-</td>
-<td style="text-align:center;">
-0.235
-</td>
-<td style="text-align:center;">
-[−1.808, −0.888]
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Random effects
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\tau_0\)</span>
-</td>
-<td style="text-align:center;">
-1.543
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-<span class="math inline">\(\tau_1\)</span> (SES)
-</td>
-<td style="text-align:center;">
-0.521
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;box-shadow: 0px 1px">
-<span class="math inline">\(\sigma\)</span>
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-6.059
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-<td style="text-align:center;box-shadow: 0px 1px">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-AIC
-</td>
-<td style="text-align:center;">
-46532.5
-</td>
-<td style="text-align:center;">
-46532.5
-</td>
-<td style="text-align:center;">
-46532.5
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-BIC
-</td>
-<td style="text-align:center;">
-46594.4
-</td>
-<td style="text-align:center;">
-46594.4
-</td>
-<td style="text-align:center;">
-46594.4
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Log.Lik.
-</td>
-<td style="text-align:center;">
-−23257.264
-</td>
-<td style="text-align:center;">
-−23257.264
-</td>
-<td style="text-align:center;">
-−23257.264
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-REMLcrit
-</td>
-<td style="text-align:center;">
-46514.529
-</td>
-<td style="text-align:center;">
-46514.529
-</td>
-<td style="text-align:center;">
-46514.529
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

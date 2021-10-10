@@ -86,29 +86,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall): About this site</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 8</title>
 
-  <meta property="description" itemprop="description" content="Some additional details about the website"/>
+  <meta property="description" itemprop="description" content="Models for Longitudinal Data I"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): About this site"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 8"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Some additional details about the website"/>
+  <meta property="og:description" content="Models for Longitudinal Data I"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): About this site"/>
-  <meta property="twitter:description" content="Some additional details about the website"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 8"/>
+  <meta property="twitter:description" content="Models for Longitudinal Data I"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this site"]},{"type":"character","attributes":{},"value":["Some additional details about the website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Week 8"]},{"type":"character","attributes":{},"value":["Models for Longitudinal Data I\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slides"]}},"value":[{"type":"character","attributes":{},"value":["08_longitudinal_analysis_1"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2060,7 +2060,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this site","description":"Some additional details about the website","authors":[]}
+{"title":"Week 8","description":"Models for Longitudinal Data I","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2116,14 +2116,197 @@ R Codes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this site</h1>
+<h1>Week 8</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Some additional details about the website</p></p>
+<p><p>Models for Longitudinal Data I</p></p>
 </div>
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#week-learning-objectives">Week Learning Objectives</a>
+<ul>
+<li><a href="#task-lists">Task Lists</a></li>
+</ul></li>
+<li><a href="#lecture">Lecture</a>
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#longitudinal-data-analysis">Longitudinal Data Analysis</a></li>
+<li><a href="#example-data">Example data</a>
+<ul>
+<li><a href="#basic-attrition-analysis">Basic attrition analysis</a></li>
+</ul></li>
+<li><a href="#growth-curve-modeling">Growth Curve Modeling</a>
+<ul>
+<li><a href="#linear-growth">Linear growth</a></li>
+<li><a href="#piecewise-linear-growth">Piecewise linear growth</a></li>
+</ul></li>
+<li><a href="#time-invariant-covariates">Time-Invariant Covariates</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h1 id="week-learning-objectives">Week Learning Objectives</h1>
+<p>By the end of this module, you will be able to</p>
+<ul>
+<li>Describe the similarities and differences between longitudinal data and cross-sectional clustered data</li>
+<li>Perform some basic <strong>attrition analyses</strong></li>
+<li>Specify and run <strong>growth curve analysis</strong></li>
+<li>Analyze models with <strong>time-invariant covariates</strong> (i.e., lv-2 predictors) and interpret the results</li>
+</ul>
+<p>Note: In the video the slides use <span class="math inline">\(d\)</span> for effect size, but we will use <span class="math inline">\(R^2\)</span> in this class.</p>
+<h2 id="task-lists">Task Lists</h2>
+<ol type="1">
+<li>Review the resources (lecture videos and slides)</li>
+<li>Complete the assigned readings
+<ul>
+<li>Snijders &amp; Bosker ch 15 (you can skip 15.1.3 and 15.1.4)</li>
+</ul></li>
+<li>Prepare the prospectus and schedule a meeting with the instructor</li>
+<li>Additional resources for learning MLM for longitudinal data analysis
+<ul>
+<li><a href="https://www-taylorfrancis-com.libproxy2.usc.edu/books/9781315744094">This excellent book by Hoffman (2014)</a> (USC SSO required)</li>
+</ul></li>
+</ol>
+<h1 id="lecture">Lecture</h1>
+<h2 id="slides">Slides</h2>
+<p><span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span></p>
+<p>You can view and download the slides here: <a href="slides/08_longitudinal_analysis_1.pdf" target="_blank">PDF</a></p>
+<h2 id="longitudinal-data-analysis">Longitudinal Data Analysis</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/bdDrcmktBnE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: In a research study, data were collected for a group of patients on symptoms of eating disorder on a weekly interval across 5 weeks. What type of data is this?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_33931" onsubmit="return validate_form_33931()" method="post">
+<input type="radio" name="answer_33931" id="33931_1" value="Panel data"><label for="1">Panel data</label><br><input type="radio" name="answer_33931" id="33931_2" value="Intensive longitudinal data"><label for="2">Intensive longitudinal data</label><br><input type="radio" name="answer_33931" id="33931_3" value="Cross-sectional data"><label for="3">Cross-sectional data</label><br><input type="submit" value="check">
+</form>
+<p id="result_33931">
+</p>
+<script> function validate_form_33931() {var x, text; var x = document.forms["form_33931"]["answer_33931"].value;if (x == "Panel data"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_33931').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="example-data">Example data</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/3PDA_ur1sOU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: In the data set, at what level is <code>homecog</code>, which is a measure of mother’s cognitive stimulation at baseline?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_58245" onsubmit="return validate_form_58245()" method="post">
+<input type="radio" name="answer_58245" id="58245_1" value="Level 1"><label for="1">Level 1</label> <input type="radio" name="answer_58245" id="58245_2" value="Level 2"><label for="2">Level 2</label> <br><input type="submit" value="check">
+</form>
+<p id="result_58245">
+</p>
+<script> function validate_form_58245() {var x, text; var x = document.forms["form_58245"]["answer_58245"].value;if (x == "Level 2"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_58245').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h3 id="basic-attrition-analysis">Basic attrition analysis</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/b2dto5JwRQ8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>See the <a href="../rcode8/#attrition-analyses">R code section</a>.</p>
+<hr />
+<p>Check your learning: In the spaghetti plot, what does the average trend line mean?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_1489" onsubmit="return validate_form_1489()" method="post">
+<input type="radio" name="answer_1489" id="1489_1" value="That every child showed an increasing trend"><label for="1">That every child showed an increasing trend</label><br><input type="radio" name="answer_1489" id="1489_2" value="That the sample average reading score increased across time"><label for="2">That the sample average reading score increased across time</label><br><input type="radio" name="answer_1489" id="1489_3" value="That there is no variability in individual trajectories"><label for="3">That there is no variability in individual trajectories</label><br><input type="submit" value="check">
+</form>
+<p id="result_1489">
+</p>
+<script> function validate_form_1489() {var x, text; var x = document.forms["form_1489"]["answer_1489"].value;if (x == "That the sample average reading score increased across time"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_1489').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="growth-curve-modeling">Growth Curve Modeling</h2>
+<p><span style="color:red">Note that in the video, the function <code>brm()</code> from the <code>brms</code> package was used for Bayesian analyses. However, in this class we will use the <code>glmmTMB()</code> function instead (see the updated slides). The parameter estimates and interpretations are basically the same.</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/iT7kzf2gIUs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Thinking exercise: In a growth model, what does it mean when <span class="math inline">\(\tau_1 = 0\)</span>?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_23793" onsubmit="return validate_form_23793()" method="post">
+<input type="radio" name="answer_23793" id="23793_1" value="That on average, there is no change on the outcome across time"><label for="1">That on average, there is no change on the outcome across time</label><br><input type="radio" name="answer_23793" id="23793_2" value="That every participant has the same rate of change"><label for="2">That every participant has the same rate of change</label><br><input type="radio" name="answer_23793" id="23793_3" value="That every participant has the same outcome score"><label for="3">That every participant has the same outcome score</label><br><input type="submit" value="check">
+</form>
+<p id="result_23793">
+</p>
+<script> function validate_form_23793() {var x, text; var x = document.forms["form_23793"]["answer_23793"].value;if (x == "That every participant has the same rate of change"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_23793').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h3 id="linear-growth">Linear growth</h3>
+<p><span style="color:red">Note that what is labelled as SD<sub>post</sub> is the Bayesian analogue of the standard error.</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/4xHz4OIPVh8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check you learning: What is the advantage of having time to start at 0?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_39652" onsubmit="return validate_form_39652()" method="post">
+<input type="radio" name="answer_39652" id="39652_1" value="The intercept corresponds to the predicted score at the first time point"><label for="1">The intercept corresponds to the predicted score at the first time point</label><br><input type="radio" name="answer_39652" id="39652_2" value="So that tau_1 will be the SD of the slopes"><label for="2">So that tau_1 will be the SD of the slopes</label><br><input type="submit" value="check">
+</form>
+<p id="result_39652">
+</p>
+<script> function validate_form_39652() {var x, text; var x = document.forms["form_39652"]["answer_39652"].value;if (x == "The intercept corresponds to the predicted score at the first time point"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_39652').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h3 id="piecewise-linear-growth">Piecewise linear growth</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/p6TQdUzi1d0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Practice yourself: What should the coding of phase 1 and phase 2 be if the turning point is set at <code>time</code> = 2?</p>
+<hr />
+<p><span style="color:red">Instead of using the LOOIC in the Bayesian analysis as discussed in the video, we can use the more popular AIC statistic to compare the two models.</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/MbDcv05wOrU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>Note: In this example, the turning point was chosen mostly based on the spaghetti plot and was arbitrary. For your research, you should justify your choice.</p>
+<hr />
+<p>Check your learning: If a piecewise growth model has an AIC of 23745, and a linear growth model has an AIC of 23650, which model should be preferred?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_31903" onsubmit="return validate_form_31903()" method="post">
+<input type="radio" name="answer_31903" id="31903_1" value="Piecewise"><label for="1">Piecewise</label> <input type="radio" name="answer_31903" id="31903_2" value="Linear"><label for="2">Linear</label> <br><input type="submit" value="check">
+</form>
+<p id="result_31903">
+</p>
+<script> function validate_form_31903() {var x, text; var x = document.forms["form_31903"]["answer_31903"].value;if (x == "Linear"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_31903').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="time-invariant-covariates">Time-Invariant Covariates</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/fI6XJnVQ3pg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Thinking exercise: What does the coefficient for <code>phase1</code> mean when the model includes an interaction between <code>phase1</code> and <code>homecog9</code>?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_40124" onsubmit="return validate_form_40124()" method="post">
+<input type="radio" name="answer_40124" id="40124_1" value="The average slope from time 0 to time 1"><label for="1">The average slope from time 0 to time 1</label><br><input type="radio" name="answer_40124" id="40124_2" value="The average slope from time 0 to time 1 for kids with homecog = 9"><label for="2">The average slope from time 0 to time 1 for kids with homecog = 9</label><br><input type="radio" name="answer_40124" id="40124_3" value="The average slope from time 0 to time 1, holding constant homecog"><label for="3">The average slope from time 0 to time 1, holding constant homecog</label><br><input type="submit" value="check">
+</form>
+<p id="result_40124">
+</p>
+<script> function validate_form_40124() {var x, text; var x = document.forms["form_40124"]["answer_40124"].value;if (x == "The average slope from time 0 to time 1 for kids with homecog = 9"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_40124').innerHTML = text; return false;} </script>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2132,6 +2315,15 @@ R Codes
 <div class="d-appendix">
 </div>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->

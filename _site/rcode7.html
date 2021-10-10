@@ -2092,6 +2092,7 @@ Lectures
 <a href="week5.html">Week 5</a>
 <a href="week6.html">Week 6</a>
 <a href="week7.html">Week 7</a>
+<a href="week8.html">Week 8</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2108,6 +2109,7 @@ R Codes
 <a href="rcode5.html">Week 5 R Code</a>
 <a href="rcode6.html">Week 6 R Code</a>
 <a href="rcode7.html">Week 7 R Code</a>
+<a href="rcode8.html">Week 8 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2323,8 +2325,8 @@ R Codes
 </div>
 <h2 id="cross-classified-random-effect-analysis">Cross-Classified Random Effect Analysis</h2>
 <div class="layout-chunk" data-layout="l-body">
-<div id="htmlwidget-f049cdbbf56431875ed0" style="width:624px;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f049cdbbf56431875ed0">{"x":{"diagram":"\ndigraph boxes_and_circles {\n  graph [layout = neato, overlap = true, fontsize = 30]\n\n  node [penwidth = 0, fontname = \"Helvetica\"]\n  # Person\n  1 [pos = \"-2,1!\", label=\"Person 1\"]\n  2 [pos = \"-1,1!\", label=\"Person 2\"] \n  3 [pos = \"0,1!\", label=\"Person 3\"]\n  4 [pos = \"1,1!\", label=\"Person 4\"]\n  5 [pos = \"2,1!\", label=\"Person 5\"]\n  # Repeated measures\n  y1 [pos = \"-2.33,0!\"]\n  y2 [pos = \"-2,0!\"]\n  y3 [pos = \"-1.67,0!\"]\n  y4 [pos = \"-1.33,0!\"]\n  y5 [pos = \"-1,0!\"]\n  y6 [pos = \"-0.67,0!\"]\n  y7 [pos = \"-0.33,0!\"]\n  y8 [pos = \"0,0!\"]\n  y9 [pos = \"0.33,0!\"]\n  y10 [pos = \"0.67,0!\"]\n  y11 [pos = \"1,0!\"]\n  y12 [pos = \"1.33,0!\"]\n  y13 [pos = \"1.67,0!\"]\n  y14 [pos = \"2,0!\"]\n  y15 [pos = \"2.33,0!\"]\n  \n  # Item\n  i1 [pos = \"-1.5,-1!\", label=\"Item 1\"]\n  i2 [pos = \"-0,-1!\", label=\"Item 2\"]\n  i3 [pos = \"1.5,-1!\", label=\"Item 3\"]\n\n  # edges\n  edge [dir = \"none\"]\n  1 -> {y1; y2; y3}\n  2 -> {y4; y5; y6}\n  3 -> {y7; y8; y9}\n  4 -> {y10; y11; y12}\n  5 -> {y13; y14; y15}\n  {y1 y4 y7 y10 y13} -> i1\n  {y2 y5 y8 y11 y14} -> i2\n  {y3 y6 y9 y12 y15} -> i3\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b482b75d4d394cdbe798" style="width:624px;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b482b75d4d394cdbe798">{"x":{"diagram":"\ndigraph boxes_and_circles {\n  graph [layout = neato, overlap = true, fontsize = 30]\n\n  node [penwidth = 0, fontname = \"Helvetica\"]\n  # Person\n  1 [pos = \"-2,1!\", label=\"Person 1\"]\n  2 [pos = \"-1,1!\", label=\"Person 2\"] \n  3 [pos = \"0,1!\", label=\"Person 3\"]\n  4 [pos = \"1,1!\", label=\"Person 4\"]\n  5 [pos = \"2,1!\", label=\"Person 5\"]\n  # Repeated measures\n  y1 [pos = \"-2.33,0!\"]\n  y2 [pos = \"-2,0!\"]\n  y3 [pos = \"-1.67,0!\"]\n  y4 [pos = \"-1.33,0!\"]\n  y5 [pos = \"-1,0!\"]\n  y6 [pos = \"-0.67,0!\"]\n  y7 [pos = \"-0.33,0!\"]\n  y8 [pos = \"0,0!\"]\n  y9 [pos = \"0.33,0!\"]\n  y10 [pos = \"0.67,0!\"]\n  y11 [pos = \"1,0!\"]\n  y12 [pos = \"1.33,0!\"]\n  y13 [pos = \"1.67,0!\"]\n  y14 [pos = \"2,0!\"]\n  y15 [pos = \"2.33,0!\"]\n  \n  # Item\n  i1 [pos = \"-1.5,-1!\", label=\"Item 1\"]\n  i2 [pos = \"-0,-1!\", label=\"Item 2\"]\n  i3 [pos = \"1.5,-1!\", label=\"Item 3\"]\n\n  # edges\n  edge [dir = \"none\"]\n  1 -> {y1; y2; y3}\n  2 -> {y4; y5; y6}\n  3 -> {y7; y8; y9}\n  4 -> {y10; y11; y12}\n  5 -> {y13; y14; y15}\n  {y1 y4 y7 y10 y13} -> i1\n  {y2 y5 y8 y11 y14} -> i2\n  {y3 y6 y9 y12 y15} -> i3\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 </div>
 <h2 id="intraclass-correlations-and-design-effects">Intraclass Correlations and Design Effects</h2>
 <blockquote>
@@ -2802,7 +2804,7 @@ c_mean × c_sal × oldageOver Age 40
 id
 </td>
 <td style="text-align:left;">
-SD (Intercept)
+sd__(Intercept)
 </td>
 <td style="text-align:center;">
 0.167
@@ -2815,20 +2817,7 @@ SD (Intercept)
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-SD (c_sal)
-</td>
-<td style="text-align:center;">
-0.048
-</td>
-<td style="text-align:center;">
-0.048
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Cor (Intercept~id)
+cor__(Intercept).c_sal
 </td>
 <td style="text-align:center;">
 0.030
@@ -2839,10 +2828,23 @@ Cor (Intercept~id)
 </tr>
 <tr>
 <td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sd__c_sal
+</td>
+<td style="text-align:center;">
+0.048
+</td>
+<td style="text-align:center;">
+0.048
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 Item
 </td>
 <td style="text-align:left;">
-SD (Intercept)
+sd__(Intercept)
 </td>
 <td style="text-align:center;">
 0.317
@@ -2855,20 +2857,7 @@ SD (Intercept)
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-SD (oldageOver Age 40)
-</td>
-<td style="text-align:center;">
-0.223
-</td>
-<td style="text-align:center;">
-0.210
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Cor (Intercept~Item)
+cor__(Intercept).oldageOver Age 40
 </td>
 <td style="text-align:center;">
 −0.274
@@ -2878,56 +2867,30 @@ Cor (Intercept~Item)
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sd__oldageOver Age 40
+</td>
+<td style="text-align:center;">
+0.223
+</td>
+<td style="text-align:center;">
+0.210
+</td>
+</tr>
+<tr>
 <td style="text-align:left;box-shadow: 0px 1px">
 Residual
 </td>
 <td style="text-align:left;box-shadow: 0px 1px">
-SD (Observations)
+sd__Observation
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.783
+0.613
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.783
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Num.Obs.
-</td>
-<td style="text-align:center;">
-7646
-</td>
-<td style="text-align:center;">
-7646
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-R2 Marg.
-</td>
-<td style="text-align:center;">
-0.266
-</td>
-<td style="text-align:center;">
-0.270
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-R2 Cond.
-</td>
-<td style="text-align:center;">
-0.460
-</td>
-<td style="text-align:center;">
-0.463
+0.613
 </td>
 </tr>
 <tr>
@@ -2960,26 +2923,26 @@ BIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-ICC
+Log.Lik.
 </td>
 <td style="text-align:center;">
-0.3
+−7389.583
 </td>
 <td style="text-align:center;">
-0.3
+−7397.415
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-RMSE
+REMLcrit
 </td>
 <td style="text-align:center;">
-0.60
+14779.165
 </td>
 <td style="text-align:center;">
-0.60
+14794.830
 </td>
 </tr>
 </tbody>
