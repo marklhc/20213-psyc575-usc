@@ -13,7 +13,6 @@ params:
 ```{r week-setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 source("helper.R")
-source("render_slides.R")
 ```
 
 # Week Learning Objectives

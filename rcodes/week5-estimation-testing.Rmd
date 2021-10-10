@@ -325,7 +325,7 @@ boot.ci(boot_ran_slp, index = 2, type = "perc")
 
 ```{r boot-ci-r2, cache=TRUE}
 # This again takes a few minutes
-boot_r2 <- bootstrap_mer(crlv_int, MuMIn::r.squaredGLMM, nsim = 999, 
+boot_r2 <- bootstrap_mer(crlv_int, MuMIn::r.squaredGLMM, nsim = 999,
                          type = "residual")
 boot.ci(boot_r2, index = 1, type = "perc")  # index = 1 for marginal R2
 ```
@@ -336,3 +336,23 @@ You can check the bootstrap sampling distribution using
 plot(boot_r2, index = 1)
 ```
 
+### Bonus: Bias-corrected estimates
+
+The bootstrap method is commonly used for obtaining standard errors and confidence intervals. You can get the bootstrap standard error:
+
+```{r boot-r2}
+boot_r2
+```
+
+The above also showed the original estimate for the marginal $R^2$ (in row 1), `r boot_r2$t0[1]`, and the estimated bias using the bootstrap, which suggested that the bias is slightly upward. Therefore, one can obtain the bias-corrected estimate by 
+
+$$\text{Bias-corrected estimate} = \text{Original estimate} - \text{Bias}$$
+
+You can also use the following R code:
+
+```{r bc-boot-r2}
+# Bias
+mean(boot_r2$t[, 1]) - boot_r2$t0[1]  # the first index is marginal R^2; second is conditional R^2
+# Bias-corrected estimate
+2 * boot_r2$t0[1] - mean(boot_r2$t[, 1])
+```

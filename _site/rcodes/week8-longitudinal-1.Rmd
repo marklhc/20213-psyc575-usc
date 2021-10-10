@@ -175,6 +175,36 @@ vc_m00[[1]]$id[1, 1] /
   (vc_m00[[1]]$id[1, 1] + attr(vc_m00[[1]], "sc")^2)
 ```
 
+# Unstructured Fixed Part/Compound Symmetry* (15.1.1 of Snijders & Bosker, 2012)
+
+Instead of assuming a specific growth shape (e.g., linear), one can instead just allow each time point to have its own mean. This provides good fit to the data, but is limited because it does not allow for interpretable description of how individuals change over time, and does not test for any trends. Therefore, more commonly it is used as a comparison to more simplified growth models.
+
+```{r m_cs}
+# Compound Symmetry (i.e., same as repeated measure ANOVA)
+# Use `0 +` to suppress the intercept
+m_cs <- glmmTMB(read ~ 0 + factor(time) + (1 | id),
+  data = curran_long,
+  REML = TRUE
+)
+summary(m_cs)  # omnibus test for time
+# This is the equivalent repeated-measure ANOVA model
+# (with different estimation method)
+m_rmaov <- aov(read ~ factor(time) + Error(id), data = curran_long)
+```
+
+From this model you can compute the **conditional ICC**, which is the proportion of between-person variance out of the total variance in the detrended data.
+
+```{r detrended-icc}
+(vc_cs <- VarCorr(m_cs))  # shows the random effect SDs
+vc_cs[[1]]$id[1, 1]  # intercept variance (tau_0^2)
+attr(vc_cs[[1]], "sc")^2  # lv-1 error variance (sigma^2)
+# ICC: tau_0^2 / (tau_0^2 + sigma^2)
+vc_cs[[1]]$id[1, 1] / 
+  (vc_cs[[1]]$id[1, 1] + attr(vc_cs[[1]], "sc")^2)
+```
+
+So after removing the trend, the between-person variance is larger than the within-person variance. 
+
 # Linear Growth Models
 
 ## Linear Model With Time
@@ -195,10 +225,10 @@ $$
 
 ```{r m_gca}
 # Make 0 the initial time
-curran_long <- curran_long %>% 
-  mutate(time = time - 1)
+curran_long <- curran_long %>%
+  mutate(time0 = time - 1)
 # Fit a linear growth model with no random slopes (not commonly done)
-m_gca <- glmmTMB(read ~ time + (time | id), data = curran_long, REML = TRUE)
+m_gca <- glmmTMB(read ~ time0 + (time0 | id), data = curran_long, REML = TRUE)
 summary(m_gca)
 ```
 
@@ -208,7 +238,7 @@ random_persons <- sample(unique(curran_long$id), size = 24)
 broom.mixed::augment(m_gca) %>%
   # Select only the 24 participants
   filter(id %in% random_persons) %>%
-  ggplot(aes(x = time, y = read)) +
+  ggplot(aes(x = time0, y = read)) +
   geom_point() +
   # Add 95% confidence band
   geom_ribbon(aes(ymin = .fitted - 2 * .se.fit,
@@ -255,12 +285,12 @@ Now, we assume Time 0 to Time 1 has one slope, and Time 1 to Time 3 has another 
 ```{r phase1phase2}
 # Compute phase1 and phase2
 curran_long <- curran_long %>%
-  mutate(phase1 = pmin(time, 1),  # anything bigger than 1 becomes 1
-         phase2 = pmax(time - 1, 0))  # set time to start at TIME 1, and then make
+  mutate(phase1 = pmin(time0, 1),  # anything bigger than 1 becomes 1
+         phase2 = pmax(time0 - 1, 0))  # set time to start at TIME 1, and then make
 # anything smaller than 0 to 0
 # Check the coding:
 curran_long %>%
-  select(time, phase1, phase2) %>%
+  select(time0, phase1, phase2) %>%
   distinct()
 ```
 
@@ -302,10 +332,10 @@ Predicted trajectories at the individual level
 # Add predicted lines to individual trajectories
 broom.mixed::augment(m_pw) %>%
   # compute the original time
-  mutate(time = phase1 + phase2) %>%
+  mutate(time0 = phase1 + phase2) %>%
   # Select only the 24 participants
   filter(id %in% random_persons) %>%
-  ggplot(aes(x = time, y = read)) +
+  ggplot(aes(x = time0, y = read)) +
   geom_point() +
   # Add 95% confidence band
   geom_ribbon(aes(ymin = .fitted - 2 * .se.fit,
@@ -314,6 +344,31 @@ broom.mixed::augment(m_pw) %>%
   geom_line(aes(y = .fitted), col = "blue") +
   facet_wrap(~ id, ncol = 6)
 ```
+
+# Saturated Model* (15.1.3 of Snijders & Bosker, 2012)
+
+This is what is called the *fully multivariate model* in the text. The model is saturated in the sense that it perfectly fits the means and covariances of the outcome variable among the various time points. The model, however, does not allow one to test any structure one is interested, so in practice it is mostly used to check how good or bad the chosen model deviates from this "perfect" model.
+
+```{r m_sat}
+# I use ML estimation so that both the fixed and the random part can be compared
+m_sat_ml <- glmmTMB(read ~ 0 + factor(time) + (0 + factor(time) | id),
+  dispformula = ~0,
+  data = curran_long
+)
+m_gca_ml <- glmmTMB(read ~ time0 + (time0 | id), data = curran_long)
+m_pw_ml <- glmmTMB(read ~ phase1 + phase2 + (phase1 + phase2 | id),
+  data = curran_long,
+  # The default optimizer did not converge; try optim
+  control = glmmTMBControl(
+    optimizer = optim,
+    optArgs = list(method = "BFGS")
+  )
+)
+# Compare the models
+anova(m_sat_ml, m_gca_ml, m_pw_ml)
+```
+
+The above shows that the fit of the piecewise model was not significantly worse than the saturated model.
 
 # Time-Invariant Covariates
 
@@ -378,4 +433,71 @@ msummary(
   ),
   group = group + term ~ model
 )
+```
+
+# Variable Occasions
+
+MLM can handle varying measurement occasions. For example, maybe some students
+are first measured in September when the semester starts, whereas other students 
+are first measured in October or November. How important this difference depends
+on the research being studied. For especially infant/early childhood research, 
+one month can already mean a lot of growth, and so it is important to take that 
+into account. 
+
+Instead of using `time`, one can instead model an outcome variable as a function of age, with the `kidage` variable. To use age, 
+however, one may not want to start at age = 0. In the data set, the minimum 
+`age` is `r min(curran_long$kidage)`. Therefore, we can subtract 
+`r min(curran_long$kidage)` from the original `kidage` variable, so that
+the zero point represent someone at age = `r min(curran_long$kidage)`. 
+
+## Quadratic Function
+
+Here is an example:
+
+```{r plot-age}
+# Subtract age by 6
+curran_long <- curran_long %>% 
+  mutate(kidagetv = kidage + time * 2,
+         # Compute the age for each time point
+         kidage6tv = kidagetv - 6)
+# Plot the data
+ggplot(curran_long, aes(x = kidage6tv, y = read)) +
+  geom_point(size = 0.5) +
+  # add lines to connect the data for each person
+  geom_line(aes(group = id), alpha = 0.5) +
+  # add a mean trajectory
+  geom_smooth(col = "red", size = 1)
+```
+
+```{r m_age}
+# Fit a quadratic model
+m_agesq <- glmmTMB(
+  read ~ kidage6tv + I(kidage6tv^2) +
+    (kidage6tv + I(kidage6tv^2) | id),
+  data = curran_long,
+  REML = TRUE
+)
+summary(m_agesq)
+```
+
+You can then perform the diagnostics and see whether the individual growth 
+shape appears to be quadratic.
+
+```{r plot-m_agesq}
+random_persons <- sample(unique(curran_long$id), size = 24)
+broom.mixed::augment(m_agesq) %>%
+  # Select only the 24 participants
+  filter(id %in% random_persons) %>%
+  ggplot(aes(x = kidage6tv, y = read)) +
+  geom_point() +
+  # Add 95% confidence band
+  geom_ribbon(aes(ymin = .fitted - 2 * .se.fit,
+                  ymax = .fitted + 2 * .se.fit),
+              alpha = 0.1) +
+  geom_line(aes(y = .fitted), col = "blue") +
+  facet_wrap(~ id, ncol = 6)
+# Plot the predicted trajectories on the same panel
+broom.mixed::augment(m_agesq) %>%
+  ggplot(aes(x = kidage6tv, y = read, group = factor(id))) +
+  geom_line(alpha = 0.5)
 ```
