@@ -23,6 +23,7 @@ By the end of this module, you will be able to
 - Perform some basic **attrition analyses**
 - Specify and run **growth curve analysis**
 - Analyze models with **time-invariant covariates** (i.e., lv-2 predictors) and interpret the results
+- Create a GitHub repository to be used for your class project
 
 Note: In the video the slides use $d$ for effect size, but we will use $R^2$ in this class.
 
@@ -34,6 +35,7 @@ Note: In the video the slides use $d$ for effect size, but we will use $R^2$ in 
 3. Prepare the prospectus and schedule a meeting with the instructor
 4. Additional resources for learning MLM for longitudinal data analysis
     * [This excellent book by Hoffman (2014)](https://www-taylorfrancis-com.libproxy2.usc.edu/books/9781315744094) (USC SSO required)
+5. HW 8 is not due until October 30, but you may start working on Part A of it
 
 # Lecture
 
