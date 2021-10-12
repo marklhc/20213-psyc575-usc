@@ -233,3 +233,23 @@ add_youtube("XsbxN2m_si4")
 ```{r, echo = FALSE}
 add_youtube("PYyMVi292DM")
 ```
+
+## Using GitHub
+
+First, create a GitHub account at github.com. You can see some advice at https://happygitwithr.com/github-acct.html
+
+```{r, echo = FALSE}
+add_youtube("56uFYU9SHdg")
+```
+
+Check out this page for system-specific instructions for installing Git: https://happygitwithr.com/install-git.html
+
+```{r, echo = FALSE}
+add_youtube("pHfBQA2DoJY")
+```
+
+Check out this page for getting a personal access token (PAT) for GitHub: https://happygitwithr.com/credential-caching.html#get-a-pat
+
+```{r, echo = FALSE}
+add_youtube("7H6DR_C9s0A")
+```
