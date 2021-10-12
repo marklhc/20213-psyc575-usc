@@ -25,8 +25,6 @@ By the end of this module, you will be able to
 - Analyze models with **time-invariant covariates** (i.e., lv-2 predictors) and interpret the results
 - Create a GitHub repository to be used for your class project
 
-Note: In the video the slides use $d$ for effect size, but we will use $R^2$ in this class.
-
 ## Task Lists
 
 1. Review the resources (lecture videos and slides)
@@ -255,3 +253,5 @@ Check out this page for getting a personal access token (PAT) for GitHub: https:
 ```{r, echo = FALSE}
 add_youtube("7H6DR_C9s0A")
 ```
+
+As an example, here is the GitHub repository for this class website: https://github.com/marklhc/20213-psyc575-usc
