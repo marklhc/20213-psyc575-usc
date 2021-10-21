@@ -33,6 +33,8 @@ navbar:
           href: week7.html
         - text: "Week 8"
           href: week8.html
+        - text: "Week 9"
+          href: week9.html
     - text: "R Codes"
       menu:
         - text: "Week 1 R Code"

@@ -1,0 +1,26 @@
+---
+title: "Week 9"
+description: |
+  Individual Meeting on Final Research Project
+output: 
+  distill::distill_article:
+    toc: true
+---
+
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Formulate an analytic plan for your final research project
+
+## Task Lists
+
+1. As a group (up to 3 people) or your own, schedule a meeting with your instructor.
+    * You can find the signup link on Blackboard
+2. Submit your prospectus to Blackboard the day before the scheduled meeting

@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 5</title>
@@ -1862,7 +1863,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2090,6 +2094,7 @@ Lectures
 <a href="week6.html">Week 6</a>
 <a href="week7.html">Week 7</a>
 <a href="week8.html">Week 8</a>
+<a href="week9.html">Week 9</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2184,12 +2189,12 @@ R Codes
 </div>
 <p>Check your learning: The values you obtained from MLM software (e.g., <code>lme4</code>) are</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_90202" onsubmit="return validate_form_90202()" method="post">
-<input type="radio" name="answer_90202" id="90202_1" value="Parameter values"><label for="1">Parameter values</label><br><input type="radio" name="answer_90202" id="90202_2" value="Sample estimates"><label for="2">Sample estimates</label><br><input type="submit" value="check">
+<form name="form_1772" onsubmit="return validate_form_1772()" method="post">
+<input type="radio" name="answer_1772" id="1772_1" value="Parameter values"><label for="1">Parameter values</label><br><input type="radio" name="answer_1772" id="1772_2" value="Sample estimates"><label for="2">Sample estimates</label><br><input type="submit" value="check">
 </form>
-<p id="result_90202">
+<p id="result_1772">
 </p>
-<script> function validate_form_90202() {var x, text; var x = document.forms["form_90202"]["answer_90202"].value;if (x == "Sample estimates"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_90202').innerHTML = text; return false;} </script>
+<script> function validate_form_1772() {var x, text; var x = document.forms["form_1772"]["answer_1772"].value;if (x == "Sample estimates"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_1772').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="maximum-likelihood">Maximum likelihood</h3>
@@ -2206,21 +2211,21 @@ R Codes
 </div>
 <p>Check your learning: Using the principle of maximum likelihood, the best estimate for a parameter is one that</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_39485" onsubmit="return validate_form_39485()" method="post">
-<input type="radio" name="answer_39485" id="39485_1" value="results in the least squared error"><label for="1">results in the least squared error</label><br><input type="radio" name="answer_39485" id="39485_2" value="is the sample mean"><label for="2">is the sample mean</label><br><input type="radio" name="answer_39485" id="39485_3" value="maximizes the log-likelihood function"><label for="3">maximizes the log-likelihood function</label><br><input type="submit" value="check">
+<form name="form_87095" onsubmit="return validate_form_87095()" method="post">
+<input type="radio" name="answer_87095" id="87095_1" value="results in the least squared error"><label for="1">results in the least squared error</label><br><input type="radio" name="answer_87095" id="87095_2" value="is the sample mean"><label for="2">is the sample mean</label><br><input type="radio" name="answer_87095" id="87095_3" value="maximizes the log-likelihood function"><label for="3">maximizes the log-likelihood function</label><br><input type="submit" value="check">
 </form>
-<p id="result_39485">
+<p id="result_87095">
 </p>
-<script> function validate_form_39485() {var x, text; var x = document.forms["form_39485"]["answer_39485"].value;if (x == "maximizes the log-likelihood function"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_39485').innerHTML = text; return false;} </script>
+<script> function validate_form_87095() {var x, text; var x = document.forms["form_87095"]["answer_87095"].value;if (x == "maximizes the log-likelihood function"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_87095').innerHTML = text; return false;} </script>
 </div>
 <p>Thought exercise: Because a probability is less than 1, the logarithm of it will be a negative number. By that logic, if the log-likelihood is -16.5 with <span class="math inline">\(N = 5\)</span>, what should it be with a larger sample size (e.g., <span class="math inline">\(N = 50\)</span>)?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_64141" onsubmit="return validate_form_64141()" method="post">
-<input type="radio" name="answer_64141" id="64141_1" value="more negative (e.g., -160.5)"><label for="1">more negative (e.g., -160.5)</label><br><input type="radio" name="answer_64141" id="64141_2" value="unchanged (i.e., -16.5"><label for="2">unchanged (i.e., -16.5</label><br><input type="radio" name="answer_64141" id="64141_3" value="more positive (e.g., -1.65)"><label for="3">more positive (e.g., -1.65)</label><br><input type="submit" value="check">
+<form name="form_55278" onsubmit="return validate_form_55278()" method="post">
+<input type="radio" name="answer_55278" id="55278_1" value="more negative (e.g., -160.5)"><label for="1">more negative (e.g., -160.5)</label><br><input type="radio" name="answer_55278" id="55278_2" value="unchanged (i.e., -16.5"><label for="2">unchanged (i.e., -16.5</label><br><input type="radio" name="answer_55278" id="55278_3" value="more positive (e.g., -1.65)"><label for="3">more positive (e.g., -1.65)</label><br><input type="submit" value="check">
 </form>
-<p id="result_64141">
+<p id="result_55278">
 </p>
-<script> function validate_form_64141() {var x, text; var x = document.forms["form_64141"]["answer_64141"].value;if (x == "more negative (e.g., -160.5)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_64141').innerHTML = text; return false;} </script>
+<script> function validate_form_55278() {var x, text; var x = document.forms["form_55278"]["answer_55278"].value;if (x == "more negative (e.g., -160.5)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_55278').innerHTML = text; return false;} </script>
 </div>
 <h4 id="more-about-maximum-likelihood-estimation">More about maximum likelihood estimation</h4>
 <p>If <span class="math inline">\(\sigma\)</span> is not known, the maximum likelihood estimate is <span class="math display">\[\hat \sigma = \sqrt{\frac{\sum_{i = 1}^N (Y_i - \bar X)^2}{N}},\]</span> which uses <span class="math inline">\(N\)</span> in the denominator instead of <span class="math inline">\(N - 1\)</span>. Because of this, in small sample, maximum likelihood estimate tends to be biased, meaning that on average it tends to underestimate the population variance.</p>
@@ -2237,12 +2242,12 @@ R Codes
 </div>
 <p>Check your learning: The deviance is</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_53022" onsubmit="return validate_form_53022()" method="post">
-<input type="radio" name="answer_53022" id="53022_1" value="2 x likelihood"><label for="1">2 x likelihood</label><br><input type="radio" name="answer_53022" id="53022_2" value="2 x log-likelihood"><label for="2">2 x log-likelihood</label><br><input type="radio" name="answer_53022" id="53022_3" value="-2 x log-likelihood"><label for="3">-2 x log-likelihood</label><br><input type="submit" value="check">
+<form name="form_71618" onsubmit="return validate_form_71618()" method="post">
+<input type="radio" name="answer_71618" id="71618_1" value="2 x likelihood"><label for="1">2 x likelihood</label><br><input type="radio" name="answer_71618" id="71618_2" value="2 x log-likelihood"><label for="2">2 x log-likelihood</label><br><input type="radio" name="answer_71618" id="71618_3" value="-2 x log-likelihood"><label for="3">-2 x log-likelihood</label><br><input type="submit" value="check">
 </form>
-<p id="result_53022">
+<p id="result_71618">
 </p>
-<script> function validate_form_53022() {var x, text; var x = document.forms["form_53022"]["answer_53022"].value;if (x == "-2 x log-likelihood"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_53022').innerHTML = text; return false;} </script>
+<script> function validate_form_71618() {var x, text; var x = document.forms["form_71618"]["answer_71618"].value;if (x == "-2 x log-likelihood"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_71618').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="testing">Testing</h2>
@@ -2390,12 +2395,12 @@ Log.Lik.
 </div>
 <p>Using R and the <code>pchisq()</code> function, what is the <span class="math inline">\(\chi^2\)</span> (or X2) test statistic and the <span class="math inline">\(p\)</span> value for the fixed effect coefficient for <code>ses</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_9913" onsubmit="return validate_form_9913()" method="post">
-<input type="radio" name="answer_9913" id="9913_1" value="X2 = 395.3, df = 1, p < .001"><label for="1">X2 = 395.3, df = 1, p &lt; .001</label><br><input type="radio" name="answer_9913" id="9913_2" value="X2 = 198, df = 1, p < .001"><label for="2">X2 = 198, df = 1, p &lt; .001</label><br><input type="radio" name="answer_9913" id="9913_3" value="F = 20.1, df = 1, p < .001"><label for="3">F = 20.1, df = 1, p &lt; .001</label><br><input type="submit" value="check">
+<form name="form_39160" onsubmit="return validate_form_39160()" method="post">
+<input type="radio" name="answer_39160" id="39160_1" value="X2 = 395.3, df = 1, p < .001"><label for="1">X2 = 395.3, df = 1, p &lt; .001</label><br><input type="radio" name="answer_39160" id="39160_2" value="X2 = 198, df = 1, p < .001"><label for="2">X2 = 198, df = 1, p &lt; .001</label><br><input type="radio" name="answer_39160" id="39160_3" value="F = 20.1, df = 1, p < .001"><label for="3">F = 20.1, df = 1, p &lt; .001</label><br><input type="submit" value="check">
 </form>
-<p id="result_9913">
+<p id="result_39160">
 </p>
-<script> function validate_form_9913() {var x, text; var x = document.forms["form_9913"]["answer_9913"].value;if (x == "X2 = 395.3, df = 1, p < .001"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_9913').innerHTML = text; return false;} </script>
+<script> function validate_form_39160() {var x, text; var x = document.forms["form_39160"]["answer_39160"].value;if (x == "X2 = 395.3, df = 1, p < .001"){text = 'Your statistical knowledge is getting better and better :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_39160').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="f-test-with-small-sample-correction"><span class="math inline">\(F\)</span> test with small-sample correction</h3>

@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 8)</title>
@@ -1859,7 +1860,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2087,6 +2091,7 @@ Lectures
 <a href="week6.html">Week 6</a>
 <a href="week7.html">Week 7</a>
 <a href="week8.html">Week 8</a>
+<a href="week9.html">Week 9</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2499,7 +2504,8 @@ homeemo
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m00_lme4</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
+<pre><code>&gt;# Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
+&gt;# lmerModLmerTest]
 &gt;# Formula: read ~ (1 | id)
 &gt;#    Data: curran_long
 &gt;# 
@@ -2516,8 +2522,10 @@ homeemo
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Fixed effects:
-&gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  4.11279    0.05093   80.75</code></pre>
+&gt;#              Estimate Std. Error        df t value Pr(&gt;|t|)    
+&gt;# (Intercept)   4.11279    0.05093 379.71115   80.75   &lt;2e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <p>However, <code>lme4</code> has some limitations with longitudinal data analysis, as it assumes that what is called a compound symmetry error covariance structure. Basically that means that the within-person (level-1) error has constant variance (i.e., <span class="math inline">\(\sigma^2\)</span>) over time, and the errors from one time point to the next is not correlated after conditioning on the fixed and random effects. In other words, whatever that causes one to has a higher (or lower) score than predicted for today will not carry over for tomorrow.</p>
 <p>There are a few more flexible packages for handling longitudinal data. You will see people use <code>nlme</code> a lot. There are also packages with Bayesian estimation, such as <code>MCMCglmm</code> and <code>brms</code>. For this class, we will use <code>glmmTMB</code>, a package that has a lot of the features for longitudinal data and has a very similar structure as <code>lme4</code>. Let’s replicate the results from <code>lme4</code>:</p>

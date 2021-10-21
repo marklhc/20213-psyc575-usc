@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 8</title>
@@ -1862,7 +1863,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -2088,6 +2092,7 @@ Lectures
 <a href="week6.html">Week 6</a>
 <a href="week7.html">Week 7</a>
 <a href="week8.html">Week 8</a>
+<a href="week9.html">Week 9</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2188,12 +2193,12 @@ R Codes
 <hr />
 <p>Check your learning: In a research study, data were collected for a group of patients on symptoms of eating disorder on a weekly interval across 5 weeks. What type of data is this?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_87903" onsubmit="return validate_form_87903()" method="post">
-<input type="radio" name="answer_87903" id="87903_1" value="Panel data"><label for="1">Panel data</label><br><input type="radio" name="answer_87903" id="87903_2" value="Intensive longitudinal data"><label for="2">Intensive longitudinal data</label><br><input type="radio" name="answer_87903" id="87903_3" value="Cross-sectional data"><label for="3">Cross-sectional data</label><br><input type="submit" value="check">
+<form name="form_33931" onsubmit="return validate_form_33931()" method="post">
+<input type="radio" name="answer_33931" id="33931_1" value="Panel data"><label for="1">Panel data</label><br><input type="radio" name="answer_33931" id="33931_2" value="Intensive longitudinal data"><label for="2">Intensive longitudinal data</label><br><input type="radio" name="answer_33931" id="33931_3" value="Cross-sectional data"><label for="3">Cross-sectional data</label><br><input type="submit" value="check">
 </form>
-<p id="result_87903">
+<p id="result_33931">
 </p>
-<script> function validate_form_87903() {var x, text; var x = document.forms["form_87903"]["answer_87903"].value;if (x == "Panel data"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_87903').innerHTML = text; return false;} </script>
+<script> function validate_form_33931() {var x, text; var x = document.forms["form_33931"]["answer_33931"].value;if (x == "Panel data"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_33931').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="example-data">Example data</h2>
@@ -2205,12 +2210,12 @@ R Codes
 <hr />
 <p>Check your learning: In the data set, at what level is <code>homecog</code>, which is a measure of mother’s cognitive stimulation at baseline?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_17215" onsubmit="return validate_form_17215()" method="post">
-<input type="radio" name="answer_17215" id="17215_1" value="Level 1"><label for="1">Level 1</label> <input type="radio" name="answer_17215" id="17215_2" value="Level 2"><label for="2">Level 2</label> <br><input type="submit" value="check">
+<form name="form_58245" onsubmit="return validate_form_58245()" method="post">
+<input type="radio" name="answer_58245" id="58245_1" value="Level 1"><label for="1">Level 1</label> <input type="radio" name="answer_58245" id="58245_2" value="Level 2"><label for="2">Level 2</label> <br><input type="submit" value="check">
 </form>
-<p id="result_17215">
+<p id="result_58245">
 </p>
-<script> function validate_form_17215() {var x, text; var x = document.forms["form_17215"]["answer_17215"].value;if (x == "Level 2"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_17215').innerHTML = text; return false;} </script>
+<script> function validate_form_58245() {var x, text; var x = document.forms["form_58245"]["answer_58245"].value;if (x == "Level 2"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_58245').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="basic-attrition-analysis">Basic attrition analysis</h3>
@@ -2223,12 +2228,12 @@ R Codes
 <hr />
 <p>Check your learning: In the spaghetti plot, what does the average trend line mean?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_49387" onsubmit="return validate_form_49387()" method="post">
-<input type="radio" name="answer_49387" id="49387_1" value="That every child showed an increasing trend"><label for="1">That every child showed an increasing trend</label><br><input type="radio" name="answer_49387" id="49387_2" value="That the sample average reading score increased across time"><label for="2">That the sample average reading score increased across time</label><br><input type="radio" name="answer_49387" id="49387_3" value="That there is no variability in individual trajectories"><label for="3">That there is no variability in individual trajectories</label><br><input type="submit" value="check">
+<form name="form_1489" onsubmit="return validate_form_1489()" method="post">
+<input type="radio" name="answer_1489" id="1489_1" value="That every child showed an increasing trend"><label for="1">That every child showed an increasing trend</label><br><input type="radio" name="answer_1489" id="1489_2" value="That the sample average reading score increased across time"><label for="2">That the sample average reading score increased across time</label><br><input type="radio" name="answer_1489" id="1489_3" value="That there is no variability in individual trajectories"><label for="3">That there is no variability in individual trajectories</label><br><input type="submit" value="check">
 </form>
-<p id="result_49387">
+<p id="result_1489">
 </p>
-<script> function validate_form_49387() {var x, text; var x = document.forms["form_49387"]["answer_49387"].value;if (x == "That the sample average reading score increased across time"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_49387').innerHTML = text; return false;} </script>
+<script> function validate_form_1489() {var x, text; var x = document.forms["form_1489"]["answer_1489"].value;if (x == "That the sample average reading score increased across time"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_1489').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="growth-curve-modeling">Growth Curve Modeling</h2>
@@ -2241,12 +2246,12 @@ R Codes
 <hr />
 <p>Thinking exercise: In a growth model, what does it mean when <span class="math inline">\(\tau_1 = 0\)</span>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_24259" onsubmit="return validate_form_24259()" method="post">
-<input type="radio" name="answer_24259" id="24259_1" value="That on average, there is no change on the outcome across time"><label for="1">That on average, there is no change on the outcome across time</label><br><input type="radio" name="answer_24259" id="24259_2" value="That every participant has the same rate of change"><label for="2">That every participant has the same rate of change</label><br><input type="radio" name="answer_24259" id="24259_3" value="That every participant has the same outcome score"><label for="3">That every participant has the same outcome score</label><br><input type="submit" value="check">
+<form name="form_23793" onsubmit="return validate_form_23793()" method="post">
+<input type="radio" name="answer_23793" id="23793_1" value="That on average, there is no change on the outcome across time"><label for="1">That on average, there is no change on the outcome across time</label><br><input type="radio" name="answer_23793" id="23793_2" value="That every participant has the same rate of change"><label for="2">That every participant has the same rate of change</label><br><input type="radio" name="answer_23793" id="23793_3" value="That every participant has the same outcome score"><label for="3">That every participant has the same outcome score</label><br><input type="submit" value="check">
 </form>
-<p id="result_24259">
+<p id="result_23793">
 </p>
-<script> function validate_form_24259() {var x, text; var x = document.forms["form_24259"]["answer_24259"].value;if (x == "That every participant has the same rate of change"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_24259').innerHTML = text; return false;} </script>
+<script> function validate_form_23793() {var x, text; var x = document.forms["form_23793"]["answer_23793"].value;if (x == "That every participant has the same rate of change"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_23793').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="linear-growth">Linear growth</h3>
@@ -2259,12 +2264,12 @@ R Codes
 <hr />
 <p>Check you learning: What is the advantage of having time to start at 0?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_18862" onsubmit="return validate_form_18862()" method="post">
-<input type="radio" name="answer_18862" id="18862_1" value="The intercept corresponds to the predicted score at the first time point"><label for="1">The intercept corresponds to the predicted score at the first time point</label><br><input type="radio" name="answer_18862" id="18862_2" value="So that tau_1 will be the SD of the slopes"><label for="2">So that tau_1 will be the SD of the slopes</label><br><input type="submit" value="check">
+<form name="form_39652" onsubmit="return validate_form_39652()" method="post">
+<input type="radio" name="answer_39652" id="39652_1" value="The intercept corresponds to the predicted score at the first time point"><label for="1">The intercept corresponds to the predicted score at the first time point</label><br><input type="radio" name="answer_39652" id="39652_2" value="So that tau_1 will be the SD of the slopes"><label for="2">So that tau_1 will be the SD of the slopes</label><br><input type="submit" value="check">
 </form>
-<p id="result_18862">
+<p id="result_39652">
 </p>
-<script> function validate_form_18862() {var x, text; var x = document.forms["form_18862"]["answer_18862"].value;if (x == "The intercept corresponds to the predicted score at the first time point"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_18862').innerHTML = text; return false;} </script>
+<script> function validate_form_39652() {var x, text; var x = document.forms["form_39652"]["answer_39652"].value;if (x == "The intercept corresponds to the predicted score at the first time point"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_39652').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="piecewise-linear-growth">Piecewise linear growth</h3>
@@ -2286,12 +2291,12 @@ R Codes
 <hr />
 <p>Check your learning: If a piecewise growth model has an AIC of 23745, and a linear growth model has an AIC of 23650, which model should be preferred?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_87384" onsubmit="return validate_form_87384()" method="post">
-<input type="radio" name="answer_87384" id="87384_1" value="Piecewise"><label for="1">Piecewise</label> <input type="radio" name="answer_87384" id="87384_2" value="Linear"><label for="2">Linear</label> <br><input type="submit" value="check">
+<form name="form_31903" onsubmit="return validate_form_31903()" method="post">
+<input type="radio" name="answer_31903" id="31903_1" value="Piecewise"><label for="1">Piecewise</label> <input type="radio" name="answer_31903" id="31903_2" value="Linear"><label for="2">Linear</label> <br><input type="submit" value="check">
 </form>
-<p id="result_87384">
+<p id="result_31903">
 </p>
-<script> function validate_form_87384() {var x, text; var x = document.forms["form_87384"]["answer_87384"].value;if (x == "Linear"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_87384').innerHTML = text; return false;} </script>
+<script> function validate_form_31903() {var x, text; var x = document.forms["form_31903"]["answer_31903"].value;if (x == "Linear"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_31903').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="time-invariant-covariates">Time-Invariant Covariates</h2>
@@ -2303,12 +2308,12 @@ R Codes
 <hr />
 <p>Thinking exercise: What does the coefficient for <code>phase1</code> mean when the model includes an interaction between <code>phase1</code> and <code>homecog9</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_9424" onsubmit="return validate_form_9424()" method="post">
-<input type="radio" name="answer_9424" id="9424_1" value="The average slope from time 0 to time 1"><label for="1">The average slope from time 0 to time 1</label><br><input type="radio" name="answer_9424" id="9424_2" value="The average slope from time 0 to time 1 for kids with homecog = 9"><label for="2">The average slope from time 0 to time 1 for kids with homecog = 9</label><br><input type="radio" name="answer_9424" id="9424_3" value="The average slope from time 0 to time 1, holding constant homecog"><label for="3">The average slope from time 0 to time 1, holding constant homecog</label><br><input type="submit" value="check">
+<form name="form_40124" onsubmit="return validate_form_40124()" method="post">
+<input type="radio" name="answer_40124" id="40124_1" value="The average slope from time 0 to time 1"><label for="1">The average slope from time 0 to time 1</label><br><input type="radio" name="answer_40124" id="40124_2" value="The average slope from time 0 to time 1 for kids with homecog = 9"><label for="2">The average slope from time 0 to time 1 for kids with homecog = 9</label><br><input type="radio" name="answer_40124" id="40124_3" value="The average slope from time 0 to time 1, holding constant homecog"><label for="3">The average slope from time 0 to time 1, holding constant homecog</label><br><input type="submit" value="check">
 </form>
-<p id="result_9424">
+<p id="result_40124">
 </p>
-<script> function validate_form_9424() {var x, text; var x = document.forms["form_9424"]["answer_9424"].value;if (x == "The average slope from time 0 to time 1 for kids with homecog = 9"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_9424').innerHTML = text; return false;} </script>
+<script> function validate_form_40124() {var x, text; var x = document.forms["form_40124"]["answer_40124"].value;if (x == "The average slope from time 0 to time 1 for kids with homecog = 9"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_40124').innerHTML = text; return false;} </script>
 </div>
 <h2 id="varying-occasions">Varying Occasions</h2>
 <p>Instead of using <code>time</code> as the duration since a particular point in history (e.g., when the study started), one can use some other ways of quantifying time, such as the duration since one is born (i.e., chronological age). See R code.</p>
