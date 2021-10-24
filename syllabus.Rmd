@@ -265,7 +265,7 @@ dates <- paste(
 | Sep 21 & 23        | - Model Testing        |                                       |                                        |
 |                    |                        |                                       | - HW 5                                 |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
-| Week 6\            | - Model Assumptions    | - SB ch 10                            | - Exercise: TBD                        |
+| Week 6\            | - Model Assumptions    | - SB ch 10                            | - Exercise: Diagnostics                |
 | Sep 28 &           | and Diagnostics        |                                       | - HW 6                                 |
 | 30                 | - Reporting Results    |                                       |                                        |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
@@ -282,8 +282,8 @@ dates <- paste(
 | Oct 19 & 21        | on final research      |                                       |                                        |
 |                    | project                |                                       |                                        |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
-| Week 10\           | - Models for           | - [Hoffman (2014) ch 8][11]           | - Exercise: Autoregressive             |
-| Oct 26 & 28        | Longitudinal Data II   |                                       | and lagged effects                     |
+| Week 10\           | - Models for           | - [Hoffman (2014) ch 4.1][11]         | - Exercise: Autoregressive             |
+| Oct 26 & 28        | Longitudinal Data II   | - [Hoffman (2014) ch 8][13]           | and lagged effects                     |
 |                    |                        |                                       | - HW 8                                 |
 +--------------------+------------------------+---------------------------------------+----------------------------------------+
 | Week 11\           | - Predictive Modeling  | - [Yarkoni & Westfall (2017)][12]     | - Exercise: Model averaging            |
@@ -321,6 +321,7 @@ SB = Snijders & Bosker (2012)
 [10]: /exercise/04-decomposing_effects.Rmd
 [11]: https://www-taylorfrancis-com.libproxy1.usc.edu/books/9781315744094/chapters/10.4324/9781315744094-17
 [12]: https://journals.sagepub.com/doi/pdf/10.1177/1745691617693393
+[13]: https://www-taylorfrancis-com.libproxy1.usc.edu/books/9781315744094/chapters/10.4324/9781315744094-12
 
 # Statement on Academic Conduct and Support Systems
 
