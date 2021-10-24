@@ -1,0 +1,3937 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 10)</title>
+
+
+
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 10)"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): R Codes (Week 10)"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","output","params"]}},"value":[{"type":"character","attributes":{},"value":["R Codes (Week 10)"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["rmd_file"]}},"value":[{"type":"character","attributes":{},"value":["week10-longitudinal-2"]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  <!--radix_placeholder_navigation_in_header-->
+  <meta name="distill:offset" content=""/>
+
+  <script type="application/javascript">
+
+    window.headroom_prevent_pin = false;
+
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+
+      // initialize headroom for banner
+      var header = $('header').get(0);
+      var headerHeight = header.offsetHeight;
+      var headroom = new Headroom(header, {
+        tolerance: 5,
+        onPin : function() {
+          if (window.headroom_prevent_pin) {
+            window.headroom_prevent_pin = false;
+            headroom.unpin();
+          }
+        }
+      });
+      headroom.init();
+      if(window.location.hash)
+        headroom.unpin();
+      $(header).addClass('headroom--transition');
+
+      // offset scroll location for banner on hash change
+      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+      window.addEventListener("hashchange", function(event) {
+        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+      });
+
+      // responsive menu
+      $('.distill-site-header').each(function(i, val) {
+        var topnav = $(this);
+        var toggle = topnav.find('.nav-toggle');
+        toggle.on('click', function() {
+          topnav.toggleClass('responsive');
+        });
+      });
+
+      // nav dropdowns
+      $('.nav-dropbtn').click(function(e) {
+        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+        $(this).parent().siblings('.nav-dropdown')
+           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+      });
+      $("body").click(function(e){
+        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+      });
+      $(".nav-dropdown").click(function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+  <style type="text/css">
+
+  /* Theme (user-documented overrideables for nav appearance) */
+
+  .distill-site-nav {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #0F2E3D;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .distill-site-nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .distill-site-nav a:hover {
+    color: white;
+  }
+
+  @media print {
+    .distill-site-nav {
+      display: none;
+    }
+  }
+
+  .distill-site-header {
+
+  }
+
+  .distill-site-footer {
+
+  }
+
+
+  /* Site Header */
+
+  .distill-site-header {
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+
+  .distill-site-header .nav-left {
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header .nav-left {
+      margin-left: 0;
+    }
+  }
+
+
+  .distill-site-header .nav-right {
+    float: right;
+    margin-right: 8px;
+  }
+
+  .distill-site-header a,
+  .distill-site-header .title {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 10px 14px 10px;
+  }
+
+  .distill-site-header .title {
+    font-size: 18px;
+    min-width: 150px;
+  }
+
+  .distill-site-header .logo {
+    padding: 0;
+  }
+
+  .distill-site-header .logo img {
+    display: none;
+    max-height: 20px;
+    width: auto;
+    margin-bottom: -4px;
+  }
+
+  .distill-site-header .nav-image img {
+    max-height: 18px;
+    width: auto;
+    display: inline-block;
+    margin-bottom: -3px;
+  }
+
+
+
+  @media screen and (min-width: 1000px) {
+    .distill-site-header .logo img {
+      display: inline-block;
+    }
+    .distill-site-header .nav-left {
+      margin-left: 20px;
+    }
+    .distill-site-header .nav-right {
+      margin-right: 20px;
+    }
+    .distill-site-header .title {
+      padding-left: 12px;
+    }
+  }
+
+
+  .distill-site-header .nav-toggle {
+    display: none;
+  }
+
+  .nav-dropdown {
+    display: inline-block;
+    position: relative;
+  }
+
+  .nav-dropdown .nav-dropbtn {
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 16px 10px;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+    margin-top: 1px;
+    z-index: 2;
+  }
+
+  .nav-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    margin-top: 2px;
+    white-space: nowrap;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .nav-dropdown-content hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-dropdown-active {
+    display: block;
+  }
+
+  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+    color: black;
+    padding: 6px 24px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .nav-dropdown-content .nav-dropdown-header {
+    display: block;
+    padding: 5px 24px;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #999999;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown:hover .nav-dropbtn {
+    color: white;
+  }
+
+  .nav-dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .nav-right .nav-dropdown-content {
+    margin-left: -45%;
+    right: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+    .distill-site-header a.nav-toggle {
+      float: right;
+      display: block;
+    }
+    .distill-site-header .title {
+      margin-left: 0;
+    }
+    .distill-site-header .nav-right {
+      margin-right: 0;
+    }
+    .distill-site-header {
+      overflow: hidden;
+    }
+    .nav-right .nav-dropdown-content {
+      margin-left: 0;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header.responsive {position: relative; min-height: 500px; }
+    .distill-site-header.responsive a.nav-toggle {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .distill-site-header.responsive a,
+    .distill-site-header.responsive .nav-dropdown {
+      display: block;
+      text-align: left;
+    }
+    .distill-site-header.responsive .nav-left,
+    .distill-site-header.responsive .nav-right {
+      width: 100%;
+    }
+    .distill-site-header.responsive .nav-dropdown {float: none;}
+    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  /* Site Footer */
+
+  .distill-site-footer {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 3;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Headroom */
+
+  d-title {
+    padding-top: 6rem;
+  }
+
+  @media print {
+    d-title {
+      padding-top: 4rem;
+    }
+  }
+
+  .headroom {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .headroom--transition {
+    transition: all .4s ease-in-out;
+  }
+
+  .headroom--unpinned {
+    top: -100px;
+  }
+
+  .headroom--pinned {
+    top: 0;
+  }
+
+  /* adjust viewport for navbar height */
+  /* helps vertically center bootstrap (non-distill) content */
+  .min-vh-100 {
+    min-height: calc(100vh - 100px) !important;
+  }
+
+  </style>
+
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
+  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
+  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
+
+  <script type="application/javascript">
+
+  function getMeta(metaName) {
+    var metas = document.getElementsByTagName('meta');
+    for (let i = 0; i < metas.length; i++) {
+      if (metas[i].getAttribute('name') === metaName) {
+        return metas[i].getAttribute('content');
+      }
+    }
+    return '';
+  }
+
+  function offsetURL(url) {
+    var offset = getMeta('distill:offset');
+    return offset ? offset + '/' + url : url;
+  }
+
+  function createFuseIndex() {
+
+    // create fuse index
+    var options = {
+      keys: [
+        { name: 'title', weight: 20 },
+        { name: 'categories', weight: 15 },
+        { name: 'description', weight: 10 },
+        { name: 'contents', weight: 5 },
+      ],
+      ignoreLocation: true,
+      threshold: 0
+    };
+    var fuse = new window.Fuse([], options);
+
+    // fetch the main search.json
+    return fetch(offsetURL('search.json'))
+      .then(function(response) {
+        if (response.status == 200) {
+          return response.json().then(function(json) {
+            // index main articles
+            json.articles.forEach(function(article) {
+              fuse.add(article);
+            });
+            // download collections and index their articles
+            return Promise.all(json.collections.map(function(collection) {
+              return fetch(offsetURL(collection)).then(function(response) {
+                if (response.status === 200) {
+                  return response.json().then(function(articles) {
+                    articles.forEach(function(article) {
+                      fuse.add(article);
+                    });
+                  })
+                } else {
+                  return Promise.reject(
+                    new Error('Unexpected status from search index request: ' +
+                              response.status)
+                  );
+                }
+              });
+            })).then(function() {
+              return fuse;
+            });
+          });
+
+        } else {
+          return Promise.reject(
+            new Error('Unexpected status from search index request: ' +
+                        response.status)
+          );
+        }
+      });
+  }
+
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+
+    // get search element (bail if we don't have one)
+    var searchEl = window.document.getElementById('distill-search');
+    if (!searchEl)
+      return;
+
+    createFuseIndex()
+      .then(function(fuse) {
+
+        // make search box visible
+        searchEl.classList.remove('hidden');
+
+        // initialize autocomplete
+        var options = {
+          autoselect: true,
+          hint: false,
+          minLength: 2,
+        };
+        window.autocomplete(searchEl, options, [{
+          source: function(query, callback) {
+            const searchOptions = {
+              isCaseSensitive: false,
+              shouldSort: true,
+              minMatchCharLength: 2,
+              limit: 10,
+            };
+            var results = fuse.search(query, searchOptions);
+            callback(results
+              .map(function(result) { return result.item; })
+            );
+          },
+          templates: {
+            suggestion: function(suggestion) {
+              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+                : '';
+              var html = `
+                <div class="search-item">
+                  <h3>${suggestion.title}</h3>
+                  <div class="search-item-description">
+                    ${suggestion.description || ''}
+                  </div>
+                  <div class="search-item-preview">
+                    ${img}
+                  </div>
+                </div>
+              `;
+              return html;
+            }
+          }
+        }]).on('autocomplete:selected', function(event, suggestion) {
+          window.location.href = offsetURL(suggestion.path);
+        });
+        // remove inline display style on autocompleter (we want to
+        // manage responsive display via css)
+        $('.algolia-autocomplete').css("display", "");
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+
+  });
+
+  </script>
+
+  <style type="text/css">
+
+  .nav-search {
+    font-size: x-small;
+  }
+
+  /* Algolioa Autocomplete */
+
+  .algolia-autocomplete {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: sub;
+    background-color: white;
+    color: black;
+    padding: 6px;
+    padding-top: 8px;
+    padding-bottom: 0;
+    border-radius: 6px;
+    border: 1px #0F2E3D solid;
+    width: 180px;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .distill-site-nav .algolia-autocomplete {
+      display: none;
+      visibility: hidden;
+    }
+    .distill-site-nav.responsive .algolia-autocomplete {
+      display: inline-block;
+      visibility: visible;
+    }
+    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
+      margin-left: 0;
+      width: 400px;
+      max-height: 400px;
+    }
+  }
+
+  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
+    width: 90%;
+    outline: none;
+    border: none;
+  }
+
+  .algolia-autocomplete .aa-hint {
+    color: #999;
+  }
+  .algolia-autocomplete .aa-dropdown-menu {
+    width: 550px;
+    max-height: 70vh;
+    overflow-x: visible;
+    overflow-y: scroll;
+    padding: 5px;
+    margin-top: 3px;
+    margin-left: -150px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #999;
+    border-top: none;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
+    cursor: pointer;
+    padding: 5px 4px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
+    border-bottom: none;
+    margin-bottom: 2px;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
+    overflow: hidden;
+    font-size: 0.8em;
+    line-height: 1.4em;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+    font-size: 1rem;
+    margin-block-start: 0;
+    margin-block-end: 5px;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
+    display: inline-block;
+    overflow: hidden;
+    height: 2.8em;
+    width: 80%;
+    margin-right: 4%;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
+    display: inline-block;
+    width: 15%;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
+    height: 3em;
+    width: auto;
+    display: none;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
+    display: initial;
+  }
+
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
+    background-color: #eee;
+  }
+  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  </style>
+
+
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+  <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-103807117-1');
+  </script>
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"R Codes (Week 10)","authors":[]}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="index.html" class="title">PSYC 575 Multilevel Modeling (2021 Fall)</a>
+</div>
+<div class="nav-right">
+<a href="index.html">Home</a>
+<a href="syllabus.html">Syllabus</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Lectures
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="week1.html">Week 1</a>
+<a href="week2.html">Week 2</a>
+<a href="week3.html">Week 3</a>
+<a href="week4.html">Week 4</a>
+<a href="week5.html">Week 5</a>
+<a href="week6.html">Week 6</a>
+<a href="week7.html">Week 7</a>
+<a href="week8.html">Week 8</a>
+<a href="week9.html">Week 9</a>
+<a href="week10.html">Week 10</a>
+</div>
+</div>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+R Codes
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="rcode1.html">Week 1 R Code</a>
+<a href="rcode2.html">Week 2 R Code</a>
+<a href="rcode3.html">Week 3 R Code</a>
+<a href="rcode4.html">Week 4 R Code</a>
+<a href="rcode5.html">Week 5 R Code</a>
+<a href="rcode6.html">Week 6 R Code</a>
+<a href="rcode7.html">Week 7 R Code</a>
+<a href="rcode8.html">Week 8 R Code</a>
+<a href="rcode10.html">Week 10 R Code</a>
+</div>
+</div>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>R Codes (Week 10)</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+
+</div>
+
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a></li>
+<li><a href="#covariance-structure">Covariance Structure</a>
+<ul>
+<li><a href="#autoregressive1-error-structure">Autoregressive(1) Error Structure</a></li>
+<li><a href="#likelihood-ratio-test">Likelihood Ratio Test</a></li>
+</ul></li>
+<li><a href="#intensive-longitudinal-data">Intensive Longitudinal Data</a></li>
+<li><a href="#data-exploration">Data Exploration</a>
+<ul>
+<li><a href="#spaghetti-plot">Spaghetti Plot</a></li>
+</ul></li>
+<li><a href="#unconditional-models">Unconditional Models</a></li>
+<li><a href="#check-the-trend-of-the-data">Check the Trend of the Data</a></li>
+<li><a href="#covariance-structure-1">Covariance Structure</a></li>
+<li><a href="#time-varying-covariate">Time-Varying Covariate</a>
+<ul>
+<li><a href="#plotting">Plotting</a>
+<ul>
+<li><a href="#interaction-plots">Interaction Plots</a></li>
+<li><a href="#betweenwithin-effects">Between/Within effects</a></li>
+</ul></li>
+<li><a href="#add-stressor">Add <code>stressor</code></a>
+<ul>
+<li><a href="#plotting-1">Plotting</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#bonus-generalized-estimating-equations-gee">Bonus: Generalized Estimating Equations (GEE)</a></li>
+</ul>
+</nav>
+</div>
+<div class="hidden">
+<p><span class="math display">\[
+\newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
+\]</span></p>
+</div>
+<p>Click here to download the Rmd file: <a href="rcodes/week10-longitudinal-2.Rmd">week10-longitudinal-2.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
+<span class='co'># install.packages("psych")</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://here.r-lib.org/'>here</a></span><span class='op'>)</span>  <span class='co'># makes reading data more consistent</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>  <span class='co'># for data manipulation and plotting</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://haven.tidyverse.org'>haven</a></span><span class='op'>)</span>  <span class='co'># for importing SPSS/SAS/Stata data</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/lme4/lme4/'>lme4</a></span><span class='op'>)</span>  <span class='co'># for multilevel analysis</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/glmmTMB/glmmTMB'>glmmTMB</a></span><span class='op'>)</span>  <span class='co'># for longitudinal analysis</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>  <span class='co'># for plotting</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for interaction plots</span>
+<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data from gitHub (need Internet access)</span>
+<span class='va'>curran_wide</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span><span class='st'>"https://github.com/MultiLevelAnalysis/Datasets-third-edition-Multilevel-book/raw/master/chapter%205/Curran/CurranData.sav"</span><span class='op'>)</span>
+<span class='co'># Make id a factor</span>
+<span class='va'>curran_wide</span>  <span class='co'># print the data</span>
+</code></pre>
+</div>
+<pre><code>&gt;# # A tibble: 405 × 15
+&gt;#       id anti1 anti2 anti3 anti4 read1 read2 read3 read4    kidgen
+&gt;#    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+lbl&gt;
+&gt;#  1    22     1     2    NA    NA   2.1   3.9  NA    NA    0 [girl]
+&gt;#  2    34     3     6     4     5   2.1   2.9   4.5   4.5  1 [boy] 
+&gt;#  3    58     0     2     0     1   2.3   4.5   4.2   4.6  0 [girl]
+&gt;#  4   122     0     3     1     1   3.7   8    NA    NA    1 [boy] 
+&gt;#  5   125     1     1     2     1   2.3   3.8   4.3   6.2  0 [girl]
+&gt;#  6   133     3     4     3     5   1.8   2.6   4.1   4    1 [boy] 
+&gt;#  7   163     5     4     5     5   3.5   4.8   5.8   7.5  1 [boy] 
+&gt;#  8   190     0    NA    NA     0   2.9   6.1  NA    NA    0 [girl]
+&gt;#  9   227     0     0     2     1   1.8   3.8   4    NA    0 [girl]
+&gt;# 10   248     1     2     2     0   3.5   5.7   7     6.9  0 [girl]
+&gt;# # … with 395 more rows, and 5 more variables: momage &lt;dbl&gt;,
+&gt;# #   kidage &lt;dbl&gt;, homecog &lt;dbl&gt;, homeemo &lt;dbl&gt;, nmis &lt;dbl&gt;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using the new `tidyr::pivot_longer()` function</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>pivot_longer</span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>anti1</span><span class='op'>:</span><span class='va'>anti4</span>, <span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span>,  <span class='co'># variables that are repeated measures</span>
+    <span class='co'># Convert 8 columns to 3: 2 columns each for anti/read (.value), and</span>
+    <span class='co'># one column for time</span>
+    names_to <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>".value"</span>, <span class='st'>"time"</span><span class='op'>)</span>,
+    <span class='co'># Extract the names "anti"/"read" from the names of the variables for the</span>
+    <span class='co'># value columns, and then the number to the "time" column</span>
+    names_pattern <span class='op'>=</span> <span class='st'>"(anti|read)([1-4])"</span>,
+    <span class='co'># Convert the "time" column to integers</span>
+    names_transform <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>time <span class='op'>=</span> <span class='va'>as.integer</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h1 id="covariance-structure">Covariance Structure</h1>
+<p>Observed covariance matrix across time</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"pair"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#       read1 read2 read3 read4
+&gt;# read1  0.86  0.67  0.57  0.48
+&gt;# read2  0.67  1.17  0.96  0.96
+&gt;# read3  0.57  0.96  1.35  1.08
+&gt;# read4  0.48  0.96  1.08  1.56</code></pre>
+</div>
+<p>Implied covariance based on OLS (independence)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_long</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/sigma.html'>sigma</a></span><span class='op'>(</span><span class='va'>m0_ols</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#      [,1] [,2] [,3] [,4]
+&gt;# [1,] 1.09 0.00 0.00 0.00
+&gt;# [2,] 0.00 1.09 0.00 0.00
+&gt;# [3,] 0.00 0.00 1.09 0.00
+&gt;# [4,] 0.00 0.00 0.00 1.09</code></pre>
+</div>
+<p>Implied covariance based on random intercept MLM (compound symmetry)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_ri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>curran_long</span>,
+  REML <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+<span class='va'>vc_m0_ri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m0_ri</span><span class='op'>)</span>
+<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='va'>vc_m0_ri</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>, nrow <span class='op'>=</span> <span class='fl'>4</span>, ncol <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0_ri</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#      [,1] [,2] [,3] [,4]
+&gt;# [1,] 1.20 0.79 0.79 0.79
+&gt;# [2,] 0.79 1.20 0.79 0.79
+&gt;# [3,] 0.79 0.79 1.20 0.79
+&gt;# [4,] 0.79 0.79 0.79 1.20</code></pre>
+</div>
+<p>Implied covariance based on random slope MLM (linear growth)</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute phase1 and phase2</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>time0</span>, <span class='fl'>1</span><span class='op'>)</span>,  <span class='co'># anything bigger than 1 becomes 1</span>
+         phase2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>time0</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># set time to start at TIME 1, and then make</span>
+                                       <span class='co'># anything smaller than 0 to 0</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Fit the piecewise growth model</span>
+<span class='va'>m_pw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>curran_long</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='co'># The default optimizer did not converge; try optim</span>
+  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMBControl.html'>glmmTMBControl</a></span><span class='op'>(</span>
+    optimizer <span class='op'>=</span> <span class='va'>optim</span>,
+    optArgs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"BFGS"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='va'>vc_mpw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span>
+<span class='co'># Covariance</span>
+<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%*%</span>
+  <span class='va'>vc_mpw</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>%*%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_mpw</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#      [,1] [,2] [,3] [,4]
+&gt;# [1,] 0.86 0.65 0.63  0.6
+&gt;# [2,] 0.65 1.18 1.01  1.1
+&gt;# [3,] 0.63 1.01 1.39  1.3
+&gt;# [4,] 0.60 1.08 1.27  1.7</code></pre>
+</div>
+<h2 id="autoregressive1-error-structure">Autoregressive(1) Error Structure</h2>
+<p>From the piecewise model, add the AR(1) error structure</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Add the AR(1) structure</span>
+<span class='va'>m_pw_ar1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span>
+  <span class='va'>read</span> <span class='op'>~</span> <span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>ar1</span><span class='op'>(</span><span class='fl'>0</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
+  dispformula <span class='op'>=</span> <span class='op'>~</span><span class='fl'>0</span>,
+  data <span class='op'>=</span> <span class='va'>curran_long</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='co'># The default optimizer did not converge; try optim</span>
+  control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMBControl.html'>glmmTMBControl</a></span><span class='op'>(</span>
+    optimizer <span class='op'>=</span> <span class='va'>optim</span>,
+    optArgs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"BFGS"</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='va'>vc_mpw_ar1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m_pw_ar1</span><span class='op'>)</span>
+<span class='co'># Covariance</span>
+<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%*%</span>
+  <span class='va'>vc_mpw_ar1</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>%*%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/unname.html'>unname</a></span><span class='op'>(</span><span class='va'>vc_mpw_ar1</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id.1</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#      [,1] [,2] [,3] [,4]
+&gt;# [1,] 0.86 0.65 0.62  0.6
+&gt;# [2,] 0.65 1.18 1.01  1.1
+&gt;# [3,] 0.62 1.01 1.39  1.3
+&gt;# [4,] 0.60 1.08 1.27  1.7</code></pre>
+</div>
+<h2 id="likelihood-ratio-test">Likelihood Ratio Test</h2>
+<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\rho = 0\)</span></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>m_pw</span>, <span class='va'>m_pw_ar1</span><span class='op'>)</span>  <span class='co'># Not statistically significant</span>
+</code></pre>
+</div>
+<pre><code>&gt;# Data: curran_long
+&gt;# Models:
+&gt;# m_pw: read ~ phase1 + phase2 + (phase1 + phase2 | id), zi=~0, disp=~1
+&gt;# m_pw_ar1: read ~ phase1 + phase2 + (phase1 + phase2 | id) + ar1(0 + factor(time) | , zi=~0, disp=~0
+&gt;# m_pw_ar1:     id), zi=~0, disp=~1
+&gt;#          Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)
+&gt;# m_pw     10 3229.7 3281.6 -1604.9   3209.7                         
+&gt;# m_pw_ar1 11 3231.6 3288.7 -1604.8   3209.6 0.0973      1      0.755</code></pre>
+</div>
+<h1 id="intensive-longitudinal-data">Intensive Longitudinal Data</h1>
+<p>The data is the first wave of the Cognition, Health, and Aging Project.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Download the data from</span>
+<span class='co'># https://www.pilesofvariance.com/Chapter8/SPSS/SPSS_Chapter8.zip, and put it </span>
+<span class='co'># into the "data_files" folder</span>
+<span class='va'>zip_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"data_files"</span>, <span class='st'>"SPSS_Chapter8.zip"</span><span class='op'>)</span>
+<span class='co'># download.file("https://www.pilesofvariance.com/Chapter8/SPSS/SPSS_Chapter8.zip", </span>
+<span class='co'>#               zip_data)</span>
+<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/connections.html'>unz</a></span><span class='op'>(</span><span class='va'>zip_data</span>,
+      <span class='st'>"SPSS_Chapter8/SPSS_Chapter8.sav"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>stress_data</span>
+</code></pre>
+</div>
+<pre><code>&gt;# # A tibble: 525 × 10
+&gt;#    PersonID women baseage session studyday dayofweek weekend symptoms
+&gt;#       &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+&gt;#  1      102     1    83.4       2        1         6       1        0
+&gt;#  2      102     1    83.4       3        5         3       0        0
+&gt;#  3      102     1    83.4       4        7         5       0        0
+&gt;#  4      102     1    83.4       5        8         6       1        0
+&gt;#  5      102     1    83.4       6        9         7       1        0
+&gt;#  6      103     1    92         2        1         6       1        0
+&gt;#  7      103     1    92         3        2         7       1        1
+&gt;#  8      103     1    92         4        3         1       0        0
+&gt;#  9      103     1    92         5        4         2       0        0
+&gt;# 10      103     1    92         6        8         6       1        0
+&gt;# # … with 515 more rows, and 2 more variables: mood &lt;dbl&gt;,
+&gt;# #   stressor &lt;dbl&gt;</code></pre>
+</div>
+<p>The data is already in long format.</p>
+<h1 id="data-exploration">Data Exploration</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># First, separate the time-varying variables into within-person and</span>
+<span class='co'># between-person levels</span>
+<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Center mood (originally 1-5) at 1 for interpretation (so it becomes 0-4)</span>
+  <span class='co'># Also women to factor</span>
+  <span class='fu'>mutate</span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood</span> <span class='op'>-</span> <span class='fl'>1</span>,
+         women <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>women</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
+                        labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"men"</span>, <span class='st'>"women"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># The `across()` function can be used to operate the same procedure on</span>
+  <span class='co'># multiple variables</span>
+  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
+                <span class='co'># The `.` means the variable to be operated on</span>
+                <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"pm"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>stress_data</span>
+</code></pre>
+</div>
+<pre><code>&gt;# # A tibble: 525 × 17
+&gt;#    PersonID women baseage session studyday dayofweek weekend symptoms
+&gt;#       &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+&gt;#  1      102 women    83.4       2        1         6       1        0
+&gt;#  2      102 women    83.4       3        5         3       0        0
+&gt;#  3      102 women    83.4       4        7         5       0        0
+&gt;#  4      102 women    83.4       5        8         6       1        0
+&gt;#  5      102 women    83.4       6        9         7       1        0
+&gt;#  6      103 women    92         2        1         6       1        0
+&gt;#  7      103 women    92         3        2         7       1        1
+&gt;#  8      103 women    92         4        3         1       0        0
+&gt;#  9      103 women    92         5        4         2       0        0
+&gt;# 10      103 women    92         6        8         6       1        0
+&gt;# # … with 515 more rows, and 9 more variables: mood &lt;dbl&gt;,
+&gt;# #   stressor &lt;dbl&gt;, mood1 &lt;dbl&gt;, symptoms_pm &lt;dbl&gt;,
+&gt;# #   symptoms_pmc &lt;dbl&gt;, mood1_pm &lt;dbl&gt;, mood1_pmc &lt;dbl&gt;,
+&gt;# #   stressor_pm &lt;dbl&gt;, stressor_pmc &lt;dbl&gt;</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use `datasummary_skim` for a quick summary</span>
+<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/datasummary_skim.html'>datasummary_skim</a></span><span class='op'>(</span><span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+                   <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>PersonID</span>, <span class='op'>-</span><span class='va'>session</span>, <span class='op'>-</span><span class='va'>studyday</span>, <span class='op'>-</span><span class='va'>dayofweek</span>,
+                          <span class='op'>-</span><span class='va'>weekend</span>, <span class='op'>-</span><span class='va'>mood</span>,
+                          <span class='co'># PMC for binary variable is not very meaningful</span>
+                          <span class='op'>-</span><span class='va'>stressor_pmc</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+Unique (#)
+</th>
+<th style="text-align:right;">
+Missing (%)
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+SD
+</th>
+<th style="text-align:right;">
+Min
+</th>
+<th style="text-align:right;">
+Median
+</th>
+<th style="text-align:right;">
+Max
+</th>
+<th style="text-align:right;">
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+baseage
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+80.1
+</td>
+<td style="text-align:right;">
+6.1
+</td>
+<td style="text-align:right;">
+69.7
+</td>
+<td style="text-align:right;">
+80.0
+</td>
+<td style="text-align:right;">
+95.3
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-1.18" y="10.67" width="3.47" height="0.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="2.29" y="7.69" width="3.47" height="3.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.77" y="7.19" width="3.47" height="4.47" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.24" y="6.20" width="3.47" height="5.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.71" y="7.19" width="3.47" height="4.47" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.18" y="5.20" width="3.47" height="6.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.65" y="3.22" width="3.47" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="23.12" y="6.69" width="3.47" height="4.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.59" y="8.19" width="3.47" height="3.48" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.07" y="7.69" width="3.47" height="3.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.54" y="10.17" width="3.47" height="1.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.01" y="9.68" width="3.47" height="1.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.48" y="10.17" width="3.47" height="1.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="43.95" y="11.17" width="3.47" height="0.50" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+symptoms
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="4.38" width="4.44" height="7.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="7.25" width="4.44" height="4.41" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="9.76" width="4.44" height="1.90" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="10.50" width="4.44" height="1.16" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="10.78" width="4.44" height="0.88" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stressor
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="4.87" width="4.44" height="6.80" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="3.42" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.20" y="10.72" width="3.42" height="0.94" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.62" y="11.18" width="3.42" height="0.48" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.03" y="11.45" width="3.42" height="0.21" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.45" y="11.29" width="3.42" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.87" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.29" y="11.56" width="3.42" height="0.10" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.71" y="11.56" width="3.42" height="0.10" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.13" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.55" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.97" y="11.66" width="3.42" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.38" y="11.66" width="3.42" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.80" y="11.64" width="3.42" height="0.021" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+symptoms_pm
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+5.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="4.24" width="4.44" height="7.42" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="9.87" width="4.44" height="1.79" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="8.59" width="4.44" height="3.07" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="9.62" width="4.44" height="2.05" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="10.64" width="4.44" height="1.02" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="10.38" width="4.44" height="1.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="10.38" width="4.44" height="1.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.41" width="4.44" height="0.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="11.41" width="4.44" height="0.26" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+symptoms_pmc
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+−0.0
+</td>
+<td style="text-align:right;">
+0.7
+</td>
+<td style="text-align:right;">
+−2.4
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+3.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.95" y="11.48" width="4.12" height="0.19" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.07" y="11.59" width="4.12" height="0.074" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.19" y="10.51" width="4.12" height="1.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.30" y="9.00" width="4.12" height="2.67" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.42" y="3.22" width="4.12" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="21.53" y="8.37" width="4.12" height="3.30" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.65" y="9.40" width="4.12" height="2.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.76" y="11.11" width="4.12" height="0.56" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.88" y="11.33" width="4.12" height="0.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.99" y="11.51" width="4.12" height="0.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.11" y="11.55" width="4.12" height="0.11" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1_pm
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.1
+</td>
+<td style="text-align:right;">
+1.5
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="2.92" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.70" y="8.58" width="2.92" height="3.09" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="7.63" y="10.04" width="2.92" height="1.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.55" y="10.04" width="2.92" height="1.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.47" y="11.18" width="2.92" height="0.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.40" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.32" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.25" y="11.01" width="2.92" height="0.65" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.17" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.09" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.02" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.94" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="36.87" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.79" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.71" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.64" y="11.50" width="2.92" height="0.16" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1_pmc
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+−0.0
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+−0.7
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-0.0000000000000027" y="11.32" width="4.44" height="0.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.44" y="11.26" width="4.44" height="0.40" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.89" y="9.96" width="4.44" height="1.71" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.33" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.78" y="9.73" width="4.44" height="1.93" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.22" y="10.64" width="4.44" height="1.02" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.67" y="11.26" width="4.44" height="0.40" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.11" y="11.46" width="4.44" height="0.20" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.56" y="11.52" width="4.44" height="0.14" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.00" y="11.52" width="4.44" height="0.14" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.44" y="11.61" width="4.44" height="0.057" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stressor_pm
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+0.0
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+<td style="text-align:right;">
+1.0
+</td>
+<td style="text-align:right;">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svglite" width="48.00pt" height="12.00pt" viewBox="0 0 48.00 12.00">
+<defs>
+<style type="text/css">
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  </style>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.60" width="4.44" height="8.06" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="4.75" width="4.44" height="6.91" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.28" width="4.44" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="6.29" width="4.44" height="5.37" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="5.90" width="4.44" height="5.76" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="6.29" width="4.44" height="5.37" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</svg>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>select</span><span class='op'>(</span><span class='va'>symptoms_pm</span>, <span class='va'>symptoms_pmc</span>,
+           <span class='va'>mood1_pm</span>, <span class='va'>mood1_pmc</span>, <span class='va'>stressor_pm</span>, <span class='va'>stressor</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>psych</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psych/man/pairs.panels.html'>pairs.panels</a></span><span class='op'>(</span>jiggle <span class='op'>=</span> <span class='cn'>TRUE</span>, factor <span class='op'>=</span> <span class='fl'>0.5</span>, ellipses <span class='op'>=</span> <span class='cn'>FALSE</span>,
+                        cex.cor <span class='op'>=</span> <span class='fl'>1</span>, cex <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode10_files/figure-html5/pairs-data-1.png" width="624" /></p>
+</div>
+<h2 id="spaghetti-plot">Spaghetti Plot</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plotting mood</span>
+<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>stress_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>mood1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># add lines to connect the data for each person</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, group <span class='op'>=</span> <span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># add a mean trajectory</span>
+  <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># suppress legend</span>
+  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+<span class='co'># Plotting symptoms</span>
+<span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>stress_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># add lines to connect the data for each person</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, group <span class='op'>=</span> <span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># add a mean trajectory</span>
+  <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='co'># suppress legend</span>
+  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+<span class='fu'>gridExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html'>grid.arrange</a></span><span class='op'>(</span><span class='va'>p1</span>, <span class='va'>p2</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode10_files/figure-html5/p1p2-1.png" width="624" /></p>
+</div>
+<p>We can see that there is not a clear trend across time, but instead fluctuations.</p>
+<p>We can also plot the trajectories for a random sample of individuals:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+  <span class='co'># randomly sample 40 individuals</span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, <span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
+  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>PersonID</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode10_files/figure-html5/facet-traj-1.png" width="624" /></p>
+</div>
+<h1 id="unconditional-models">Unconditional Models</h1>
+<p>The outcome is <code>symptoms</code>, and the time-varying predictors are <code>mood1</code> and <code>stressor</code>. Let’s look at the ICC for each of them.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_symp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>stress_data</span>,
+                   REML <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='co'># If changing outcome, use the `update` function to avoid recompiling</span>
+<span class='va'>m0_mood</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>mood1</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>stress_data</span>,
+                   REML <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='co'># Use family = bernoulli for a binary outcome; to be discussed in a later week</span>
+<span class='va'>m0_stre</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>stressor</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>stress_data</span>,
+                   family <span class='op'>=</span> <span class='va'>binomial</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Symptoms</span>
+<span class='op'>(</span><span class='va'>vc_m0sy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m0_symp</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># shows the random effect SDs</span>
+</code></pre>
+</div>
+<pre><code>&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Std.Dev.
+&gt;#  PersonID (Intercept) 1.11052 
+&gt;#  Residual             0.78313</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>icc_symp</span> <span class='op'>&lt;-</span> <span class='va'>vc_m0sy</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span>
+  <span class='op'>(</span><span class='va'>vc_m0sy</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0sy</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='co'># Mood</span>
+<span class='op'>(</span><span class='va'>vc_m0mo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m0_mood</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># shows the random effect SDs</span>
+</code></pre>
+</div>
+<pre><code>&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Std.Dev.
+&gt;#  PersonID (Intercept) 0.22881 
+&gt;#  Residual             0.30849</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>icc_mood</span> <span class='op'>&lt;-</span> <span class='va'>vc_m0mo</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span>
+  <span class='op'>(</span><span class='va'>vc_m0mo</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0mo</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='co'># Stressor (sigma is fixed to pi^2 / 3)</span>
+<span class='op'>(</span><span class='va'>vc_m0st</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m0_stre</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># shows the random effect SDs</span>
+</code></pre>
+</div>
+<pre><code>&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Std.Dev.
+&gt;#  PersonID (Intercept) 1.5428</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>icc_stre</span> <span class='op'>&lt;-</span> <span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span>
+  <span class='op'>(</span><span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='co'># Print ICCs</span>
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>symptoms <span class='op'>=</span> <span class='va'>icc_symp</span>,
+  mood1 <span class='op'>=</span> <span class='va'>icc_mood</span>,
+  stressor <span class='op'>=</span> <span class='va'>icc_stre</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#  symptoms     mood1  stressor 
+&gt;# 0.6678696 0.3549095 0.7041664</code></pre>
+</div>
+<h1 id="check-the-trend-of-the-data">Check the Trend of the Data</h1>
+<p>One thing to consider with longitudinal data in a short time is whether there may be trends in the data due to contextual factors (e.g., weekend effect; shared life events in certain time). If this is the case, a common practice is to de-trend the data; otherwise associations between predictors and the outcome may be merely due to contextual factor happening on certain days.</p>
+<p>Here there is no strong reason to think the data contain trends, as shown in the graphs. We can further test the linear trend:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_trend</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>symptoms</span> <span class='op'>~</span> <span class='va'>studyday</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>studyday</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
+    data <span class='op'>=</span> <span class='va'>stress_data</span>,
+    REML <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m0_trend</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          symptoms ~ studyday + (studyday | PersonID)
+&gt;# Data: stress_data
+&gt;# 
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#   1487.4   1512.9   -737.7   1475.4      515 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev. Corr  
+&gt;#  PersonID (Intercept) 1.238971 1.11309        
+&gt;#           studyday    0.002477 0.04977  -0.12 
+&gt;#  Residual             0.575147 0.75838        
+&gt;# Number of obs: 519, groups:  PersonID, 105
+&gt;# 
+&gt;# Dispersion estimate for gaussian family (sigma^2): 0.575 
+&gt;# 
+&gt;# Conditional model:
+&gt;#              Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)  1.330849   0.125689  10.588   &lt;2e-16 ***
+&gt;# studyday    -0.005746   0.010817  -0.531    0.595    
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<p>which was not significant. It there was a trend, we should include the time variable when studying the time-varying covariates.</p>
+<h1 id="covariance-structure-1">Covariance Structure</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># AR(1)</span>
+<span class='va'>m0_ar1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span>
+  <span class='va'>symptoms</span> <span class='op'>~</span> <span class='fu'>ar1</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>studyday</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
+  data <span class='op'>=</span> <span class='va'>stress_data</span>,
+  REML <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>m0_symp</span>, <span class='va'>m0_ar1</span><span class='op'>)</span>  <span class='co'># not significant</span>
+</code></pre>
+</div>
+<pre><code>&gt;# Data: stress_data
+&gt;# Models:
+&gt;# m0_symp: symptoms ~ (1 | PersonID), zi=~0, disp=~1
+&gt;# m0_ar1: symptoms ~ ar1(factor(studyday) + 0 | PersonID), zi=~0, disp=~1
+&gt;#         Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)  
+&gt;# m0_symp  3 1477.7 1490.4 -735.83   1471.7                           
+&gt;# m0_ar1   4 1476.0 1493.0 -734.02   1468.0 3.6248      1    0.05693 .
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<h1 id="time-varying-covariate">Time-Varying Covariate</h1>
+<p>Aka level-1 predictors; also put in the cross-level interaction with <code>women</code></p>
+<p>Level 1: <span class="math display">\[\text{symptoms}_{ti} = \beta_{0i} + \beta_{1i} \text{mood1_pmc}_{ti} + e_{ti}\]</span> Level 2: <span class="math display">\[
+  \begin{aligned}
+    \beta_{0i} &amp; = \gamma_{00} + \gamma_{01} \text{mood1_pm}_{i} + 
+                   \gamma_{02} \text{women}_i + 
+                   \gamma_{03} \text{mood1_pm}_{i} \times \text{women}_i 
+                   + u_{0i}  \\
+    \beta_{1i} &amp; = \gamma_{10} + \gamma_{11} \text{women}_i + u_{1i}
+  \end{aligned}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\gamma_{03}\)</span> = between-person interaction</li>
+<li><span class="math inline">\(\gamma_{11}\)</span> = cross-level interaction</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span>
+    <span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>women</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>mood1_pmc</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
+    data <span class='op'>=</span> <span class='va'>stress_data</span>,
+    REML <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    <span class='co'># The default optimizer did not converge; try optim</span>
+    control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMBControl.html'>glmmTMBControl</a></span><span class='op'>(</span>
+        optimizer <span class='op'>=</span> <span class='va'>optim</span>,
+        optArgs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"BFGS"</span><span class='op'>)</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          
+&gt;# symptoms ~ (mood1_pm + mood1_pmc) * women + (mood1_pmc | PersonID)
+&gt;# Data: stress_data
+&gt;# 
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#   1443.0   1485.5   -711.5   1423.0      510 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev. Corr 
+&gt;#  PersonID (Intercept) 0.85039  0.9222        
+&gt;#           mood1_pmc   0.05156  0.2271   0.99 
+&gt;#  Residual             0.61362  0.7833        
+&gt;# Number of obs: 514, groups:  PersonID, 105
+&gt;# 
+&gt;# Dispersion estimate for gaussian family (sigma^2): 0.614 
+&gt;# 
+&gt;# Conditional model:
+&gt;#                      Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)           0.86403    0.24618   3.510 0.000449 ***
+&gt;# mood1_pm              3.86285    0.81368   4.747 2.06e-06 ***
+&gt;# mood1_pmc             0.00396    0.26835   0.015 0.988225    
+&gt;# womenwomen           -0.04167    0.28314  -0.147 0.883002    
+&gt;# mood1_pm:womenwomen  -2.14123    0.90529  -2.365 0.018018 *  
+&gt;# mood1_pmc:womenwomen  0.16552    0.30859   0.536 0.591699    
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<h2 id="plotting">Plotting</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>m1</span>,
+    type <span class='op'>=</span> <span class='st'>"pred"</span>, show.data <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    title <span class='op'>=</span> <span class='st'>""</span>, dot.size <span class='op'>=</span> <span class='fl'>0.5</span>,
+    jitter <span class='op'>=</span> <span class='fl'>0.1</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# $mood1_pm</code></pre>
+<p><img src="rcode10_files/figure-html5/plot-m1-1.png" width="624" /></p>
+<pre><code>&gt;# 
+&gt;# $mood1_pmc</code></pre>
+<p><img src="rcode10_files/figure-html5/plot-m1-2.png" width="624" /></p>
+<pre><code>&gt;# 
+&gt;# $women</code></pre>
+<p><img src="rcode10_files/figure-html5/plot-m1-3.png" width="624" /></p>
+</div>
+<h3 id="interaction-plots">Interaction Plots</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://interactions.jacob-long.com/reference/interact_plot.html'>interact_plot</a></span><span class='op'>(</span><span class='va'>m1</span>,
+              pred <span class='op'>=</span> <span class='st'>"mood1_pm"</span>,
+              modx <span class='op'>=</span> <span class='st'>"women"</span>,
+              plot.points <span class='op'>=</span> <span class='cn'>TRUE</span>,
+              point.size <span class='op'>=</span> <span class='fl'>0.5</span>,
+              point.alpha <span class='op'>=</span> <span class='fl'>0.2</span>,
+              x.label <span class='op'>=</span> <span class='st'>"Negative Mood (Between-Person)"</span>,
+              y.label <span class='op'>=</span> <span class='st'>"Physical Symptoms"</span>,
+              jitter <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<img src="rcode10_files/figure-html5/interaction-m1-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://interactions.jacob-long.com/reference/interact_plot.html'>interact_plot</a></span><span class='op'>(</span><span class='va'>m1</span>,
+              pred <span class='op'>=</span> <span class='st'>"mood1_pmc"</span>,
+              modx <span class='op'>=</span> <span class='st'>"women"</span>,
+              plot.points <span class='op'>=</span> <span class='cn'>TRUE</span>,
+              point.size <span class='op'>=</span> <span class='fl'>0.5</span>,
+              point.alpha <span class='op'>=</span> <span class='fl'>0.2</span>,
+              x.label <span class='op'>=</span> <span class='st'>"Daily Negative Mood (Within-Person)"</span>,
+              y.label <span class='op'>=</span> <span class='st'>"Daily Physical Symptoms"</span>,
+              jitter <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode10_files/figure-html5/interaction-m1-2.png" width="624" /></p>
+</div>
+<h3 id="betweenwithin-effects">Between/Within effects</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mutate</span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1</span>, y <span class='op'>=</span> <span class='va'>symptoms</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='co'># Add points</span>
+    <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='co'># Add within-cluster lines</span>
+    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+        method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='co'># Add group means</span>
+    <span class='fu'>stat_summary</span><span class='op'>(</span>
+        <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1_pm</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span>,
+        color <span class='op'>=</span> <span class='st'>"red"</span>, <span class='co'># add border</span>
+        fun <span class='op'>=</span> <span class='va'>mean</span>,
+        geom <span class='op'>=</span> <span class='st'>"point"</span>,
+        shape <span class='op'>=</span> <span class='fl'>24</span>,
+        <span class='co'># use triangles</span>
+        size <span class='op'>=</span> <span class='fl'>2.5</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='co'># Add between coefficient</span>
+    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1_pm</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+        method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>,
+        color <span class='op'>=</span> <span class='st'>"black"</span>
+    <span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>facet_grid</span><span class='op'>(</span><span class='op'>~</span><span class='va'>women</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Daily Symptoms"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='co'># Suppress legend</span>
+    <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span>, fill <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode10_files/figure-html5/plot-bw-1.png" width="624" /></p>
+</div>
+<h2 id="add-stressor">Add <code>stressor</code></h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Convert stressor to a factor</span>
+<span class='va'>stress_data</span><span class='op'>$</span><span class='va'>stressor</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>stress_data</span><span class='op'>$</span><span class='va'>stressor</span>,
+                               levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>,
+                               labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"stressor-free day"</span>, <span class='st'>"stressor day"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span>
+    <span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>women</span> <span class='op'>+</span> <span class='va'>stressor_pm</span> <span class='op'>+</span> <span class='va'>stressor</span> <span class='op'>+</span>
+        <span class='op'>(</span><span class='va'>mood1_pmc</span> <span class='op'>+</span> <span class='va'>stressor</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
+    data <span class='op'>=</span> <span class='va'>stress_data</span>,
+    REML <span class='op'>=</span> <span class='cn'>TRUE</span>,
+    <span class='co'># The default optimizer did not converge; try optim</span>
+    control <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMBControl.html'>glmmTMBControl</a></span><span class='op'>(</span>
+        optimizer <span class='op'>=</span> <span class='va'>optim</span>,
+        optArgs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"BFGS"</span><span class='op'>)</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<h3 id="plotting-1">Plotting</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Contextual effect of stressor</span>
+<span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>m2</span>,
+    type <span class='op'>=</span> <span class='st'>"pred"</span>, terms <span class='op'>=</span> <span class='st'>"stressor_pm"</span>,
+    show.data <span class='op'>=</span> <span class='cn'>TRUE</span>, jitter <span class='op'>=</span> <span class='fl'>0.1</span>,
+    title <span class='op'>=</span> <span class='st'>""</span>, dot.size <span class='op'>=</span> <span class='fl'>0.5</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<img src="rcode10_files/figure-html5/plot-m2-1.png" width="624" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Within-person effect</span>
+<span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>m2</span>,
+    type <span class='op'>=</span> <span class='st'>"pred"</span>, terms <span class='op'>=</span> <span class='st'>"stressor"</span>,
+    show.data <span class='op'>=</span> <span class='cn'>TRUE</span>, jitter <span class='op'>=</span> <span class='fl'>0.1</span>,
+    title <span class='op'>=</span> <span class='st'>""</span>, dot.size <span class='op'>=</span> <span class='fl'>0.5</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="rcode10_files/figure-html5/plot-m2-2.png" width="624" /></p>
+</div>
+<h1 id="bonus-generalized-estimating-equations-gee">Bonus: Generalized Estimating Equations (GEE)</h1>
+<p>GEE is an alternative estimation method for clustered data, as discussed in 12.2 of Snijders and Bosker. It is a popular method especially for longitudinal data in some areas of research, as it offers some robustness against misspecification in the random effect structure (e.g., autoregressive errors, missing random slopes, etc). It accounts for the covariance structure by using a <em>working correlation matrix</em>, such as the <em>exchangeable</em> (aka compound symmetry) structure. On the other hand, it only estimates fixed effects (or sometimes called marginal effects), so we cannot known whether some slopes are different across persons, but only the average slopes. GEE estimates the fixed effects by iteratively calculating the working correlation matrix and updating the fixed effect estimates with OLS. At the end, it computes the standard errors using the cluster-robust sandwich estimator.</p>
+<p>GEE tends to require a relatively large sample size, and is usually less efficient than MLM for the same model (i.e., GEE gives larger standard errors, wider confidence intervals, and thus has less statistical power), which can be seen in the example below.</p>
+<p>Below is a quick demonstration of GEE using the <code>geepack</code> package in R.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data_lw</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+  <span class='fu'>drop_na</span><span class='op'>(</span><span class='va'>mood1_pm</span>, <span class='va'>mood1_pmc</span>, <span class='va'>women</span>, <span class='va'>stressor_pm</span>, <span class='va'>stressor</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='co'># Also need to convert to a data frame (instead of tibble)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>geepack</span><span class='op'>)</span>
+<span class='va'>m2_gee</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/geepack/man/geeglm.html'>geeglm</a></span><span class='op'>(</span><span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>women</span> <span class='op'>+</span>
+                   <span class='va'>stressor_pm</span> <span class='op'>+</span> <span class='va'>stressor</span>,
+                 data <span class='op'>=</span> <span class='va'>stress_data_lw</span>,
+                 id <span class='op'>=</span> <span class='va'>PersonID</span>,
+                 corstr <span class='op'>=</span> <span class='st'>"exchangeable"</span>,
+                 std.err <span class='op'>=</span> <span class='st'>"san.se"</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m2_gee</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# 
+&gt;# Call:
+&gt;# geeglm(formula = symptoms ~ (mood1_pm + mood1_pmc) * women + 
+&gt;#     stressor_pm + stressor, data = stress_data_lw, id = PersonID, 
+&gt;#     corstr = &quot;exchangeable&quot;, std.err = &quot;san.se&quot;)
+&gt;# 
+&gt;#  Coefficients:
+&gt;#                      Estimate  Std.err   Wald Pr(&gt;|W|)    
+&gt;# (Intercept)           0.54884  0.22897  5.745 0.016531 *  
+&gt;# mood1_pm              3.19491  0.91671 12.146 0.000492 ***
+&gt;# mood1_pmc            -0.12724  0.25705  0.245 0.620613    
+&gt;# womenwomen           -0.07326  0.27306  0.072 0.788486    
+&gt;# stressor_pm           0.90373  0.32419  7.771 0.005309 ** 
+&gt;# stressorstressor day  0.06741  0.09278  0.528 0.467476    
+&gt;# mood1_pm:womenwomen  -1.89663  0.93949  4.076 0.043509 *  
+&gt;# mood1_pmc:womenwomen  0.28588  0.29847  0.917 0.338155    
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+&gt;# 
+&gt;# Correlation structure = exchangeable 
+&gt;# Estimated Scale Parameters:
+&gt;# 
+&gt;#             Estimate Std.err
+&gt;# (Intercept)    1.323   0.152
+&gt;#   Link = identity 
+&gt;# 
+&gt;# Estimated Correlation Parameters:
+&gt;#       Estimate Std.err
+&gt;# alpha   0.5207 0.04957
+&gt;# Number of clusters:   105  Maximum cluster size: 5</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Small sample correction (Mancl &amp; DeRouen, 2001) for the robust standard errors</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>geesmv</span><span class='op'>)</span>
+<span class='va'>m2_vcov_md</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/geesmv/man/GEE.var.md.html'>GEE.var.md</a></span><span class='op'>(</span><span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>women</span> <span class='op'>+</span>
+                           <span class='va'>stressor_pm</span> <span class='op'>+</span> <span class='va'>stressor</span>,
+                         data <span class='op'>=</span> <span class='va'>stress_data_lw</span>,
+                         id <span class='op'>=</span> <span class='st'>"PersonID"</span>,  <span class='co'># need to be string</span>
+                         corstr <span class='op'>=</span> <span class='st'>"exchangeable"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;#          (Intercept)             mood1_pm            mood1_pmc 
+&gt;#              0.56476              2.97820             -0.21094 
+&gt;#           womenwomen          stressor_pm stressorstressor day 
+&gt;#             -0.08227              0.88983              0.07183 
+&gt;#  mood1_pm:womenwomen mood1_pmc:womenwomen 
+&gt;#             -1.68409              0.37119</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>lmtest</span><span class='op'>)</span>  <span class='co'># For testing using corrected standard error</span>
+<span class='fu'><a href='https://rdrr.io/pkg/lmtest/man/coeftest.html'>coeftest</a></span><span class='op'>(</span><span class='va'>m2_gee</span>, <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>m2_vcov_md</span><span class='op'>$</span><span class='va'>cov.beta</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>&gt;# 
+&gt;# z test of coefficients:
+&gt;# 
+&gt;#                      Estimate Std. Error z value Pr(&gt;|z|)   
+&gt;# (Intercept)            0.5488     0.2636    2.08   0.0373 * 
+&gt;# mood1_pm               3.1949     1.3114    2.44   0.0148 * 
+&gt;# mood1_pmc             -0.1272     0.3015   -0.42   0.6730   
+&gt;# womenwomen            -0.0733     0.3104   -0.24   0.8134   
+&gt;# stressor_pm            0.9037     0.3428    2.64   0.0084 **
+&gt;# stressorstressor day   0.0674     0.0941    0.72   0.4738   
+&gt;# mood1_pm:womenwomen   -1.8966     1.3428   -1.41   0.1578   
+&gt;# mood1_pmc:womenwomen   0.2859     0.3417    0.84   0.4028   
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ignore clustering</span>
+<span class='va'>m2_lm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span>
+    <span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>women</span> <span class='op'>+</span>
+        <span class='va'>stressor_pm</span> <span class='op'>+</span> <span class='va'>stressor</span>,
+    data <span class='op'>=</span> <span class='va'>stress_data_lw</span>
+<span class='op'>)</span>
+<span class='co'># Compare the fixed effects</span>
+<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        OLS <span class='op'>=</span> <span class='va'>m2_lm</span>,
+        MLM <span class='op'>=</span> <span class='va'>m2</span>,
+        `GEE (Sandwich SE)` <span class='op'>=</span> <span class='va'>m2_gee</span>,
+        `GEE (Sandwich SE + small-sample correction)` <span class='op'>=</span> <span class='va'>m2_gee</span>
+    <span class='op'>)</span>,
+    vcov <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
+        OLS <span class='op'>=</span> <span class='cn'>NULL</span>,
+        MLM <span class='op'>=</span> <span class='cn'>NULL</span>,
+        `GEE (Sandwich SE)` <span class='op'>=</span> <span class='cn'>NULL</span>,
+        `GEE (Sandwich SE + small-sample correction)` <span class='op'>=</span> 
+        <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='va'>m2_vcov_md</span><span class='op'>$</span><span class='va'>cov.beta</span><span class='op'>)</span>
+    <span class='op'>)</span>
+<span class='op'>)</span>
+</code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+OLS
+</th>
+<th style="text-align:center;">
+MLM
+</th>
+<th style="text-align:center;">
+GEE (Sandwich SE)
+</th>
+<th style="text-align:center;">
+GEE (Sandwich SE + small-sample correction)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+0.565
+</td>
+<td style="text-align:center;">
+0.452
+</td>
+<td style="text-align:center;">
+0.549
+</td>
+<td style="text-align:center;">
+0.549
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.144)
+</td>
+<td style="text-align:center;">
+(0.238)
+</td>
+<td style="text-align:center;">
+(0.229)
+</td>
+<td style="text-align:center;">
+(0.264)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1_pm
+</td>
+<td style="text-align:center;">
+2.978
+</td>
+<td style="text-align:center;">
+3.437
+</td>
+<td style="text-align:center;">
+3.195
+</td>
+<td style="text-align:center;">
+3.195
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.468)
+</td>
+<td style="text-align:center;">
+(0.786)
+</td>
+<td style="text-align:center;">
+(0.917)
+</td>
+<td style="text-align:center;">
+(1.311)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1_pmc
+</td>
+<td style="text-align:center;">
+−0.211
+</td>
+<td style="text-align:center;">
+−0.064
+</td>
+<td style="text-align:center;">
+−0.127
+</td>
+<td style="text-align:center;">
+−0.127
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.399)
+</td>
+<td style="text-align:center;">
+(0.292)
+</td>
+<td style="text-align:center;">
+(0.257)
+</td>
+<td style="text-align:center;">
+(0.301)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+womenwomen
+</td>
+<td style="text-align:center;">
+−0.082
+</td>
+<td style="text-align:center;">
+0.039
+</td>
+<td style="text-align:center;">
+−0.073
+</td>
+<td style="text-align:center;">
+−0.073
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.152)
+</td>
+<td style="text-align:center;">
+(0.252)
+</td>
+<td style="text-align:center;">
+(0.273)
+</td>
+<td style="text-align:center;">
+(0.310)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stressor_pm
+</td>
+<td style="text-align:center;">
+0.890
+</td>
+<td style="text-align:center;">
+0.849
+</td>
+<td style="text-align:center;">
+0.904
+</td>
+<td style="text-align:center;">
+0.904
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.218)
+</td>
+<td style="text-align:center;">
+(0.301)
+</td>
+<td style="text-align:center;">
+(0.324)
+</td>
+<td style="text-align:center;">
+(0.343)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+stressorstressor day
+</td>
+<td style="text-align:center;">
+0.072
+</td>
+<td style="text-align:center;">
+0.064
+</td>
+<td style="text-align:center;">
+0.067
+</td>
+<td style="text-align:center;">
+0.067
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.142)
+</td>
+<td style="text-align:center;">
+(0.101)
+</td>
+<td style="text-align:center;">
+(0.093)
+</td>
+<td style="text-align:center;">
+(0.094)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1_pm × womenwomen
+</td>
+<td style="text-align:center;">
+−1.684
+</td>
+<td style="text-align:center;">
+−1.957
+</td>
+<td style="text-align:center;">
+−1.897
+</td>
+<td style="text-align:center;">
+−1.897
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.506)
+</td>
+<td style="text-align:center;">
+(0.857)
+</td>
+<td style="text-align:center;">
+(0.939)
+</td>
+<td style="text-align:center;">
+(1.343)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+mood1_pmc × womenwomen
+</td>
+<td style="text-align:center;">
+0.371
+</td>
+<td style="text-align:center;">
+0.251
+</td>
+<td style="text-align:center;">
+0.286
+</td>
+<td style="text-align:center;">
+0.286
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.451)
+</td>
+<td style="text-align:center;">
+(0.333)
+</td>
+<td style="text-align:center;">
+(0.298)
+</td>
+<td style="text-align:center;">
+(0.342)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__(Intercept)
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.732
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__mood1_pmc
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.215
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sd__stressorstressor day
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.268
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cor__(Intercept).mood1_pmc
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.557
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cor__(Intercept).stressorstressor day
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.967
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+cor__mood1_pmc.stressorstressor day
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.713
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1px">
+sd__Observation
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+0.780
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+513
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+0.253
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2 Adj.
+</td>
+<td style="text-align:center;">
+0.243
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AIC
+</td>
+<td style="text-align:center;">
+1616.9
+</td>
+<td style="text-align:center;">
+1436.7
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+BIC
+</td>
+<td style="text-align:center;">
+1655.1
+</td>
+<td style="text-align:center;">
+1500.3
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Log.Lik.
+</td>
+<td style="text-align:center;">
+−799.450
+</td>
+<td style="text-align:center;">
+−703.364
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:center;">
+24.474
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Std.Errors
+</td>
+<td style="text-align:center;">
+OLS
+</td>
+<td style="text-align:center;">
+MLM
+</td>
+<td style="text-align:center;">
+GEE (Sandwich SE)
+</td>
+<td style="text-align:center;">
+GEE (Sandwich SE + small-sample correction)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+alpha
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+0.521
+</td>
+<td style="text-align:center;">
+0.521
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+gamma
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+1.323
+</td>
+<td style="text-align:center;">
+1.323
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+max.cluster.size
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+5.000
+</td>
+<td style="text-align:center;">
+5.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n.clusters
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+105.000
+</td>
+<td style="text-align:center;">
+105.000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>As shown above, for OLS regression, which ignores the temporal dependence of the data, the standard errors for the between-level coefficients are too small. The results with MLM and with GEE are comparable, although GEE only gives the fixed effect estimates. Overall, GEE tends to have larger standard errors, especially when taking into account the samll-sample correction. In sum, the pros and cons of GEE are:</p>
+<ul>
+<li>Pros:
+<ul>
+<li>Not requiring specification of the random part</li>
+<li>Robust to moderate degree of misspecification in the random-effect covariance structure</li>
+<li>Likely valid inferences on the fixed effects</li>
+</ul></li>
+<li>Cons:
+<ul>
+<li>Loss of statistical power (which may not be a concern in really large samples)</li>
+<li>No results and predictions for individual-specific models, as the random effect part is not modeled</li>
+<li>No likelihood-based statistical tools (e.g., AIC/BIC)</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
+</ul>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<div class="distill-site-nav distill-site-footer">
+<p>© Copyright 2021 Hok Chio (Mark) Lai</p>
+<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+</div>
+<!--/radix_placeholder_navigation_after_body-->
+
+
+</body>
+
+</html>

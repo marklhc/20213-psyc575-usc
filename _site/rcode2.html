@@ -2109,6 +2109,7 @@ R Codes
 <a href="rcode6.html">Week 6 R Code</a>
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
+<a href="rcode10.html">Week 10 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2339,19 +2340,19 @@ R Codes
 &gt;# lm(formula = salary ~ 1 + pub, data = salary_dat)
 &gt;# 
 &gt;# Residuals:
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -20660.0  -7397.5    333.7   5313.9  19238.7 
+&gt;#    Min     1Q Median     3Q    Max 
+&gt;# -20660  -7397    334   5314  19239 
 &gt;# 
 &gt;# Coefficients:
 &gt;#             Estimate Std. Error t value Pr(&gt;|t|)    
-&gt;# (Intercept) 48439.09    1765.42  27.438  &lt; 2e-16 ***
-&gt;# pub           350.80      77.17   4.546 2.71e-05 ***
+&gt;# (Intercept)  48439.1     1765.4   27.44  &lt; 2e-16 ***
+&gt;# pub            350.8       77.2    4.55  2.7e-05 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
 &gt;# Residual standard error: 8440 on 60 degrees of freedom
-&gt;# Multiple R-squared:  0.2562, Adjusted R-squared:  0.2438 
-&gt;# F-statistic: 20.67 on 1 and 60 DF,  p-value: 2.706e-05</code></pre>
+&gt;# Multiple R-squared:  0.256,  Adjusted R-squared:  0.244 
+&gt;# F-statistic: 20.7 on 1 and 60 DF,  p-value: 2.71e-05</code></pre>
 </div>
 <h3 id="visualize-fitted-regression-line">Visualize fitted regression line:</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2372,9 +2373,9 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                 2.5 %     97.5 %
-&gt;# (Intercept) 44907.729 51970.4450
-&gt;# pub           196.441   505.1625</code></pre>
+<pre><code>&gt;#               2.5 %  97.5 %
+&gt;# (Intercept) 44907.7 51970.4
+&gt;# pub           196.4   505.2</code></pre>
 </div>
 <h3 id="interpretations">Interpretations</h3>
 <blockquote>
@@ -2445,13 +2446,13 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>sim_data1</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#   id time pub sex citation salary    sim_1
-&gt;# 1  1    3  18   1       50  51876 54469.75
-&gt;# 2  2    6   3   1       26  54511 48627.56
-&gt;# 3  3    3   2   1       50  53425 31217.40
-&gt;# 4  4    8  17   0       34  61863 59380.63
-&gt;# 5  5    9  11   1       41  52926 45465.87
-&gt;# 6  6    6   6   0       37  47034 50882.86</code></pre>
+<pre><code>&gt;#   id time pub sex citation salary sim_1
+&gt;# 1  1    3  18   1       50  51876 58988
+&gt;# 2  2    6   3   1       26  54511 50447
+&gt;# 3  3    3   2   1       50  53425 57358
+&gt;# 4  4    8  17   0       34  61863 70553
+&gt;# 5  5    9  11   1       41  52926 45277
+&gt;# 6  6    6   6   0       37  47034 46810</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the data (add on to the population)</span>
 <span class='va'>p_pop</span> <span class='op'>+</span> 
@@ -2580,19 +2581,19 @@ R Codes
 &gt;# lm(formula = salary ~ pub_c, data = salary_dat)
 &gt;# 
 &gt;# Residuals:
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -20660.0  -7397.5    333.7   5313.9  19238.7 
+&gt;#    Min     1Q Median     3Q    Max 
+&gt;# -20660  -7397    334   5314  19239 
 &gt;# 
 &gt;# Coefficients:
 &gt;#             Estimate Std. Error t value Pr(&gt;|t|)    
-&gt;# (Intercept) 54815.76    1071.93  51.137  &lt; 2e-16 ***
-&gt;# pub_c         350.80      77.17   4.546 2.71e-05 ***
+&gt;# (Intercept)  54815.8     1071.9   51.14  &lt; 2e-16 ***
+&gt;# pub_c          350.8       77.2    4.55  2.7e-05 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
 &gt;# Residual standard error: 8440 on 60 degrees of freedom
-&gt;# Multiple R-squared:  0.2562, Adjusted R-squared:  0.2438 
-&gt;# F-statistic: 20.67 on 1 and 60 DF,  p-value: 2.706e-05</code></pre>
+&gt;# Multiple R-squared:  0.256,  Adjusted R-squared:  0.244 
+&gt;# F-statistic: 20.7 on 1 and 60 DF,  p-value: 2.71e-05</code></pre>
 </div>
 <p>The only change is the intercept coefficient</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2644,14 +2645,14 @@ R Codes
 &gt;# 
 &gt;# Coefficients:
 &gt;#             Estimate Std. Error t value Pr(&gt;|t|)    
-&gt;# (Intercept)    56515       1620  34.875   &lt;2e-16 ***
-&gt;# sexfemale      -3902       2456  -1.589    0.117    
+&gt;# (Intercept)    56515       1620   34.88   &lt;2e-16 ***
+&gt;# sexfemale      -3902       2456   -1.59     0.12    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
-&gt;# Residual standard error: 9587 on 60 degrees of freedom
-&gt;# Multiple R-squared:  0.04039,    Adjusted R-squared:  0.02439 
-&gt;# F-statistic: 2.525 on 1 and 60 DF,  p-value: 0.1173</code></pre>
+&gt;# Residual standard error: 9590 on 60 degrees of freedom
+&gt;# Multiple R-squared:  0.0404, Adjusted R-squared:  0.0244 
+&gt;# F-statistic: 2.53 on 1 and 60 DF,  p-value: 0.117</code></pre>
 </div>
 <p>The <code>(Intercept)</code> coefficient is for the ‘0’ category, i.e., predicted salary for males; the <code>female</code> coefficient is the difference between males and females.</p>
 <p>Predicted female salary = 56515 + (-3902) = 52613.</p>
@@ -2666,13 +2667,13 @@ R Codes
 &gt;#  Two Sample t-test
 &gt;# 
 &gt;# data:  salary by sex
-&gt;# t = 1.5891, df = 60, p-value = 0.1173
+&gt;# t = 1.6, df = 60, p-value = 0.1
 &gt;# alternative hypothesis: true difference in means between group male and group female is not equal to 0
 &gt;# 95 percent confidence interval:
-&gt;#  -1009.853  8814.041
+&gt;#  -1010  8814
 &gt;# sample estimates:
 &gt;#   mean in group male mean in group female 
-&gt;#             56515.06             52612.96</code></pre>
+&gt;#                56515                52613</code></pre>
 </div>
 <h2 id="multiple-predictors-multiple-regression">3. Multiple Predictors (Multiple Regression)</h2>
 <p>Now add one more predictor, <code>time</code> <span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}^c_i + \beta_2 \text{time}_i + e_i\]</span></p>
@@ -2701,23 +2702,23 @@ R Codes
 &gt;# 
 &gt;# Coefficients:
 &gt;#             Estimate Std. Error t value Pr(&gt;|t|)    
-&gt;# (Intercept) 47373.38    2281.78  20.762  &lt; 2e-16 ***
-&gt;# pub_c         133.00      92.73   1.434 0.156797    
-&gt;# time         1096.03     303.58   3.610 0.000632 ***
+&gt;# (Intercept)  47373.4     2281.8   20.76  &lt; 2e-16 ***
+&gt;# pub_c          133.0       92.7    1.43  0.15680    
+&gt;# time          1096.0      303.6    3.61  0.00063 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
-&gt;# Residual standard error: 7703 on 59 degrees of freedom
-&gt;# Multiple R-squared:  0.3908, Adjusted R-squared:  0.3701 
-&gt;# F-statistic: 18.92 on 2 and 59 DF,  p-value: 4.476e-07</code></pre>
+&gt;# Residual standard error: 7700 on 59 degrees of freedom
+&gt;# Multiple R-squared:  0.391,  Adjusted R-squared:  0.37 
+&gt;# F-statistic: 18.9 on 2 and 59 DF,  p-value: 4.48e-07</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span>  <span class='co'># confidence interval</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                   2.5 %     97.5 %
-&gt;# (Intercept) 42807.55413 51939.2044
-&gt;# pub_c         -52.56216   318.5589
-&gt;# time          488.56251  1703.4921</code></pre>
+<pre><code>&gt;#                2.5 %  97.5 %
+&gt;# (Intercept) 42807.55 51939.2
+&gt;# pub_c         -52.56   318.6
+&gt;# time          488.56  1703.5</code></pre>
 </div>
 <p>The regression coefficients are the <em>partial</em> effects.</p>
 <p><img src="https://github.com/marklhc/marklai-pages/raw/master/static/img/regression_venn.png" /></p>
@@ -2756,13 +2757,13 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>r.squared</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.3907761</code></pre>
+<pre><code>&gt;# [1] 0.3908</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Adjusted R^2</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>adj.r.squared</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.3701244</code></pre>
+<pre><code>&gt;# [1] 0.3701</code></pre>
 </div>
 <p>Proportion of predicted variance: <span class="math inline">\(R^2\)</span> = 39%, adj. <span class="math inline">\(R^2\)</span> = 37%.</p>
 <h2 id="interaction">4. Interaction</h2>
@@ -2787,16 +2788,16 @@ R Codes
 &gt;# 
 &gt;# Coefficients:
 &gt;#              Estimate Std. Error t value Pr(&gt;|t|)    
-&gt;# (Intercept)  54238.08    1183.01  45.847  &lt; 2e-16 ***
-&gt;# pub_c          104.72      98.41   1.064  0.29169    
-&gt;# time_c         964.17     339.68   2.838  0.00624 ** 
-&gt;# pub_c:time_c    15.07      17.27   0.872  0.38664    
+&gt;# (Intercept)   54238.1     1183.0   45.85   &lt;2e-16 ***
+&gt;# pub_c           104.7       98.4    1.06   0.2917    
+&gt;# time_c          964.2      339.7    2.84   0.0062 ** 
+&gt;# pub_c:time_c     15.1       17.3    0.87   0.3866    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
-&gt;# Residual standard error: 7719 on 58 degrees of freedom
-&gt;# Multiple R-squared:  0.3987, Adjusted R-squared:  0.3676 
-&gt;# F-statistic: 12.82 on 3 and 58 DF,  p-value: 1.565e-06</code></pre>
+&gt;# Residual standard error: 7720 on 58 degrees of freedom
+&gt;# Multiple R-squared:  0.399,  Adjusted R-squared:  0.368 
+&gt;# F-statistic: 12.8 on 3 and 58 DF,  p-value: 1.56e-06</code></pre>
 </div>
 <h3 id="interaction-plots">Interaction Plots</h3>
 <p>Interpreting interaction effects is hard. Therefore,</p>
@@ -2821,20 +2822,20 @@ R Codes
 </div>
 <p><img src="rcode2_files/figure-html5/interaction-plot-1.png" width="624" /></p>
 </div>
-<p>Another approach is to plug in numbers to the equation: <span class="math display">\[\widehat{\text{salary}} = \hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 \text{time}^c + \hat \beta_3 (\text{pub}^c)(\text{time}^c)\]</span> For example, consider people who’ve graduated for seven years, i.e., <code>time</code> = 7. First, be careful that in the model we have <code>time_c</code>, and <code>time</code> = 7 corresponds to <code>time_c</code> = 0.2096774 years. So if we plug that into the equation, <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = \hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 (0.21) + \hat \beta_3 (\text{pub}^c)(0.21)\]</span> Combining terms with pub<sup>c</sup>, <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = [\hat \beta_0 + \hat \beta_2 (0.21)] + [\hat \beta_1 + \hat \beta_3 (0.21)] (\text{pub}^c)\]</span> Now plug in the numbers for <span class="math inline">\(\hat \beta_0\)</span>, <span class="math inline">\(\hat \beta_1\)</span>, <span class="math inline">\(\hat \beta_2\)</span>, <span class="math inline">\(\hat \beta_3\)</span>,</p>
+<p>Another approach is to plug in numbers to the equation: <span class="math display">\[\widehat{\text{salary}} = \hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 \text{time}^c + \hat \beta_3 (\text{pub}^c)(\text{time}^c)\]</span> For example, consider people who’ve graduated for seven years, i.e., <code>time</code> = 7. First, be careful that in the model we have <code>time_c</code>, and <code>time</code> = 7 corresponds to <code>time_c</code> = 0.2097 years. So if we plug that into the equation, <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = \hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 (0.21) + \hat \beta_3 (\text{pub}^c)(0.21)\]</span> Combining terms with pub<sup>c</sup>, <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = [\hat \beta_0 + \hat \beta_2 (0.21)] + [\hat \beta_1 + \hat \beta_3 (0.21)] (\text{pub}^c)\]</span> Now plug in the numbers for <span class="math inline">\(\hat \beta_0\)</span>, <span class="math inline">\(\hat \beta_1\)</span>, <span class="math inline">\(\hat \beta_2\)</span>, <span class="math inline">\(\hat \beta_3\)</span>,</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># beta0 + beta2 * 0.21</span>
 <span class='fl'>54238.08</span> <span class='op'>+</span> <span class='fl'>964.17</span> <span class='op'>*</span> <span class='fl'>0.21</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 54440.56</code></pre>
+<pre><code>&gt;# [1] 54441</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># beta1 + beta3 * 0.21</span>
 <span class='fl'>104.72</span> <span class='op'>+</span> <span class='fl'>15.07</span> <span class='op'>*</span> <span class='fl'>0.21</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 107.8847</code></pre>
+<pre><code>&gt;# [1] 107.9</code></pre>
 </div>
 <p>resulting in <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = 54440.6 + 107.9 (\text{pub}^c), \]</span> which is the regression line for <code>time</code> = 7. Note, however, when an interaction is present, the regression slope will be different with a different value of <code>time</code>. So remember that</p>
 <blockquote>
@@ -3200,13 +3201,13 @@ F
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>salary_dat</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#   id time pub    sex citation salary       pub_c     time_c
-&gt;# 1  1    3  18 female       50  51876  -0.1774194 -3.7903226
-&gt;# 2  2    6   3 female       26  54511 -15.1774194 -0.7903226
-&gt;# 3  3    3   2 female       50  53425 -16.1774194 -3.7903226
-&gt;# 4  4    8  17   male       34  61863  -1.1774194  1.2096774
-&gt;# 5  5    9  11 female       41  52926  -7.1774194  2.2096774
-&gt;# 6  6    6   6   male       37  47034 -12.1774194 -0.7903226</code></pre>
+<pre><code>&gt;#   id time pub    sex citation salary    pub_c  time_c
+&gt;# 1  1    3  18 female       50  51876  -0.1774 -3.7903
+&gt;# 2  2    6   3 female       26  54511 -15.1774 -0.7903
+&gt;# 3  3    3   2 female       50  53425 -16.1774 -3.7903
+&gt;# 4  4    8  17   male       34  61863  -1.1774  1.2097
+&gt;# 5  5    9  11 female       41  52926  -7.1774  2.2097
+&gt;# 6  6    6   6   male       37  47034 -12.1774 -0.7903</code></pre>
 </div>
 <p>So <span class="math display">\[\bv y = \begin{bmatrix}
             51,876 \\
@@ -3221,13 +3222,13 @@ F
 <span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#   (Intercept)       pub_c time
-&gt;# 1           1  -0.1774194    3
-&gt;# 2           1 -15.1774194    6
-&gt;# 3           1 -16.1774194    3
-&gt;# 4           1  -1.1774194    8
-&gt;# 5           1  -7.1774194    9
-&gt;# 6           1 -12.1774194    6</code></pre>
+<pre><code>&gt;#   (Intercept)    pub_c time
+&gt;# 1           1  -0.1774    3
+&gt;# 2           1 -15.1774    6
+&gt;# 3           1 -16.1774    3
+&gt;# 4           1  -1.1774    8
+&gt;# 5           1  -7.1774    9
+&gt;# 6           1 -12.1774    6</code></pre>
 </div>
 <p>The coefficient <span class="math inline">\(\bv \beta\)</span> is a vector, with elements <span class="math inline">\(\beta_0, \beta_1, \ldots\)</span>. The least square estimation method is used to find estimates of <span class="math inline">\(\beta\)</span> that minimizes the sum of squared differences between <span class="math inline">\(\bv y\)</span> and <span class="math inline">\(\bv X \hat{\bv \beta}\)</span>, which can be written as <span class="math display">\[(\bv y - \bv X \bv \beta)^\top(\bv y - \bv X \bv \beta).\]</span> The above means that: for each value observation, subtract the predicted value of <span class="math inline">\(y\)</span> from the observed <span class="math inline">\(y\)</span> (i.e., <span class="math inline">\(y_i - \beta_0 + \beta_1 x_{1i} + \ldots\)</span>), then squared the value (<span class="math inline">\([y_i - \beta_0 + \beta_1 x_{1i} + \ldots]^2\)</span>), then sum these squared values across observations. Or sometimes you’ll see it written as <span class="math display">\[\lVert\bv y - \bv X \bv \beta)\rVert^2\]</span> It can be shown that the least square estimates can be obtained as <span class="math display">\[(\bv X^\top \bv X)^{-1} \bv X^\top \bv y\]</span> You can do the matrix form in R:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3239,22 +3240,22 @@ F
 <span class='op'>(</span><span class='va'>betahat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/solve.html'>solve</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>X</span>, <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># same as the coefficients in m3</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                   [,1]
-&gt;# (Intercept) 47373.3792
-&gt;# pub_c         132.9984
-&gt;# time         1096.0273</code></pre>
+<pre><code>&gt;#              [,1]
+&gt;# (Intercept) 47373
+&gt;# pub_c         133
+&gt;# time         1096</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Sum of squared residual</span>
 <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 3500978295</code></pre>
+<pre><code>&gt;# [1] 3.501e+09</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Root mean squared residual (Residual standard error)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>59</span><span class='op'>)</span>  <span class='co'># same as in R</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 7703.156</code></pre>
+<pre><code>&gt;# [1] 7703</code></pre>
 </div>
 <h2 id="bonus-more-options-in-formatting-tables">Bonus: More Options in Formatting Tables</h2>
 <p>Here’s some code you can explore to make the table output from <code>msummary()</code> to look more lik APA style (with an example here: <a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression" class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>). However, for this course I don’t recommend spending too much time on tailoring the tables; something clear and readable will be good enough.</p>

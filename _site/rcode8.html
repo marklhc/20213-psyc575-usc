@@ -2092,6 +2092,7 @@ Lectures
 <a href="week7.html">Week 7</a>
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
+<a href="week10.html">Week 10</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2109,6 +2110,7 @@ R Codes
 <a href="rcode6.html">Week 6 R Code</a>
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
+<a href="rcode10.html">Week 10 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2504,8 +2506,7 @@ homeemo
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m00_lme4</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
-&gt;# lmerModLmerTest]
+<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
 &gt;# Formula: read ~ (1 | id)
 &gt;#    Data: curran_long
 &gt;# 
@@ -2522,10 +2523,8 @@ homeemo
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Fixed effects:
-&gt;#              Estimate Std. Error        df t value Pr(&gt;|t|)    
-&gt;# (Intercept)   4.11279    0.05093 379.71115   80.75   &lt;2e-16 ***
-&gt;# ---
-&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+&gt;#             Estimate Std. Error t value
+&gt;# (Intercept)  4.11279    0.05093   80.75</code></pre>
 </div>
 <p>However, <code>lme4</code> has some limitations with longitudinal data analysis, as it assumes that what is called a compound symmetry error covariance structure. Basically that means that the within-person (level-1) error has constant variance (i.e., <span class="math inline">\(\sigma^2\)</span>) over time, and the errors from one time point to the next is not correlated after conditioning on the fixed and random effects. In other words, whatever that causes one to has a higher (or lower) score than predicted for today will not carry over for tomorrow.</p>
 <p>There are a few more flexible packages for handling longitudinal data. You will see people use <code>nlme</code> a lot. There are also packages with Bayesian estimation, such as <code>MCMCglmm</code> and <code>brms</code>. For this class, we will use <code>glmmTMB</code>, a package that has a lot of the features for longitudinal data and has a very similar structure as <code>lme4</code>. Let’s replicate the results from <code>lme4</code>:</p>
