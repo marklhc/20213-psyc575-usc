@@ -2172,7 +2172,10 @@ R Codes
 </ul></li>
 <li>Attend the Thursday session and participate in the class exercise</li>
 <li>Complete Homework 8</li>
-<li>(Optional) Read the bonus R code on the generalized estimating equations (GEE) method</li>
+<li>(Optional) Read the bonus R code on the generalized estimating equations (GEE) method
+<ul>
+<li>Additional reference: <a href="https://journals.sagepub.com/doi/abs/10.3102/10769986211017480" class="uri">https://journals.sagepub.com/doi/abs/10.3102/10769986211017480</a></li>
+</ul></li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
@@ -2192,12 +2195,12 @@ R Codes
 </div>
 <p>Check your learning: Assume that the temporal correlation decreases with a longer time gap. A researcher collects data at baseline (Time 1), 3-month follow-up (Time 2), and then 5-month follow-up (Time 3). Which correlation should be strongest?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_24585" onsubmit="return validate_form_24585()" method="post">
-<input type="radio" name="answer_24585" id="24585_1" value="Between Time 1 and Time 2"><label for="1">Between Time 1 and Time 2</label><br><input type="radio" name="answer_24585" id="24585_2" value="Between Time 2 and Time 3"><label for="2">Between Time 2 and Time 3</label><br><input type="radio" name="answer_24585" id="24585_3" value="Between Time 1 and Time 3"><label for="3">Between Time 1 and Time 3</label><br><input type="submit" value="check">
+<form name="form_11973" onsubmit="return validate_form_11973()" method="post">
+<input type="radio" name="answer_11973" id="11973_1" value="Between Time 1 and Time 2"><label for="1">Between Time 1 and Time 2</label><br><input type="radio" name="answer_11973" id="11973_2" value="Between Time 2 and Time 3"><label for="2">Between Time 2 and Time 3</label><br><input type="radio" name="answer_11973" id="11973_3" value="Between Time 1 and Time 3"><label for="3">Between Time 1 and Time 3</label><br><input type="submit" value="check">
 </form>
-<p id="result_24585">
+<p id="result_11973">
 </p>
-<script> function validate_form_24585() {var x, text; var x = document.forms["form_24585"]["answer_24585"].value;if (x == "Between Time 2 and Time 3"){text = 'Great job :+1:';} else {text = 'Think about which time period is shortest';} document.getElementById('result_24585').innerHTML = text; return false;} </script>
+<script> function validate_form_11973() {var x, text; var x = document.forms["form_11973"]["answer_11973"].value;if (x == "Between Time 2 and Time 3"){text = 'Correct :+1:';} else {text = 'Think about which time period is shortest';} document.getElementById('result_11973').innerHTML = text; return false;} </script>
 </div>
 <h3 id="covariance-structure-in-mlm">Covariance Structure in MLM</h3>
 <p>OLS and RI-MLM/RM-ANOVA</p>
@@ -2208,12 +2211,12 @@ R Codes
 </div>
 <p>Check your learning: The random-intercept model/repeated-measures ANOVA assumes a specific temporal covariance structure. What is that structure called?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_15371" onsubmit="return validate_form_15371()" method="post">
-<input type="radio" name="answer_15371" id="15371_1" value="Independence"><label for="1">Independence</label><br><input type="radio" name="answer_15371" id="15371_2" value="Autoregressive"><label for="2">Autoregressive</label><br><input type="radio" name="answer_15371" id="15371_3" value="Autoregressive and Moving Average"><label for="3">Autoregressive and Moving Average</label><br><input type="radio" name="answer_15371" id="15371_4" value="Compound Symmetry"><label for="4">Compound Symmetry</label><br><input type="submit" value="check">
+<form name="form_31174" onsubmit="return validate_form_31174()" method="post">
+<input type="radio" name="answer_31174" id="31174_1" value="Independence"><label for="1">Independence</label><br><input type="radio" name="answer_31174" id="31174_2" value="Autoregressive"><label for="2">Autoregressive</label><br><input type="radio" name="answer_31174" id="31174_3" value="Autoregressive and Moving Average"><label for="3">Autoregressive and Moving Average</label><br><input type="radio" name="answer_31174" id="31174_4" value="Compound Symmetry"><label for="4">Compound Symmetry</label><br><input type="submit" value="check">
 </form>
-<p id="result_15371">
+<p id="result_31174">
 </p>
-<script> function validate_form_15371() {var x, text; var x = document.forms["form_15371"]["answer_15371"].value;if (x == "Compound Symmetry"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_15371').innerHTML = text; return false;} </script>
+<script> function validate_form_31174() {var x, text; var x = document.forms["form_31174"]["answer_31174"].value;if (x == "Compound Symmetry"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_31174').innerHTML = text; return false;} </script>
 </div>
 <p>Random Slopes</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2229,12 +2232,12 @@ R Codes
 </div>
 <p>Check your learning: In an AR(1) covariance structure, what is the implied correlation between Time 2 and Time 4, if <span class="math inline">\(\rho = .4\)</span>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_1688" onsubmit="return validate_form_1688()" method="post">
-<input type="radio" name="answer_1688" id="1688_1" value=".4"><label for="1">.4</label> <input type="radio" name="answer_1688" id="1688_2" value=".2"><label for="2">.2</label> <input type="radio" name="answer_1688" id="1688_3" value=".16"><label for="3">.16</label> <input type="radio" name="answer_1688" id="1688_4" value=".064"><label for="4">.064</label> <br><input type="submit" value="check">
+<form name="form_51014" onsubmit="return validate_form_51014()" method="post">
+<input type="radio" name="answer_51014" id="51014_1" value=".4"><label for="1">.4</label> <input type="radio" name="answer_51014" id="51014_2" value=".2"><label for="2">.2</label> <input type="radio" name="answer_51014" id="51014_3" value=".16"><label for="3">.16</label> <input type="radio" name="answer_51014" id="51014_4" value=".064"><label for="4">.064</label> <br><input type="submit" value="check">
 </form>
-<p id="result_1688">
+<p id="result_51014">
 </p>
-<script> function validate_form_1688() {var x, text; var x = document.forms["form_1688"]["answer_1688"].value;if (x == ".16"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_1688').innerHTML = text; return false;} </script>
+<script> function validate_form_51014() {var x, text; var x = document.forms["form_51014"]["answer_51014"].value;if (x == ".16"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_51014').innerHTML = text; return false;} </script>
 </div>
 <h2 id="analyzing-dynamics">Analyzing Dynamics</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2250,12 +2253,12 @@ R Codes
 <hr />
 <p>Check your learning: When analyzing a conversation between a couple, a researcher is interested in whether a person follow up the partner’s complaints with positive or negative behaviors. Is this an example of studying trends or fluctuations?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_77831" onsubmit="return validate_form_77831()" method="post">
-<input type="radio" name="answer_77831" id="77831_1" value="Trends"><label for="1">Trends</label> <input type="radio" name="answer_77831" id="77831_2" value="Fluctuations"><label for="2">Fluctuations</label> <br><input type="submit" value="check">
+<form name="form_36177" onsubmit="return validate_form_36177()" method="post">
+<input type="radio" name="answer_36177" id="36177_1" value="Trends"><label for="1">Trends</label> <input type="radio" name="answer_36177" id="36177_2" value="Fluctuations"><label for="2">Fluctuations</label> <br><input type="submit" value="check">
 </form>
-<p id="result_77831">
+<p id="result_36177">
 </p>
-<script> function validate_form_77831() {var x, text; var x = document.forms["form_77831"]["answer_77831"].value;if (x == "Fluctuations"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_77831').innerHTML = text; return false;} </script>
+<script> function validate_form_36177() {var x, text; var x = document.forms["form_36177"]["answer_36177"].value;if (x == "Fluctuations"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_36177').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="model-1">Model 1</h2>
@@ -2267,12 +2270,12 @@ R Codes
 <hr />
 <p>Check your learning: In the model above, what is the interpretation of the contextual effect of <code>mood1</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_77893" onsubmit="return validate_form_77893()" method="post">
-<input type="radio" name="answer_77893" id="77893_1" value="The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood"><label for="1">The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood</label><br><input type="radio" name="answer_77893" id="77893_2" value="The predicted difference in symptoms for an individual across two days with 1 unit difference in mood"><label for="2">The predicted difference in symptoms for an individual across two days with 1 unit difference in mood</label><br><input type="radio" name="answer_77893" id="77893_3" value="The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"><label for="3">The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level</label><br><input type="submit" value="check">
+<form name="form_7498" onsubmit="return validate_form_7498()" method="post">
+<input type="radio" name="answer_7498" id="7498_1" value="The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood"><label for="1">The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood</label><br><input type="radio" name="answer_7498" id="7498_2" value="The predicted difference in symptoms for an individual across two days with 1 unit difference in mood"><label for="2">The predicted difference in symptoms for an individual across two days with 1 unit difference in mood</label><br><input type="radio" name="answer_7498" id="7498_3" value="The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"><label for="3">The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level</label><br><input type="submit" value="check">
 </form>
-<p id="result_77893">
+<p id="result_7498">
 </p>
-<script> function validate_form_77893() {var x, text; var x = document.forms["form_77893"]["answer_77893"].value;if (x == "The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_77893').innerHTML = text; return false;} </script>
+<script> function validate_form_7498() {var x, text; var x = document.forms["form_7498"]["answer_7498"].value;if (x == "The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_7498').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="model-2">Model 2</h2>
