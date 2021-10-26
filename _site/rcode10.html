@@ -2947,8 +2947,9 @@ stressor_pm
 &gt;#  Groups   Name        Std.Dev.
 &gt;#  PersonID (Intercept) 1.5428</code></pre>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>icc_stre</span> <span class='op'>&lt;-</span> <span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span>
-  <span class='op'>(</span><span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The error variance is pi^2 / 3 for a binary outcome</span>
+<span class='va'>icc_stre</span> <span class='op'>&lt;-</span> <span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span>
+  <span class='op'>(</span><span class='va'>vc_m0st</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='va'>pi</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>/</span> <span class='fl'>3</span><span class='op'>)</span>
 <span class='co'># Print ICCs</span>
 <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>symptoms <span class='op'>=</span> <span class='va'>icc_symp</span>,
   mood1 <span class='op'>=</span> <span class='va'>icc_mood</span>,
@@ -2956,7 +2957,7 @@ stressor_pm
 </code></pre>
 </div>
 <pre><code>&gt;#  symptoms     mood1  stressor 
-&gt;# 0.6678696 0.3549095 0.7041664</code></pre>
+&gt;# 0.6678696 0.3549095 0.4197914</code></pre>
 </div>
 <h1 id="check-the-trend-of-the-data">Check the Trend of the Data</h1>
 <p>One thing to consider with longitudinal data in a short time is whether there may be trends in the data due to contextual factors (e.g., weekend effect; shared life events in certain time). If this is the case, a common practice is to de-trend the data; otherwise associations between predictors and the outcome may be merely due to contextual factor happening on certain days.</p>

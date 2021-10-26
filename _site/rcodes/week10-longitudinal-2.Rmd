@@ -265,8 +265,9 @@ icc_mood <- vc_m0mo[[1]]$PersonID[1, 1] /
   (vc_m0mo[[1]]$PersonID[1, 1] + attr(vc_m0mo[[1]], "sc")^2)
 # Stressor (sigma is fixed to pi^2 / 3)
 (vc_m0st <- VarCorr(m0_stre))  # shows the random effect SDs
+# The error variance is pi^2 / 3 for a binary outcome
 icc_stre <- vc_m0st[[1]]$PersonID[1, 1] /
-  (vc_m0st[[1]]$PersonID[1, 1] + attr(vc_m0st[[1]], "sc")^2)
+  (vc_m0st[[1]]$PersonID[1, 1] + pi^2 / 3)
 # Print ICCs
 c(symptoms = icc_symp,
   mood1 = icc_mood,
