@@ -2598,12 +2598,15 @@ R Codes
 &gt;# fit_m2 43 399.9684</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Individual-level prediction</span>
-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>m1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>fit_m1</span><span class='op'>)</span><span class='op'>$</span><span class='va'>caic</span>,
-  m2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>fit_m2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>caic</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
+    m1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>fit_m1</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"df"</span>, <span class='st'>"caic"</span><span class='op'>)</span><span class='op'>]</span>,
+    m2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>fit_m2</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"df"</span>, <span class='st'>"caic"</span><span class='op'>)</span><span class='op'>]</span>
+<span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#       m1       m2 
-&gt;# 367.2822 388.6662</code></pre>
+<pre><code>&gt;#    df       caic    
+&gt;# m1 29.06952 367.2822
+&gt;# m2 51.5599  388.6662</code></pre>
 </div>
 <p>Because AIC approximates the out-of-sample prediction error (for continuous, normal outcomes), a model with a lower AIC should be preferred. Here it shows <code>m1</code> is better for individual-level prediction.</p>
 <blockquote>
@@ -2651,14 +2654,19 @@ R Codes
 &gt;# m_4 13 414.3175</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conditional AIC</span>
-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>m_1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_1</span><span class='op'>)</span><span class='op'>$</span><span class='va'>caic</span>,
-  m_2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_2</span><span class='op'>)</span><span class='op'>$</span><span class='va'>caic</span>,
-  m_3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>caic</span>,
-  m_4 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_4</span><span class='op'>)</span><span class='op'>$</span><span class='va'>caic</span><span class='op'>)</span>  <span class='co'># m_1, m_2, m_3 similar</span>
+<span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
+    m_1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_1</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"df"</span>, <span class='st'>"caic"</span><span class='op'>)</span><span class='op'>]</span>,
+    m_2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_2</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"df"</span>, <span class='st'>"caic"</span><span class='op'>)</span><span class='op'>]</span>,
+    m_3 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_3</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"df"</span>, <span class='st'>"caic"</span><span class='op'>)</span><span class='op'>]</span>,
+    m_4 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/cAIC4/man/cAIC.html'>cAIC</a></span><span class='op'>(</span><span class='va'>m_4</span><span class='op'>)</span><span class='op'>[</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"df"</span>, <span class='st'>"caic"</span><span class='op'>)</span><span class='op'>]</span>
+<span class='op'>)</span> <span class='co'># m_1, m_2, m_3 similar</span>
 </code></pre>
 </div>
-<pre><code>&gt;#      m_1      m_2      m_3      m_4 
-&gt;# 369.3262 369.2557 369.2557 373.5176</code></pre>
+<pre><code>&gt;#     df       caic    
+&gt;# m_1 28.93959 369.3262
+&gt;# m_2 28.75855 369.2557
+&gt;# m_3 28.75855 369.2557
+&gt;# m_4 30.80038 373.5176</code></pre>
 </div>
 <p>Overall, it seems (1) and (2) are best for predictions, with similar AICs.</p>
 <h2 id="bonus-model-averaging">Bonus: Model Averaging</h2>

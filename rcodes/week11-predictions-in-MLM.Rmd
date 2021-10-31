@@ -395,8 +395,10 @@ fit_m2 <- lmer(symptoms ~ (mood1_pm + mood1_pmc) * (stressor_pm + stressor) *
 # Cluster-level prediction
 AIC(fit_m1, fit_m2)
 # Individual-level prediction
-c(m1 = cAIC(fit_m1)$caic,
-  m2 = cAIC(fit_m2)$caic)
+rbind(
+    m1 = cAIC(fit_m1)[c("df", "caic")],
+    m2 = cAIC(fit_m2)[c("df", "caic")]
+)
 ```
 
 Because AIC approximates the out-of-sample prediction error (for continuous, normal outcomes), a model with a lower AIC should be preferred. Here it shows `m1` is better for individual-level prediction.
@@ -439,10 +441,12 @@ m_4 <- lmer(
 # Marginal AIC
 AIC(m_1, m_2, m_3, m_4)  # m_2 is the best
 # Conditional AIC
-c(m_1 = cAIC(m_1)$caic,
-  m_2 = cAIC(m_2)$caic,
-  m_3 = cAIC(m_3)$caic,
-  m_4 = cAIC(m_4)$caic)  # m_1, m_2, m_3 similar
+rbind(
+    m_1 = cAIC(m_1)[c("df", "caic")],
+    m_2 = cAIC(m_2)[c("df", "caic")],
+    m_3 = cAIC(m_3)[c("df", "caic")],
+    m_4 = cAIC(m_4)[c("df", "caic")]
+) # m_1, m_2, m_3 similar
 ```
 
 Overall, it seems (1) and (2) are best for predictions, with similar AICs.

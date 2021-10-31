@@ -162,15 +162,64 @@ check_question("It uses different subsets of the data for estimation and for pre
 ### Information Criterion
 
 ```{r, echo=FALSE}
-add_youtube("rxRGk1m1Pvo")
+add_youtube("pu-rm4kqVAY")
 ```
 
-## Model Comparison
-
-Lecture video to be added soon
+```{r, echo=FALSE}
+add_youtube("q1k_F09oLGQ")
+```
 
 ***
 
-Check your learning: Question to be added
+Check your learning: Which of the following two models are nested?
+
+M1: `mathach ~ meanses + ses_cmc + sector + (1 | ID)`
+
+M2: `mathach ~ sector + (1 | ID)`
+
+M3: `mathach ~ meanses + sector + (ses_cmc | ID)` 
+
+```{r echo=FALSE, results="asis"}
+check_question("M1 and M2", 
+               options = c("M1 and M2", 
+                           "M2 and M3", 
+                           "M1 and M3"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Model Comparison
+
+```{r, echo=FALSE}
+add_youtube("DyT_WDrqVC8")
+```
+
+```{r, echo=FALSE}
+add_youtube("URFGKEyveYE")
+```
+
+***
+
+Check your learning: Which of the following model is the best based on AIC?
+
+M1: mAIC = 1203, cAIC = 1037
+
+M2: mAIC = 1202, cAIC = 1000
+
+M3: mAIC = 1210, cAIC = 1055
+
+```{r echo=FALSE, results="asis"}
+check_question("M2", 
+               options = c("M1", 
+                           "M2", 
+                           "M3"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans,
+               alignment = TRUE)
+```
 
 ***
