@@ -1,0 +1,176 @@
+---
+title: "Week 11"
+description: |
+  Prediction in MLM
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  slides: "11_prediction"
+---
+
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Describe the role of **prediction** in data analysis
+- Describe the problem of **overfitting** when fitting complex models
+- Use **information criteria** to compare models
+
+## Task Lists
+
+1. Review the resources (lecture videos and slides)
+2. Complete the assigned readings
+    * [Yarkoni & Westfall (2017)](http://jakewestfall.org/publications/Yarkoni_Westfall_choosing_prediction.pdf)
+3. Attend the Thursday session and participate in the class exercise
+4. Post progress of your project to the Discussion Board on Blackboard for peer review
+
+# Lecture
+
+## Slides
+
+<span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span>
+
+You can view and download the slides here: 
+[PDF](`r file.path("slides", paste0(params$slides, ".pdf"))`){target="_blank"}
+
+```{r, include=FALSE}
+library(checkdown)
+right_ans <- c("That is right!",
+               "Great job :+1:")
+wrong_ans <- "Try again. You can do it!"
+```
+
+## Predictive Models in MLM
+
+```{r, echo=FALSE}
+add_youtube("yq6fGgU7UiI")
+```
+
+```{r, echo=FALSE}
+add_youtube("6YyRwbEhzqE")
+```
+
+***
+
+Think more: Think about a prominent theory in your area of research. What predictions does it make? Does it give precise predictions? 
+
+***
+
+## Example
+
+```{r, echo=FALSE}
+add_youtube("jCP1OHs504M")
+```
+
+***
+
+Check your learning: In a multilevel model with students nested within schools and with student math achievement as the outcome variable, what is a cluster-specific prediction?
+
+```{r echo=FALSE, results="asis"}
+check_question("The predicted achievement for a student from one of the schools included in the sample.", 
+               options = c("The predicted achievement for a student from one of the schools included in the sample.", 
+                           "The predicted mean achievement of a new school.", 
+                           "The predicted achievement for a student from a new school that are not part of the sample."), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+### Prediction Error
+
+<span style="color:red">Some information has been updated since the video was recorded. Check out the updated slides</span>
+
+```{r, echo=FALSE}
+add_youtube("CCRqTspEXlc")
+```
+
+## Overfitting
+
+```{r, echo=FALSE}
+add_youtube("QXjW5vZV--E")
+```
+
+***
+
+Check your learning: Which of the following growth curve model would show the largest degree of overfitting, given a sample of 15 participants across 5 time points?
+
+```{r echo=FALSE, results="asis"}
+check_question("A piecewise growth model with four phases.", 
+               options = c("A linear growth model.", 
+                           "A piecewise growth model with two phases.", 
+                           "A piecewise growth model with four phases."), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Out-Of-Sample Prediction Errors
+
+```{r, echo=FALSE}
+add_youtube("vVQpY1vh208")
+```
+
+***
+
+Check your learning: Why shouldn't we just choose a model with the lowest in-sample prediction error?
+
+```{r echo=FALSE, results="asis"}
+check_question("A model that fits one data set too well usually does not fit well with other data sets.", 
+               options = c("Prediction error should not be a criterion for choosing among models.", 
+                           "One should use a likelihood ratio test instead.", 
+                           "A model that fits one data set too well usually does not fit well with other data sets."), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+### Cross Validation
+
+```{r, echo=FALSE}
+add_youtube("8NoYZUzGfGQ")
+```
+
+***
+
+Check your learning: Why does cross-validation, compared to in-sample MSE, give a better estimate of the out-of-sample prediction error?
+
+```{r echo=FALSE, results="asis"}
+check_question("It uses different subsets of the data for estimation and for prediction.", 
+               options = c("It uses different subsets of the data for estimation and for prediction.", 
+                           "It is developed in the machine learning literature.", 
+                           "It uses less data for estimation, so the results are more stable."), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+### Information Criterion
+
+```{r, echo=FALSE}
+add_youtube("rxRGk1m1Pvo")
+```
+
+## Model Comparison
+
+Lecture video to be added soon
+
+***
+
+Check your learning: Question to be added
+
+***

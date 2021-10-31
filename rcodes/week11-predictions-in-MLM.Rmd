@@ -1,0 +1,583 @@
+---
+title: "Predictions in MLM"
+output:
+  html_document:
+    df_print: paged
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = ">#")
+```
+
+## Load Packages and Import Data
+
+```{r load-pkg, message=FALSE}
+# To install a package, run the following ONCE (and only once on your computer)
+# install.packages("psych")
+library(here)  # makes reading data more consistent
+library(tidyverse)  # for data manipulation and plotting
+library(haven)  # for importing SPSS/SAS/Stata data
+library(lme4)  # for multilevel analysis
+library(glmmTMB)
+library(cAIC4)  # for conditional AIC
+library(glmmLasso)  # for MLM lasso
+library(MuMIn)  # for model averaging
+library(modelsummary)  # for making tables
+library(interactions)  # for interaction plots
+theme_set(theme_bw())  # Theme; just my personal preference
+```
+
+The data is the first wave of the Cognition, Health, and Aging Project. 
+
+```{r import_sav, message=FALSE}
+# Download the data from
+# https://www.pilesofvariance.com/Chapter8/SPSS/SPSS_Chapter8.zip, and put it 
+# into the "data_files" folder
+zip_data <- here("data_files", "SPSS_Chapter8.zip")
+# download.file("https://www.pilesofvariance.com/Chapter8/SPSS/SPSS_Chapter8.zip", 
+#               zip_data)
+stress_data <- read_sav(
+  unz(zip_data,
+      "SPSS_Chapter8/SPSS_Chapter8.sav"))
+stress_data <- stress_data %>%
+  # Center mood (originally 1-5) at 1 for interpretation (so it becomes 0-4)
+  # Also women to factor
+  mutate(mood1 = mood - 1,
+         women = factor(women, levels = c(0, 1),
+                        labels = c("men", "women")))
+```
+
+The data is already in long format. Let's first do a subsample of 30 participants:
+
+```{r stress_sub}
+set.seed(1719)
+random_persons <- sample(unique(stress_data$PersonID), 30)
+stress_sub <- stress_data %>%
+  filter(PersonID %in% random_persons)
+```
+
+```{r pmc}
+# First, separate the time-varying variables into within-person and
+# between-person levels
+stress_sub <- stress_sub %>%
+  group_by(PersonID) %>%
+  # The `across()` function can be used to operate the same procedure on 
+  # multiple variables
+  mutate(across(c(symptoms, mood1, stressor),
+                # The `.` means the variable to be operated on
+                list("pm" = ~ mean(., na.rm = TRUE),
+                     "pmc" = ~ . - mean(., na.rm = TRUE)))) %>% 
+  ungroup()
+```
+
+Let's use the model from last week
+
+Level 1:
+$$\text{symptoms}_{ti} = \beta_{0i} + \beta_{1i} \text{mood1_pmc}_{ti} + e_{ti}$$
+Level 2:
+$$
+  \begin{aligned}
+    \beta_{0i} & = \gamma_{00} + \gamma_{01} \text{mood1_pm}_{i} + 
+                   \gamma_{02} \text{women}_i + 
+                   \gamma_{03} \text{mood1_pm}_{i} \times \text{women}_i 
+                   + u_{0i}  \\
+    \beta_{1i} & = \gamma_{10} + \gamma_{11} \text{women}_i + u_{1i}
+  \end{aligned}
+$$
+
+- $\gamma_{03}$ = between-person interaction
+- $\gamma_{11}$ = cross-level interaction
+
+
+```{r m1}
+m1 <- glmmTMB(
+    symptoms ~ (mood1_pm + mood1_pmc) * women + (mood1_pmc | PersonID),
+    data = stress_sub, REML = TRUE,
+    # The default optimizer did not converge; try optim
+    control = glmmTMBControl(
+        optimizer = optim,
+        optArgs = list(method = "BFGS")
+    )
+)
+```
+
+## Predictions
+
+```{r pred-m1}
+# Cluster-specific
+(obs1 <- stress_sub[1, c("PersonID", "mood1_pm", "mood1_pmc", "women",
+                          "symptoms")])
+(pred1 <- predict(m1, newdata = obs1))
+# Unconditional/marginal prediction
+predict(m1, newdata = obs1, re.form = NA)
+```
+
+### Prediction Error
+
+In the graph below, the 68% predictive intervals are shown in skyblue, whereas the actual data are shown in red. A good statistical model should have good preditive accuracy so that the skyblue dots and the red dots are close; a valid statistical model should have most of the skyblue intervals covering the observed data.
+
+```{r pe-m1-plot}
+broom.mixed::augment(m1) %>%
+    # Random sample of 9 Persons
+    filter(PersonID %in% sample(unique(PersonID), 9)) %>%
+    group_by(PersonID) %>%
+    # Add a variable to indicate observation number
+    mutate(obsid = row_number()) %>%
+    ungroup() %>%
+    ggplot(aes(x = obsid, y = .fitted)) +
+    geom_point(aes(col = "prediction"), shape = 21) +
+    geom_point(aes(y = symptoms, col = "data")) +
+    geom_segment(aes(xend = obsid, yend = symptoms)) +
+    facet_wrap(~PersonID) +
+    labs(x = NULL, y = "Daily symptoms", col = NULL)
+```
+
+## Average In-Sample Prediction Error
+
+Let's consider the prediction error for everyone in the data
+
+```{r pe-m1}
+# Obtain predicted values for everyone
+pred_all <- predict(m1, re.form = NA)
+# Now, compute the prediction error
+prederr_all <- m1$frame$symptoms - pred_all
+# Statisticians love to square the prediction error. The mean of the squared
+# prediction error is called the mean squared error (MSE)
+(mse_m1 <- mean(prederr_all^2))
+# The square root of MSE, the root mean squared error (RMSE), can be considered
+# the average prediction error (marginal)
+(rmse_m1 <- sqrt(mse_m1))
+```
+
+Let's now consider a model with more predictors:
+
+```{r m2}
+# 35 main/interaction effects
+m2 <- glmmTMB(
+    symptoms ~ (mood1_pm + mood1_pmc) * (stressor_pm + stressor) *
+        (women + baseage + weekend) +
+        (mood1_pmc + stressor | PersonID),
+    data = stress_sub,
+    # The default optimizer did not converge; try optim
+    control = glmmTMBControl(
+        optimizer = optim,
+        optArgs = list(method = "BFGS")
+    )
+)
+```
+
+The model does not converge. However, let's ignore the warning for a second, and check the prediction error:
+
+```{r pred_all-m2}
+pred_all <- predict(m2, re.form = NA)
+```
+
+```{r pe-m2}
+prederr_all <- m2$frame$symptoms - pred_all
+mse_m2 <- mean(prederr_all^2)
+tibble(Model = c("M1", "M2"),
+       `In-sample MSE` = c(mse_m1, mse_m2))
+```
+
+You can see that the MSE drops with the more complex model. Does it mean that this more complex model should be preferred?
+
+## Out-Of-Sample Prediction Error
+
+The problem of using in-sample prediction error to determine which model should be preferred is that the complex model will capture a lot of the noise in the data, making it not generalizable to other sample. In-sample prediction is not very meaningful, because if we already have the data, our interest is usually not to predict them. Instead, in research, we want models that will generalize to other samples. Therefore, learning all the noise in the sample is not a good idea, and will lead to *overfitting*---having estimates that are not generalizable to other samples. 
+
+To see this, let's try to use the models we built on the 30 participants to predict `symptoms` for the remaining 75 participants:
+
+```{r test-mse}
+# Get the remaining data
+stress_test <- stress_data %>%
+    # Select participants not included in the previous models
+    filter(!PersonID %in% random_persons) %>%
+    # Person-mean centering
+    group_by(PersonID) %>%
+    # The `across()` function can be used to operate the same procedure on
+    # multiple variables
+    mutate(across(
+        c(symptoms, mood1, stressor),
+        # The `.` means the variable to be operated on
+        list(
+            "pm" = ~ mean(., na.rm = TRUE),
+            "pmc" = ~ . - mean(., na.rm = TRUE)
+        )
+    )) %>%
+    ungroup()
+# Prediction error from m1
+pred_all <- predict(m1,
+    newdata = stress_test, re.form = NA,
+    allow.new.levels = TRUE
+)
+prederr_all <- stress_test$symptoms - pred_all
+mse_m1 <- mean(prederr_all^2, na.rm = TRUE)
+# Prediction error from m2
+pred_all <- predict(m2,
+    newdata = stress_test, re.form = NA,
+    allow.new.levels = TRUE
+)
+prederr_all <- stress_test$symptoms - pred_all
+mse_m2 <- mean(prederr_all^2, na.rm = TRUE)
+# Print out-of-sample prediction error
+tibble(Model = c("M1", "M2"), 
+       `Out-of-sample MSE` = c(mse_m1, mse_m2))
+```
+
+As you can see from above, the prediction on data not used for building the model is worse. And `m2` makes much worse out-of-sample prediction than `m1`, because when the sample size is small relative to the size of the model, a complex model is especially prone to overfitting, as it has many parameters that can be used to capitalize on the noise of the data.  
+
+As suggested before, we should care about out-of-sample prediction error than in-sample prediction error, so in this case `m1` should be preferred. In practice, however, we don't usually have the luxury of having another sample for us to get out-of-sample prediction error. So what should we do?
+
+### Cross-Validation
+
+A simple solution is cross-validation, which is extremely popular in machine learning. The idea is to split the data into two parts, just like what we did above. Then fit the model in one part, and get the prediction error on the other part. The process is repeated $K$ times for a $K$-fold cross-validation until the prediction error is obtained on every observation. 
+
+It should be pointed out that $K$-fold cross-validation, gives a biased estimate of prediction error especially when $K$ is small, but it is extremely intensive when $K$ is large, as it requires refitting the model $K$ times. Below is a demo for doing a 5-fold cross-validation on the training data (with 30 participants) with `lme4::lmer()` (you can do the same with `glmmTMB`), which is mainly for you to understand its logic. 
+
+```{r five-fold}
+# Split the index of 30 participants into 5 parts
+num_folds <- 5
+random_sets <- split(
+    random_persons,
+    rep_len(1:num_folds, length(random_persons))
+)
+# Initialize the sum of squared prediction errors for each model
+sum_prederr_m1 <- sum_prederr_m2 <- 0
+# Loop over each set
+for (setk in random_sets) {
+    # Fit model 1 on the subset
+    fit_m1 <- lmer(
+        symptoms ~ (mood1_pm + mood1_pmc) * women + (mood1_pmc | PersonID),
+        data = stress_sub,
+        # Select specific observations
+        subset = !PersonID %in% setk
+    )
+    # Remaining data
+    stress_sub_test <- stress_sub %>% filter(PersonID %in% setk)
+    # Obtain prediction error
+    pred_m1_test <- predict(fit_m1, newdata = stress_sub_test, re.form = NA)
+    prederr_m1 <- stress_sub_test$symptoms - pred_m1_test
+    sum_prederr_m1 <- sum_prederr_m1 + sum(prederr_m1^2, na.rm = TRUE)
+    # Fit model 2 on the subset
+    fit_m2 <- lmer(
+        symptoms ~ (mood1_pm + mood1_pmc) * (stressor_pm + stressor) *
+            (women + baseage + weekend) +
+            (mood1_pmc + stressor | PersonID),
+        data = stress_sub,
+        # Select specific observations
+        subset = !PersonID %in% setk
+    )
+    # Remaining data
+    stress_sub_test <- stress_sub %>% filter(PersonID %in% setk)
+    # Obtain prediction error
+    pred_m2_test <- predict(fit_m2, newdata = stress_sub_test, re.form = NA)
+    prederr_m2 <- stress_sub_test$symptoms - pred_m2_test
+    sum_prederr_m2 <- sum_prederr_m2 + sum(prederr_m2^2, na.rm = TRUE)
+}
+# MSE (dividing the sum by 150 observations)
+tibble(Model = c("M1", "M2"),
+       `5-fold CV MSE` = c(sum_prederr_m1 / 150, sum_prederr_m2 / 150))
+# The estimated out-of-sample MSE is more than double for m2 than for m1
+```
+
+### Leave-one-out (LOO) cross validation
+
+A special case of cross-validation is to use $N - 1$ observations to build the model to predict the remaining one observation, and repeat the process $N$ times. This is the LOO, which is essentially an $N$-fold cross validation. While this may first seem very unrealistic given that the model needs to be fitted $N$ times, there are computational shortcuts or approximations that can make this much more efficient, and one of them that uses the Pareto smoothed importance sampling (PSIS) is available for models fitted with `brms`. So we can do
+
+```{r loo-m1-m2}
+# Initialize the sum of squared prediction errors for each model
+sum_prederr_m1 <- sum_prederr_m2 <- 0
+# Loop over each person
+for (personk in random_persons) {
+    # Fit model 1 on the data without personk
+    fit_m1 <- lmer(
+        symptoms ~ (mood1_pm + mood1_pmc) * women + (mood1_pmc | PersonID),
+        data = stress_sub,
+        # Select specific observations
+        subset = PersonID != personk
+    )
+    # Data for personk
+    stress_sub_test <- stress_sub %>% filter(PersonID == personk)
+    # Obtain prediction error
+    pred_m1_test <- predict(fit_m1, newdata = stress_sub_test, re.form = NA)
+    prederr_m1 <- stress_sub_test$symptoms - pred_m1_test
+    sum_prederr_m1 <- sum_prederr_m1 + sum(prederr_m1^2, na.rm = TRUE)
+    # Fit model 2 on the subset
+    fit_m2 <- lmer(
+        symptoms ~ (mood1_pm + mood1_pmc) * (stressor_pm + stressor) *
+            (women + baseage + weekend) +
+            (mood1_pmc + stressor | PersonID),
+        data = stress_sub,
+        # Select specific observations
+        subset = PersonID != personk
+    )
+    # Data for personk
+    stress_sub_test <- stress_sub %>% filter(PersonID == personk)
+    # Obtain prediction error
+    pred_m2_test <- predict(fit_m2, newdata = stress_sub_test, re.form = NA)
+    prederr_m2 <- stress_sub_test$symptoms - pred_m2_test
+    sum_prederr_m2 <- sum_prederr_m2 + sum(prederr_m2^2, na.rm = TRUE)
+}
+# MSE (dividing the sum by 150 observations)
+tibble(Model = c("M1", "M2"),
+       `LOO CV MSE` = c(sum_prederr_m1 / 150, sum_prederr_m2 / 150))
+# The results are similar
+```
+
+which again suggested `m1` is expected to have less out-of-sample prediction error. In practice, 5 or 10-fold CV is usually used to save time.
+
+### A Remark on Cross-Validation for Hierarchical Data
+
+With hierarchical data, cross-validation can be done at different levels. What we did before was to split the **sample of clusters**, i.e., CV at the top level (i.e., level 2, or person). This kind of CV is most relevant when one is interested in prediction at the cluster level. Another way to do CV is to split the data within clusters. For example, here each person has five time points max, so we can use four time points to build model to predict the remaining time point. 
+
+```{r cv-within-m1-m2}
+# Add time to the data
+stress_sub <- stress_sub %>%
+    group_by(PersonID) %>%
+    mutate(time = row_number())
+# Initialize the sum of squared prediction errors for each model
+sum_prederr_m1 <- sum_prederr_m2 <- 0
+# Loop over each person
+for (t in 1:5) {
+    # Fit model 1 on the data without personk
+    fit_m1 <- lmer(
+        symptoms ~ (mood1_pm + mood1_pmc) * women + (mood1_pmc | PersonID),
+        data = stress_sub,
+        # Select specific observations
+        subset = time != t
+    )
+    # Data for personk
+    stress_sub_test <- stress_sub %>% filter(time == t)
+    # Obtain prediction error
+    pred_m1_test <- predict(fit_m1, newdata = stress_sub_test, re.form = NA)
+    prederr_m1 <- stress_sub_test$symptoms - pred_m1_test
+    sum_prederr_m1 <- sum_prederr_m1 + sum(prederr_m1^2, na.rm = TRUE)
+    # Fit model 2 on the subset
+    fit_m2 <- lmer(
+        symptoms ~ (mood1_pm + mood1_pmc) * (stressor_pm + stressor) *
+            (women + baseage + weekend) +
+            (mood1_pmc + stressor | PersonID),
+        data = stress_sub,
+        # Select specific observations
+        subset = time != t
+    )
+    # Data for personk
+    stress_sub_test <- stress_sub %>% filter(time == t)
+    # Obtain prediction error
+    pred_m2_test <- predict(fit_m2, newdata = stress_sub_test, re.form = NA)
+    prederr_m2 <- stress_sub_test$symptoms - pred_m2_test
+    sum_prederr_m2 <- sum_prederr_m2 + sum(prederr_m2^2, na.rm = TRUE)
+}
+# MSE (dividing the sum by 150 observations)
+tibble(
+    Model = c("M1", "M2"),
+    `5-fold Within-Cluster CV MSE` =
+        c(sum_prederr_m1 / 150, sum_prederr_m2 / 150)
+)
+```
+
+Here, M1 is still better, but the difference is smaller. For more discussion on the difference, please check out [this blog post](https://deepthoughtsandsilliness.blogspot.com/2007/12/focus-on-dic.html), or the paper ["Conditional Akaike information for mixed-effects models"](https://academic.oup.com/biomet/article-abstract/92/2/351/233128). 
+
+### Information Criteria
+
+A closely-related way to estimate the out-of-sample prediction is to use information criteria, which is based on information theory. Simply speaking, these are measures of the expected out-of-sample prediction error under certain assumptions (e.g., normality). The most famous one is the Akaike information criterion (AIC), named after statistician Hirotugu Akaike, who derived that under certain assumptions, the expected prediction error is the deviance plus two times the number of parameters in the model. We can obtain AICs using the generic `AIC()` function for cluster-level predictions, and the `cAIC4::cAIC()` function for individual-level predictions.
+
+```{r aic}
+# Refit with lme4 as glmmTMB did not converge
+fit_m1 <- lmer(symptoms ~ (mood1_pm + mood1_pmc) * women +
+                   (mood1_pmc | PersonID),
+                 data = stress_sub)
+fit_m2 <- lmer(symptoms ~ (mood1_pm + mood1_pmc) * (stressor_pm + stressor) *
+                   (women + baseage + weekend) +
+                   (mood1_pmc + stressor | PersonID),
+                 data = stress_sub)
+# Cluster-level prediction
+AIC(fit_m1, fit_m2)
+# Individual-level prediction
+c(m1 = cAIC(fit_m1)$caic,
+  m2 = cAIC(fit_m2)$caic)
+```
+
+Because AIC approximates the out-of-sample prediction error (for continuous, normal outcomes), a model with a lower AIC should be preferred. Here it shows `m1` is better for individual-level prediction.
+
+> To avoid overfitting, we should compare models based on the out-of-sample prediction errors, which can be approxiamted by preferring models with lower AICs. 
+
+#### How about the BIC?
+
+As a side note, AIC is commonly presented alongside BIC, the Bayesian information criterion (BIC). However, BIC was developed with very different motivations, and technically it is not an information criterion (and it is debatable whether it is Bayesian). However, it can be used in a similar way, where models showing lower BICs represent better fit. It tends to prefer models that are more parsimonious than the AIC. 
+
+## Model Comparisons
+
+Let's compare several models:
+
+1. `mood1` and `stressor`, no random slopes
+2. `mood1_pm`, `mood1_pmc`, `stressor_pm`, `stressor`, no random slopes
+3. `mood1_pm`, `mood1_pmc`, `stressor_pm`, `stressor`, random slopes
+4. Model 3 + interaction terms: `mood1_pm:stressor_pm`, `mood1_pmc:stressor`
+
+```{r model-compare}
+m_1 <- lmer(
+    symptoms ~ mood1 + stressor + (1 | PersonID),
+    data = stress_sub, REML = FALSE
+)
+m_2 <- lmer(
+    symptoms ~ mood1_pm + mood1_pmc + stressor_pm + stressor +
+        (1 | PersonID),
+    data = stress_sub, REML = FALSE
+)
+m_3 <- lmer(
+    symptoms ~ mood1_pm + mood1_pmc + stressor_pm + stressor +
+        (mood1_pmc + stressor | PersonID),
+    data = stress_sub, REML = FALSE
+)
+m_4 <- lmer(
+    symptoms ~ mood1_pm * stressor + mood1_pmc * stressor +
+        (mood1_pmc + stressor | PersonID),
+    data = stress_sub, REML = FALSE
+)
+# Marginal AIC
+AIC(m_1, m_2, m_3, m_4)  # m_2 is the best
+# Conditional AIC
+c(m_1 = cAIC(m_1)$caic,
+  m_2 = cAIC(m_2)$caic,
+  m_3 = cAIC(m_3)$caic,
+  m_4 = cAIC(m_4)$caic)  # m_1, m_2, m_3 similar
+```
+
+Overall, it seems (1) and (2) are best for predictions, with similar AICs.
+
+## Bonus: Model Averaging
+
+```{r full-pmc}
+# Use full data with centering
+stress_data <- stress_data %>%
+  group_by(PersonID) %>%
+  # The `across()` function can be used to operate the same procedure on
+  # multiple variables
+  mutate(across(c(symptoms, mood1, stressor),
+                # The `.` means the variable to be operated on
+                list("pm" = ~ mean(., na.rm = TRUE),
+                     "pmc" = ~ . - mean(., na.rm = TRUE)))) %>%
+  ungroup()
+```
+
+```{r model-avg}
+# Use lme4 as glmmTMB had convergence issue and did not compute AIC
+# Require data without missing
+stress_lm <- drop_na(stress_data)
+m_full <- lmer(
+    symptoms ~ mood1_pm + mood1_pmc + stressor_pm + stressor +
+        women + baseage + weekend +
+        (mood1_pmc + stressor | PersonID),
+    na.action = "na.fail",
+    data = stress_lm,
+    REML = FALSE
+)
+# Fit all models with mood1_pm + mood1_pmc + stressor_pm + stressor, and
+# compare marginal AIC
+(dd_maic <- dredge(m_full,
+    fixed = ~ mood1_pm + mood1_pmc + stressor_pm + stressor,
+    rank = "AIC" # using marginal AIC
+))
+summary(model.avg(dd_maic))
+# Variable importance
+importance(dd_maic)
+# Fit all models with mood1_pm + mood1_pmc + stressor_pm + stressor, and
+# compare conditional AIC
+(dd_caic <- dredge(m_full,
+    fixed = ~ mood1_pm + mood1_pmc + stressor_pm + stressor,
+    rank = function(x) cAIC4::cAIC(x)$caic # using conditional AIC
+))
+summary(model.avg(dd_caic))
+# Variable importance
+importance(dd_caic)
+```
+
+## Bonus: Lasso (Least Absolute Shrinkage and Selection Operator)
+
+The idea of Lasso, or more generally regularization, is that complex models tend to overfit in small samples and when the number of predictors is large. On the other hand, simple models, which means that when all predictors are assumed either not predictive or weakly predictive of the outcome, tend to underfit. Therefore, one can find the right fit by having the estimates to be somewhere between 0 and the maximum likelihood estimates. This is achieved in Lasso by adding a penalty in the minimization algorithm, usually called lambda, with larger lambda corresponding to a larger penalty.
+
+Here is an example. Note that generally one standardizes the data so that the variables have standard deviations of 1s. It is, however, not discussed much in the literature whether this applies to cluster means and cluster mean centered variables for multilevel analysis. In the example below, I only standardize the raw variables. 
+
+```{r stress_std}
+stress_data <- read_sav(
+  unz(zip_data,
+      "SPSS_Chapter8/SPSS_Chapter8.sav")
+)
+stress_std <- stress_data %>%
+    mutate(across(
+        c(women, baseage, weekend, symptoms, mood, stressor),
+        ~ (. - mean(., na.rm = TRUE)) / sd(., na.rm = TRUE)
+    ))
+# Subsample
+stress_std <- stress_std %>%
+    drop_na() %>%
+    # filter(PersonID %in% random_persons) %>%
+    group_by(PersonID) %>%
+    # The `across()` function can be used to operate the same procedure on
+    # multiple variables
+    mutate(across(
+        c(symptoms, mood, stressor),
+        # The `.` means the variable to be operated on
+        list(
+            "pm" = ~ mean(., na.rm = TRUE),
+            "pmc" = ~ . - mean(., na.rm = TRUE)
+        )
+    )) %>%
+    ungroup() %>%
+    mutate(PersonID = as_factor(PersonID))
+```
+
+```{r compare-m2-lasso}
+# Maximum likelihood estimates
+m2_full <- lmer(
+    symptoms ~ (mood_pm + mood_pmc) * (stressor_pm + stressor) *
+        (women + baseage + weekend) +
+        (mood_pmc + stressor | PersonID),
+    data = stress_std,
+    REML = FALSE
+)
+# Lasso with lambda = 19
+# First obtain the predictor matrix
+pred_mat <- model.matrix(
+    symptoms ~ (mood_pm + mood_pmc + stressor_pm + stressor) +
+    (women + baseage + weekend), data = stress_std)
+m2_penalized <- glmmLasso(
+    # First argument with fixed effect; it does not support the `*` notation
+    symptoms ~ mood_pm + mood_pmc + stressor_pm + stressor +
+    women + baseage + weekend +
+    (mood_pm + mood_pmc):(stressor_pm + stressor) +
+    (mood_pm + mood_pmc):(women + baseage + weekend) +
+    (stressor_pm + stressor):(women + baseage + weekend) +
+    (mood_pm + mood_pmc):(stressor_pm + stressor):(women + baseage + weekend),
+    # Random effects
+    rnd = list(PersonID = ~ mood_pmc + stressor),
+    data = stress_std,
+    lambda = 20,
+    final.re = TRUE
+)
+# Find lambda with lowest AIC
+# lambda_grid <- seq(0, to = 100, by = 1)
+# aic_grid <- rep(NA, length = length(lambda_grid))
+# for (i in seq_along(lambda_grid)) {
+#     m2_penalized <- glmmLasso(
+#         # First argument with fixed effect; it does not support the `*` notation
+#         symptoms ~ mood_pm + mood_pmc + stressor_pm + stressor +
+#             women + baseage + weekend +
+#             (mood_pm + mood_pmc):(stressor_pm + stressor) +
+#             (mood_pm + mood_pmc):(women + baseage + weekend) +
+#             (stressor_pm + stressor):(women + baseage + weekend) +
+#             (mood_pm + mood_pmc):(stressor_pm + stressor):(women + baseage + weekend),
+#         # Random effects
+#         rnd = list(PersonID = ~ mood_pmc + stressor),
+#         data = stress_std,
+#         lambda = lambda_grid[i]
+#     )
+#     aic_grid[i] <- m2_penalized$aic
+# }
+# Compare the fixed effects
+round(cbind(fixef(m2_full), m2_penalized$coefficients), 2)
+```
+
+As can be seen, many of the coefficients have shrunken with Lasso. The variables that seem most useful in predicting `symptoms` are `mood_pm`, `stressor_pm`, `women`, `mood_pm:stressor_pm`, `mood_pm:women`, `stressor_pm:women`, `mood_pm:stressor:baseage`, `mood_pmc:stressor_pm:weekend`. The lambda value can be chosen using AIC or using cross-validation.
