@@ -1,0 +1,418 @@
+---
+title: "Predictions in MLM"
+output:
+  html_document:
+    df_print: paged
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = ">#")
+```
+
+## Load Packages and Import Data
+
+```{r load-pkg, message=FALSE}
+# To install a package, run the following ONCE (and only once on your computer)
+# install.packages("psych")  
+library(here)  # makes reading data more consistent
+library(tidyverse)  # for data manipulation and plotting
+library(haven)  # for importing SPSS/SAS/Stata data
+library(glmmTMB)  # for multilevel logistic models
+library(lme4)  # also for multilevel logistic models
+library(sjPlot)  # for plotting
+library(MuMIn)  # for R^2
+library(modelsummary)  # for making tables
+theme_set(theme_bw())  # Theme; just my personal preference
+```
+
+```{r helpers, include = FALSE}
+# For printing coefficients
+comma <- function(x, d = 3) format(x, digits = d, big.mark = ",")
+print_p <- function(x, d = 3) {
+  if (x >= .001) {
+    return(
+      paste("*p* =", sub("^0+", "", format(round(x, d), nsmall = d)))
+    )
+  } else {
+    return("*p* < .001")
+  }
+}
+```
+
+In this week, we'll talk about logistic regression for binary data. We'll use the same HSB data that you have seen before, but with a dichotomous variable created. In practice it is generally a bad idea to arbitrarily dichotomize a binary variable, as it may represent a substantial loss of information; it's done here just for pedagogical purpose. 
+
+Here we consider those who score 20 or above for a "commended" status. 
+
+```{r import_sav, message=FALSE}
+# Read in the data (pay attention to the directory)
+hsball <- read_sav(here("data_files", "hsball.sav"))
+# Dichotomize mathach
+hsball <- hsball %>% 
+  mutate(mathcom = as.integer(mathach >= 20))
+```
+
+Let's plot the commended distribution for a few schools
+
+```{r plot-commend}
+set.seed(7351)
+# Randomly select some schools
+random_schools <- sample(hsball$id, size = 9)
+hsball %>% 
+  filter(id %in% random_schools) %>%
+  mutate(mathcom = factor(mathcom,
+                          labels = c("not commended", "commended"))) %>%
+  ggplot(aes(x = mathcom)) +
+  geom_bar() +
+  facet_wrap( ~ id, ncol = 3) +
+  coord_flip()
+```
+
+### Problem of a Linear Model
+
+Let's use our linear model, and then talk about the problems. Consider first `meanses` as predictor. 
+
+```{r m_lme}
+m_lme <- glmmTMB(mathcom ~ meanses + (1 | id), data = hsball,
+                 REML = TRUE)
+summary(m_lme)
+```
+
+So it runs, and it indicates a positive association between `meanses` and `mathcom`. Let's plot the effect:
+
+```{r plot-m_lme}
+plot_model(m_lme,
+    type = "pred", terms = "meanses",
+    show.data = TRUE, jitter = 0.02,
+    title = "", dot.size = 0.5
+)
+```
+
+Well, this looks a bit strange. The outcome can only take two values, but the predictions are in decimals. We can assume may be we are predicting the probability of being commended for each student, but still there are some negative predictions that are not possible. For example, if we consider a school with `meanses` = -2, our prediction would be
+
+```{r pred-meanses-2}
+predict(m_lme, newdata = data.frame(meanses = -2, id = NA), re.form = NA)
+```
+
+Another problem is that the data is not normally distributed. We can look at the distribution of the data (in a histogram) and of simulated data based on the model (in lighter lines) below:
+
+```{r pp-check-m_lme}
+# Simulate a data set based on the linear model
+sim_y <- simulate(m_lme)
+ggplot(hsball, aes(x = mathcom)) +
+    geom_histogram(aes(y = ..density..)) +
+    geom_density(aes(x = sim_y[, 1]), alpha = 0.5)
+```
+
+Another related and subtle problem is that the residual variance is not constant across levels of the predictor. For example, the residual variance for `meanses` $\leq$ -0.5 is 
+
+```{r resvar-low}
+broom.mixed::augment(m_lme) %>%
+  filter(meanses <= -.5) %>%
+  # residual variance
+  summarize(`var(e | meanses <= .5)` = var(.resid))
+```
+
+But when `meanses > 0.5 it was
+
+```{r resvar-high}
+broom.mixed::augment(m_lme) %>%
+  filter(meanses > -.5) %>%
+  # residual variance
+  summarize(`var(e | meanses > .5)` = var(.resid))
+```
+
+These are pretty large differences, and it happens every time one uses a normal linear model for a binary outcome. The textbook (section 17.1) has more discussion on this. 
+
+So because of these limitations, we generally prefer models designed for binary outcomes, the most popular one is commonly referred to as a logistic model. 
+
+# Multilevel Logistic Regression
+
+The logistic model modifies the linear multilevel model in two ways. 
+
+## Bernoulli Distribution
+
+First, it replaces the assumption that the conditional distribution of the outcome is normal with one that says the outcome follows a *Bernoulli* distribution, which is a distribution for binary variables (e.g., outcome of a coin flip). Below is a comparison of a Bernoulli distribution (left) with mean = 0.8 (i.e., 80% success and 20% failure), which by definition has a standard deviation of 0.4, and a normal distribution (right) with a mean = 0.8 and a standard deviation of 0.4:
+
+```{r norm-vs-bern}
+p1 <- ggplot(tibble(y = c(0, 1), p = c(0.2, 0.8)), aes(x = y, y = p)) +
+  geom_col(width = 0.05) +
+  xlim(-0.4, 2) +
+  labs(y = "Probability Mass")
+p2 <- ggplot(tibble(y = c(0, 1)), aes(x = y)) +
+  stat_function(fun = dnorm, args = list(mean = 0.8, sd = 0.4)) +
+  xlim(-0.4, 2) +
+  labs(y = "Probability Density")
+gridExtra::grid.arrange(p1, p2, ncol = 2)
+```
+
+With the Bernoulli distribution, the possible values are only 0 and 1, so it matches the outcome. 
+
+## Transformation
+
+Second, instead of directly modeling the mean of a binary outcome (i.e., probability), which is bounded between 0 and 1, a logistic model transforms the mean of the outcome into something that is unbounded (i.e., with range between $-\infty$ and $\infty$). We can this $\eta$. One common transformation that would do this is the logit transformation, which converts a probability into odds, and then to log odds:
+$$\text{Log Odds} = \log \left(\frac{\text{Probability}}{1 - \text{Probability}}\right)$$
+
+As shown below, 
+
+```{r log-odds}
+ggplot(tibble(mu = c(0, 1)), aes(x = mu)) +
+  stat_function(fun = qlogis, n = 501) +
+  labs(x = "Probability", y = "Log Odds (logit)")
+```
+
+For example, when the probability is 0.5, the log odds = 0; when the probability = 0.9, the log odds = `r plogis(0.9)`; when the probability = -0.9, the log odds = `r plogis(-0.9)`. 
+
+## Model Equation
+
+To understand the equation for a logistic model, it helps to write the normal linear model in its full form by specifying the distributions. Let's look at the simplest unconditional model without predictors. First, we can write
+$$\text{mathcom}_{ij} = \mu_{ij} + e_{ij}, \quad e_{ij} \sim N(0, \sigma), $$
+where $\mu_{ij}$ is the predicted value of `mathcom` for the $i$th individual in the $j$th school. This is equivalent to saying
+$$\text{mathcom}_{ij} \sim N(\mu_{ij}, \sigma),$$
+because if a variable is normal with a mean 0, adding a value to it changes its mean, but it will still be normal. This says `mathcom` is normally distributed around the predicted value with an error variance of $\sigma$. The predicted value is separated into level 1
+$$
+  \begin{aligned}
+    \text{mathcom}_{ij} & \sim N(\mu_{ij}, \sigma) \\
+    \mu_{ij} & = \beta_{0j}
+  \end{aligned}
+$$
+and level 2
+$$\beta_{0j} = \gamma_{00} + u_{0j}$$
+You can convince yourself that this is the same model you've seen in Week 3. 
+
+Now, we'll change the distribution of `mathcom`, and transform $\mu_{ij}$ from probability to log odds:
+
+Level 1
+$$
+  \begin{aligned}
+    \text{mathcom}_{ij} & \sim \text{Bernoulli}(\mu_{ij}) \\
+    \eta_{ij} & = \text{logit}(\mu_{ij}) \\
+    \eta_{ij} & = \beta_{0j}
+  \end{aligned}
+$$
+Level 2
+$$\beta_{0j} = \gamma_{00} + u_{0j}$$
+The level-2 equation has not changed, but the meaning of $\beta_{0j}$ is different now: it is the cluster mean of cluster $j$ in the log odds unit. 
+
+## Using `glmmTMB`
+
+With logistic regression, frequentist methods rely on approximations. Sometimes they may be problematic, so attention needs to be paid to assess convergence. Compared to linear models, the only thing you need to change is to specify `family = binomial("logit")`
+
+### Unconditional Model
+
+```{r m0_logit}
+# Note: Maximum likelihood estimation with logistic models is
+# more challenging, as the likelihood functions involve integrations
+# that are difficult to solve. Different software/packages may use
+# different algorithms to solve that, and they have different degrees
+# of accuracy.
+# glmmTMB syntax (with Laplace approximation and REML)
+m0_logit <- glmmTMB(mathcom ~ (1 | id),
+                    data = hsball,
+                    family = binomial("logit"),
+                    REML = TRUE)
+summary(m0_logit)
+confint(m0_logit)  # confidence intervals
+# lme4 syntax (with Laplace approximation and ML)
+m0_logit_lme4 <- glmer(mathcom ~ (1 | id),
+                       data = hsball,
+                       family = binomial("logit"))
+# lme4 syntax (with adaptive quadrature and ML; more accurate
+#              but only works for models without random slopes)
+m0_logit_ghq <- glmer(mathcom ~ (1 | id),
+                      data = hsball,
+                      family = binomial("logit"),
+                      nAGQ = 15)
+```
+
+By definition, $\sigma$ is fixed to be $\pi^2 / 3$ in the log-odds unit in a logistic model. Therefore, the ICC is
+
+```{r icc}
+vc_m0 <- VarCorr(m0_logit)
+(icc_m0 <- vc_m0[[1]]$id[1, 1] /
+  (vc_m0[[1]]$id[1, 1] + pi^2 / 3))
+```
+
+### With Lv-2 and Lv-1 Predictors
+
+```{r cmc}
+hsball <- hsball %>%
+  group_by(id) %>%   # operate within schools
+  mutate(ses_cm = mean(ses),   # create cluster means (the same as `meanses`)
+         ses_cmc = ses - ses_cm) %>%   # cluster-mean centered
+  ungroup()  # exit the "editing within groups" mode
+```
+
+Lv-1:
+
+$$
+  \begin{aligned}
+    \text{mathcom}_{ij} & \sim \text{Bernoulli}(\mu_{ij}) \\
+    \eta_{ij} & = \text{logit}(\mu_{ij}) \\
+    \eta_{ij} & = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij}
+  \end{aligned}
+$$
+
+Lv-2:
+
+$$
+\begin{aligned}
+  \beta_{0j} & = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
+  \beta_{1j} & = \gamma_{10} + u_{1j}  \\
+  \begin{bmatrix}
+    u_{0j} \\
+    u_{1j}
+  \end{bmatrix} & \sim 
+  N\left(
+    \begin{bmatrix}
+      0 \\
+      0
+    \end{bmatrix}, 
+    \begin{bmatrix}
+      \tau^2_0 &  \\
+      \tau_{01} & \tau^2_{1}
+    \end{bmatrix}
+  \right)
+\end{aligned}
+$$
+
+```{r m1_logit}
+m1_logit <- glmmTMB(
+  mathcom ~ meanses + ses_cmc + (ses_cmc | id),
+  data = hsball,
+  family = binomial("logit"),
+  REML = TRUE
+)
+# There is a singular convergence warning. Same issue with lme4,
+# but the likelihood values seem fine with different optimizers.
+summary(m1_logit)
+```
+
+### Plotting
+
+Plotting is especially important with transformation, as it shows the association in probability unit
+
+```{r plot-m1}
+m1_plots <- plot_model(m1_logit,
+    type = "pred",
+    show.data = TRUE, jitter = 0.02,
+    title = "", dot.size = 0.5
+)
+gridExtra::grid.arrange(grobs = m1_plots, ncol = 2)
+```
+
+### Interpretations
+
+#### Intercept
+
+```{r print-coef, include = FALSE}
+# For printing coefficients
+print_coef <- function(term, model = m1_logit, trans = identity) {
+  ci <- trans(confint(model, parm = "beta_")[term, ])
+  paste0(
+    comma(ci[["Estimate"]]), ", ",
+    "95% CI [",
+    comma(ci[["2.5 %"]]), ", ",
+    comma(ci[["97.5 %"]]), "]"
+  )
+}
+```
+
+For a student with `ses` = 0 in a school with `meanses` = 0, the predicted log odds of being commended was `r print_coef("(Intercept)")`. 
+
+#### Slopes
+
+A unit increase in `meanses` is associated with an increase in log odds of `r print_coef("meanses")`. 
+
+Within a given school, a unit increase in student-level `ses` is associated with an increase in log odds of `r print_coef("ses_cmc")`. 
+
+#### Odds ratio
+
+A unit increase in `meanses` is associated with the odds of being commended multiplied by `r print_coef("meanses", trans = exp)`. 
+
+Within a given school, a unit increase in `ses` is associated with the odds of being commended multiplied by `r print_coef("ses_cmc", trans = exp)`. 
+
+### Predicted probabilities with representative values
+
+```{r pred-m1}
+# meanses = 0; ses_cmc = -0.5 vs 0.5
+pred_df1 <- expand_grid(meanses = 0,
+                        ses_cmc = c(-0.5, 0.5),
+                        id = NA)
+cbind(pred_df1,
+      .pred = predict(m1_logit, newdata = pred_df1,
+                      re.form = NA, type = "response"))
+# meanses = -0.5 vs 0.5; ses_cmc = 0
+pred_df2 <- expand_grid(meanses = c(-0.5, 0.5),
+                        ses_cmc = 0,
+                        id = NA)
+cbind(pred_df2,
+      .pred = predict(m1_logit, newdata = pred_df2,
+                      re.form = NA, type = "response"))
+```
+
+As shown above, a difference of 1 unit in `ses_cmc` from -0.5 to 0.5 corresponded to a difference in probability of being commended by about 7%, when `meanses` = 0. 
+
+On the other hand, a difference of 1 unit in `meanses` from -0.5 to 0.5 corresponded to a difference in probability of being commended by about 18%, when `ses_cmc` = 0. 
+
+### $R^2$ effect size
+
+```{r r2-m1}
+r.squaredGLMM(m1_logit)
+```
+
+There are two versions of R^2 being reported. The "theoretical" one refers to the R^2 by assuming that the binary outcome originally comes from a continuous underlying distribution, and so maybe appropriate here. The "delta" one looks at
+the variance of the binary outcome directly, so is appropriate for outcomes that truly can only take two values. In practice either one can be used. See https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2017.0213 and https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/ for more discussions.
+
+### Bayesian estimation
+
+One challenge with `glmmTMB` and `lme4` is that the estimation may not be accurate for generalized linear mixed-effect models (GLMMs), especially in the prescence of random slopes. We saw convergence issues in our previous model. A better approach is to use Bayesian estimation. A good practice is to compare the results from `glmmTMB`/`lme4::glmer()` to ones with Bayesian estimation. If there is a large discrepancy, the Bayesian result is likely more accurate, especially in small samples
+
+```{r m1_logit_brm, message = FALSE, results = 'hide', cache = TRUE}
+# The code here takes a few minutes to run
+library(brms)
+m1_logit_brm <- brm(
+  mathcom ~ meanses + ses_cmc + (ses_cmc | id),
+  data = hsball,
+  family = bernoulli("logit"),
+  # Make results reproducible for Bayesian
+  seed = 1541
+)
+```
+
+```{r summary-m1_logit_brm}
+summary(m1_logit_brm)
+```
+
+## Table of Coefficients
+
+```{r tab-m0-m1}
+msummary(list("M0" = m0_logit,
+              "M1 (Laplace)" = m1_logit,
+              "M1 (MCMC)" = m1_logit_brm))
+```
+
+## Bonus: Cluster-Specific vs. Population-Average Coefficients
+
+In MLM, we need to distinguish two types of interpretations of coefficients:
+
+- Cluster-specific (CS; also called conditional model): For a given cluster, a unit difference in $X$ corresponds to a difference in $Y$ by $\gamma$ units
+- Population-average (PA; also called marginal model): At the population level, a unit difference in $X$ corresponds to an average difference in $Y$ by $\gamma^*$ units
+
+In a linear model, the coefficients under CS and under PA are the same, so we did not pay too much attention to the distinction. However, in generalized linear models, such as logistic models, with the same data, one gets different coefficients by fitting a conditional (e.g., MLM) vs. a marginal model (e.g., GEE). I have some discussions at https://quantscience.rbind.io/2020/12/28/unit-specific-vs-population-average-models/. You may also check out an example in this paper: https://journals.sagepub.com/doi/full/10.3102/10769986211017480
+
+The `GLMMadaptive` package computes coefficients in both CS and PA. Below is an example showing the difference:
+
+```{r m1_pa}
+library(GLMMadaptive)
+m1_pa <- mixed_model(mathcom ~ meanses + ses_cmc,
+            random = ~ ses_cmc | id,
+            data = hsball,
+                     family = binomial("logit"))
+# Unit-specific
+summary(m1_pa)
+# Population-average
+marginal_coefs(m1_pa, std_errors = TRUE)
+```
+
+The main thing to note is that when interpreting coefficients in MLM using something other than the identity link, one should note the coefficients are conditional on the random effects. If the interest is in making statements about population-average predictions, such as the difference in probabilities of being commended for students with high and low SES, across all schools, then one needs to obtain the population-average coefficients.

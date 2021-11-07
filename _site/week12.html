@@ -87,29 +87,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>PSYC 575 Multilevel Modeling (2021 Fall)</title>
+  <title>PSYC 575 Multilevel Modeling (2021 Fall): Week 12</title>
 
-  <meta property="description" itemprop="description" content="Welcome to the website. Let&#39;s have a great semester!"/>
+  <meta property="description" itemprop="description" content="Multilevel Logistic Models"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
+  <meta property="og:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 12"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Welcome to the website. Let&#39;s have a great semester!"/>
+  <meta property="og:description" content="Multilevel Logistic Models"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall)"/>
-  <meta property="twitter:description" content="Welcome to the website. Let&#39;s have a great semester!"/>
+  <meta property="twitter:title" content="PSYC 575 Multilevel Modeling (2021 Fall): Week 12"/>
+  <meta property="twitter:description" content="Multilevel Logistic Models"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["PSYC 575 Multilevel Modeling (2021 Fall)"]},{"type":"character","attributes":{},"value":["Welcome to the website. Let's have a great semester!\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output","params"]}},"value":[{"type":"character","attributes":{},"value":["Week 12"]},{"type":"character","attributes":{},"value":["Multilevel Logistic Models\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc"]}},"value":[{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["slides"]}},"value":[{"type":"character","attributes":{},"value":["12_multilevel_logistic"]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2064,7 +2064,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"PSYC 575 Multilevel Modeling (2021 Fall)","description":"Welcome to the website. Let's have a great semester!","authors":[]}
+{"title":"Week 12","description":"Multilevel Logistic Models","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2127,21 +2127,172 @@ R Codes
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>PSYC 575 Multilevel Modeling (2021 Fall)</h1>
+<h1>Week 12</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Welcome to the website. Let’s have a great semester!</p></p>
+<p><p>Multilevel Logistic Models</p></p>
 </div>
 
 
 <div class="d-article">
-<p>This is the course website for PSYC 575 in the 2021 Fall semester. The course follows a flipped course model so that students will review assigned readings and prerecorded lecture videos at their own time, while the class meeting time will be dedicated to Q&amp;A and exercises. You will find the syllabus, lecture materials, and R codes in the navigation bar in the top right corner. Homework submission will be through <a href="https://blackboard.usc.edu">Blackboard</a>.</p>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
 <ul>
-<li>The lecture videos are licensed under the standard YouTube License</li>
-<li>Code content is licensed under the MIT license</li>
-<li>Other course materials are licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a><br />
-<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a></li>
+<li><a href="#week-learning-objectives">Week Learning Objectives</a>
+<ul>
+<li><a href="#task-lists">Task Lists</a></li>
+</ul></li>
+<li><a href="#lecture">Lecture</a>
+<ul>
+<li><a href="#slides">Slides</a></li>
+<li><a href="#logistic-mlm">Logistic MLM</a>
+<ul>
+<li><a href="#example-data">Example Data</a></li>
+</ul></li>
+<li><a href="#elements-of-logistic-mlm">Elements of Logistic MLM</a></li>
+<li><a href="#unconditional-model">Unconditional Model</a>
+<ul>
+<li><a href="#model-equations">Model equations</a></li>
+</ul></li>
+<li><a href="#adding-predictors">Adding Predictors</a></li>
+<li><a href="#generalized-linear-mixed-model-glmm">Generalized Linear Mixed Model (GLMM)</a></li>
+</ul></li>
 </ul>
+</nav>
+</div>
+<h1 id="week-learning-objectives">Week Learning Objectives</h1>
+<p>By the end of this module, you will be able to</p>
+<ul>
+<li>Describe the problems of using a regular multilevel model for a binary outcome variable</li>
+<li>Write model equations for multilevel logistic regression</li>
+<li>Estimate intraclass correlations for binary outcomes</li>
+<li>Plot model predictions in probability unit</li>
+</ul>
+<h2 id="task-lists">Task Lists</h2>
+<ol type="1">
+<li>Review the resources (lecture videos and slides)</li>
+<li>Complete the assigned readings
+<ul>
+<li>Snijders &amp; Bosker ch 17.1–17.4</li>
+</ul></li>
+<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Complete peer review for two of your peers’ postings (due Monday November 15, end of day)</li>
+<li>Complete Homework 9 <!-- 6. (Optional) Read the [bonus material](#) on binomial logistic models --></li>
+</ol>
+<h1 id="lecture">Lecture</h1>
+<h2 id="slides">Slides</h2>
+<p><span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span></p>
+<p>You can view and download the slides here: <a href="slides/12_multilevel_logistic.pdf" target="_blank">PDF</a></p>
+<h2 id="logistic-mlm">Logistic MLM</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/amg_pAGFS-A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: Which of the following is a binary variable?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_4221" onsubmit="return validate_form_4221()" method="post">
+<input type="radio" name="answer_4221" id="4221_1" value="The number of symptoms a person show per day."><label for="1">The number of symptoms a person show per day.</label><br><input type="radio" name="answer_4221" id="4221_2" value="The time from the start of a study to when a participant gets hospitalized."><label for="2">The time from the start of a study to when a participant gets hospitalized.</label><br><input type="radio" name="answer_4221" id="4221_3" value="Whether a participant gets hospitalized or not."><label for="3">Whether a participant gets hospitalized or not.</label><br><input type="submit" value="check">
+</form>
+<p id="result_4221">
+</p>
+<script> function validate_form_4221() {var x, text; var x = document.forms["form_4221"]["answer_4221"].value;if (x == "Whether a participant gets hospitalized or not."){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_4221').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h3 id="example-data">Example Data</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/LSDPVPUQpUc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: Which of the following is <strong>not</strong> a reason to use a logistic model?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_52738" onsubmit="return validate_form_52738()" method="post">
+<input type="radio" name="answer_52738" id="52738_1" value="Dichotomizing an outcome can make interpretation easier."><label for="1">Dichotomizing an outcome can make interpretation easier.</label><br><input type="radio" name="answer_52738" id="52738_2" value="It uses a distribution suitable for a binary outcome."><label for="2">It uses a distribution suitable for a binary outcome.</label><br><input type="radio" name="answer_52738" id="52738_3" value="It accomodates heterogenous variance."><label for="3">It accomodates heterogenous variance.</label><br><input type="submit" value="check">
+</form>
+<p id="result_52738">
+</p>
+<script> function validate_form_52738() {var x, text; var x = document.forms["form_52738"]["answer_52738"].value;if (x == "Dichotomizing an outcome can make interpretation easier."){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_52738').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="elements-of-logistic-mlm">Elements of Logistic MLM</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/ZWDSTPnahVs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: A logistic model assumes that the outcome follows</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_8997" onsubmit="return validate_form_8997()" method="post">
+<input type="radio" name="answer_8997" id="8997_1" value="a normal distribution"><label for="1">a normal distribution</label><br><input type="radio" name="answer_8997" id="8997_2" value="a Student's t distribution"><label for="2">a Student’s t distribution</label><br><input type="radio" name="answer_8997" id="8997_3" value="a Bernoulli distribution"><label for="3">a Bernoulli distribution</label><br><input type="submit" value="check">
+</form>
+<p id="result_8997">
+</p>
+<script> function validate_form_8997() {var x, text; var x = document.forms["form_8997"]["answer_8997"].value;if (x == "a Bernoulli distribution"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_8997').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/fIZZSmVdiIs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: A log odds of 0.5 corresponds to a probability of</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_5114" onsubmit="return validate_form_5114()" method="post">
+<input type="radio" name="answer_5114" id="5114_1" value="0.12"><label for="1">0.12</label><br><input type="radio" name="answer_5114" id="5114_2" value="0.5"><label for="2">0.5</label><br><input type="radio" name="answer_5114" id="5114_3" value="0.62"><label for="3">0.62</label><br><input type="submit" value="check">
+</form>
+<p id="result_5114">
+</p>
+<script> function validate_form_5114() {var x, text; var x = document.forms["form_5114"]["answer_5114"].value;if (x == "0.62"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_5114').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<p>If you have trouble understanding what “odds” and “log odds” are, you are not alone. This video may give you a better idea: <a href="https://www.youtube.com/watch?v=ARfXDSkQf1Y" class="uri">https://www.youtube.com/watch?v=ARfXDSkQf1Y</a></p>
+<h2 id="unconditional-model">Unconditional Model</h2>
+<h3 id="model-equations">Model equations</h3>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/oi79Zl-IQf8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: In a logistic model predicting whether a person reported a daily stressor, the coefficient of age was -0.5. The interpretation is that</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_91584" onsubmit="return validate_form_91584()" method="post">
+<input type="radio" name="answer_91584" id="91584_1" value="every unit increase in age is associated with a 0.5 unit decrease of daily stressor"><label for="1">every unit increase in age is associated with a 0.5 unit decrease of daily stressor</label><br><input type="radio" name="answer_91584" id="91584_2" value="every unit increase in age is associated with a 0.5 percentage point decrease of reporting a daily stressor"><label for="2">every unit increase in age is associated with a 0.5 percentage point decrease of reporting a daily stressor</label><br><input type="radio" name="answer_91584" id="91584_3" value="every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"><label for="3">every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor</label><br><input type="submit" value="check">
+</form>
+<p id="result_91584">
+</p>
+<script> function validate_form_91584() {var x, text; var x = document.forms["form_91584"]["answer_91584"].value;if (x == "every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_91584').innerHTML = text; return false;} </script>
+</div>
+<hr />
+<h2 id="adding-predictors">Adding Predictors</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/P95ruzXQAiU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<h2 id="generalized-linear-mixed-model-glmm">Generalized Linear Mixed Model (GLMM)</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+<iframe src="https://www.youtube.com/embed/Tq1XaZO_8Bc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
+</div>
+</div>
+<hr />
+<p>Check your learning: A researcher wants to compare the proportion of minority hires in the past year across departments and schools. The total number of hires for each department is known. Which model is the most appropriate?</p>
+<div class="layout-chunk" data-layout="l-body">
+<form name="form_75060" onsubmit="return validate_form_75060()" method="post">
+<input type="radio" name="answer_75060" id="75060_1" value="Binomial logistic"><label for="1">Binomial logistic</label><br><input type="radio" name="answer_75060" id="75060_2" value="Poisson"><label for="2">Poisson</label><br><input type="radio" name="answer_75060" id="75060_3" value="Exponential"><label for="3">Exponential</label><br><input type="submit" value="check">
+</form>
+<p id="result_75060">
+</p>
+<script> function validate_form_75060() {var x, text; var x = document.forms["form_75060"]["answer_75060"].value;if (x == "Binomial logistic"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_75060').innerHTML = text; return false;} </script>
+</div>
+<hr />
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

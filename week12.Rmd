@@ -1,0 +1,191 @@
+---
+title: "Week 12"
+description: |
+  Multilevel Logistic Models
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  slides: "12_multilevel_logistic"
+---
+
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Describe the problems of using a regular multilevel model for a binary outcome variable
+- Write model equations for multilevel logistic regression
+- Estimate intraclass correlations for binary outcomes
+- Plot model predictions in probability unit
+
+## Task Lists
+
+1. Review the resources (lecture videos and slides)
+2. Complete the assigned readings
+    * Snijders & Bosker ch 17.1--17.4
+3. Attend the Thursday session and participate in the class exercise
+4. Complete peer review for two of your peers' postings (due Monday November 15, end of day)
+5. Complete Homework 9
+<!-- 6. (Optional) Read the [bonus material](#) on binomial logistic models -->
+
+# Lecture
+
+## Slides
+
+<span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span>
+
+You can view and download the slides here: 
+[PDF](`r file.path("slides", paste0(params$slides, ".pdf"))`){target="_blank"}
+
+```{r, include=FALSE}
+library(checkdown)
+right_ans <- c("Correct :+1:", 
+               "Great job :+1:")
+wrong_ans <- "Try again. You can do it!"
+```
+
+## Logistic MLM
+
+```{r, echo=FALSE}
+add_youtube("amg_pAGFS-A")
+```
+
+***
+
+Check your learning: Which of the following is a binary variable?
+
+```{r echo=FALSE, results="asis"}
+check_question("Whether a participant gets hospitalized or not.", 
+               options = c("The number of symptoms a person show per day.", 
+                           "The time from the start of a study to when a participant gets hospitalized.", 
+                           "Whether a participant gets hospitalized or not."), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+### Example Data
+
+```{r, echo=FALSE}
+add_youtube("LSDPVPUQpUc")
+```
+
+***
+
+Check your learning: Which of the following is **not** a reason to use a logistic model?
+
+```{r echo=FALSE, results="asis"}
+check_question("Dichotomizing an outcome can make interpretation easier.", 
+               options = c("Dichotomizing an outcome can make interpretation easier.", 
+                           "It uses a distribution suitable for a binary outcome.", 
+                           "It accomodates heterogenous variance."), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Elements of Logistic MLM
+
+```{r, echo=FALSE}
+add_youtube("ZWDSTPnahVs")
+```
+
+***
+
+Check your learning: A logistic model assumes that the outcome follows
+
+```{r echo=FALSE, results="asis"}
+check_question("a Bernoulli distribution", 
+               options = c("a normal distribution", 
+                           "a Student's t distribution", 
+                           "a Bernoulli distribution"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+```{r, echo=FALSE}
+add_youtube("fIZZSmVdiIs")
+```
+
+***
+
+Check your learning: A log odds of 0.5 corresponds to a probability of
+
+```{r echo=FALSE, results="asis"}
+check_question("0.62", 
+               options = c("0.12", 
+                           "0.5", 
+                           "0.62"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+If you have trouble understanding what "odds" and "log odds" are, you are not alone. This video may give you a better idea: https://www.youtube.com/watch?v=ARfXDSkQf1Y
+
+## Unconditional Model
+
+### Model equations
+
+```{r, echo=FALSE}
+add_youtube("oi79Zl-IQf8")
+```
+
+***
+
+Check your learning: In a logistic model predicting whether a person reported a daily stressor, the coefficient of age was -0.5. The interpretation is that
+
+```{r echo=FALSE, results="asis"}
+check_question("every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor", 
+               options = c("every unit increase in age is associated with a 0.5 unit decrease of daily stressor", 
+                           "every unit increase in age is associated with a 0.5 percentage point decrease of reporting a daily stressor", 
+                           "every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
+
+## Adding Predictors
+
+```{r, echo=FALSE}
+add_youtube("P95ruzXQAiU")
+```
+
+## Generalized Linear Mixed Model (GLMM)
+
+```{r, echo=FALSE}
+add_youtube("Tq1XaZO_8Bc")
+```
+
+***
+
+Check your learning: A researcher wants to compare the proportion of minority hires in the past year across departments and schools. The total number of hires for each department is known. Which model is the most appropriate?
+
+```{r echo=FALSE, results="asis"}
+check_question("Binomial logistic", 
+               options = c("Binomial logistic", 
+                           "Poisson", 
+                           "Exponential"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+***
