@@ -1,0 +1,171 @@
+---
+title: "Week 13"
+description: |
+  Multilevel Logistic Models
+author: Winnie Wing-Yee Tse, Mark Lai
+output: 
+  distill::distill_article:
+    toc: true
+params:
+  slides: "13_samplesize_planning"
+---
+
+Guest lecture content by [Winnie Tse](https://dornsife.usc.edu/psyc/quantitative-methods-graduate-students/) and Mark Lai
+
+```{r week-setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+source("helper.R")
+source("render_slides.R")
+```
+
+# Week Learning Objectives
+
+By the end of this module, you will be able to 
+
+- Describe the importance of having sufficient sample size for scientific research
+- Describe conceptually the steps for sample size planning: precision analysis and power analysis
+- Perform power analysis for MLM using the PowerUpR application and the `simr` package
+- Understand the effect of uncertainty in parameter values and explore alternative approaches for sample size planning
+
+## Task Lists
+
+1. Review the resources (lecture videos and slides)
+2. Complete the assigned readings
+    * Snijders & Bosker ch 11
+3. Attend the Thursday session and participate in the class exercise
+4. Complete Homework 10
+5. Continue working on your oral presentation/paper
+
+# Lecture
+
+## Slides
+
+You can view and download the slides here: 
+[HTML](`r file.path("slides", paste0(params$slides, ".html"))`){target="_blank"}  [PDF](`r file.path("slides", paste0(params$slides, ".pdf"))`){target="_blank"}
+
+```{r, include=FALSE}
+library(checkdown)
+right_ans <- c("Correct :+1:", 
+               "Great job :+1:")
+wrong_ans <- "Try again. You can do it!"
+```
+
+# Sample Size Planning
+
+```{r, echo = FALSE}
+add_youtube("_5ZnUk_RL2Y")
+```
+
+Test yourself: Quiz on null hypothesis significance testing. (Quiz solution is attached in the end of this webpage.)
+
+Quiz pdf [here](week13_quiz.pdf)
+
+
+# Steps for Sample Size Planning
+
+```{r, echo = FALSE}
+add_youtube("Ui7A0SzPQXk")
+```
+
+
+Supplemental reading: 
+
+* Open Science Framework (OSF) provides some [general guidelines](https://help.osf.io/hc/en-us/articles/360021390833-Preregistration) for pre-registrating a study. 
+
+* [Kirley et al. (2020)](https://lirias.kuleuven.be/retrieve/572678) has recently published a template for studies using one type of multilevel design---experience sampling methods, which is a type of intensive longitudinal method that collects participants' self reports of daily thoughts, emotions, and behaviors. 
+
+
+# Precision Analysis
+
+```{r, echo = FALSE}
+add_youtube("E4yiRuAWuCk")
+```
+
+Practice yourself: Find the required $J$ for $SE(\gamma_{10})$ to be $\leq .1$, when the treatment variable is at level-1 (i.e., $X$), with 10 individuals per cluster, ICC = $\tau^2_0 = 0.3$, $\sigma^2$ = 0.7, and $\tau^2_1$ = 0.1.
+
+
+# Power Analysis
+
+```{r, echo = FALSE}
+add_youtube("7nYrIV5nbDs")
+```
+
+Check your learning: In the examples in the video, what would change if the researcher assumes a larger effect under the alternative hypothesis?
+
+```{r echo=FALSE, results="asis"}
+check_question("power", 
+               options = c("power", 
+                           "critical region", 
+                           "Type I error rate"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+## Tools
+
+```{r, echo = FALSE}
+add_youtube("clV_vBac6cM")
+```
+
+## PowerUpR Demo
+
+```{r, echo = FALSE}
+add_youtube("d9dB9m6wptM")
+```
+
+Practice yourself: Using PwerUpR, verify that power = .678 when the treatment variable is at level 1 (i.e., Two-level MS-IRT, random treatment), with an average effect of 0.3 (standardized), no covariate, ICC = 0.3, $\tau^2_1 = 0.15$ (i.e., `omega2` = 0.5 in the program), with 30 clusters and 10 observations per cluster.
+
+Now, include 1 covariate that has an $R^2$ of .40. What is the power?
+
+# Uncertainty in Parameter Values & Hybrid Classical-Bayesian Approach
+
+```{r, echo = FALSE}
+add_youtube("1quPtSGwuDY")
+```
+
+Check your learning: In a pilot study, we found $\delta = .2$, with a standard error of $.05$, and ICC $= .1$, with a standard error of $ = .05$. We use the information $\delta = .2$ and ICC $= .1$ to determine the number of clusters, and the program suggests us to have 116 clusters. If we employ 116 clusters in our study, what will happen to the power?
+
+```{r echo=FALSE, results="asis"}
+check_question("Decreases", 
+               options = c("Increases",
+                           "Decreases",
+                           "Unchanged"), 
+               type = "radio",
+               right = sample(right_ans, 1, prob = c(.7, .3)),
+               wrong = wrong_ans)
+```
+
+## hcbr Demo
+
+```{r, echo = FALSE}
+add_youtube("wBeANvhvmts")
+```
+
+One advantage of this program is it analytically solves for the number of clusters or cluster size you need. Using `hcbr`, you do not need to iteratively test different $J$ and $n$ until the power achieves 80%; you get the answer directly from the program. 
+
+Practice yourself: Given that $\delta = .2$ with a standard error of $.05$, and ICC $= .1$, with a standard error of $ = .05$. What is the required $J$ if $n = 2$ and $n = 20$? 
+
+## Notes on power analysis
+
+```{r, echo = FALSE}
+add_youtube("n73ZFKKlUQw")
+```
+
+Check your learning: A researcher originally plan to collect data from 30 classrooms with 5 students per classroom, but then found out the study was underpowered. He can collect data from 150 more students. Would it be more beneficial to make it 300 students from 30 classrooms or 300 students from 60 classrooms? Why?
+
+```{r echo=FALSE, results="asis"}
+check_question("300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients", 
+               options = c("300 students from 30 classrooms, because it makes the cluster size larger", 
+                           "300 students from 30 classrooms, because more classrooms increase the noise in the data", 
+                           "300 students from 60 classrooms, because the larger sample size for the classroom level makes tau^2_0 smaller", 
+                           "300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients"), 
+               type = "radio", 
+               right = sample(right_ans, 1, prob = c(.7, .3)), 
+               wrong = wrong_ans)
+```
+
+
+### Quiz solution
+
+Quiz solution [here](week13_quiz_solution.pdf)
