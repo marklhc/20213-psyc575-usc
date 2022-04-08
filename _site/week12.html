@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2096,6 +2096,7 @@ Lectures
 <a href="week10.html">Week 10</a>
 <a href="week11.html">Week 11</a>
 <a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2116,6 +2117,7 @@ R Codes
 <a href="rcode10.html">Week 10 R Code</a>
 <a href="rcode11.html">Week 11 R Code</a>
 <a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2150,13 +2152,15 @@ R Codes
 <ul>
 <li><a href="#example-data">Example Data</a></li>
 </ul></li>
-<li><a href="#elements-of-logistic-mlm">Elements of Logistic MLM</a></li>
+<li><a href="#elements-of-logistic-mlm">Elements of Logistic
+MLM</a></li>
 <li><a href="#unconditional-model">Unconditional Model</a>
 <ul>
 <li><a href="#model-equations">Model equations</a></li>
 </ul></li>
 <li><a href="#adding-predictors">Adding Predictors</a></li>
-<li><a href="#generalized-linear-mixed-model-glmm">Generalized Linear Mixed Model (GLMM)</a></li>
+<li><a href="#generalized-linear-mixed-model-glmm">Generalized Linear
+Mixed Model (GLMM)</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2164,7 +2168,8 @@ R Codes
 <h1 id="week-learning-objectives">Week Learning Objectives</h1>
 <p>By the end of this module, you will be able to</p>
 <ul>
-<li>Describe the problems of using a regular multilevel model for a binary outcome variable</li>
+<li>Describe the problems of using a regular multilevel model for a
+binary outcome variable</li>
 <li>Write model equations for multilevel logistic regression</li>
 <li>Estimate intraclass correlations for binary outcomes</li>
 <li>Plot model predictions in probability unit</li>
@@ -2176,14 +2181,21 @@ R Codes
 <ul>
 <li>Snijders &amp; Bosker ch 17.1–17.4</li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
-<li>Complete peer review for two of your peers’ postings (due Monday November 15, end of day)</li>
-<li>Complete Homework 9 <!-- 6. (Optional) Read the [bonus material](#) on binomial logistic models --></li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
+<li>Complete peer review for two of your peers’ postings (due Monday
+November 15, end of day)</li>
+<li>Complete Homework 9
+<!-- 6. (Optional) Read the [bonus material](#) on binomial logistic models --></li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p><span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span></p>
-<p>You can view and download the slides here: <a href="slides/12_multilevel_logistic.pdf" target="_blank">PDF</a></p>
+<p><span style="color:red">Note that in some of the videos below the
+Bayeisan analyses were used; however, for the class this year we will
+stay with frequentist analyses. The results and interpretations are
+basically; just note some differences in the terminology.</span></p>
+<p>You can view and download the slides here: <a
+href="slides/12_multilevel_logistic.pdf" target="_blank">PDF</a></p>
 <h2 id="logistic-mlm">Logistic MLM</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -2193,12 +2205,18 @@ R Codes
 <hr />
 <p>Check your learning: Which of the following is a binary variable?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_4221" onsubmit="return validate_form_4221()" method="post">
-<input type="radio" name="answer_4221" id="4221_1" value="The number of symptoms a person show per day."><label for="1">The number of symptoms a person show per day.</label><br><input type="radio" name="answer_4221" id="4221_2" value="The time from the start of a study to when a participant gets hospitalized."><label for="2">The time from the start of a study to when a participant gets hospitalized.</label><br><input type="radio" name="answer_4221" id="4221_3" value="Whether a participant gets hospitalized or not."><label for="3">Whether a participant gets hospitalized or not.</label><br><input type="submit" value="check">
+<form name="form_84053" onsubmit="return validate_form_84053()" method="post">
+<input type="radio" name="answer_84053" id="84053_1" value="The number of symptoms a person show per day."><label for="1">The
+number of symptoms a person show per
+day.</label><br><input type="radio" name="answer_84053" id="84053_2" value="The time from the start of a study to when a participant gets hospitalized."><label for="2">The
+time from the start of a study to when a participant gets
+hospitalized.</label><br><input type="radio" name="answer_84053" id="84053_3" value="Whether a participant gets hospitalized or not."><label for="3">Whether
+a participant gets hospitalized or
+not.</label><br><input type="submit" value="check">
 </form>
-<p id="result_4221">
+<p id="result_84053">
 </p>
-<script> function validate_form_4221() {var x, text; var x = document.forms["form_4221"]["answer_4221"].value;if (x == "Whether a participant gets hospitalized or not."){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_4221').innerHTML = text; return false;} </script>
+<script> function validate_form_84053() {var x, text; var x = document.forms["form_84053"]["answer_84053"].value;if (x == "Whether a participant gets hospitalized or not."){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_84053').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="example-data">Example Data</h3>
@@ -2208,14 +2226,21 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: Which of the following is <strong>not</strong> a reason to use a logistic model?</p>
+<p>Check your learning: Which of the following is <strong>not</strong> a
+reason to use a logistic model?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_52738" onsubmit="return validate_form_52738()" method="post">
-<input type="radio" name="answer_52738" id="52738_1" value="Dichotomizing an outcome can make interpretation easier."><label for="1">Dichotomizing an outcome can make interpretation easier.</label><br><input type="radio" name="answer_52738" id="52738_2" value="It uses a distribution suitable for a binary outcome."><label for="2">It uses a distribution suitable for a binary outcome.</label><br><input type="radio" name="answer_52738" id="52738_3" value="It accomodates heterogenous variance."><label for="3">It accomodates heterogenous variance.</label><br><input type="submit" value="check">
+<form name="form_59381" onsubmit="return validate_form_59381()" method="post">
+<input type="radio" name="answer_59381" id="59381_1" value="Dichotomizing an outcome can make interpretation easier."><label for="1">Dichotomizing
+an outcome can make interpretation
+easier.</label><br><input type="radio" name="answer_59381" id="59381_2" value="It uses a distribution suitable for a binary outcome."><label for="2">It
+uses a distribution suitable for a binary
+outcome.</label><br><input type="radio" name="answer_59381" id="59381_3" value="It accomodates heterogenous variance."><label for="3">It
+accomodates heterogenous
+variance.</label><br><input type="submit" value="check">
 </form>
-<p id="result_52738">
+<p id="result_59381">
 </p>
-<script> function validate_form_52738() {var x, text; var x = document.forms["form_52738"]["answer_52738"].value;if (x == "Dichotomizing an outcome can make interpretation easier."){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_52738').innerHTML = text; return false;} </script>
+<script> function validate_form_59381() {var x, text; var x = document.forms["form_59381"]["answer_59381"].value;if (x == "Dichotomizing an outcome can make interpretation easier."){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_59381').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="elements-of-logistic-mlm">Elements of Logistic MLM</h2>
@@ -2225,14 +2250,20 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: A logistic model assumes that the outcome follows</p>
+<p>Check your learning: A logistic model assumes that the outcome
+follows</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_8997" onsubmit="return validate_form_8997()" method="post">
-<input type="radio" name="answer_8997" id="8997_1" value="a normal distribution"><label for="1">a normal distribution</label><br><input type="radio" name="answer_8997" id="8997_2" value="a Student's t distribution"><label for="2">a Student’s t distribution</label><br><input type="radio" name="answer_8997" id="8997_3" value="a Bernoulli distribution"><label for="3">a Bernoulli distribution</label><br><input type="submit" value="check">
+<form name="form_22668" onsubmit="return validate_form_22668()" method="post">
+<input type="radio" name="answer_22668" id="22668_1" value="a normal distribution"><label for="1">a
+normal
+distribution</label><br><input type="radio" name="answer_22668" id="22668_2" value="a Student's t distribution"><label for="2">a
+Student’s t
+distribution</label><br><input type="radio" name="answer_22668" id="22668_3" value="a Bernoulli distribution"><label for="3">a
+Bernoulli distribution</label><br><input type="submit" value="check">
 </form>
-<p id="result_8997">
+<p id="result_22668">
 </p>
-<script> function validate_form_8997() {var x, text; var x = document.forms["form_8997"]["answer_8997"].value;if (x == "a Bernoulli distribution"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_8997').innerHTML = text; return false;} </script>
+<script> function validate_form_22668() {var x, text; var x = document.forms["form_22668"]["answer_22668"].value;if (x == "a Bernoulli distribution"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_22668').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <div class="layout-chunk" data-layout="l-body">
@@ -2241,17 +2272,21 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: A log odds of 0.5 corresponds to a probability of</p>
+<p>Check your learning: A log odds of 0.5 corresponds to a probability
+of</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_5114" onsubmit="return validate_form_5114()" method="post">
-<input type="radio" name="answer_5114" id="5114_1" value="0.12"><label for="1">0.12</label><br><input type="radio" name="answer_5114" id="5114_2" value="0.5"><label for="2">0.5</label><br><input type="radio" name="answer_5114" id="5114_3" value="0.62"><label for="3">0.62</label><br><input type="submit" value="check">
+<form name="form_70090" onsubmit="return validate_form_70090()" method="post">
+<input type="radio" name="answer_70090" id="70090_1" value="0.12"><label for="1">0.12</label><br><input type="radio" name="answer_70090" id="70090_2" value="0.5"><label for="2">0.5</label><br><input type="radio" name="answer_70090" id="70090_3" value="0.62"><label for="3">0.62</label><br><input type="submit" value="check">
 </form>
-<p id="result_5114">
+<p id="result_70090">
 </p>
-<script> function validate_form_5114() {var x, text; var x = document.forms["form_5114"]["answer_5114"].value;if (x == "0.62"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_5114').innerHTML = text; return false;} </script>
+<script> function validate_form_70090() {var x, text; var x = document.forms["form_70090"]["answer_70090"].value;if (x == "0.62"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_70090').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<p>If you have trouble understanding what “odds” and “log odds” are, you are not alone. This video may give you a better idea: <a href="https://www.youtube.com/watch?v=ARfXDSkQf1Y" class="uri">https://www.youtube.com/watch?v=ARfXDSkQf1Y</a></p>
+<p>If you have trouble understanding what “odds” and “log odds” are, you
+are not alone. This video may give you a better idea: <a
+href="https://www.youtube.com/watch?v=ARfXDSkQf1Y"
+class="uri">https://www.youtube.com/watch?v=ARfXDSkQf1Y</a></p>
 <h2 id="unconditional-model">Unconditional Model</h2>
 <h3 id="model-equations">Model equations</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2260,14 +2295,24 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In a logistic model predicting whether a person reported a daily stressor, the coefficient of age was -0.5. The interpretation is that</p>
+<p>Check your learning: In a logistic model predicting whether a person
+reported a daily stressor, the coefficient of age was -0.5. The
+interpretation is that</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_91584" onsubmit="return validate_form_91584()" method="post">
-<input type="radio" name="answer_91584" id="91584_1" value="every unit increase in age is associated with a 0.5 unit decrease of daily stressor"><label for="1">every unit increase in age is associated with a 0.5 unit decrease of daily stressor</label><br><input type="radio" name="answer_91584" id="91584_2" value="every unit increase in age is associated with a 0.5 percentage point decrease of reporting a daily stressor"><label for="2">every unit increase in age is associated with a 0.5 percentage point decrease of reporting a daily stressor</label><br><input type="radio" name="answer_91584" id="91584_3" value="every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"><label for="3">every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor</label><br><input type="submit" value="check">
+<form name="form_31659" onsubmit="return validate_form_31659()" method="post">
+<input type="radio" name="answer_31659" id="31659_1" value="every unit increase in age is associated with a 0.5 unit decrease of daily stressor"><label for="1">every
+unit increase in age is associated with a 0.5 unit decrease of daily
+stressor</label><br><input type="radio" name="answer_31659" id="31659_2" value="every unit increase in age is associated with a 0.5 percentage point decrease of reporting a daily stressor"><label for="2">every
+unit increase in age is associated with a 0.5 percentage point decrease
+of reporting a daily
+stressor</label><br><input type="radio" name="answer_31659" id="31659_3" value="every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"><label for="3">every
+unit increase in age is associated with a 0.5 decrease in the log odds
+of reporting a daily
+stressor</label><br><input type="submit" value="check">
 </form>
-<p id="result_91584">
+<p id="result_31659">
 </p>
-<script> function validate_form_91584() {var x, text; var x = document.forms["form_91584"]["answer_91584"].value;if (x == "every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_91584').innerHTML = text; return false;} </script>
+<script> function validate_form_31659() {var x, text; var x = document.forms["form_31659"]["answer_31659"].value;if (x == "every unit increase in age is associated with a 0.5 decrease in the log odds of reporting a daily stressor"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_31659').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="adding-predictors">Adding Predictors</h2>
@@ -2276,24 +2321,30 @@ R Codes
 <iframe src="https://www.youtube.com/embed/P95ruzXQAiU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<h2 id="generalized-linear-mixed-model-glmm">Generalized Linear Mixed Model (GLMM)</h2>
+<h2 id="generalized-linear-mixed-model-glmm">Generalized Linear Mixed
+Model (GLMM)</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/Tq1XaZO_8Bc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
 <hr />
-<p>Check your learning: A researcher wants to compare the proportion of minority hires in the past year across departments and schools. The total number of hires for each department is known. Which model is the most appropriate?</p>
+<p>Check your learning: A researcher wants to compare the proportion of
+minority hires in the past year across departments and schools. The
+total number of hires for each department is known. Which model is the
+most appropriate?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_75060" onsubmit="return validate_form_75060()" method="post">
-<input type="radio" name="answer_75060" id="75060_1" value="Binomial logistic"><label for="1">Binomial logistic</label><br><input type="radio" name="answer_75060" id="75060_2" value="Poisson"><label for="2">Poisson</label><br><input type="radio" name="answer_75060" id="75060_3" value="Exponential"><label for="3">Exponential</label><br><input type="submit" value="check">
+<form name="form_98211" onsubmit="return validate_form_98211()" method="post">
+<input type="radio" name="answer_98211" id="98211_1" value="Binomial logistic"><label for="1">Binomial
+logistic</label><br><input type="radio" name="answer_98211" id="98211_2" value="Poisson"><label for="2">Poisson</label><br><input type="radio" name="answer_98211" id="98211_3" value="Exponential"><label for="3">Exponential</label><br><input type="submit" value="check">
 </form>
-<p id="result_75060">
+<p id="result_98211">
 </p>
-<script> function validate_form_75060() {var x, text; var x = document.forms["form_75060"]["answer_75060"].value;if (x == "Binomial logistic"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_75060').innerHTML = text; return false;} </script>
+<script> function validate_form_98211() {var x, text; var x = document.forms["form_98211"]["answer_98211"].value;if (x == "Binomial logistic"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_98211').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2310,7 +2361,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

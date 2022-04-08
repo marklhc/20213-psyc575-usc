@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2044,12 +2044,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2139,25 +2139,38 @@ R Codes
 <h3>Contents</h3>
 <ul>
 <li><a href="#load-packages">Load Packages</a></li>
-<li><a href="#binary-predictor-at-level-2">Binary Predictor at Level 2</a>
+<li><a href="#binary-predictor-at-level-2">Binary Predictor at Level
+2</a>
 <ul>
-<li><a href="#preparing-simulated-data">Preparing simulated data</a></li>
-<li><a href="#obtain-simulation-based-power">Obtain simulation-based power</a></li>
+<li><a href="#preparing-simulated-data">Preparing simulated
+data</a></li>
+<li><a href="#obtain-simulation-based-power">Obtain simulation-based
+power</a></li>
 </ul></li>
-<li><a href="#continuous-predictor-at-level-2">Continuous Predictor at Level 2</a>
+<li><a href="#continuous-predictor-at-level-2">Continuous Predictor at
+Level 2</a>
 <ul>
-<li><a href="#preparing-simulated-data-1">Preparing Simulated Data</a></li>
-<li><a href="#obtain-simulation-based-power-1">Obtain simulation-based power</a></li>
+<li><a href="#preparing-simulated-data-1">Preparing Simulated
+Data</a></li>
+<li><a href="#obtain-simulation-based-power-1">Obtain simulation-based
+power</a></li>
 </ul></li>
-<li><a href="#binary-predictor-at-level-2-with-a-continuous-level-1-covariate-and-random-slope">Binary Predictor at Level 2 With a Continuous Level-1 Covariate (and Random Slope)</a>
+<li><a
+href="#binary-predictor-at-level-2-with-a-continuous-level-1-covariate-and-random-slope">Binary
+Predictor at Level 2 With a Continuous Level-1 Covariate (and Random
+Slope)</a>
 <ul>
-<li><a href="#preparing-simulated-data-2">Preparing Simulated Data</a></li>
-<li><a href="#obtain-simulation-based-power-2">Obtain simulation-based power</a></li>
+<li><a href="#preparing-simulated-data-2">Preparing Simulated
+Data</a></li>
+<li><a href="#obtain-simulation-based-power-2">Obtain simulation-based
+power</a></li>
 </ul></li>
 <li><a href="#growth-modeling">Growth Modeling</a>
 <ul>
-<li><a href="#preparing-simulated-data-3">Preparing Simulated Data</a></li>
-<li><a href="#obtain-simulation-based-power-3">Obtain simulation-based power</a></li>
+<li><a href="#preparing-simulated-data-3">Preparing Simulated
+Data</a></li>
+<li><a href="#obtain-simulation-based-power-3">Obtain simulation-based
+power</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2167,7 +2180,8 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week13-samplesize-planning.Rmd">week13-samplesize-planning.Rmd</a></p>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week13-samplesize-planning.Rmd">week13-samplesize-planning.Rmd</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/mexjG8JYH0o" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
@@ -2191,13 +2205,19 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>See also an example from the vignette of the <code>simr</code> package: <a href="https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html" class="uri">https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html</a></p>
-<p>Note: In the examples of this note I used 100 simulation samples only to save time. In practice, you should use at least 1,000 to obtain a reasonable precision on the power estimation.</p>
+<p>See also an example from the vignette of the <code>simr</code>
+package: <a
+href="https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html"
+class="uri">https://cran.r-project.org/web/packages/simr/vignettes/fromscratch.html</a></p>
+<p>Note: In the examples of this note I used 100 simulation samples only
+to save time. In practice, you should use at least 1,000 to obtain a
+reasonable precision on the power estimation.</p>
 <h2 id="binary-predictor-at-level-2">Binary Predictor at Level 2</h2>
 <p><span class="math display">\[
   \begin{aligned}
     Y_{ij} &amp; = \beta_{0j} + e_{ij} \\
-    \beta_{0j} &amp; = \gamma_{00} + {\color{red}{\gamma_{01}}} T_j + u_{0j}
+    \beta_{0j} &amp; = \gamma_{00} + {\color{red}{\gamma_{01}}} T_j +
+u_{0j}
   \end{aligned}
 \]</span></p>
 <h3 id="preparing-simulated-data">Preparing simulated data</h3>
@@ -2234,7 +2254,8 @@ R Codes
 &gt;# 10     2 t    
 &gt;# # … with 40 more rows</code></pre>
 </div>
-<p>Then specify the fixed effect coefficients and the random effect variance:</p>
+<p>Then specify the fixed effect coefficients and the random effect
+variance:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gams</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0.625</span><span class='op'>)</span>  <span class='co'># gamma_00, gamma_01</span>
@@ -2243,7 +2264,8 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>Use <code>simr::makeLmer()</code> to build an artificial <code>lmer</code> object:</p>
+<p>Use <code>simr::makeLmer()</code> to build an artificial
+<code>lmer</code> object:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim_m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/makeGlmer.html'>makeLmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>treat</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
@@ -2253,17 +2275,18 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>sim_m1</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#             R2m       R2c
-&gt;# [1,] 0.07383343 0.2590667</code></pre>
+<pre><code>&gt;#          R2m    R2c
+&gt;# [1,] 0.07383 0.2591</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cohen's d</span>
 <span class='va'>gams</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>taus</span> <span class='op'>+</span> <span class='va'>sigma</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#          [,1]
-&gt;# [1,] 0.559017</code></pre>
+<pre><code>&gt;#       [,1]
+&gt;# [1,] 0.559</code></pre>
 </div>
-<h3 id="obtain-simulation-based-power">Obtain simulation-based power</h3>
+<h3 id="obtain-simulation-based-power">Obtain simulation-based
+power</h3>
 <p>Now, check the power:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2283,10 +2306,12 @@ R Codes
 &gt;# Based on 20 simulations, (0 warnings, 0 errors)
 &gt;# alpha = 0.05, nrow = 50
 &gt;# 
-&gt;# Time elapsed: 0 h 0 m 1 s</code></pre>
+&gt;# Time elapsed: 0 h 0 m 2 s</code></pre>
 </div>
-<p>Power was obviously not sufficient as it is far from 80%, so we’ll increase it.</p>
-<h4 id="increasing-number-of-clusters">Increasing number of clusters</h4>
+<p>Power was obviously not sufficient as it is far from 80%, so we’ll
+increase it.</p>
+<h4 id="increasing-number-of-clusters">Increasing number of
+clusters</h4>
 <p>Increase to 50 clusters</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2307,7 +2332,11 @@ R Codes
 &gt;# 
 &gt;# Time elapsed: 0 h 0 m 1 s</code></pre>
 </div>
-<p>This looks close to 80%. Let’s try several numbers of clusters (30, 35, 40, 45, 50) with a larger <code>nsim</code>. To my knowledge <code>simr</code> does not directly handle multiple values for number of clusters, so I provided you a handy <code>power_extend()</code> function, and an associated function for plotting the results.</p>
+<p>This looks close to 80%. Let’s try several numbers of clusters (30,
+35, 40, 45, 50) with a larger <code>nsim</code>. To my knowledge
+<code>simr</code> does not directly handle multiple values for number of
+clusters, so I provided you a handy <code>power_extend()</code>
+function, and an associated function for plotting the results.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Wrap to a function</span>
@@ -2371,9 +2400,11 @@ R Codes
 </div>
 <p><img src="rcode13_files/figure-html5/powers_m1-1.png" width="624" /></p>
 </div>
-<p>This suggests that about 40 clusters are needed, if each cluster contains 5 observations.</p>
+<p>This suggests that about 40 clusters are needed, if each cluster
+contains 5 observations.</p>
 <h4 id="increasing-cluster-size">Increasing cluster size</h4>
-<p>Instead of increasing the number of cluster, one can also increase the cluster size:</p>
+<p>Instead of increasing the number of cluster, one can also increase
+the cluster size:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim_m1_25n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/extend.html'>extend</a></span><span class='op'>(</span><span class='va'>sim_m1</span>, 
@@ -2394,7 +2425,9 @@ R Codes
 &gt;# 
 &gt;# Time elapsed: 0 h 0 m 10 s</code></pre>
 </div>
-<p>Note that the power of increasing cluster size by 5 times is much smaller than that of increasing number of clusters by 5 times. Here is the power curve:</p>
+<p>Note that the power of increasing cluster size by 5 times is much
+smaller than that of increasing number of clusters by 5 times. Here is
+the power curve:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use the previously defined function</span>
@@ -2410,12 +2443,17 @@ R Codes
 </div>
 <p><img src="rcode13_files/figure-html5/powers_m1-2-1.png" width="624" /></p>
 </div>
-<p>In this case, increasing the cluster size only increases the power to close to 50%. There is an upper limit in power improvement with increasing the cluster size, when the number of cluster is kept constant.</p>
-<h2 id="continuous-predictor-at-level-2">Continuous Predictor at Level 2</h2>
+<p>In this case, increasing the cluster size only increases the power to
+close to 50%. There is an upper limit in power improvement with
+increasing the cluster size, when the number of cluster is kept
+constant.</p>
+<h2 id="continuous-predictor-at-level-2">Continuous Predictor at Level
+2</h2>
 <p><span class="math display">\[
   \begin{aligned}
     Y_{ij} &amp; = \beta_{0j} + e_{ij} \\
-    \beta_{0j} &amp; = \gamma_{00} + {\color{red}{\gamma_{01}}} W_j + u_{0j}
+    \beta_{0j} &amp; = \gamma_{00} + {\color{red}{\gamma_{01}}} W_j +
+u_{0j}
   \end{aligned}
 \]</span></p>
 <h3 id="preparing-simulated-data-1">Preparing Simulated Data</h3>
@@ -2454,7 +2492,8 @@ R Codes
 &gt;# 10     2 1.02 
 &gt;# # … with 40 more rows</code></pre>
 </div>
-<p>Then specify the fixed effect coefficients and the random effect variance:</p>
+<p>Then specify the fixed effect coefficients and the random effect
+variance:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gams</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>0.3</span><span class='op'>)</span>  <span class='co'># gamma_00, gamma_01</span>
@@ -2463,7 +2502,8 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>Use <code>simr::makeLmer()</code> to build an artificial <code>lmer</code> object:</p>
+<p>Use <code>simr::makeLmer()</code> to build an artificial
+<code>lmer</code> object:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim_m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/makeGlmer.html'>makeLmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>w</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
@@ -2473,10 +2513,11 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>sim_m2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#             R2m       R2c
-&gt;# [1,] 0.04272569 0.3618171</code></pre>
+<pre><code>&gt;#          R2m    R2c
+&gt;# [1,] 0.04273 0.3618</code></pre>
 </div>
-<h3 id="obtain-simulation-based-power-1">Obtain simulation-based power</h3>
+<h3 id="obtain-simulation-based-power-1">Obtain simulation-based
+power</h3>
 <p>Use various numbers of clusters</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2510,13 +2551,18 @@ R Codes
 </div>
 <p><img src="rcode13_files/figure-html5/powers_m2-2-1.png" width="624" /></p>
 </div>
-<h2 id="binary-predictor-at-level-2-with-a-continuous-level-1-covariate-and-random-slope">Binary Predictor at Level 2 With a Continuous Level-1 Covariate (and Random Slope)</h2>
+<h2
+id="binary-predictor-at-level-2-with-a-continuous-level-1-covariate-and-random-slope">Binary
+Predictor at Level 2 With a Continuous Level-1 Covariate (and Random
+Slope)</h2>
 <p>Cluster-mean centering needs to be considerd</p>
 <p><span class="math display">\[
   \begin{aligned}
     Y_{ij} &amp; = \beta_{0j} + \beta_{1j} X\text{_cmc}_{ij} + e_{ij} \\
-    \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} W_j + \gamma_{02} X\text{_cm}_{j} + u_{0j} \\
-    \beta_{1j} &amp; = \gamma_{10} + {\color{red}{\gamma_{11}}} W_j + u_{1j}
+    \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} W_j + \gamma_{02}
+X\text{_cm}_{j} + u_{0j} \\
+    \beta_{1j} &amp; = \gamma_{10} + {\color{red}{\gamma_{11}}} W_j +
+u_{1j}
   \end{aligned}
 \]</span></p>
 <h3 id="preparing-simulated-data-2">Preparing Simulated Data</h3>
@@ -2564,7 +2610,8 @@ R Codes
 &gt;# 10     1 c     -0.143  0.193 
 &gt;# # … with 190 more rows</code></pre>
 </div>
-<p>Then specify the fixed effect coefficients and the random effect variance:</p>
+<p>Then specify the fixed effect coefficients and the random effect
+variance:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># gamma_00, gamma_01, gamma_02, gamma_10, gamma_11</span>
@@ -2575,7 +2622,8 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>Use <code>simr::makeLmer()</code> to build an artificial <code>lmer</code> object:</p>
+<p>Use <code>simr::makeLmer()</code> to build an artificial
+<code>lmer</code> object:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim_m4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/makeGlmer.html'>makeLmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>treat</span> <span class='op'>+</span> <span class='va'>x_cm</span> <span class='op'>+</span> <span class='va'>x_cmc</span> <span class='op'>+</span> <span class='va'>treat</span><span class='op'>:</span><span class='va'>x_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>x_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
@@ -2585,8 +2633,8 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>sim_m4</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#             R2m       R2c
-&gt;# [1,] 0.05896185 0.2990437</code></pre>
+<pre><code>&gt;#          R2m   R2c
+&gt;# [1,] 0.05896 0.299</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compare to a model without the cross-level interaction</span>
 <span class='va'>sim_m4n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/makeGlmer.html'>makeLmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>treat</span> <span class='op'>+</span> <span class='va'>x_cm</span> <span class='op'>+</span> <span class='va'>x_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>x_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
@@ -2596,16 +2644,18 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>sim_m4n</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#             R2m       R2c
-&gt;# [1,] 0.03577807 0.2817747</code></pre>
+<pre><code>&gt;#          R2m    R2c
+&gt;# [1,] 0.03578 0.2818</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># So the cross-level interaction corresponds to an R^2 change of about 2.5%</span>
 </code></pre>
 </div>
 </div>
-<h3 id="obtain-simulation-based-power-2">Obtain simulation-based power</h3>
+<h3 id="obtain-simulation-based-power-2">Obtain simulation-based
+power</h3>
 <p>Use various numbers of clusters</p>
-<p>Note: by default the first term in the fixed effect (other than the intercept) will be tested. We’ll specify the interaction instead.</p>
+<p>Note: by default the first term in the fixed effect (other than the
+intercept) will be tested. We’ll specify the interaction instead.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use it on our example:</span>
@@ -2643,7 +2693,8 @@ R Codes
 <p><span class="math display">\[
   \begin{aligned}
     Y_{ti} &amp; = \beta_{0j} + \beta_{1i} \text{time}_{ti} + e_{ti} \\
-    \beta_{0i} &amp; = \gamma_{00} + {\color{red}{\gamma_{01}}} W_i + u_{0i} \\
+    \beta_{0i} &amp; = \gamma_{00} + {\color{red}{\gamma_{01}}} W_i +
+u_{0i} \\
     \beta_{1i} &amp; = \gamma_{10} + \gamma_{11} W_i + u_{1i}
   \end{aligned}
 \]</span></p>
@@ -2681,7 +2732,8 @@ R Codes
 &gt;# 10     3 c         1
 &gt;# # … with 30 more rows</code></pre>
 </div>
-<p>Then specify the fixed effect coefficients and the random effect variance:</p>
+<p>Then specify the fixed effect coefficients and the random effect
+variance:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># gamma_00, gamma_01, gamma_10, gamma_11</span>
@@ -2692,7 +2744,8 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>Use <code>simr::makeLmer()</code> to build an artificial <code>lmer</code> object:</p>
+<p>Use <code>simr::makeLmer()</code> to build an artificial
+<code>lmer</code> object:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>sim_m5</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/makeGlmer.html'>makeLmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>treat</span> <span class='op'>+</span> <span class='va'>time</span> <span class='op'>+</span> <span class='va'>treat</span><span class='op'>:</span><span class='va'>time</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>time</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
@@ -2702,8 +2755,8 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>sim_m5</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#            R2m       R2c
-&gt;# [1,] 0.1246588 0.5268426</code></pre>
+<pre><code>&gt;#         R2m    R2c
+&gt;# [1,] 0.1247 0.5268</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compare to a model without the binary treatment predictor</span>
 <span class='va'>sim_m5n</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/simr/man/makeGlmer.html'>makeLmer</a></span><span class='op'>(</span><span class='va'>y</span> <span class='op'>~</span> <span class='va'>time</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>time</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
@@ -2713,16 +2766,18 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>sim_m5n</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#             R2m       R2c
-&gt;# [1,] 0.02697235 0.4740391</code></pre>
+<pre><code>&gt;#          R2m   R2c
+&gt;# [1,] 0.02697 0.474</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># So treat corresponds to an R^2 change of about 10%</span>
 </code></pre>
 </div>
 </div>
-<h3 id="obtain-simulation-based-power-3">Obtain simulation-based power</h3>
+<h3 id="obtain-simulation-based-power-3">Obtain simulation-based
+power</h3>
 <p>Use various numbers of clusters</p>
-<p>Note: by default the first term in the fixed effect (other than the intercept) will be tested. We’ll first specify the effect of treat.</p>
+<p>Note: by default the first term in the fixed effect (other than the
+intercept) will be tested. We’ll first specify the effect of treat.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use it on our example:</span>
@@ -2775,7 +2830,8 @@ R Codes
 </div>
 <p><img src="rcode13_files/figure-html5/powers_m5-3-1.png" width="624" /></p>
 </div>
-<p>Increasing number of time points does not help the power with the intercept difference. Now let’s look at the slope difference.</p>
+<p>Increasing number of time points does not help the power with the
+intercept difference. Now let’s look at the slope difference.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use the `time_points` argument</span>
@@ -2794,8 +2850,10 @@ R Codes
 </div>
 <p><img src="rcode13_files/figure-html5/powers_m5-4-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2821,7 +2879,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

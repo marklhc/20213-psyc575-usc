@@ -2038,22 +2038,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs/header-attrs.js"></script>
-  <script src="site_libs/popper/popper.min.js"></script>
-  <link href="site_libs/tippy/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor/anchor.min.js"></script>
-  <script src="site_libs/bowser/bowser.min.js"></script>
-  <script src="site_libs/webcomponents/webcomponents.js"></script>
-  <script src="site_libs/distill/template.v2.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2157,14 +2157,17 @@ R Codes
 <li><a href="#slides">Slides</a></li>
 </ul></li>
 <li><a href="#sample-size-planning">Sample Size Planning</a></li>
-<li><a href="#steps-for-sample-size-planning">Steps for Sample Size Planning</a></li>
+<li><a href="#steps-for-sample-size-planning">Steps for Sample Size
+Planning</a></li>
 <li><a href="#precision-analysis">Precision Analysis</a></li>
 <li><a href="#power-analysis">Power Analysis</a>
 <ul>
 <li><a href="#tools">Tools</a></li>
 <li><a href="#powerupr-demo">PowerUpR Demo</a></li>
 </ul></li>
-<li><a href="#uncertainty-in-parameter-values-hybrid-classical-bayesian-approach">Uncertainty in Parameter Values &amp; Hybrid Classical-Bayesian Approach</a>
+<li><a
+href="#uncertainty-in-parameter-values-hybrid-classical-bayesian-approach">Uncertainty
+in Parameter Values &amp; Hybrid Classical-Bayesian Approach</a>
 <ul>
 <li><a href="#hcbr-demo">hcbr Demo</a></li>
 <li><a href="#notes-on-power-analysis">Notes on power analysis</a>
@@ -2175,14 +2178,20 @@ R Codes
 </ul>
 </nav>
 </div>
-<p>Guest lecture content by <a href="https://dornsife.usc.edu/psyc/quantitative-methods-graduate-students/">Winnie Tse</a> and Mark Lai</p>
+<p>Guest lecture content by <a
+href="https://dornsife.usc.edu/psyc/quantitative-methods-graduate-students/">Winnie
+Tse</a> and Mark Lai</p>
 <h1 id="week-learning-objectives">Week Learning Objectives</h1>
 <p>By the end of this module, you will be able to</p>
 <ul>
-<li>Describe the importance of having sufficient sample size for scientific research</li>
-<li>Describe conceptually the steps for sample size planning: precision analysis and power analysis</li>
-<li>Perform power analysis for MLM using the PowerUpR application and the <code>simr</code> package</li>
-<li>Understand the effect of uncertainty in parameter values and explore alternative approaches for sample size planning</li>
+<li>Describe the importance of having sufficient sample size for
+scientific research</li>
+<li>Describe conceptually the steps for sample size planning: precision
+analysis and power analysis</li>
+<li>Perform power analysis for MLM using the PowerUpR application and
+the <code>simr</code> package</li>
+<li>Understand the effect of uncertainty in parameter values and explore
+alternative approaches for sample size planning</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
 <ol type="1">
@@ -2191,22 +2200,27 @@ R Codes
 <ul>
 <li>Snijders &amp; Bosker ch 11</li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
 <li>Complete Homework 10</li>
 <li>Continue working on your oral presentation/paper</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p>You can view and download the slides here: <a href="slides/13_samplesize_planning.html" target="_blank">HTML</a> <a href="slides/13_samplesize_planning.pdf" target="_blank">PDF</a></p>
+<p>You can view and download the slides here: <a
+href="slides/13_samplesize_planning.html" target="_blank">HTML</a> <a
+href="slides/13_samplesize_planning.pdf" target="_blank">PDF</a></p>
 <h1 id="sample-size-planning">Sample Size Planning</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/_5ZnUk_RL2Y" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Test yourself: Quiz on null hypothesis significance testing. (Quiz solution is attached in the end of this webpage.)</p>
+<p>Test yourself: Quiz on null hypothesis significance testing. (Quiz
+solution is attached in the end of this webpage.)</p>
 <p>Quiz pdf <a href="week13_quiz.pdf">here</a></p>
-<h1 id="steps-for-sample-size-planning">Steps for Sample Size Planning</h1>
+<h1 id="steps-for-sample-size-planning">Steps for Sample Size
+Planning</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/Ui7A0SzPQXk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
@@ -2214,8 +2228,14 @@ R Codes
 </div>
 <p>Supplemental reading:</p>
 <ul>
-<li><p>Open Science Framework (OSF) provides some <a href="https://help.osf.io/hc/en-us/articles/360021390833-Preregistration">general guidelines</a> for pre-registrating a study.</p></li>
-<li><p><a href="https://lirias.kuleuven.be/retrieve/572678">Kirley et al. (2020)</a> has recently published a template for studies using one type of multilevel design—experience sampling methods, which is a type of intensive longitudinal method that collects participants’ self reports of daily thoughts, emotions, and behaviors.</p></li>
+<li><p>Open Science Framework (OSF) provides some <a
+href="https://help.osf.io/hc/en-us/articles/360021390833-Preregistration">general
+guidelines</a> for pre-registrating a study.</p></li>
+<li><p><a href="https://lirias.kuleuven.be/retrieve/572678">Kirley et
+al. (2020)</a> has recently published a template for studies using one
+type of multilevel design—experience sampling methods, which is a type
+of intensive longitudinal method that collects participants’ self
+reports of daily thoughts, emotions, and behaviors.</p></li>
 </ul>
 <h1 id="precision-analysis">Precision Analysis</h1>
 <div class="layout-chunk" data-layout="l-body">
@@ -2223,21 +2243,32 @@ R Codes
 <iframe src="https://www.youtube.com/embed/E4yiRuAWuCk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Practice yourself: Find the required <span class="math inline">\(J\)</span> for <span class="math inline">\(SE(\gamma_{10})\)</span> to be <span class="math inline">\(\leq .1\)</span>, when the treatment variable is at level-1 (i.e., <span class="math inline">\(X\)</span>), with 10 individuals per cluster, ICC = <span class="math inline">\(\tau^2_0 = 0.3\)</span>, <span class="math inline">\(\sigma^2\)</span> = 0.7, and <span class="math inline">\(\tau^2_1\)</span> = 0.1.</p>
+<p>Practice yourself: Find the required <span
+class="math inline">\(J\)</span> for <span
+class="math inline">\(SE(\gamma_{10})\)</span> to be <span
+class="math inline">\(\leq .1\)</span>, when the treatment variable is
+at level-1 (i.e., <span class="math inline">\(X\)</span>), with 10
+individuals per cluster, ICC = <span class="math inline">\(\tau^2_0 =
+0.3\)</span>, <span class="math inline">\(\sigma^2\)</span> = 0.7, and
+<span class="math inline">\(\tau^2_1\)</span> = 0.1.</p>
 <h1 id="power-analysis">Power Analysis</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/7nYrIV5nbDs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In the examples in the video, what would change if the researcher assumes a larger effect under the alternative hypothesis?</p>
+<p>Check your learning: In the examples in the video, what would change
+if the researcher assumes a larger effect under the alternative
+hypothesis?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_25833" onsubmit="return validate_form_25833()" method="post">
-<input type="radio" name="answer_25833" id="25833_1" value="power"><label for="1">power</label><br><input type="radio" name="answer_25833" id="25833_2" value="critical region"><label for="2">critical region</label><br><input type="radio" name="answer_25833" id="25833_3" value="Type I error rate"><label for="3">Type I error rate</label><br><input type="submit" value="check">
+<form name="form_90950" onsubmit="return validate_form_90950()" method="post">
+<input type="radio" name="answer_90950" id="90950_1" value="power"><label for="1">power</label><br><input type="radio" name="answer_90950" id="90950_2" value="critical region"><label for="2">critical
+region</label><br><input type="radio" name="answer_90950" id="90950_3" value="Type I error rate"><label for="3">Type
+I error rate</label><br><input type="submit" value="check">
 </form>
-<p id="result_25833">
+<p id="result_90950">
 </p>
-<script> function validate_form_25833() {var x, text; var x = document.forms["form_25833"]["answer_25833"].value;if (x == "power"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_25833').innerHTML = text; return false;} </script>
+<script> function validate_form_90950() {var x, text; var x = document.forms["form_90950"]["answer_90950"].value;if (x == "power"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_90950').innerHTML = text; return false;} </script>
 </div>
 <h2 id="tools">Tools</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2251,22 +2282,37 @@ R Codes
 <iframe src="https://www.youtube.com/embed/d9dB9m6wptM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Practice yourself: Using PwerUpR, verify that power = .678 when the treatment variable is at level 1 (i.e., Two-level MS-IRT, random treatment), with an average effect of 0.3 (standardized), no covariate, ICC = 0.3, <span class="math inline">\(\tau^2_1 = 0.15\)</span> (i.e., <code>omega2</code> = 0.5 in the program), with 30 clusters and 10 observations per cluster.</p>
-<p>Now, include 1 covariate that has an <span class="math inline">\(R^2\)</span> of .40. What is the power?</p>
-<h1 id="uncertainty-in-parameter-values-hybrid-classical-bayesian-approach">Uncertainty in Parameter Values &amp; Hybrid Classical-Bayesian Approach</h1>
+<p>Practice yourself: Using PwerUpR, verify that power = .678 when the
+treatment variable is at level 1 (i.e., Two-level MS-IRT, random
+treatment), with an average effect of 0.3 (standardized), no covariate,
+ICC = 0.3, <span class="math inline">\(\tau^2_1 = 0.15\)</span> (i.e.,
+<code>omega2</code> = 0.5 in the program), with 30 clusters and 10
+observations per cluster.</p>
+<p>Now, include 1 covariate that has an <span
+class="math inline">\(R^2\)</span> of .40. What is the power?</p>
+<h1
+id="uncertainty-in-parameter-values-hybrid-classical-bayesian-approach">Uncertainty
+in Parameter Values &amp; Hybrid Classical-Bayesian Approach</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/1quPtSGwuDY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In a pilot study, we found <span class="math inline">\(\delta = .2\)</span>, with a standard error of <span class="math inline">\(.05\)</span>, and ICC <span class="math inline">\(= .1\)</span>, with a standard error of $ = .05$. We use the information <span class="math inline">\(\delta = .2\)</span> and ICC <span class="math inline">\(= .1\)</span> to determine the number of clusters, and the program suggests us to have 116 clusters. If we employ 116 clusters in our study, what will happen to the power?</p>
+<p>Check your learning: In a pilot study, we found <span
+class="math inline">\(\delta = .2\)</span>, with a standard error of
+<span class="math inline">\(.05\)</span>, and ICC <span
+class="math inline">\(= .1\)</span>, with a standard error of $ = .05$.
+We use the information <span class="math inline">\(\delta = .2\)</span>
+and ICC <span class="math inline">\(= .1\)</span> to determine the
+number of clusters, and the program suggests us to have 116 clusters. If
+we employ 116 clusters in our study, what will happen to the power?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_24388" onsubmit="return validate_form_24388()" method="post">
-<input type="radio" name="answer_24388" id="24388_1" value="Increases"><label for="1">Increases</label><br><input type="radio" name="answer_24388" id="24388_2" value="Decreases"><label for="2">Decreases</label><br><input type="radio" name="answer_24388" id="24388_3" value="Unchanged"><label for="3">Unchanged</label><br><input type="submit" value="check">
+<form name="form_12770" onsubmit="return validate_form_12770()" method="post">
+<input type="radio" name="answer_12770" id="12770_1" value="Increases"><label for="1">Increases</label><br><input type="radio" name="answer_12770" id="12770_2" value="Decreases"><label for="2">Decreases</label><br><input type="radio" name="answer_12770" id="12770_3" value="Unchanged"><label for="3">Unchanged</label><br><input type="submit" value="check">
 </form>
-<p id="result_24388">
+<p id="result_12770">
 </p>
-<script> function validate_form_24388() {var x, text; var x = document.forms["form_24388"]["answer_24388"].value;if (x == "Decreases"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_24388').innerHTML = text; return false;} </script>
+<script> function validate_form_12770() {var x, text; var x = document.forms["form_12770"]["answer_12770"].value;if (x == "Decreases"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_12770').innerHTML = text; return false;} </script>
 </div>
 <h2 id="hcbr-demo">hcbr Demo</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2274,26 +2320,53 @@ R Codes
 <iframe src="https://www.youtube.com/embed/wBeANvhvmts" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>One advantage of this program is it analytically solves for the number of clusters or cluster size you need. Using <code>hcbr</code>, you do not need to iteratively test different <span class="math inline">\(J\)</span> and <span class="math inline">\(n\)</span> until the power achieves 80%; you get the answer directly from the program.</p>
-<p>Practice yourself: Given that <span class="math inline">\(\delta = .2\)</span> with a standard error of <span class="math inline">\(.05\)</span>, and ICC <span class="math inline">\(= .1\)</span>, with a standard error of $ = .05$. What is the required <span class="math inline">\(J\)</span> if <span class="math inline">\(n = 2\)</span> and <span class="math inline">\(n = 20\)</span>?</p>
+<p>One advantage of this program is it analytically solves for the
+number of clusters or cluster size you need. Using <code>hcbr</code>,
+you do not need to iteratively test different <span
+class="math inline">\(J\)</span> and <span
+class="math inline">\(n\)</span> until the power achieves 80%; you get
+the answer directly from the program.</p>
+<p>Practice yourself: Given that <span class="math inline">\(\delta =
+.2\)</span> with a standard error of <span
+class="math inline">\(.05\)</span>, and ICC <span
+class="math inline">\(= .1\)</span>, with a standard error of $ = .05$.
+What is the required <span class="math inline">\(J\)</span> if <span
+class="math inline">\(n = 2\)</span> and <span class="math inline">\(n =
+20\)</span>?</p>
 <h2 id="notes-on-power-analysis">Notes on power analysis</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/n73ZFKKlUQw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: A researcher originally plan to collect data from 30 classrooms with 5 students per classroom, but then found out the study was underpowered. He can collect data from 150 more students. Would it be more beneficial to make it 300 students from 30 classrooms or 300 students from 60 classrooms? Why?</p>
+<p>Check your learning: A researcher originally plan to collect data
+from 30 classrooms with 5 students per classroom, but then found out the
+study was underpowered. He can collect data from 150 more students.
+Would it be more beneficial to make it 300 students from 30 classrooms
+or 300 students from 60 classrooms? Why?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_4089" onsubmit="return validate_form_4089()" method="post">
-<input type="radio" name="answer_4089" id="4089_1" value="300 students from 30 classrooms, because it makes the cluster size larger"><label for="1">300 students from 30 classrooms, because it makes the cluster size larger</label><br><input type="radio" name="answer_4089" id="4089_2" value="300 students from 30 classrooms, because more classrooms increase the noise in the data"><label for="2">300 students from 30 classrooms, because more classrooms increase the noise in the data</label><br><input type="radio" name="answer_4089" id="4089_3" value="300 students from 60 classrooms, because the larger sample size for the classroom level makes tau^2_0 smaller"><label for="3">300 students from 60 classrooms, because the larger sample size for the classroom level makes tau^2_0 smaller</label><br><input type="radio" name="answer_4089" id="4089_4" value="300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients"><label for="4">300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients</label><br><input type="submit" value="check">
+<form name="form_3404" onsubmit="return validate_form_3404()" method="post">
+<input type="radio" name="answer_3404" id="3404_1" value="300 students from 30 classrooms, because it makes the cluster size larger"><label for="1">300
+students from 30 classrooms, because it makes the cluster size
+larger</label><br><input type="radio" name="answer_3404" id="3404_2" value="300 students from 30 classrooms, because more classrooms increase the noise in the data"><label for="2">300
+students from 30 classrooms, because more classrooms increase the noise
+in the
+data</label><br><input type="radio" name="answer_3404" id="3404_3" value="300 students from 60 classrooms, because the larger sample size for the classroom level makes tau^2_0 smaller"><label for="3">300
+students from 60 classrooms, because the larger sample size for the
+classroom level makes tau^2_0
+smaller</label><br><input type="radio" name="answer_3404" id="3404_4" value="300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients"><label for="4">300
+students from 60 classrooms, because the larger sample size for the
+classroom level gives more power for level-2
+coefficients</label><br><input type="submit" value="check">
 </form>
-<p id="result_4089">
+<p id="result_3404">
 </p>
-<script> function validate_form_4089() {var x, text; var x = document.forms["form_4089"]["answer_4089"].value;if (x == "300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_4089').innerHTML = text; return false;} </script>
+<script> function validate_form_3404() {var x, text; var x = document.forms["form_3404"]["answer_3404"].value;if (x == "300 students from 60 classrooms, because the larger sample size for the classroom level gives more power for level-2 coefficients"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_3404').innerHTML = text; return false;} </script>
 </div>
 <h3 id="quiz-solution">Quiz solution</h3>
 <p>Quiz solution <a href="week13_quiz_solution.pdf">here</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2319,7 +2392,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

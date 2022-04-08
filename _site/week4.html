@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2094,6 +2094,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2112,6 +2115,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2126,7 +2132,8 @@ R Codes
 <h1>Week 4</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Effect Decomposition, Random Coefficient Model, and Cross-level Interactions</p></p>
+<p><p>Effect Decomposition, Random Coefficient Model, and Cross-level
+Interactions</p></p>
 </div>
 
 
@@ -2147,14 +2154,18 @@ R Codes
 <li><a href="#decomposing-effects">Decomposing Effects</a>
 <ul>
 <li><a href="#betweenwithin-effects">Between/within effects</a></li>
-<li><a href="#path-diagram-and-equations">Path diagram and equations</a></li>
-<li><a href="#interpret-the-betweenwithin-effects">Interpret the between/within effects</a></li>
+<li><a href="#path-diagram-and-equations">Path diagram and
+equations</a></li>
+<li><a href="#interpret-the-betweenwithin-effects">Interpret the
+between/within effects</a></li>
 </ul></li>
 <li><a href="#contextual-effects">Contextual Effects</a></li>
-<li><a href="#random-slopesrandom-coefficients">Random Slopes/Random Coefficients</a>
+<li><a href="#random-slopesrandom-coefficients">Random Slopes/Random
+Coefficients</a>
 <ul>
 <li><a href="#developing-intuition">Developing intuition</a></li>
-<li><a href="#equations-and-path-diagram">Equations and path diagram</a></li>
+<li><a href="#equations-and-path-diagram">Equations and path
+diagram</a></li>
 <li><a href="#interpretations">Interpretations</a></li>
 </ul></li>
 <li><a href="#cross-level-interaction">Cross-Level Interaction</a></li>
@@ -2166,10 +2177,12 @@ R Codes
 <p>By the end of this module, you will be able to</p>
 <ul>
 <li>Explain what the ecological fallacy is</li>
-<li>Use <strong>cluster-mean/group-mean centering</strong> to decompose the effect of a lv-1 predictor</li>
+<li>Use <strong>cluster-mean/group-mean centering</strong> to decompose
+the effect of a lv-1 predictor</li>
 <li>Define <strong>contextual effects</strong></li>
 <li>Explain the concept of <strong>random slopes</strong></li>
-<li>Analyze and interpret <strong>cross-level interaction</strong> effects</li>
+<li>Analyze and interpret <strong>cross-level interaction</strong>
+effects</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
 <ol type="1">
@@ -2178,27 +2191,36 @@ R Codes
 <ul>
 <li>Snijders &amp; Bosker ch 4.6, 5.1–5.3</li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
 <li>Complete Homework 4</li>
-<li>Now that you have learned the basics of MLM, start thinking about your project (Prospectus due around Oct 18)</li>
+<li>Now that you have learned the basics of MLM, start thinking about
+your project (Prospectus due around Oct 18)</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p>You can view and download the slides here: <a href="slides/04_adding_level_1-predictor.pdf" target="_blank">PDF</a></p>
+<p>You can view and download the slides here: <a
+href="slides/04_adding_level_1-predictor.pdf"
+target="_blank">PDF</a></p>
 <h2 id="overview">Overview</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/0bIXkUTEC3U" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: The Type I error inflation problem when using OLS regression for clustered data applies to</p>
+<p>Check your learning: The Type I error inflation problem when using
+OLS regression for clustered data applies to</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_40527" onsubmit="return validate_form_40527()" method="post">
-<input type="radio" name="answer_40527" id="40527_1" value="Level-1 predictors"><label for="1">Level-1 predictors</label><br><input type="radio" name="answer_40527" id="40527_2" value="Level-2 predictors"><label for="2">Level-2 predictors</label><br><input type="radio" name="answer_40527" id="40527_3" value="Level-2 predictors and most level-1 predictors"><label for="3">Level-2 predictors and most level-1 predictors</label><br><input type="submit" value="check">
+<form name="form_19668" onsubmit="return validate_form_19668()" method="post">
+<input type="radio" name="answer_19668" id="19668_1" value="Level-1 predictors"><label for="1">Level-1
+predictors</label><br><input type="radio" name="answer_19668" id="19668_2" value="Level-2 predictors"><label for="2">Level-2
+predictors</label><br><input type="radio" name="answer_19668" id="19668_3" value="Level-2 predictors and most level-1 predictors"><label for="3">Level-2
+predictors and most level-1
+predictors</label><br><input type="submit" value="check">
 </form>
-<p id="result_40527">
+<p id="result_19668">
 </p>
-<script> function validate_form_40527() {var x, text; var x = document.forms["form_40527"]["answer_40527"].value;if (x == "Level-2 predictors and most level-1 predictors"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_40527').innerHTML = text; return false;} </script>
+<script> function validate_form_19668() {var x, text; var x = document.forms["form_19668"]["answer_19668"].value;if (x == "Level-2 predictors and most level-1 predictors"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_19668').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="ecological-fallacy">Ecological Fallacy</h2>
@@ -2207,33 +2229,54 @@ R Codes
 <iframe src="https://www.youtube.com/embed/4SnA5Du4E-c" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In a <a href="https://blogs.scientificamerican.com/the-curious-wavefunction/chocolate-consumption-and-nobel-prizes-a-bizarre-juxtaposition-if-there-ever-was-one/">“bizarre” research finding</a> that found a correlation between chocolate consumption and number of Nobel prize winners at the country level, which of the following is reasonable to infer?</p>
+<p>Check your learning: In a <a
+href="https://blogs.scientificamerican.com/the-curious-wavefunction/chocolate-consumption-and-nobel-prizes-a-bizarre-juxtaposition-if-there-ever-was-one/">“bizarre”
+research finding</a> that found a correlation between chocolate
+consumption and number of Nobel prize winners at the country level,
+which of the following is reasonable to infer?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_44040" onsubmit="return validate_form_44040()" method="post">
-<input type="radio" name="answer_44040" id="44040_1" value="That those who eat more chocolate are more likely to win a nobel prize"><label for="1">That those who eat more chocolate are more likely to win a nobel prize</label><br><input type="radio" name="answer_44040" id="44040_2" value="That nutritional contents in chocolate is related to cognitive functioning"><label for="2">That nutritional contents in chocolate is related to cognitive functioning</label><br><input type="radio" name="answer_44040" id="44040_3" value="That there are potential third variables that relate to both a country's chocolate consumption level and the number of Nobel prize winners"><label for="3">That there are potential third variables that relate to both a country’s chocolate consumption level and the number of Nobel prize winners</label><br><input type="submit" value="check">
+<form name="form_33515" onsubmit="return validate_form_33515()" method="post">
+<input type="radio" name="answer_33515" id="33515_1" value="That those who eat more chocolate are more likely to win a nobel prize"><label for="1">That
+those who eat more chocolate are more likely to win a nobel
+prize</label><br><input type="radio" name="answer_33515" id="33515_2" value="That nutritional contents in chocolate is related to cognitive functioning"><label for="2">That
+nutritional contents in chocolate is related to cognitive
+functioning</label><br><input type="radio" name="answer_33515" id="33515_3" value="That there are potential third variables that relate to both a country's chocolate consumption level and the number of Nobel prize winners"><label for="3">That
+there are potential third variables that relate to both a country’s
+chocolate consumption level and the number of Nobel prize
+winners</label><br><input type="submit" value="check">
 </form>
-<p id="result_44040">
+<p id="result_33515">
 </p>
-<script> function validate_form_44040() {var x, text; var x = document.forms["form_44040"]["answer_44040"].value;if (x == "That there are potential third variables that relate to both a country's chocolate consumption level and the number of Nobel prize winners"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_44040').innerHTML = text; return false;} </script>
+<script> function validate_form_33515() {var x, text; var x = document.forms["form_33515"]["answer_33515"].value;if (x == "That there are potential third variables that relate to both a country's chocolate consumption level and the number of Nobel prize winners"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_33515').innerHTML = text; return false;} </script>
 </div>
-<p>Check your learning: Summarize the “Big-Fish-Little-Pond Effect” in terms of how a person’s own academic performance and the overall performance of the person’s school on academic self-concept.</p>
+<p>Check your learning: Summarize the “Big-Fish-Little-Pond Effect” in
+terms of how a person’s own academic performance and the overall
+performance of the person’s school on academic self-concept.</p>
 <hr />
 <h2 id="decomposing-effects">Decomposing Effects</h2>
 <h3 id="betweenwithin-effects">Between/within effects</h3>
-<p>Note: What I called “cluster-mean centering” is the same as “within-group centering” in Snijders &amp; Bosker (2012)</p>
+<p>Note: What I called “cluster-mean centering” is the same as
+“within-group centering” in Snijders &amp; Bosker (2012)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/6h1U6aZmohY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: Why do we need to separate a level-1 predictor into two variables in the model?</p>
+<p>Check your learning: Why do we need to separate a level-1 predictor
+into two variables in the model?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_34707" onsubmit="return validate_form_34707()" method="post">
-<input type="radio" name="answer_34707" id="34707_1" value="Because the slope of the level-1 predictor and that of its cluster means may be different"><label for="1">Because the slope of the level-1 predictor and that of its cluster means may be different</label><br><input type="radio" name="answer_34707" id="34707_2" value="Because there is an interaction between the predictor and the cluster variable"><label for="2">Because there is an interaction between the predictor and the cluster variable</label><br><input type="radio" name="answer_34707" id="34707_3" value="Because the intraclass correlation for any level-1 predictor will be zero"><label for="3">Because the intraclass correlation for any level-1 predictor will be zero</label><br><input type="submit" value="check">
+<form name="form_15250" onsubmit="return validate_form_15250()" method="post">
+<input type="radio" name="answer_15250" id="15250_1" value="Because the slope of the level-1 predictor and that of its cluster means may be different"><label for="1">Because
+the slope of the level-1 predictor and that of its cluster means may be
+different</label><br><input type="radio" name="answer_15250" id="15250_2" value="Because there is an interaction between the predictor and the cluster variable"><label for="2">Because
+there is an interaction between the predictor and the cluster
+variable</label><br><input type="radio" name="answer_15250" id="15250_3" value="Because the intraclass correlation for any level-1 predictor will be zero"><label for="3">Because
+the intraclass correlation for any level-1 predictor will be
+zero</label><br><input type="submit" value="check">
 </form>
-<p id="result_34707">
+<p id="result_15250">
 </p>
-<script> function validate_form_34707() {var x, text; var x = document.forms["form_34707"]["answer_34707"].value;if (x == "Because the slope of the level-1 predictor and that of its cluster means may be different"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_34707').innerHTML = text; return false;} </script>
+<script> function validate_form_15250() {var x, text; var x = document.forms["form_15250"]["answer_15250"].value;if (x == "Because the slope of the level-1 predictor and that of its cluster means may be different"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_15250').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="path-diagram-and-equations">Path diagram and equations</h3>
@@ -2242,32 +2285,45 @@ R Codes
 <iframe src="https://www.youtube.com/embed/ZhLOtzzxIRk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Thinking exercise: Based on the between-cluster level component in the path diagram and in the equations, <code>meanses</code> can predict</p>
+<p>Thinking exercise: Based on the between-cluster level component in
+the path diagram and in the equations, <code>meanses</code> can
+predict</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_21976" onsubmit="return validate_form_21976()" method="post">
-<input type="radio" name="answer_21976" id="21976_1" value="Both the school-level math achievement and a student's relative standing within a school"><label for="1">Both the school-level math achievement and a student’s relative standing within a school</label><br><input type="radio" name="answer_21976" id="21976_2" value="Only a student's relative standing within a school"><label for="2">Only a student’s relative standing within a school</label><br><input type="radio" name="answer_21976" id="21976_3" value="Only the school means of math achievement"><label for="3">Only the school means of math achievement</label><br><input type="submit" value="check">
+<form name="form_28370" onsubmit="return validate_form_28370()" method="post">
+<input type="radio" name="answer_28370" id="28370_1" value="Both the school-level math achievement and a student's relative standing within a school"><label for="1">Both
+the school-level math achievement and a student’s relative standing
+within a
+school</label><br><input type="radio" name="answer_28370" id="28370_2" value="Only a student's relative standing within a school"><label for="2">Only
+a student’s relative standing within a
+school</label><br><input type="radio" name="answer_28370" id="28370_3" value="Only the school means of math achievement"><label for="3">Only
+the school means of math
+achievement</label><br><input type="submit" value="check">
 </form>
-<p id="result_21976">
+<p id="result_28370">
 </p>
-<script> function validate_form_21976() {var x, text; var x = document.forms["form_21976"]["answer_21976"].value;if (x == "Only the school means of math achievement"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_21976').innerHTML = text; return false;} </script>
+<script> function validate_form_28370() {var x, text; var x = document.forms["form_28370"]["answer_28370"].value;if (x == "Only the school means of math achievement"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_28370').innerHTML = text; return false;} </script>
 </div>
-<p>Check your learning: Based on the results shown in the video, is the school-level slope or the student-level slope larger for the association between SES and math achievement?</p>
+<p>Check your learning: Based on the results shown in the video, is the
+school-level slope or the student-level slope larger for the association
+between SES and math achievement?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_56017" onsubmit="return validate_form_56017()" method="post">
-<input type="radio" name="answer_56017" id="56017_1" value="School-level"><label for="1">School-level</label><br><input type="radio" name="answer_56017" id="56017_2" value="Student-level"><label for="2">Student-level</label><br><input type="submit" value="check">
+<form name="form_17656" onsubmit="return validate_form_17656()" method="post">
+<input type="radio" name="answer_17656" id="17656_1" value="School-level"><label for="1">School-level</label><br><input type="radio" name="answer_17656" id="17656_2" value="Student-level"><label for="2">Student-level</label><br><input type="submit" value="check">
 </form>
-<p id="result_56017">
+<p id="result_17656">
 </p>
-<script> function validate_form_56017() {var x, text; var x = document.forms["form_56017"]["answer_56017"].value;if (x == "School-level"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_56017').innerHTML = text; return false;} </script>
+<script> function validate_form_17656() {var x, text; var x = document.forms["form_17656"]["answer_17656"].value;if (x == "School-level"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_17656').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<h3 id="interpret-the-betweenwithin-effects">Interpret the between/within effects</h3>
+<h3 id="interpret-the-betweenwithin-effects">Interpret the
+between/within effects</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/Pet7lt7Nb68" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Try it yourself: Obtain the predicted <code>mathach</code> for Student B, and compare with Students A and C.</p>
+<p>Try it yourself: Obtain the predicted <code>mathach</code> for
+Student B, and compare with Students A and C.</p>
 <hr />
 <h2 id="contextual-effects">Contextual Effects</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2277,29 +2333,45 @@ R Codes
 </div>
 <p>Check your learning: The contextual effect is</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_17275" onsubmit="return validate_form_17275()" method="post">
-<input type="radio" name="answer_17275" id="17275_1" value="The predicted difference in the outcome for every unit difference in the cluster mean predictor, holding constant the level-1 predictor"><label for="1">The predicted difference in the outcome for every unit difference in the cluster mean predictor, holding constant the level-1 predictor</label><br><input type="radio" name="answer_17275" id="17275_2" value="The predicted difference in the outcome for every unit difference in the level-1 predictor, within a given cluster"><label for="2">The predicted difference in the outcome for every unit difference in the level-1 predictor, within a given cluster</label><br><input type="radio" name="answer_17275" id="17275_3" value="The between-level effect"><label for="3">The between-level effect</label><br><input type="submit" value="check">
+<form name="form_67677" onsubmit="return validate_form_67677()" method="post">
+<input type="radio" name="answer_67677" id="67677_1" value="The predicted difference in the outcome for every unit difference in the cluster mean predictor, holding constant the level-1 predictor"><label for="1">The
+predicted difference in the outcome for every unit difference in the
+cluster mean predictor, holding constant the level-1
+predictor</label><br><input type="radio" name="answer_67677" id="67677_2" value="The predicted difference in the outcome for every unit difference in the level-1 predictor, within a given cluster"><label for="2">The
+predicted difference in the outcome for every unit difference in the
+level-1 predictor, within a given
+cluster</label><br><input type="radio" name="answer_67677" id="67677_3" value="The between-level effect"><label for="3">The
+between-level effect</label><br><input type="submit" value="check">
 </form>
-<p id="result_17275">
+<p id="result_67677">
 </p>
-<script> function validate_form_17275() {var x, text; var x = document.forms["form_17275"]["answer_17275"].value;if (x == "The predicted difference in the outcome for every unit difference in the cluster mean predictor, holding constant the level-1 predictor"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_17275').innerHTML = text; return false;} </script>
+<script> function validate_form_67677() {var x, text; var x = document.forms["form_67677"]["answer_67677"].value;if (x == "The predicted difference in the outcome for every unit difference in the cluster mean predictor, holding constant the level-1 predictor"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_67677').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<h2 id="random-slopesrandom-coefficients">Random Slopes/Random Coefficients</h2>
+<h2 id="random-slopesrandom-coefficients">Random Slopes/Random
+Coefficients</h2>
 <h3 id="developing-intuition">Developing intuition</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/K6Q9wbsdgXw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In a random-coefficient model, if there are <span class="math inline">\(J\)</span> cluster, there are</p>
+<p>Check your learning: In a random-coefficient model, if there are
+<span class="math inline">\(J\)</span> cluster, there are</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_94133" onsubmit="return validate_form_94133()" method="post">
-<input type="radio" name="answer_94133" id="94133_1" value="one intercept, two slopes"><label for="1">one intercept, two slopes</label><br><input type="radio" name="answer_94133" id="94133_2" value="one intercept, J slopes"><label for="2">one intercept, J slopes</label><br><input type="radio" name="answer_94133" id="94133_3" value="J intercepts, one slopes"><label for="3">J intercepts, one slopes</label><br><input type="radio" name="answer_94133" id="94133_4" value="J intercepts, J slopes"><label for="4">J intercepts, J slopes</label><br><input type="submit" value="check">
+<form name="form_27624" onsubmit="return validate_form_27624()" method="post">
+<input type="radio" name="answer_27624" id="27624_1" value="one intercept, two slopes"><label for="1">one
+intercept, two
+slopes</label><br><input type="radio" name="answer_27624" id="27624_2" value="one intercept, J slopes"><label for="2">one
+intercept, J
+slopes</label><br><input type="radio" name="answer_27624" id="27624_3" value="J intercepts, one slopes"><label for="3">J
+intercepts, one
+slopes</label><br><input type="radio" name="answer_27624" id="27624_4" value="J intercepts, J slopes"><label for="4">J
+intercepts, J slopes</label><br><input type="submit" value="check">
 </form>
-<p id="result_94133">
+<p id="result_27624">
 </p>
-<script> function validate_form_94133() {var x, text; var x = document.forms["form_94133"]["answer_94133"].value;if (x == "J intercepts, J slopes"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_94133').innerHTML = text; return false;} </script>
+<script> function validate_form_27624() {var x, text; var x = document.forms["form_27624"]["answer_27624"].value;if (x == "J intercepts, J slopes"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_27624').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="equations-and-path-diagram">Equations and path diagram</h3>
@@ -2308,17 +2380,27 @@ R Codes
 <iframe src="https://www.youtube.com/embed/_jXGrTbHft4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: Which combination of <span class="math inline">\(\tau_0\)</span> and <span class="math inline">\(\tau_1\)</span> best describes the graph below?</p>
+<p>Check your learning: Which combination of <span
+class="math inline">\(\tau_0\)</span> and <span
+class="math inline">\(\tau_1\)</span> best describes the graph
+below?</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="week4_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_96933" onsubmit="return validate_form_96933()" method="post">
-<input type="radio" name="answer_96933" id="96933_1" value="tau_0 = 0.1, tau_1 = 0.2"><label for="1">tau_0 = 0.1, tau_1 = 0.2</label><br><input type="radio" name="answer_96933" id="96933_2" value="tau_0 = 0, tau_1 = 0.2"><label for="2">tau_0 = 0, tau_1 = 0.2</label><br><input type="radio" name="answer_96933" id="96933_3" value="tau_0 = 0.1, tau_1 = 0"><label for="3">tau_0 = 0.1, tau_1 = 0</label><br><input type="radio" name="answer_96933" id="96933_4" value="tau_0 = 0, tau_1 = 0"><label for="4">tau_0 = 0, tau_1 = 0</label><br><input type="submit" value="check">
+<form name="form_87773" onsubmit="return validate_form_87773()" method="post">
+<input type="radio" name="answer_87773" id="87773_1" value="tau_0 = 0.1, tau_1 = 0.2"><label for="1">tau_0
+= 0.1, tau_1 =
+0.2</label><br><input type="radio" name="answer_87773" id="87773_2" value="tau_0 = 0, tau_1 = 0.2"><label for="2">tau_0
+= 0, tau_1 =
+0.2</label><br><input type="radio" name="answer_87773" id="87773_3" value="tau_0 = 0.1, tau_1 = 0"><label for="3">tau_0
+= 0.1, tau_1 =
+0</label><br><input type="radio" name="answer_87773" id="87773_4" value="tau_0 = 0, tau_1 = 0"><label for="4">tau_0
+= 0, tau_1 = 0</label><br><input type="submit" value="check">
 </form>
-<p id="result_96933">
+<p id="result_87773">
 </p>
-<script> function validate_form_96933() {var x, text; var x = document.forms["form_96933"]["answer_96933"].value;if (x == "tau_0 = 0.1, tau_1 = 0.2"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_96933').innerHTML = text; return false;} </script>
+<script> function validate_form_87773() {var x, text; var x = document.forms["form_87773"]["answer_87773"].value;if (x == "tau_0 = 0.1, tau_1 = 0.2"){text = 'You are on your way to be an MLM expert :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_87773').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="interpretations">Interpretations</h3>
@@ -2327,34 +2409,53 @@ R Codes
 <iframe src="https://www.youtube.com/embed/o6PDE4IEFfg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In a random-slope model, if <span class="math inline">\(\gamma_{10}\)</span> (the average slope) = 0.2, <span class="math inline">\(\tau^2_1 = 0.04\)</span>, what is the 68% plausible range for the slopes across clusters?</p>
+<p>Check your learning: In a random-slope model, if <span
+class="math inline">\(\gamma_{10}\)</span> (the average slope) = 0.2,
+<span class="math inline">\(\tau^2_1 = 0.04\)</span>, what is the 68%
+plausible range for the slopes across clusters?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_30155" onsubmit="return validate_form_30155()" method="post">
-<input type="radio" name="answer_30155" id="30155_1" value="[0, 0.4]"><label for="1">[0, 0.4]</label><br><input type="radio" name="answer_30155" id="30155_2" value="[-0.48, 0.88]"><label for="2">[-0.48, 0.88]</label><br><input type="radio" name="answer_30155" id="30155_3" value="[0.16, 0.24]"><label for="3">[0.16, 0.24]</label><br><input type="radio" name="answer_30155" id="30155_4" value="[0.12, 0.28]"><label for="4">[0.12, 0.28]</label><br><input type="submit" value="check">
+<form name="form_5347" onsubmit="return validate_form_5347()" method="post">
+<input type="radio" name="answer_5347" id="5347_1" value="[0, 0.4]"><label for="1">[0,
+0.4]</label><br><input type="radio" name="answer_5347" id="5347_2" value="[-0.48, 0.88]"><label for="2">[-0.48,
+0.88]</label><br><input type="radio" name="answer_5347" id="5347_3" value="[0.16, 0.24]"><label for="3">[0.16,
+0.24]</label><br><input type="radio" name="answer_5347" id="5347_4" value="[0.12, 0.28]"><label for="4">[0.12,
+0.28]</label><br><input type="submit" value="check">
 </form>
-<p id="result_30155">
+<p id="result_5347">
 </p>
-<script> function validate_form_30155() {var x, text; var x = document.forms["form_30155"]["answer_30155"].value;if (x == "[0, 0.4]"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_30155').innerHTML = text; return false;} </script>
+<script> function validate_form_5347() {var x, text; var x = document.forms["form_5347"]["answer_5347"].value;if (x == "[0, 0.4]"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_5347').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="cross-level-interaction">Cross-Level Interaction</h2>
-<p><span style="color:red">In the video, there was a mistake in the path diagram, in that one of the circle should be <span class="math inline">\(\beta_{1j}\)</span>, not <span class="math inline">\(\beta_{0j}\)</span></span></p>
+<p><span style="color:red">In the video, there was a mistake in the path
+diagram, in that one of the circle should be <span
+class="math inline">\(\beta_{1j}\)</span>, not <span
+class="math inline">\(\beta_{0j}\)</span></span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/7RzVD02fZHw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: Conceptually, a cross-level interaction is the same as</p>
+<p>Check your learning: Conceptually, a cross-level interaction is the
+same as</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_16627" onsubmit="return validate_form_16627()" method="post">
-<input type="radio" name="answer_16627" id="16627_1" value="An interaction between two level-1 predictors"><label for="1">An interaction between two level-1 predictors</label><br><input type="radio" name="answer_16627" id="16627_2" value="Using a cluster-level predictor to predict variations in level-1 slopes"><label for="2">Using a cluster-level predictor to predict variations in level-1 slopes</label><br><input type="radio" name="answer_16627" id="16627_3" value="Random slopes"><label for="3">Random slopes</label><br><input type="radio" name="answer_16627" id="16627_4" value="Adding the main effect of a cluster-level predictor"><label for="4">Adding the main effect of a cluster-level predictor</label><br><input type="submit" value="check">
+<form name="form_81388" onsubmit="return validate_form_81388()" method="post">
+<input type="radio" name="answer_81388" id="81388_1" value="An interaction between two level-1 predictors"><label for="1">An
+interaction between two level-1
+predictors</label><br><input type="radio" name="answer_81388" id="81388_2" value="Using a cluster-level predictor to predict variations in level-1 slopes"><label for="2">Using
+a cluster-level predictor to predict variations in level-1
+slopes</label><br><input type="radio" name="answer_81388" id="81388_3" value="Random slopes"><label for="3">Random
+slopes</label><br><input type="radio" name="answer_81388" id="81388_4" value="Adding the main effect of a cluster-level predictor"><label for="4">Adding
+the main effect of a cluster-level
+predictor</label><br><input type="submit" value="check">
 </form>
-<p id="result_16627">
+<p id="result_81388">
 </p>
-<script> function validate_form_16627() {var x, text; var x = document.forms["form_16627"]["answer_16627"].value;if (x == "Using a cluster-level predictor to predict variations in level-1 slopes"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_16627').innerHTML = text; return false;} </script>
+<script> function validate_form_81388() {var x, text; var x = document.forms["form_81388"]["answer_81388"].value;if (x == "Using a cluster-level predictor to predict variations in level-1 slopes"){text = 'Well done :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_81388').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2380,7 +2481,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

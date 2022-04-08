@@ -295,7 +295,7 @@ curran_long %>%
 ```
 
 
-```{r m_pw, cache=TRUE, results='hide'}
+```{r m_pw}
 # Fit the piecewise growth model
 m_pw <- glmmTMB(read ~ phase1 + phase2 + (phase1 + phase2 | id),
   data = curran_long, REML = TRUE,
@@ -376,7 +376,7 @@ Time-invariant covariate = Another way to say a level-2 variable
 
 You can add `homecog` and its interaction to the model with age as predictor. Just that now there are two interaction terms: one with the first piece and the other with the second piece.
 
-```{r m_pw_homecog, cache=TRUE, results='hide'}
+```{r m_pw_homecog}
 # Add `homecog` and its interaction with growth
 # First, center homecog to 9
 curran_long$homecog9 <- curran_long$homecog - 9

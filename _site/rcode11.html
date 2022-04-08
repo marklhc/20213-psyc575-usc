@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2044,12 +2044,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2092,6 +2092,8 @@ Lectures
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
 <a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2111,6 +2113,8 @@ R Codes
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
 <a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,22 +2138,29 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a></li>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a></li>
 <li><a href="#predictions">Predictions</a>
 <ul>
 <li><a href="#prediction-error">Prediction Error</a></li>
 </ul></li>
-<li><a href="#average-in-sample-prediction-error">Average In-Sample Prediction Error</a></li>
-<li><a href="#out-of-sample-prediction-error">Out-Of-Sample Prediction Error</a>
+<li><a href="#average-in-sample-prediction-error">Average In-Sample
+Prediction Error</a></li>
+<li><a href="#out-of-sample-prediction-error">Out-Of-Sample Prediction
+Error</a>
 <ul>
 <li><a href="#cross-validation">Cross-Validation</a></li>
-<li><a href="#leave-one-out-loo-cross-validation">Leave-one-out (LOO) cross validation</a></li>
-<li><a href="#a-remark-on-cross-validation-for-hierarchical-data">A Remark on Cross-Validation for Hierarchical Data</a></li>
+<li><a href="#leave-one-out-loo-cross-validation">Leave-one-out (LOO)
+cross validation</a></li>
+<li><a href="#a-remark-on-cross-validation-for-hierarchical-data">A
+Remark on Cross-Validation for Hierarchical Data</a></li>
 <li><a href="#information-criteria">Information Criteria</a></li>
 </ul></li>
 <li><a href="#model-comparisons">Model Comparisons</a></li>
 <li><a href="#bonus-model-averaging">Bonus: Model Averaging</a></li>
-<li><a href="#bonus-lasso-least-absolute-shrinkage-and-selection-operator">Bonus: Lasso (Least Absolute Shrinkage and Selection Operator)</a></li>
+<li><a
+href="#bonus-lasso-least-absolute-shrinkage-and-selection-operator">Bonus:
+Lasso (Least Absolute Shrinkage and Selection Operator)</a></li>
 </ul>
 </nav>
 </div>
@@ -2158,8 +2169,10 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week11-predictions-in-MLM.Rmd">week11-predictions-in-MLM.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week11-predictions-in-MLM.Rmd">week11-predictions-in-MLM.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2174,11 +2187,12 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>MuMIn</span><span class='op'>)</span>  <span class='co'># for model averaging</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for interaction plots</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
-<p>The data is the first wave of the Cognition, Health, and Aging Project.</p>
+<p>The data is the first wave of the Cognition, Health, and Aging
+Project.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Download the data from</span>
@@ -2190,22 +2204,23 @@ R Codes
 <span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span>
   <span class='fu'><a href='https://rdrr.io/r/base/connections.html'>unz</a></span><span class='op'>(</span><span class='va'>zip_data</span>,
       <span class='st'>"SPSS_Chapter8/SPSS_Chapter8.sav"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Center mood (originally 1-5) at 1 for interpretation (so it becomes 0-4)</span>
   <span class='co'># Also women to factor</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood</span> <span class='op'>-</span> <span class='fl'>1</span>,
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood</span> <span class='op'>-</span> <span class='fl'>1</span>,
          women <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>women</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>,
                         labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"men"</span>, <span class='st'>"women"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p>The data is already in long format. Let’s first do a subsample of 30 participants:</p>
+<p>The data is already in long format. Let’s first do a subsample of 30
+participants:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1719</span><span class='op'>)</span>
 <span class='va'>random_persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>stress_data</span><span class='op'>$</span><span class='va'>PersonID</span><span class='op'>)</span>, <span class='fl'>30</span><span class='op'>)</span>
-<span class='va'>stress_sub</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span>
+<span class='va'>stress_sub</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_persons</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2213,31 +2228,35 @@ R Codes
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># First, separate the time-varying variables into within-person and</span>
 <span class='co'># between-person levels</span>
-<span class='va'>stress_sub</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='va'>stress_sub</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># The `across()` function can be used to operate the same procedure on </span>
   <span class='co'># multiple variables</span>
-  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
                 <span class='co'># The `.` means the variable to be operated on</span>
                 <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"pm"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
-                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
 <p>Let’s use the model from last week</p>
-<p>Level 1: <span class="math display">\[\text{symptoms}_{ti} = \beta_{0i} + \beta_{1i} \text{mood1_pmc}_{ti} + e_{ti}\]</span> Level 2: <span class="math display">\[
+<p>Level 1: <span class="math display">\[\text{symptoms}_{ti} =
+\beta_{0i} + \beta_{1i} \text{mood1_pmc}_{ti} + e_{ti}\]</span> Level 2:
+<span class="math display">\[
   \begin{aligned}
-    \beta_{0i} &amp; = \gamma_{00} + \gamma_{01} \text{mood1_pm}_{i} + 
-                   \gamma_{02} \text{women}_i + 
-                   \gamma_{03} \text{mood1_pm}_{i} \times \text{women}_i 
+    \beta_{0i} &amp; = \gamma_{00} + \gamma_{01} \text{mood1_pm}_{i} +
+                   \gamma_{02} \text{women}_i +
+                   \gamma_{03} \text{mood1_pm}_{i} \times \text{women}_i
                    + u_{0i}  \\
     \beta_{1i} &amp; = \gamma_{10} + \gamma_{11} \text{women}_i + u_{1i}
   \end{aligned}
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\gamma_{03}\)</span> = between-person interaction</li>
-<li><span class="math inline">\(\gamma_{11}\)</span> = cross-level interaction</li>
+<li><span class="math inline">\(\gamma_{03}\)</span> = between-person
+interaction</li>
+<li><span class="math inline">\(\gamma_{11}\)</span> = cross-level
+interaction</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2269,36 +2288,41 @@ R Codes
 <pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>pred1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m1</span>, newdata <span class='op'>=</span> <span class='va'>obs1</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.3191718</code></pre>
+<pre><code>&gt;# [1] 0.3192</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Unconditional/marginal prediction</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m1</span>, newdata <span class='op'>=</span> <span class='va'>obs1</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.9219858</code></pre>
+<pre><code>&gt;# [1] 0.922</code></pre>
 </div>
 <h3 id="prediction-error">Prediction Error</h3>
-<p>In the graph below, the 68% predictive intervals are shown in skyblue, whereas the actual data are shown in red. A good statistical model should have good preditive accuracy so that the skyblue dots and the red dots are close; a valid statistical model should have most of the skyblue intervals covering the observed data.</p>
+<p>In the graph below, the 68% predictive intervals are shown in
+skyblue, whereas the actual data are shown in red. A good statistical
+model should have good preditive accuracy so that the skyblue dots and
+the red dots are close; a valid statistical model should have most of
+the skyblue intervals covering the observed data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># Random sample of 9 Persons</span>
-    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, <span class='fl'>9</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># Add a variable to indicate observation number</span>
-    <span class='fu'>mutate</span><span class='op'>(</span>obsid <span class='op'>=</span> <span class='fu'>row_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>obsid</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_point</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"prediction"</span><span class='op'>)</span>, shape <span class='op'>=</span> <span class='fl'>21</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_point</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>symptoms</span>, col <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_segment</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>xend <span class='op'>=</span> <span class='va'>obsid</span>, yend <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Daily symptoms"</span>, col <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>obsid <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/ranking.html'>row_number</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>obsid</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"prediction"</span><span class='op'>)</span>, shape <span class='op'>=</span> <span class='fl'>21</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>symptoms</span>, col <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_segment.html'>geom_segment</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>xend <span class='op'>=</span> <span class='va'>obsid</span>, yend <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='cn'>NULL</span>, y <span class='op'>=</span> <span class='st'>"Daily symptoms"</span>, col <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode11_files/figure-html5/pe-m1-plot-1.png" width="624" /></p>
 </div>
-<h2 id="average-in-sample-prediction-error">Average In-Sample Prediction Error</h2>
+<h2 id="average-in-sample-prediction-error">Average In-Sample Prediction
+Error</h2>
 <p>Let’s consider the prediction error for everyone in the data</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2311,14 +2335,14 @@ R Codes
 <span class='op'>(</span><span class='va'>mse_m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>prederr_all</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 1.036614</code></pre>
+<pre><code>&gt;# [1] 1.037</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The square root of MSE, the root mean squared error (RMSE), can be considered</span>
 <span class='co'># the average prediction error (marginal)</span>
 <span class='op'>(</span><span class='va'>rmse_m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='va'>mse_m1</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 1.018142</code></pre>
+<pre><code>&gt;# [1] 1.018</code></pre>
 </div>
 <p>Let’s now consider a model with more predictors:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2338,7 +2362,8 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>The model does not converge. However, let’s ignore the warning for a second, and check the prediction error:</p>
+<p>The model does not converge. However, let’s ignore the warning for a
+second, and check the prediction error:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>pred_all</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m2</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
@@ -2349,7 +2374,7 @@ R Codes
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>prederr_all</span> <span class='op'>&lt;-</span> <span class='va'>m2</span><span class='op'>$</span><span class='va'>frame</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_all</span>
 <span class='va'>mse_m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>prederr_all</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
-<span class='fu'>tibble</span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
        `In-sample MSE` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>mse_m1</span>, <span class='va'>mse_m2</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2359,29 +2384,41 @@ R Codes
 &gt;# 1 M1              1.04 
 &gt;# 2 M2              0.761</code></pre>
 </div>
-<p>You can see that the MSE drops with the more complex model. Does it mean that this more complex model should be preferred?</p>
-<h2 id="out-of-sample-prediction-error">Out-Of-Sample Prediction Error</h2>
-<p>The problem of using in-sample prediction error to determine which model should be preferred is that the complex model will capture a lot of the noise in the data, making it not generalizable to other sample. In-sample prediction is not very meaningful, because if we already have the data, our interest is usually not to predict them. Instead, in research, we want models that will generalize to other samples. Therefore, learning all the noise in the sample is not a good idea, and will lead to <em>overfitting</em>—having estimates that are not generalizable to other samples.</p>
-<p>To see this, let’s try to use the models we built on the 30 participants to predict <code>symptoms</code> for the remaining 75 participants:</p>
+<p>You can see that the MSE drops with the more complex model. Does it
+mean that this more complex model should be preferred?</p>
+<h2 id="out-of-sample-prediction-error">Out-Of-Sample Prediction
+Error</h2>
+<p>The problem of using in-sample prediction error to determine which
+model should be preferred is that the complex model will capture a lot
+of the noise in the data, making it not generalizable to other sample.
+In-sample prediction is not very meaningful, because if we already have
+the data, our interest is usually not to predict them. Instead, in
+research, we want models that will generalize to other samples.
+Therefore, learning all the noise in the sample is not a good idea, and
+will lead to <em>overfitting</em>—having estimates that are not
+generalizable to other samples.</p>
+<p>To see this, let’s try to use the models we built on the 30
+participants to predict <code>symptoms</code> for the remaining 75
+participants:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Get the remaining data</span>
-<span class='va'>stress_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+<span class='va'>stress_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># Select participants not included in the previous models</span>
-    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># Person-mean centering</span>
-    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># The `across()` function can be used to operate the same procedure on</span>
     <span class='co'># multiple variables</span>
-    <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span>
         <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
         <span class='co'># The `.` means the variable to be operated on</span>
         <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
             <span class='st'>"pm"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
             <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
         <span class='op'>)</span>
-    <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+    <span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># Prediction error from m1</span>
 <span class='va'>pred_all</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m1</span>,
     newdata <span class='op'>=</span> <span class='va'>stress_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span>,
@@ -2397,7 +2434,7 @@ R Codes
 <span class='va'>prederr_all</span> <span class='op'>&lt;-</span> <span class='va'>stress_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_all</span>
 <span class='va'>mse_m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>prederr_all</span><span class='op'>^</span><span class='fl'>2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='co'># Print out-of-sample prediction error</span>
-<span class='fu'>tibble</span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>, 
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>, 
        `Out-of-sample MSE` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>mse_m1</span>, <span class='va'>mse_m2</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2407,11 +2444,35 @@ R Codes
 &gt;# 1 M1                   1.84
 &gt;# 2 M2                   2.47</code></pre>
 </div>
-<p>As you can see from above, the prediction on data not used for building the model is worse. And <code>m2</code> makes much worse out-of-sample prediction than <code>m1</code>, because when the sample size is small relative to the size of the model, a complex model is especially prone to overfitting, as it has many parameters that can be used to capitalize on the noise of the data.</p>
-<p>As suggested before, we should care about out-of-sample prediction error than in-sample prediction error, so in this case <code>m1</code> should be preferred. In practice, however, we don’t usually have the luxury of having another sample for us to get out-of-sample prediction error. So what should we do?</p>
+<p>As you can see from above, the prediction on data not used for
+building the model is worse. And <code>m2</code> makes much worse
+out-of-sample prediction than <code>m1</code>, because when the sample
+size is small relative to the size of the model, a complex model is
+especially prone to overfitting, as it has many parameters that can be
+used to capitalize on the noise of the data.</p>
+<p>As suggested before, we should care about out-of-sample prediction
+error than in-sample prediction error, so in this case <code>m1</code>
+should be preferred. In practice, however, we don’t usually have the
+luxury of having another sample for us to get out-of-sample prediction
+error. So what should we do?</p>
 <h3 id="cross-validation">Cross-Validation</h3>
-<p>A simple solution is cross-validation, which is extremely popular in machine learning. The idea is to split the data into two parts, just like what we did above. Then fit the model in one part, and get the prediction error on the other part. The process is repeated <span class="math inline">\(K\)</span> times for a <span class="math inline">\(K\)</span>-fold cross-validation until the prediction error is obtained on every observation.</p>
-<p>It should be pointed out that <span class="math inline">\(K\)</span>-fold cross-validation, gives a biased estimate of prediction error especially when <span class="math inline">\(K\)</span> is small, but it is extremely intensive when <span class="math inline">\(K\)</span> is large, as it requires refitting the model <span class="math inline">\(K\)</span> times. Below is a demo for doing a 5-fold cross-validation on the training data (with 30 participants) with <code>lme4::lmer()</code> (you can do the same with <code>glmmTMB</code>), which is mainly for you to understand its logic.</p>
+<p>A simple solution is cross-validation, which is extremely popular in
+machine learning. The idea is to split the data into two parts, just
+like what we did above. Then fit the model in one part, and get the
+prediction error on the other part. The process is repeated <span
+class="math inline">\(K\)</span> times for a <span
+class="math inline">\(K\)</span>-fold cross-validation until the
+prediction error is obtained on every observation.</p>
+<p>It should be pointed out that <span
+class="math inline">\(K\)</span>-fold cross-validation, gives a biased
+estimate of prediction error especially when <span
+class="math inline">\(K\)</span> is small, but it is extremely intensive
+when <span class="math inline">\(K\)</span> is large, as it requires
+refitting the model <span class="math inline">\(K\)</span> times. Below
+is a demo for doing a 5-fold cross-validation on the training data (with
+30 participants) with <code>lme4::lmer()</code> (you can do the same
+with <code>glmmTMB</code>), which is mainly for you to understand its
+logic.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Split the index of 30 participants into 5 parts</span>
@@ -2429,10 +2490,10 @@ R Codes
         <span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>women</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>mood1_pmc</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
         data <span class='op'>=</span> <span class='va'>stress_sub</span>,
         <span class='co'># Select specific observations</span>
-        subset <span class='op'>=</span> <span class='op'>!</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='va'>setk</span>
+        subset <span class='op'>=</span> <span class='op'>!</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>setk</span>
     <span class='op'>)</span>
     <span class='co'># Remaining data</span>
-    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='va'>setk</span><span class='op'>)</span>
+    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>setk</span><span class='op'>)</span>
     <span class='co'># Obtain prediction error</span>
     <span class='va'>pred_m1_test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit_m1</span>, newdata <span class='op'>=</span> <span class='va'>stress_sub_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
     <span class='va'>prederr_m1</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_m1_test</span>
@@ -2444,17 +2505,17 @@ R Codes
             <span class='op'>(</span><span class='va'>mood1_pmc</span> <span class='op'>+</span> <span class='va'>stressor</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
         data <span class='op'>=</span> <span class='va'>stress_sub</span>,
         <span class='co'># Select specific observations</span>
-        subset <span class='op'>=</span> <span class='op'>!</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='va'>setk</span>
+        subset <span class='op'>=</span> <span class='op'>!</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>setk</span>
     <span class='op'>)</span>
     <span class='co'># Remaining data</span>
-    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='va'>setk</span><span class='op'>)</span>
+    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>setk</span><span class='op'>)</span>
     <span class='co'># Obtain prediction error</span>
     <span class='va'>pred_m2_test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit_m2</span>, newdata <span class='op'>=</span> <span class='va'>stress_sub_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
     <span class='va'>prederr_m2</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_m2_test</span>
     <span class='va'>sum_prederr_m2</span> <span class='op'>&lt;-</span> <span class='va'>sum_prederr_m2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>prederr_m2</span><span class='op'>^</span><span class='fl'>2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='op'>}</span>
 <span class='co'># MSE (dividing the sum by 150 observations)</span>
-<span class='fu'>tibble</span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
        `5-fold CV MSE` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>sum_prederr_m1</span> <span class='op'>/</span> <span class='fl'>150</span>, <span class='va'>sum_prederr_m2</span> <span class='op'>/</span> <span class='fl'>150</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2468,8 +2529,19 @@ R Codes
 </code></pre>
 </div>
 </div>
-<h3 id="leave-one-out-loo-cross-validation">Leave-one-out (LOO) cross validation</h3>
-<p>A special case of cross-validation is to use <span class="math inline">\(N - 1\)</span> observations to build the model to predict the remaining one observation, and repeat the process <span class="math inline">\(N\)</span> times. This is the LOO, which is essentially an <span class="math inline">\(N\)</span>-fold cross validation. While this may first seem very unrealistic given that the model needs to be fitted <span class="math inline">\(N\)</span> times, there are computational shortcuts or approximations that can make this much more efficient, and one of them that uses the Pareto smoothed importance sampling (PSIS) is available for models fitted with <code>brms</code>. So we can do</p>
+<h3 id="leave-one-out-loo-cross-validation">Leave-one-out (LOO) cross
+validation</h3>
+<p>A special case of cross-validation is to use <span
+class="math inline">\(N - 1\)</span> observations to build the model to
+predict the remaining one observation, and repeat the process <span
+class="math inline">\(N\)</span> times. This is the LOO, which is
+essentially an <span class="math inline">\(N\)</span>-fold cross
+validation. While this may first seem very unrealistic given that the
+model needs to be fitted <span class="math inline">\(N\)</span> times,
+there are computational shortcuts or approximations that can make this
+much more efficient, and one of them that uses the Pareto smoothed
+importance sampling (PSIS) is available for models fitted with
+<code>brms</code>. So we can do</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Initialize the sum of squared prediction errors for each model</span>
@@ -2484,7 +2556,7 @@ R Codes
         subset <span class='op'>=</span> <span class='va'>PersonID</span> <span class='op'>!=</span> <span class='va'>personk</span>
     <span class='op'>)</span>
     <span class='co'># Data for personk</span>
-    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>==</span> <span class='va'>personk</span><span class='op'>)</span>
+    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>==</span> <span class='va'>personk</span><span class='op'>)</span>
     <span class='co'># Obtain prediction error</span>
     <span class='va'>pred_m1_test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit_m1</span>, newdata <span class='op'>=</span> <span class='va'>stress_sub_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
     <span class='va'>prederr_m1</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_m1_test</span>
@@ -2499,14 +2571,14 @@ R Codes
         subset <span class='op'>=</span> <span class='va'>PersonID</span> <span class='op'>!=</span> <span class='va'>personk</span>
     <span class='op'>)</span>
     <span class='co'># Data for personk</span>
-    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>==</span> <span class='va'>personk</span><span class='op'>)</span>
+    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>==</span> <span class='va'>personk</span><span class='op'>)</span>
     <span class='co'># Obtain prediction error</span>
     <span class='va'>pred_m2_test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit_m2</span>, newdata <span class='op'>=</span> <span class='va'>stress_sub_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
     <span class='va'>prederr_m2</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_m2_test</span>
     <span class='va'>sum_prederr_m2</span> <span class='op'>&lt;-</span> <span class='va'>sum_prederr_m2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>prederr_m2</span><span class='op'>^</span><span class='fl'>2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='op'>}</span>
 <span class='co'># MSE (dividing the sum by 150 observations)</span>
-<span class='fu'>tibble</span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
        `LOO CV MSE` <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>sum_prederr_m1</span> <span class='op'>/</span> <span class='fl'>150</span>, <span class='va'>sum_prederr_m2</span> <span class='op'>/</span> <span class='fl'>150</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2520,15 +2592,25 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>which again suggested <code>m1</code> is expected to have less out-of-sample prediction error. In practice, 5 or 10-fold CV is usually used to save time.</p>
-<h3 id="a-remark-on-cross-validation-for-hierarchical-data">A Remark on Cross-Validation for Hierarchical Data</h3>
-<p>With hierarchical data, cross-validation can be done at different levels. What we did before was to split the <strong>sample of clusters</strong>, i.e., CV at the top level (i.e., level 2, or person). This kind of CV is most relevant when one is interested in prediction at the cluster level. Another way to do CV is to split the data within clusters. For example, here each person has five time points max, so we can use four time points to build model to predict the remaining time point.</p>
+<p>which again suggested <code>m1</code> is expected to have less
+out-of-sample prediction error. In practice, 5 or 10-fold CV is usually
+used to save time.</p>
+<h3 id="a-remark-on-cross-validation-for-hierarchical-data">A Remark on
+Cross-Validation for Hierarchical Data</h3>
+<p>With hierarchical data, cross-validation can be done at different
+levels. What we did before was to split the <strong>sample of
+clusters</strong>, i.e., CV at the top level (i.e., level 2, or person).
+This kind of CV is most relevant when one is interested in prediction at
+the cluster level. Another way to do CV is to split the data within
+clusters. For example, here each person has five time points max, so we
+can use four time points to build model to predict the remaining time
+point.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Add time to the data</span>
-<span class='va'>stress_sub</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>mutate</span><span class='op'>(</span>time <span class='op'>=</span> <span class='fu'>row_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>stress_sub</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>time <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/ranking.html'>row_number</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Initialize the sum of squared prediction errors for each model</span>
 <span class='va'>sum_prederr_m1</span> <span class='op'>&lt;-</span> <span class='va'>sum_prederr_m2</span> <span class='op'>&lt;-</span> <span class='fl'>0</span>
 <span class='co'># Loop over each person</span>
@@ -2541,7 +2623,7 @@ R Codes
         subset <span class='op'>=</span> <span class='va'>time</span> <span class='op'>!=</span> <span class='va'>t</span>
     <span class='op'>)</span>
     <span class='co'># Data for personk</span>
-    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>time</span> <span class='op'>==</span> <span class='va'>t</span><span class='op'>)</span>
+    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>time</span> <span class='op'>==</span> <span class='va'>t</span><span class='op'>)</span>
     <span class='co'># Obtain prediction error</span>
     <span class='va'>pred_m1_test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit_m1</span>, newdata <span class='op'>=</span> <span class='va'>stress_sub_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
     <span class='va'>prederr_m1</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_m1_test</span>
@@ -2556,14 +2638,14 @@ R Codes
         subset <span class='op'>=</span> <span class='va'>time</span> <span class='op'>!=</span> <span class='va'>t</span>
     <span class='op'>)</span>
     <span class='co'># Data for personk</span>
-    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>time</span> <span class='op'>==</span> <span class='va'>t</span><span class='op'>)</span>
+    <span class='va'>stress_sub_test</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>time</span> <span class='op'>==</span> <span class='va'>t</span><span class='op'>)</span>
     <span class='co'># Obtain prediction error</span>
     <span class='va'>pred_m2_test</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>fit_m2</span>, newdata <span class='op'>=</span> <span class='va'>stress_sub_test</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
     <span class='va'>prederr_m2</span> <span class='op'>&lt;-</span> <span class='va'>stress_sub_test</span><span class='op'>$</span><span class='va'>symptoms</span> <span class='op'>-</span> <span class='va'>pred_m2_test</span>
     <span class='va'>sum_prederr_m2</span> <span class='op'>&lt;-</span> <span class='va'>sum_prederr_m2</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>prederr_m2</span><span class='op'>^</span><span class='fl'>2</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='op'>}</span>
 <span class='co'># MSE (dividing the sum by 150 observations)</span>
-<span class='fu'>tibble</span><span class='op'>(</span>
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
     Model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"M1"</span>, <span class='st'>"M2"</span><span class='op'>)</span>,
     `5-fold Within-Cluster CV MSE` <span class='op'>=</span>
         <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>sum_prederr_m1</span> <span class='op'>/</span> <span class='fl'>150</span>, <span class='va'>sum_prederr_m2</span> <span class='op'>/</span> <span class='fl'>150</span><span class='op'>)</span>
@@ -2576,9 +2658,24 @@ R Codes
 &gt;# 1 M1                              1.09
 &gt;# 2 M2                              1.40</code></pre>
 </div>
-<p>Here, M1 is still better, but the difference is smaller. For more discussion on the difference, please check out <a href="https://deepthoughtsandsilliness.blogspot.com/2007/12/focus-on-dic.html">this blog post</a>, or the paper <a href="https://academic.oup.com/biomet/article-abstract/92/2/351/233128">“Conditional Akaike information for mixed-effects models”</a>.</p>
+<p>Here, M1 is still better, but the difference is smaller. For more
+discussion on the difference, please check out <a
+href="https://deepthoughtsandsilliness.blogspot.com/2007/12/focus-on-dic.html">this
+blog post</a>, or the paper <a
+href="https://academic.oup.com/biomet/article-abstract/92/2/351/233128">“Conditional
+Akaike information for mixed-effects models”</a>.</p>
 <h3 id="information-criteria">Information Criteria</h3>
-<p>A closely-related way to estimate the out-of-sample prediction is to use information criteria, which is based on information theory. Simply speaking, these are measures of the expected out-of-sample prediction error under certain assumptions (e.g., normality). The most famous one is the Akaike information criterion (AIC), named after statistician Hirotugu Akaike, who derived that under certain assumptions, the expected prediction error is the deviance plus two times the number of parameters in the model. We can obtain AICs using the generic <code>AIC()</code> function for cluster-level predictions, and the <code>cAIC4::cAIC()</code> function for individual-level predictions.</p>
+<p>A closely-related way to estimate the out-of-sample prediction is to
+use information criteria, which is based on information theory. Simply
+speaking, these are measures of the expected out-of-sample prediction
+error under certain assumptions (e.g., normality). The most famous one
+is the Akaike information criterion (AIC), named after statistician
+Hirotugu Akaike, who derived that under certain assumptions, the
+expected prediction error is the deviance plus two times the number of
+parameters in the model. We can obtain AICs using the generic
+<code>AIC()</code> function for cluster-level predictions, and the
+<code>cAIC4::cAIC()</code> function for individual-level
+predictions.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Refit with lme4 as glmmTMB did not converge</span>
@@ -2593,9 +2690,9 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span><span class='op'>(</span><span class='va'>fit_m1</span>, <span class='va'>fit_m2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#        df      AIC
-&gt;# fit_m1 10 399.4346
-&gt;# fit_m2 43 399.9684</code></pre>
+<pre><code>&gt;#        df   AIC
+&gt;# fit_m1 10 399.4
+&gt;# fit_m2 43 400.0</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Individual-level prediction</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
@@ -2604,23 +2701,37 @@ R Codes
 <span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#    df       caic    
-&gt;# m1 29.06952 367.2822
-&gt;# m2 51.5599  388.6662</code></pre>
+<pre><code>&gt;#    df    caic 
+&gt;# m1 29.07 367.3
+&gt;# m2 51.56 388.7</code></pre>
 </div>
-<p>Because AIC approximates the out-of-sample prediction error (for continuous, normal outcomes), a model with a lower AIC should be preferred. Here it shows <code>m1</code> is better for individual-level prediction.</p>
+<p>Because AIC approximates the out-of-sample prediction error (for
+continuous, normal outcomes), a model with a lower AIC should be
+preferred. Here it shows <code>m1</code> is better for individual-level
+prediction.</p>
 <blockquote>
-<p>To avoid overfitting, we should compare models based on the out-of-sample prediction errors, which can be approxiamted by preferring models with lower AICs.</p>
+<p>To avoid overfitting, we should compare models based on the
+out-of-sample prediction errors, which can be approxiamted by preferring
+models with lower AICs.</p>
 </blockquote>
 <h4 id="how-about-the-bic">How about the BIC?</h4>
-<p>As a side note, AIC is commonly presented alongside BIC, the Bayesian information criterion (BIC). However, BIC was developed with very different motivations, and technically it is not an information criterion (and it is debatable whether it is Bayesian). However, it can be used in a similar way, where models showing lower BICs represent better fit. It tends to prefer models that are more parsimonious than the AIC.</p>
+<p>As a side note, AIC is commonly presented alongside BIC, the Bayesian
+information criterion (BIC). However, BIC was developed with very
+different motivations, and technically it is not an information
+criterion (and it is debatable whether it is Bayesian). However, it can
+be used in a similar way, where models showing lower BICs represent
+better fit. It tends to prefer models that are more parsimonious than
+the AIC.</p>
 <h2 id="model-comparisons">Model Comparisons</h2>
 <p>Let’s compare several models:</p>
 <ol type="1">
 <li><code>mood1</code> and <code>stressor</code>, no random slopes</li>
-<li><code>mood1_pm</code>, <code>mood1_pmc</code>, <code>stressor_pm</code>, <code>stressor</code>, no random slopes</li>
-<li><code>mood1_pm</code>, <code>mood1_pmc</code>, <code>stressor_pm</code>, <code>stressor</code>, random slopes</li>
-<li>Model 3 + interaction terms: <code>mood1_pm:stressor_pm</code>, <code>mood1_pmc:stressor</code></li>
+<li><code>mood1_pm</code>, <code>mood1_pmc</code>,
+<code>stressor_pm</code>, <code>stressor</code>, no random slopes</li>
+<li><code>mood1_pm</code>, <code>mood1_pmc</code>,
+<code>stressor_pm</code>, <code>stressor</code>, random slopes</li>
+<li>Model 3 + interaction terms: <code>mood1_pm:stressor_pm</code>,
+<code>mood1_pmc:stressor</code></li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2647,11 +2758,11 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/stats/AIC.html'>AIC</a></span><span class='op'>(</span><span class='va'>m_1</span>, <span class='va'>m_2</span>, <span class='va'>m_3</span>, <span class='va'>m_4</span><span class='op'>)</span>  <span class='co'># m_2 is the best</span>
 </code></pre>
 </div>
-<pre><code>&gt;#     df      AIC
-&gt;# m_1  5 404.2322
-&gt;# m_2  7 403.5750
-&gt;# m_3 12 410.2415
-&gt;# m_4 13 414.3175</code></pre>
+<pre><code>&gt;#     df   AIC
+&gt;# m_1  5 404.2
+&gt;# m_2  7 403.6
+&gt;# m_3 12 410.2
+&gt;# m_4 13 414.3</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Conditional AIC</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span>
@@ -2662,26 +2773,27 @@ R Codes
 <span class='op'>)</span> <span class='co'># m_1, m_2, m_3 similar</span>
 </code></pre>
 </div>
-<pre><code>&gt;#     df       caic    
-&gt;# m_1 28.93959 369.3262
-&gt;# m_2 28.75855 369.2557
-&gt;# m_3 28.75855 369.2557
-&gt;# m_4 30.80038 373.5176</code></pre>
+<pre><code>&gt;#     df    caic 
+&gt;# m_1 28.94 369.3
+&gt;# m_2 28.76 369.3
+&gt;# m_3 28.76 369.3
+&gt;# m_4 30.8  373.5</code></pre>
 </div>
-<p>Overall, it seems (1) and (2) are best for predictions, with similar AICs.</p>
+<p>Overall, it seems (1) and (2) are best for predictions, with similar
+AICs.</p>
 <h2 id="bonus-model-averaging">Bonus: Model Averaging</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use full data with centering</span>
-<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># The `across()` function can be used to operate the same procedure on</span>
   <span class='co'># multiple variables</span>
-  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
                 <span class='co'># The `.` means the variable to be operated on</span>
                 <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"pm"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
-                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2689,7 +2801,7 @@ R Codes
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use lme4 as glmmTMB had convergence issue and did not compute AIC</span>
 <span class='co'># Require data without missing</span>
-<span class='va'>stress_lm</span> <span class='op'>&lt;-</span> <span class='fu'>drop_na</span><span class='op'>(</span><span class='va'>stress_data</span><span class='op'>)</span>
+<span class='va'>stress_lm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='va'>stress_data</span><span class='op'>)</span>
 <span class='va'>m_full</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span>
     <span class='va'>symptoms</span> <span class='op'>~</span> <span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span> <span class='op'>+</span> <span class='va'>stressor_pm</span> <span class='op'>+</span> <span class='va'>stressor</span> <span class='op'>+</span>
         <span class='va'>women</span> <span class='op'>+</span> <span class='va'>baseage</span> <span class='op'>+</span> <span class='va'>weekend</span> <span class='op'>+</span>
@@ -2720,18 +2832,18 @@ R Codes
 &gt;# 2 0.8611 -0.004780  1.866  0.1212 0.06271 0.9066              13
 &gt;# 8 0.9212 -0.002079  1.861  0.1290 0.06179 0.8886 -0.04611   + 15
 &gt;# 4 0.8560 -0.004426  1.870  0.1282 0.05675 0.9131 -0.04709     14
-&gt;#     logLik    AIC delta weight
-&gt;# 5 -701.827 1429.7  0.00  0.296
-&gt;# 1 -703.200 1430.4  0.75  0.204
-&gt;# 7 -701.628 1431.3  1.60  0.133
-&gt;# 6 -701.814 1431.6  1.97  0.110
-&gt;# 3 -702.988 1432.0  2.32  0.093
-&gt;# 2 -703.149 1432.3  2.64  0.079
-&gt;# 8 -701.618 1433.2  3.58  0.049
-&gt;# 4 -702.944 1433.9  4.23  0.036
+&gt;#   logLik  AIC delta weight
+&gt;# 5 -701.8 1430  0.00  0.296
+&gt;# 1 -703.2 1430  0.75  0.204
+&gt;# 7 -701.6 1431  1.60  0.133
+&gt;# 6 -701.8 1432  1.97  0.110
+&gt;# 3 -703.0 1432  2.32  0.093
+&gt;# 2 -703.1 1432  2.64  0.079
+&gt;# 8 -701.6 1433  3.58  0.049
+&gt;# 4 -702.9 1434  4.23  0.036
 &gt;# Models ranked by AIC(x) 
 &gt;# Random terms (all models): 
-&gt;# &#39;mood1_pmc + stressor | PersonID&#39;</code></pre>
+&gt;#   mood1_pmc + stressor | PersonID</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/model.avg.html'>model.avg</a></span><span class='op'>(</span><span class='va'>dd_maic</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
@@ -2745,15 +2857,15 @@ R Codes
 &gt;#      REML = FALSE, na.action = na.fail)
 &gt;# 
 &gt;# Component models: 
-&gt;#         df  logLik     AIC delta weight
-&gt;# 23457   13 -701.83 1429.65  0.00   0.30
-&gt;# 2345    12 -703.20 1430.40  0.75   0.20
-&gt;# 234567  14 -701.63 1431.26  1.60   0.13
-&gt;# 123457  14 -701.81 1431.63  1.97   0.11
-&gt;# 23456   13 -702.99 1431.98  2.32   0.09
-&gt;# 12345   13 -703.15 1432.30  2.64   0.08
-&gt;# 1234567 15 -701.62 1433.24  3.58   0.05
-&gt;# 123456  14 -702.94 1433.89  4.23   0.04
+&gt;#         df logLik  AIC delta weight
+&gt;# 23457   13 -701.8 1430  0.00   0.30
+&gt;# 2345    12 -703.2 1430  0.75   0.20
+&gt;# 234567  14 -701.6 1431  1.60   0.13
+&gt;# 123457  14 -701.8 1432  1.97   0.11
+&gt;# 23456   13 -703.0 1432  2.32   0.09
+&gt;# 12345   13 -703.1 1432  2.64   0.08
+&gt;# 1234567 15 -701.6 1433  3.58   0.05
+&gt;# 123456  14 -702.9 1434  4.23   0.04
 &gt;# 
 &gt;# Term codes: 
 &gt;#     baseage    mood1_pm   mood1_pmc    stressor stressor_pm 
@@ -2763,26 +2875,26 @@ R Codes
 &gt;# 
 &gt;# Model-averaged coefficients:  
 &gt;# (full average) 
-&gt;#               Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
-&gt;# (Intercept)  0.7093827  0.6571310   0.6586361   1.077  0.28146    
-&gt;# womenwomen  -0.1963555  0.2226084   0.2228554   0.881  0.37827    
-&gt;# mood1_pm     1.8468342  0.3714699   0.3723709   4.960    7e-07 ***
-&gt;# mood1_pmc    0.1233922  0.1400432   0.1403830   0.879  0.37942    
-&gt;# stressor     0.0640387  0.1002116   0.1004545   0.637  0.52381    
-&gt;# stressor_pm  0.8980961  0.3023394   0.3030718   2.963  0.00304 ** 
-&gt;# weekend     -0.0145762  0.0459695   0.0460563   0.316  0.75163    
-&gt;# baseage     -0.0009017  0.0079126   0.0079311   0.114  0.90948    
+&gt;#              Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
+&gt;# (Intercept)  0.709383   0.657131    0.658636    1.08    0.281    
+&gt;# womenwomen  -0.196355   0.222608    0.222855    0.88    0.378    
+&gt;# mood1_pm     1.846834   0.371470    0.372371    4.96   &lt;2e-16 ***
+&gt;# mood1_pmc    0.123392   0.140043    0.140383    0.88    0.379    
+&gt;# stressor     0.064039   0.100212    0.100455    0.64    0.524    
+&gt;# stressor_pm  0.898096   0.302339    0.303072    2.96    0.003 ** 
+&gt;# weekend     -0.014576   0.045969    0.046056    0.32    0.752    
+&gt;# baseage     -0.000902   0.007913    0.007931    0.11    0.909    
 &gt;#  
 &gt;# (conditional average) 
-&gt;#              Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
-&gt;# (Intercept)  0.709383   0.657131    0.658636   1.077  0.28146    
-&gt;# womenwomen  -0.333532   0.196013    0.196489   1.697  0.08961 .  
-&gt;# mood1_pm     1.846834   0.371470    0.372371   4.960    7e-07 ***
-&gt;# mood1_pmc    0.123392   0.140043    0.140383   0.879  0.37942    
-&gt;# stressor     0.064039   0.100212    0.100455   0.637  0.52381    
-&gt;# stressor_pm  0.898096   0.302339    0.303072   2.963  0.00304 ** 
-&gt;# weekend     -0.046903   0.072688    0.072865   0.644  0.51977    
-&gt;# baseage     -0.003287   0.014845    0.014881   0.221  0.82519    
+&gt;#             Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
+&gt;# (Intercept)  0.70938    0.65713     0.65864    1.08    0.281    
+&gt;# womenwomen  -0.33353    0.19601     0.19649    1.70    0.090 .  
+&gt;# mood1_pm     1.84683    0.37147     0.37237    4.96   &lt;2e-16 ***
+&gt;# mood1_pmc    0.12339    0.14004     0.14038    0.88    0.379    
+&gt;# stressor     0.06404    0.10021     0.10045    0.64    0.524    
+&gt;# stressor_pm  0.89810    0.30234     0.30307    2.96    0.003 ** 
+&gt;# weekend     -0.04690    0.07269     0.07286    0.64    0.520    
+&gt;# baseage     -0.00329    0.01484     0.01488    0.22    0.825    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
@@ -2790,12 +2902,10 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/sumofweights.html'>importance</a></span><span class='op'>(</span><span class='va'>dd_maic</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                      mood1_pm mood1_pmc stressor stressor_pm women
-&gt;# Sum of weights:      1.00     1.00      1.00     1.00        0.59 
-&gt;# N containing models:    8        8         8        8           4 
-&gt;#                      weekend baseage
-&gt;# Sum of weights:      0.31    0.27   
-&gt;# N containing models:    4       4</code></pre>
+<pre><code>&gt;# function (x) 
+&gt;# UseMethod(&quot;sw&quot;)
+&gt;# &lt;bytecode: 0x14d15858&gt;
+&gt;# &lt;environment: namespace:MuMIn&gt;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Fit all models with mood1_pm + mood1_pmc + stressor_pm + stressor, and</span>
 <span class='co'># compare conditional AIC</span>
@@ -2819,18 +2929,18 @@ R Codes
 &gt;# 5 0.7357            1.842  0.1216 0.06794 0.8862            + 13
 &gt;# 6 0.9238 -0.002391  1.857  0.1223 0.06764 0.8825            + 14
 &gt;# 8 0.9212 -0.002079  1.861  0.1290 0.06179 0.8886 -0.04611   + 15
-&gt;#     logLik     IC delta weight
-&gt;# 3 -702.988 1312.9  0.00  0.297
-&gt;# 4 -702.944 1313.2  0.27  0.259
-&gt;# 7 -701.628 1313.3  0.37  0.246
-&gt;# 1 -703.200 1316.0  3.09  0.063
-&gt;# 2 -703.149 1316.5  3.59  0.049
-&gt;# 5 -701.827 1317.0  4.08  0.039
-&gt;# 6 -701.814 1317.5  4.52  0.031
-&gt;# 8 -701.618 1318.8  5.87  0.016
+&gt;#   logLik   IC delta weight
+&gt;# 3 -703.0 1313  0.00  0.297
+&gt;# 4 -702.9 1313  0.27  0.259
+&gt;# 7 -701.6 1313  0.37  0.246
+&gt;# 1 -703.2 1316  3.09  0.063
+&gt;# 2 -703.1 1316  3.59  0.049
+&gt;# 5 -701.8 1317  4.08  0.039
+&gt;# 6 -701.8 1318  4.52  0.031
+&gt;# 8 -701.6 1319  5.87  0.016
 &gt;# Models ranked by IC(x) 
 &gt;# Random terms (all models): 
-&gt;# &#39;mood1_pmc + stressor | PersonID&#39;</code></pre>
+&gt;#   mood1_pmc + stressor | PersonID</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/model.avg.html'>model.avg</a></span><span class='op'>(</span><span class='va'>dd_caic</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
@@ -2844,15 +2954,15 @@ R Codes
 &gt;#      REML = FALSE, na.action = na.fail)
 &gt;# 
 &gt;# Component models: 
-&gt;#         df  logLik      IC delta weight
-&gt;# 23456   13 -702.99 1312.95  0.00   0.30
-&gt;# 123456  14 -702.94 1313.22  0.27   0.26
-&gt;# 234567  14 -701.63 1313.32  0.37   0.25
-&gt;# 2345    12 -703.20 1316.04  3.09   0.06
-&gt;# 12345   13 -703.15 1316.54  3.59   0.05
-&gt;# 23457   13 -701.83 1317.02  4.08   0.04
-&gt;# 123457  14 -701.81 1317.47  4.52   0.03
-&gt;# 1234567 15 -701.62 1318.82  5.87   0.02
+&gt;#         df logLik   IC delta weight
+&gt;# 23456   13 -703.0 1313  0.00   0.30
+&gt;# 123456  14 -702.9 1313  0.27   0.26
+&gt;# 234567  14 -701.6 1313  0.37   0.25
+&gt;# 2345    12 -703.2 1316  3.09   0.06
+&gt;# 12345   13 -703.1 1317  3.59   0.05
+&gt;# 23457   13 -701.8 1317  4.08   0.04
+&gt;# 123457  14 -701.8 1317  4.52   0.03
+&gt;# 1234567 15 -701.6 1319  5.87   0.02
 &gt;# 
 &gt;# Term codes: 
 &gt;#     baseage    mood1_pm   mood1_pmc    stressor stressor_pm 
@@ -2862,26 +2972,26 @@ R Codes
 &gt;# 
 &gt;# Model-averaged coefficients:  
 &gt;# (full average) 
-&gt;#              Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
-&gt;# (Intercept)  0.702488   0.736992    0.738701   0.951  0.34162    
-&gt;# weekend     -0.038577   0.068216    0.068370   0.564  0.57259    
-&gt;# mood1_pm     1.852095   0.373702    0.374609   4.944    8e-07 ***
-&gt;# mood1_pmc    0.126697   0.140143    0.140483   0.902  0.36713    
-&gt;# stressor     0.059710   0.100592    0.100836   0.592  0.55375    
-&gt;# stressor_pm  0.907331   0.303253    0.303988   2.985  0.00284 ** 
-&gt;# baseage     -0.001488   0.009063    0.009084   0.164  0.86991    
-&gt;# womenwomen  -0.110640   0.193378    0.193538   0.572  0.56754    
+&gt;#             Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
+&gt;# (Intercept)  0.70249    0.73699     0.73870    0.95   0.3416    
+&gt;# weekend     -0.03858    0.06822     0.06837    0.56   0.5726    
+&gt;# mood1_pm     1.85209    0.37370     0.37461    4.94   &lt;2e-16 ***
+&gt;# mood1_pmc    0.12670    0.14014     0.14048    0.90   0.3671    
+&gt;# stressor     0.05971    0.10059     0.10084    0.59   0.5538    
+&gt;# stressor_pm  0.90733    0.30325     0.30399    2.98   0.0028 ** 
+&gt;# baseage     -0.00149    0.00906     0.00908    0.16   0.8699    
+&gt;# womenwomen  -0.11064    0.19338     0.19354    0.57   0.5675    
 &gt;#  
 &gt;# (conditional average) 
-&gt;#              Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
-&gt;# (Intercept)  0.702488   0.736992    0.738701   0.951  0.34162    
-&gt;# weekend     -0.047174   0.072697    0.072874   0.647  0.51741    
-&gt;# mood1_pm     1.852095   0.373702    0.374609   4.944    8e-07 ***
-&gt;# mood1_pmc    0.126697   0.140143    0.140483   0.902  0.36713    
-&gt;# stressor     0.059710   0.100592    0.100836   0.592  0.55375    
-&gt;# stressor_pm  0.907331   0.303253    0.303988   2.985  0.00284 ** 
-&gt;# baseage     -0.004193   0.014838    0.014874   0.282  0.77800    
-&gt;# womenwomen  -0.333482   0.195956    0.196433   1.698  0.08957 .  
+&gt;#             Estimate Std. Error Adjusted SE z value Pr(&gt;|z|)    
+&gt;# (Intercept)  0.70249    0.73699     0.73870    0.95   0.3416    
+&gt;# weekend     -0.04717    0.07270     0.07287    0.65   0.5174    
+&gt;# mood1_pm     1.85209    0.37370     0.37461    4.94   &lt;2e-16 ***
+&gt;# mood1_pmc    0.12670    0.14014     0.14048    0.90   0.3671    
+&gt;# stressor     0.05971    0.10059     0.10084    0.59   0.5538    
+&gt;# stressor_pm  0.90733    0.30325     0.30399    2.98   0.0028 ** 
+&gt;# baseage     -0.00419    0.01484     0.01487    0.28   0.7780    
+&gt;# womenwomen  -0.33348    0.19596     0.19643    1.70   0.0896 .  
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
@@ -2889,44 +2999,56 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/sumofweights.html'>importance</a></span><span class='op'>(</span><span class='va'>dd_caic</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                      mood1_pm mood1_pmc stressor stressor_pm weekend
-&gt;# Sum of weights:      1.00     1.00      1.00     1.00        0.82   
-&gt;# N containing models:    8        8         8        8           4   
-&gt;#                      baseage women
-&gt;# Sum of weights:      0.35    0.33 
-&gt;# N containing models:    4       4</code></pre>
+<pre><code>&gt;# function (x) 
+&gt;# UseMethod(&quot;sw&quot;)
+&gt;# &lt;bytecode: 0x14d15858&gt;
+&gt;# &lt;environment: namespace:MuMIn&gt;</code></pre>
 </div>
-<h2 id="bonus-lasso-least-absolute-shrinkage-and-selection-operator">Bonus: Lasso (Least Absolute Shrinkage and Selection Operator)</h2>
-<p>The idea of Lasso, or more generally regularization, is that complex models tend to overfit in small samples and when the number of predictors is large. On the other hand, simple models, which means that when all predictors are assumed either not predictive or weakly predictive of the outcome, tend to underfit. Therefore, one can find the right fit by having the estimates to be somewhere between 0 and the maximum likelihood estimates. This is achieved in Lasso by adding a penalty in the minimization algorithm, usually called lambda, with larger lambda corresponding to a larger penalty.</p>
-<p>Here is an example. Note that generally one standardizes the data so that the variables have standard deviations of 1s. It is, however, not discussed much in the literature whether this applies to cluster means and cluster mean centered variables for multilevel analysis. In the example below, I only standardize the raw variables.</p>
+<h2
+id="bonus-lasso-least-absolute-shrinkage-and-selection-operator">Bonus:
+Lasso (Least Absolute Shrinkage and Selection Operator)</h2>
+<p>The idea of Lasso, or more generally regularization, is that complex
+models tend to overfit in small samples and when the number of
+predictors is large. On the other hand, simple models, which means that
+when all predictors are assumed either not predictive or weakly
+predictive of the outcome, tend to underfit. Therefore, one can find the
+right fit by having the estimates to be somewhere between 0 and the
+maximum likelihood estimates. This is achieved in Lasso by adding a
+penalty in the minimization algorithm, usually called lambda, with
+larger lambda corresponding to a larger penalty.</p>
+<p>Here is an example. Note that generally one standardizes the data so
+that the variables have standard deviations of 1s. It is, however, not
+discussed much in the literature whether this applies to cluster means
+and cluster mean centered variables for multilevel analysis. In the
+example below, I only standardize the raw variables.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span>
   <span class='fu'><a href='https://rdrr.io/r/base/connections.html'>unz</a></span><span class='op'>(</span><span class='va'>zip_data</span>,
       <span class='st'>"SPSS_Chapter8/SPSS_Chapter8.sav"</span><span class='op'>)</span>
 <span class='op'>)</span>
-<span class='va'>stress_std</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span>
+<span class='va'>stress_std</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span>
         <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>women</span>, <span class='va'>baseage</span>, <span class='va'>weekend</span>, <span class='va'>symptoms</span>, <span class='va'>mood</span>, <span class='va'>stressor</span><span class='op'>)</span>,
         <span class='op'>~</span> <span class='op'>(</span><span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='fu'><a href='https://rdrr.io/r/stats/sd.html'>sd</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
     <span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Subsample</span>
-<span class='va'>stress_std</span> <span class='op'>&lt;-</span> <span class='va'>stress_std</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>drop_na</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='va'>stress_std</span> <span class='op'>&lt;-</span> <span class='va'>stress_std</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># filter(PersonID %in% random_persons) %&gt;%</span>
-    <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='co'># The `across()` function can be used to operate the same procedure on</span>
     <span class='co'># multiple variables</span>
-    <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span>
         <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood</span>, <span class='va'>stressor</span><span class='op'>)</span>,
         <span class='co'># The `.` means the variable to be operated on</span>
         <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
             <span class='st'>"pm"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
             <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
         <span class='op'>)</span>
-    <span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>mutate</span><span class='op'>(</span>PersonID <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/as_factor.html'>as_factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>PersonID <span class='op'>=</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/as_factor.html'>as_factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -3020,9 +3142,17 @@ R Codes
 &gt;# mood_pmc:stressor:baseage     0.02  0.00
 &gt;# mood_pmc:stressor:weekend    -0.11 -0.10</code></pre>
 </div>
-<p>As can be seen, many of the coefficients have shrunken with Lasso. The variables that seem most useful in predicting <code>symptoms</code> are <code>mood_pm</code>, <code>stressor_pm</code>, <code>women</code>, <code>mood_pm:stressor_pm</code>, <code>mood_pm:women</code>, <code>stressor_pm:women</code>, <code>mood_pm:stressor:baseage</code>, <code>mood_pmc:stressor_pm:weekend</code>. The lambda value can be chosen using AIC or using cross-validation.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>As can be seen, many of the coefficients have shrunken with Lasso.
+The variables that seem most useful in predicting <code>symptoms</code>
+are <code>mood_pm</code>, <code>stressor_pm</code>, <code>women</code>,
+<code>mood_pm:stressor_pm</code>, <code>mood_pm:women</code>,
+<code>stressor_pm:women</code>, <code>mood_pm:stressor:baseage</code>,
+<code>mood_pmc:stressor_pm:weekend</code>. The lambda value can be
+chosen using AIC or using cross-validation.</p>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3048,7 +3178,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

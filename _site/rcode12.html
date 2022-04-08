@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2095,6 +2095,7 @@ Lectures
 <a href="week10.html">Week 10</a>
 <a href="week11.html">Week 11</a>
 <a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2115,6 +2116,7 @@ R Codes
 <a href="rcode10.html">Week 10 R Code</a>
 <a href="rcode11.html">Week 11 R Code</a>
 <a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2138,11 +2140,14 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a>
 <ul>
-<li><a href="#problem-of-a-linear-model">Problem of a Linear Model</a></li>
+<li><a href="#problem-of-a-linear-model">Problem of a Linear
+Model</a></li>
 </ul></li>
-<li><a href="#multilevel-logistic-regression">Multilevel Logistic Regression</a>
+<li><a href="#multilevel-logistic-regression">Multilevel Logistic
+Regression</a>
 <ul>
 <li><a href="#bernoulli-distribution">Bernoulli Distribution</a></li>
 <li><a href="#transformation">Transformation</a></li>
@@ -2150,15 +2155,21 @@ R Codes
 <li><a href="#using-glmmtmb">Using <code>glmmTMB</code></a>
 <ul>
 <li><a href="#unconditional-model">Unconditional Model</a></li>
-<li><a href="#with-lv-2-and-lv-1-predictors">With Lv-2 and Lv-1 Predictors</a></li>
+<li><a href="#with-lv-2-and-lv-1-predictors">With Lv-2 and Lv-1
+Predictors</a></li>
 <li><a href="#plotting">Plotting</a></li>
 <li><a href="#interpretations">Interpretations</a></li>
-<li><a href="#predicted-probabilities-with-representative-values">Predicted probabilities with representative values</a></li>
-<li><a href="#r2-effect-size"><span class="math inline">\(R^2\)</span> effect size</a></li>
+<li><a
+href="#predicted-probabilities-with-representative-values">Predicted
+probabilities with representative values</a></li>
+<li><a href="#r2-effect-size"><span class="math inline">\(R^2\)</span>
+effect size</a></li>
 <li><a href="#bayesian-estimation">Bayesian estimation</a></li>
 </ul></li>
 <li><a href="#table-of-coefficients">Table of Coefficients</a></li>
-<li><a href="#bonus-cluster-specific-vs.-population-average-coefficients">Bonus: Cluster-Specific vs. Population-Average Coefficients</a></li>
+<li><a
+href="#bonus-cluster-specific-vs.-population-average-coefficients">Bonus:
+Cluster-Specific vs. Population-Average Coefficients</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2168,8 +2179,10 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week12-logistic.Rmd">week12-logistic.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week12-logistic.Rmd">week12-logistic.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2186,8 +2199,14 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>In this week, we’ll talk about logistic regression for binary data. We’ll use the same HSB data that you have seen before, but with a dichotomous variable created. In practice it is generally a bad idea to arbitrarily dichotomize a binary variable, as it may represent a substantial loss of information; it’s done here just for pedagogical purpose.</p>
-<p>Here we consider those who score 20 or above for a “commended” status.</p>
+<p>In this week, we’ll talk about logistic regression for binary data.
+We’ll use the same HSB data that you have seen before, but with a
+dichotomous variable created. In practice it is generally a bad idea to
+arbitrarily dichotomize a binary variable, as it may represent a
+substantial loss of information; it’s done here just for pedagogical
+purpose.</p>
+<p>Here we consider those who score 20 or above for a “commended”
+status.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data (pay attention to the directory)</span>
@@ -2217,7 +2236,8 @@ R Codes
 <p><img src="rcode12_files/figure-html5/plot-commend-1.png" width="624" /></p>
 </div>
 <h3 id="problem-of-a-linear-model">Problem of a Linear Model</h3>
-<p>Let’s use our linear model, and then talk about the problems. Consider first <code>meanses</code> as predictor.</p>
+<p>Let’s use our linear model, and then talk about the problems.
+Consider first <code>meanses</code> as predictor.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m_lme</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>mathcom</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>hsball</span>,
@@ -2230,26 +2250,28 @@ R Codes
 &gt;# Data: hsball
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#   6266.7   6294.2  -3129.3   6258.7     7183 
+&gt;#     6267     6294    -3129     6259     7183 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept) 0.005148 0.07175 
-&gt;#  Residual             0.136664 0.36968 
+&gt;#  id       (Intercept) 0.00515  0.0718  
+&gt;#  Residual             0.13666  0.3697  
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Dispersion estimate for gaussian family (sigma^2): 0.137 
 &gt;# 
 &gt;# Conditional model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept) 0.178404   0.007222   24.70   &lt;2e-16 ***
-&gt;# meanses     0.178190   0.017483   10.19   &lt;2e-16 ***
+&gt;# (Intercept)  0.17840    0.00722    24.7   &lt;2e-16 ***
+&gt;# meanses      0.17819    0.01748    10.2   &lt;2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>So it runs, and it indicates a positive association between <code>meanses</code> and <code>mathcom</code>. Let’s plot the effect:</p>
+<p>So it runs, and it indicates a positive association between
+<code>meanses</code> and <code>mathcom</code>. Let’s plot the
+effect:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>m_lme</span>,
@@ -2261,15 +2283,22 @@ R Codes
 </div>
 <p><img src="rcode12_files/figure-html5/plot-m_lme-1.png" width="624" /></p>
 </div>
-<p>Well, this looks a bit strange. The outcome can only take two values, but the predictions are in decimals. We can assume may be we are predicting the probability of being commended for each student, but still there are some negative predictions that are not possible. For example, if we consider a school with <code>meanses</code> = -2, our prediction would be</p>
+<p>Well, this looks a bit strange. The outcome can only take two values,
+but the predictions are in decimals. We can assume may be we are
+predicting the probability of being commended for each student, but
+still there are some negative predictions that are not possible. For
+example, if we consider a school with <code>meanses</code> = -2, our
+prediction would be</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m_lme</span>, newdata <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>meanses <span class='op'>=</span> <span class='op'>-</span><span class='fl'>2</span>, id <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] -0.1742227</code></pre>
+<pre><code>&gt;# [1] -0.1742</code></pre>
 </div>
-<p>Another problem is that the data is not normally distributed. We can look at the distribution of the data (in a histogram) and of simulated data based on the model (in lighter lines) below:</p>
+<p>Another problem is that the data is not normally distributed. We can
+look at the distribution of the data (in a histogram) and of simulated
+data based on the model (in lighter lines) below:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Simulate a data set based on the linear model</span>
@@ -2281,7 +2310,10 @@ R Codes
 </div>
 <p><img src="rcode12_files/figure-html5/pp-check-m_lme-1.png" width="624" /></p>
 </div>
-<p>Another related and subtle problem is that the residual variance is not constant across levels of the predictor. For example, the residual variance for <code>meanses</code> <span class="math inline">\(\leq\)</span> -0.5 is</p>
+<p>Another related and subtle problem is that the residual variance is
+not constant across levels of the predictor. For example, the residual
+variance for <code>meanses</code> <span
+class="math inline">\(\leq\)</span> -0.5 is</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_lme</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
@@ -2309,12 +2341,25 @@ R Codes
 &gt;#                     &lt;dbl&gt;
 &gt;# 1                   0.145</code></pre>
 </div>
-<p>These are pretty large differences, and it happens every time one uses a normal linear model for a binary outcome. The textbook (section 17.1) has more discussion on this.</p>
-<p>So because of these limitations, we generally prefer models designed for binary outcomes, the most popular one is commonly referred to as a logistic model.</p>
-<h1 id="multilevel-logistic-regression">Multilevel Logistic Regression</h1>
-<p>The logistic model modifies the linear multilevel model in two ways.</p>
+<p>These are pretty large differences, and it happens every time one
+uses a normal linear model for a binary outcome. The textbook (section
+17.1) has more discussion on this.</p>
+<p>So because of these limitations, we generally prefer models designed
+for binary outcomes, the most popular one is commonly referred to as a
+logistic model.</p>
+<h1 id="multilevel-logistic-regression">Multilevel Logistic
+Regression</h1>
+<p>The logistic model modifies the linear multilevel model in two
+ways.</p>
 <h2 id="bernoulli-distribution">Bernoulli Distribution</h2>
-<p>First, it replaces the assumption that the conditional distribution of the outcome is normal with one that says the outcome follows a <em>Bernoulli</em> distribution, which is a distribution for binary variables (e.g., outcome of a coin flip). Below is a comparison of a Bernoulli distribution (left) with mean = 0.8 (i.e., 80% success and 20% failure), which by definition has a standard deviation of 0.4, and a normal distribution (right) with a mean = 0.8 and a standard deviation of 0.4:</p>
+<p>First, it replaces the assumption that the conditional distribution
+of the outcome is normal with one that says the outcome follows a
+<em>Bernoulli</em> distribution, which is a distribution for binary
+variables (e.g., outcome of a coin flip). Below is a comparison of a
+Bernoulli distribution (left) with mean = 0.8 (i.e., 80% success and 20%
+failure), which by definition has a standard deviation of 0.4, and a
+normal distribution (right) with a mean = 0.8 and a standard deviation
+of 0.4:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, p <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.2</span>, <span class='fl'>0.8</span><span class='op'>)</span><span class='op'>)</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>y</span>, y <span class='op'>=</span> <span class='va'>p</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
@@ -2330,9 +2375,19 @@ R Codes
 </div>
 <p><img src="rcode12_files/figure-html5/norm-vs-bern-1.png" width="624" /></p>
 </div>
-<p>With the Bernoulli distribution, the possible values are only 0 and 1, so it matches the outcome.</p>
+<p>With the Bernoulli distribution, the possible values are only 0 and
+1, so it matches the outcome.</p>
 <h2 id="transformation">Transformation</h2>
-<p>Second, instead of directly modeling the mean of a binary outcome (i.e., probability), which is bounded between 0 and 1, a logistic model transforms the mean of the outcome into something that is unbounded (i.e., with range between <span class="math inline">\(-\infty\)</span> and <span class="math inline">\(\infty\)</span>). We can this <span class="math inline">\(\eta\)</span>. One common transformation that would do this is the logit transformation, which converts a probability into odds, and then to log odds: <span class="math display">\[\text{Log Odds} = \log \left(\frac{\text{Probability}}{1 - \text{Probability}}\right)\]</span></p>
+<p>Second, instead of directly modeling the mean of a binary outcome
+(i.e., probability), which is bounded between 0 and 1, a logistic model
+transforms the mean of the outcome into something that is unbounded
+(i.e., with range between <span class="math inline">\(-\infty\)</span>
+and <span class="math inline">\(\infty\)</span>). We can this <span
+class="math inline">\(\eta\)</span>. One common transformation that
+would do this is the logit transformation, which converts a probability
+into odds, and then to log odds: <span class="math display">\[\text{Log
+Odds} = \log \left(\frac{\text{Probability}}{1 -
+\text{Probability}}\right)\]</span></p>
 <p>As shown below,</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2343,24 +2398,52 @@ R Codes
 </div>
 <p><img src="rcode12_files/figure-html5/log-odds-1.png" width="624" /></p>
 </div>
-<p>For example, when the probability is 0.5, the log odds = 0; when the probability = 0.9, the log odds = 0.7109495; when the probability = -0.9, the log odds = 0.2890505.</p>
+<p>For example, when the probability is 0.5, the log odds = 0; when the
+probability = 0.9, the log odds = 0.7109; when the probability = -0.9,
+the log odds = 0.2891.</p>
 <h2 id="model-equation">Model Equation</h2>
-<p>To understand the equation for a logistic model, it helps to write the normal linear model in its full form by specifying the distributions. Let’s look at the simplest unconditional model without predictors. First, we can write <span class="math display">\[\text{mathcom}_{ij} = \mu_{ij} + e_{ij}, \quad e_{ij} \sim N(0, \sigma), \]</span> where <span class="math inline">\(\mu_{ij}\)</span> is the predicted value of <code>mathcom</code> for the <span class="math inline">\(i\)</span>th individual in the <span class="math inline">\(j\)</span>th school. This is equivalent to saying <span class="math display">\[\text{mathcom}_{ij} \sim N(\mu_{ij}, \sigma),\]</span> because if a variable is normal with a mean 0, adding a value to it changes its mean, but it will still be normal. This says <code>mathcom</code> is normally distributed around the predicted value with an error variance of <span class="math inline">\(\sigma\)</span>. The predicted value is separated into level 1 <span class="math display">\[
+<p>To understand the equation for a logistic model, it helps to write
+the normal linear model in its full form by specifying the
+distributions. Let’s look at the simplest unconditional model without
+predictors. First, we can write <span
+class="math display">\[\text{mathcom}_{ij} = \mu_{ij} + e_{ij}, \quad
+e_{ij} \sim N(0, \sigma), \]</span> where <span
+class="math inline">\(\mu_{ij}\)</span> is the predicted value of
+<code>mathcom</code> for the <span class="math inline">\(i\)</span>th
+individual in the <span class="math inline">\(j\)</span>th school. This
+is equivalent to saying <span class="math display">\[\text{mathcom}_{ij}
+\sim N(\mu_{ij}, \sigma),\]</span> because if a variable is normal with
+a mean 0, adding a value to it changes its mean, but it will still be
+normal. This says <code>mathcom</code> is normally distributed around
+the predicted value with an error variance of <span
+class="math inline">\(\sigma\)</span>. The predicted value is separated
+into level 1 <span class="math display">\[
   \begin{aligned}
     \text{mathcom}_{ij} &amp; \sim N(\mu_{ij}, \sigma) \\
     \mu_{ij} &amp; = \beta_{0j}
   \end{aligned}
-\]</span> and level 2 <span class="math display">\[\beta_{0j} = \gamma_{00} + u_{0j}\]</span> You can convince yourself that this is the same model you’ve seen in Week 3.</p>
-<p>Now, we’ll change the distribution of <code>mathcom</code>, and transform <span class="math inline">\(\mu_{ij}\)</span> from probability to log odds:</p>
+\]</span> and level 2 <span class="math display">\[\beta_{0j} =
+\gamma_{00} + u_{0j}\]</span> You can convince yourself that this is the
+same model you’ve seen in Week 3.</p>
+<p>Now, we’ll change the distribution of <code>mathcom</code>, and
+transform <span class="math inline">\(\mu_{ij}\)</span> from probability
+to log odds:</p>
 <p>Level 1 <span class="math display">\[
   \begin{aligned}
     \text{mathcom}_{ij} &amp; \sim \text{Bernoulli}(\mu_{ij}) \\
     \eta_{ij} &amp; = \text{logit}(\mu_{ij}) \\
     \eta_{ij} &amp; = \beta_{0j}
   \end{aligned}
-\]</span> Level 2 <span class="math display">\[\beta_{0j} = \gamma_{00} + u_{0j}\]</span> The level-2 equation has not changed, but the meaning of <span class="math inline">\(\beta_{0j}\)</span> is different now: it is the cluster mean of cluster <span class="math inline">\(j\)</span> in the log odds unit.</p>
+\]</span> Level 2 <span class="math display">\[\beta_{0j} = \gamma_{00}
++ u_{0j}\]</span> The level-2 equation has not changed, but the meaning
+of <span class="math inline">\(\beta_{0j}\)</span> is different now: it
+is the cluster mean of cluster <span class="math inline">\(j\)</span> in
+the log odds unit.</p>
 <h2 id="using-glmmtmb">Using <code>glmmTMB</code></h2>
-<p>With logistic regression, frequentist methods rely on approximations. Sometimes they may be problematic, so attention needs to be paid to assess convergence. Compared to linear models, the only thing you need to change is to specify <code>family = binomial("logit")</code></p>
+<p>With logistic regression, frequentist methods rely on approximations.
+Sometimes they may be problematic, so attention needs to be paid to
+assess convergence. Compared to linear models, the only thing you need
+to change is to specify <code>family = binomial("logit")</code></p>
 <h3 id="unconditional-model">Unconditional Model</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2382,27 +2465,27 @@ R Codes
 &gt;# Data: hsball
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#   6489.2   6502.9  -3242.6   6485.2     7184 
+&gt;#     6489     6503    -3243     6485     7184 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups Name        Variance Std.Dev.
-&gt;#  id     (Intercept) 0.5617   0.7495  
+&gt;#  id     (Intercept) 0.562    0.749   
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Conditional model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept) -1.64452    0.06938   -23.7   &lt;2e-16 ***
+&gt;# (Intercept)  -1.6445     0.0694   -23.7   &lt;2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>m0_logit</span><span class='op'>)</span>  <span class='co'># confidence intervals</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                                  2.5 %     97.5 %  Estimate
-&gt;# cond.(Intercept)            -1.7805004 -1.5085474 -1.644524
-&gt;# id.cond.Std.Dev.(Intercept)  0.6378116  0.8807276  0.749492</code></pre>
+<pre><code>&gt;#                               2.5 %  97.5 % Estimate
+&gt;# cond.(Intercept)            -1.7805 -1.5085  -1.6445
+&gt;# id.cond.Std.Dev.(Intercept)  0.6378  0.8807   0.7495</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># lme4 syntax (with Laplace approximation and ML)</span>
 <span class='va'>m0_logit_lme4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/glmer.html'>glmer</a></span><span class='op'>(</span><span class='va'>mathcom</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2417,7 +2500,9 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>By definition, <span class="math inline">\(\sigma\)</span> is fixed to be <span class="math inline">\(\pi^2 / 3\)</span> in the log-odds unit in a logistic model. Therefore, the ICC is</p>
+<p>By definition, <span class="math inline">\(\sigma\)</span> is fixed
+to be <span class="math inline">\(\pi^2 / 3\)</span> in the log-odds
+unit in a logistic model. Therefore, the ICC is</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vc_m0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/VarCorr.glmmTMB.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m0_logit</span><span class='op'>)</span>
@@ -2425,9 +2510,10 @@ R Codes
   <span class='op'>(</span><span class='va'>vc_m0</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='va'>pi</span><span class='op'>^</span><span class='fl'>2</span> <span class='op'>/</span> <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.1458452</code></pre>
+<pre><code>&gt;# [1] 0.1458</code></pre>
 </div>
-<h3 id="with-lv-2-and-lv-1-predictors">With Lv-2 and Lv-1 Predictors</h3>
+<h3 id="with-lv-2-and-lv-1-predictors">With Lv-2 and Lv-1
+Predictors</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
@@ -2449,17 +2535,18 @@ R Codes
 <p>Lv-2:</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
+  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j +
+u_{0j}  \\
   \beta_{1j} &amp; = \gamma_{10} + u_{1j}  \\
   \begin{bmatrix}
     u_{0j} \\
     u_{1j}
-  \end{bmatrix} &amp; \sim 
+  \end{bmatrix} &amp; \sim
   N\left(
     \begin{bmatrix}
       0 \\
       0
-    \end{bmatrix}, 
+    \end{bmatrix},
     \begin{bmatrix}
       \tau^2_0 &amp;  \\
       \tau_{01} &amp; \tau^2_{1}
@@ -2485,26 +2572,27 @@ R Codes
 &gt;# Data: hsball
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#   6279.6   6320.9  -3133.8   6267.6     7182 
+&gt;#     6280     6321    -3134     6268     7182 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups Name        Variance Std.Dev. Corr  
-&gt;#  id     (Intercept) 0.27177  0.5213         
-&gt;#         ses_cmc     0.01217  0.1103   -1.00 
+&gt;#  id     (Intercept) 0.2718   0.521          
+&gt;#         ses_cmc     0.0122   0.110    -1.00 
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Conditional model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept) -1.71979    0.05598  -30.72   &lt;2e-16 ***
-&gt;# meanses      1.40117    0.13502   10.38   &lt;2e-16 ***
-&gt;# ses_cmc      0.58491    0.05338   10.96   &lt;2e-16 ***
+&gt;# (Intercept)  -1.7198     0.0560   -30.7   &lt;2e-16 ***
+&gt;# meanses       1.4012     0.1350    10.4   &lt;2e-16 ***
+&gt;# ses_cmc       0.5849     0.0534    11.0   &lt;2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <h3 id="plotting">Plotting</h3>
-<p>Plotting is especially important with transformation, as it shows the association in probability unit</p>
+<p>Plotting is especially important with transformation, as it shows the
+association in probability unit</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m1_plots</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>m1_logit</span>,
@@ -2519,14 +2607,23 @@ R Codes
 </div>
 <h3 id="interpretations">Interpretations</h3>
 <h4 id="intercept">Intercept</h4>
-<p>For a student with <code>ses</code> = 0 in a school with <code>meanses</code> = 0, the predicted log odds of being commended was -1.72, 95% CI [-1.83, -1.61].</p>
+<p>For a student with <code>ses</code> = 0 in a school with
+<code>meanses</code> = 0, the predicted log odds of being commended was
+-1.72, 95% CI [-1.83, -1.61].</p>
 <h4 id="slopes">Slopes</h4>
-<p>A unit increase in <code>meanses</code> is associated with an increase in log odds of 1.4, 95% CI [1.14, 1.67].</p>
-<p>Within a given school, a unit increase in student-level <code>ses</code> is associated with an increase in log odds of 0.585, 95% CI [0.48, 0.69].</p>
+<p>A unit increase in <code>meanses</code> is associated with an
+increase in log odds of 1.4, 95% CI [1.14, 1.67].</p>
+<p>Within a given school, a unit increase in student-level
+<code>ses</code> is associated with an increase in log odds of 0.585,
+95% CI [0.48, 0.69].</p>
 <h4 id="odds-ratio">Odds ratio</h4>
-<p>A unit increase in <code>meanses</code> is associated with the odds of being commended multiplied by 4.06, 95% CI [3.12, 5.29].</p>
-<p>Within a given school, a unit increase in <code>ses</code> is associated with the odds of being commended multiplied by 1.79, 95% CI [1.62, 1.99].</p>
-<h3 id="predicted-probabilities-with-representative-values">Predicted probabilities with representative values</h3>
+<p>A unit increase in <code>meanses</code> is associated with the odds
+of being commended multiplied by 4.06, 95% CI [3.12, 5.29].</p>
+<p>Within a given school, a unit increase in <code>ses</code> is
+associated with the odds of being commended multiplied by 1.79, 95% CI
+[1.62, 1.99].</p>
+<h3 id="predicted-probabilities-with-representative-values">Predicted
+probabilities with representative values</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># meanses = 0; ses_cmc = -0.5 vs 0.5</span>
@@ -2538,9 +2635,9 @@ R Codes
                       re.form <span class='op'>=</span> <span class='cn'>NA</span>, type <span class='op'>=</span> <span class='st'>"response"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#   meanses ses_cmc id     .pred
-&gt;# 1       0    -0.5 NA 0.1256863
-&gt;# 2       0     0.5 NA 0.1994345</code></pre>
+<pre><code>&gt;#   meanses ses_cmc id  .pred
+&gt;# 1       0    -0.5 NA 0.1257
+&gt;# 2       0     0.5 NA 0.1994</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># meanses = -0.5 vs 0.5; ses_cmc = 0</span>
 <span class='va'>pred_df2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/expand_grid.html'>expand_grid</a></span><span class='op'>(</span>meanses <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>0.5</span>, <span class='fl'>0.5</span><span class='op'>)</span>,
@@ -2551,25 +2648,48 @@ R Codes
                       re.form <span class='op'>=</span> <span class='cn'>NA</span>, type <span class='op'>=</span> <span class='st'>"response"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#   meanses ses_cmc id      .pred
-&gt;# 1    -0.5       0 NA 0.08833867
-&gt;# 2     0.5       0 NA 0.26984842</code></pre>
+<pre><code>&gt;#   meanses ses_cmc id   .pred
+&gt;# 1    -0.5       0 NA 0.08834
+&gt;# 2     0.5       0 NA 0.26985</code></pre>
 </div>
-<p>As shown above, a difference of 1 unit in <code>ses_cmc</code> from -0.5 to 0.5 corresponded to a difference in probability of being commended by about 7%, when <code>meanses</code> = 0.</p>
-<p>On the other hand, a difference of 1 unit in <code>meanses</code> from -0.5 to 0.5 corresponded to a difference in probability of being commended by about 18%, when <code>ses_cmc</code> = 0.</p>
-<h3 id="r2-effect-size"><span class="math inline">\(R^2\)</span> effect size</h3>
+<p>As shown above, a difference of 1 unit in <code>ses_cmc</code> from
+-0.5 to 0.5 corresponded to a difference in probability of being
+commended by about 7%, when <code>meanses</code> = 0.</p>
+<p>On the other hand, a difference of 1 unit in <code>meanses</code>
+from -0.5 to 0.5 corresponded to a difference in probability of being
+commended by about 18%, when <code>ses_cmc</code> = 0.</p>
+<h3 id="r2-effect-size"><span class="math inline">\(R^2\)</span> effect
+size</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>m1_logit</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                    R2m        R2c
-&gt;# theoretical 0.11970981 0.18809030
-&gt;# delta       0.06152991 0.09667695</code></pre>
+<pre><code>&gt;#                 R2m     R2c
+&gt;# theoretical 0.11971 0.18809
+&gt;# delta       0.06153 0.09668</code></pre>
 </div>
-<p>There are two versions of R^2 being reported. The “theoretical” one refers to the R^2 by assuming that the binary outcome originally comes from a continuous underlying distribution, and so maybe appropriate here. The “delta” one looks at the variance of the binary outcome directly, so is appropriate for outcomes that truly can only take two values. In practice either one can be used. See <a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2017.0213" class="uri">https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2017.0213</a> and <a href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/" class="uri">https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/</a> for more discussions.</p>
+<p>There are two versions of R^2 being reported. The “theoretical” one
+refers to the R^2 by assuming that the binary outcome originally comes
+from a continuous underlying distribution, and so maybe appropriate
+here. The “delta” one looks at the variance of the binary outcome
+directly, so is appropriate for outcomes that truly can only take two
+values. In practice either one can be used. See <a
+href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2017.0213"
+class="uri">https://royalsocietypublishing.org/doi/pdf/10.1098/rsif.2017.0213</a>
+and <a
+href="https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/"
+class="uri">https://stats.idre.ucla.edu/other/mult-pkg/faq/general/faq-what-are-pseudo-r-squareds/</a>
+for more discussions.</p>
 <h3 id="bayesian-estimation">Bayesian estimation</h3>
-<p>One challenge with <code>glmmTMB</code> and <code>lme4</code> is that the estimation may not be accurate for generalized linear mixed-effect models (GLMMs), especially in the prescence of random slopes. We saw convergence issues in our previous model. A better approach is to use Bayesian estimation. A good practice is to compare the results from <code>glmmTMB</code>/<code>lme4::glmer()</code> to ones with Bayesian estimation. If there is a large discrepancy, the Bayesian result is likely more accurate, especially in small samples</p>
+<p>One challenge with <code>glmmTMB</code> and <code>lme4</code> is that
+the estimation may not be accurate for generalized linear mixed-effect
+models (GLMMs), especially in the prescence of random slopes. We saw
+convergence issues in our previous model. A better approach is to use
+Bayesian estimation. A good practice is to compare the results from
+<code>glmmTMB</code>/<code>lme4::glmer()</code> to ones with Bayesian
+estimation. If there is a large discrepancy, the Bayesian result is
+likely more accurate, especially in small samples</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The code here takes a few minutes to run</span>
@@ -2797,8 +2917,10 @@ cor__(Intercept).ses_cmc
 Num.Obs.
 </td>
 <td style="text-align:center;">
+7185
 </td>
 <td style="text-align:center;">
+7185
 </td>
 <td style="text-align:center;">
 7185
@@ -2870,14 +2992,34 @@ pss
 </tbody>
 </table>
 </div>
-<h2 id="bonus-cluster-specific-vs.-population-average-coefficients">Bonus: Cluster-Specific vs. Population-Average Coefficients</h2>
-<p>In MLM, we need to distinguish two types of interpretations of coefficients:</p>
+<h2
+id="bonus-cluster-specific-vs.-population-average-coefficients">Bonus:
+Cluster-Specific vs. Population-Average Coefficients</h2>
+<p>In MLM, we need to distinguish two types of interpretations of
+coefficients:</p>
 <ul>
-<li>Cluster-specific (CS; also called conditional model): For a given cluster, a unit difference in <span class="math inline">\(X\)</span> corresponds to a difference in <span class="math inline">\(Y\)</span> by <span class="math inline">\(\gamma\)</span> units</li>
-<li>Population-average (PA; also called marginal model): At the population level, a unit difference in <span class="math inline">\(X\)</span> corresponds to an average difference in <span class="math inline">\(Y\)</span> by <span class="math inline">\(\gamma^*\)</span> units</li>
+<li>Cluster-specific (CS; also called conditional model): For a given
+cluster, a unit difference in <span class="math inline">\(X\)</span>
+corresponds to a difference in <span class="math inline">\(Y\)</span> by
+<span class="math inline">\(\gamma\)</span> units</li>
+<li>Population-average (PA; also called marginal model): At the
+population level, a unit difference in <span
+class="math inline">\(X\)</span> corresponds to an average difference in
+<span class="math inline">\(Y\)</span> by <span
+class="math inline">\(\gamma^*\)</span> units</li>
 </ul>
-<p>In a linear model, the coefficients under CS and under PA are the same, so we did not pay too much attention to the distinction. However, in generalized linear models, such as logistic models, with the same data, one gets different coefficients by fitting a conditional (e.g., MLM) vs. a marginal model (e.g., GEE). I have some discussions at <a href="https://quantscience.rbind.io/2020/12/28/unit-specific-vs-population-average-models/" class="uri">https://quantscience.rbind.io/2020/12/28/unit-specific-vs-population-average-models/</a>. You may also check out an example in this paper: <a href="https://journals.sagepub.com/doi/full/10.3102/10769986211017480" class="uri">https://journals.sagepub.com/doi/full/10.3102/10769986211017480</a></p>
-<p>The <code>GLMMadaptive</code> package computes coefficients in both CS and PA. Below is an example showing the difference:</p>
+<p>In a linear model, the coefficients under CS and under PA are the
+same, so we did not pay too much attention to the distinction. However,
+in generalized linear models, such as logistic models, with the same
+data, one gets different coefficients by fitting a conditional (e.g.,
+MLM) vs. a marginal model (e.g., GEE). I have some discussions at <a
+href="https://quantscience.rbind.io/2020/12/28/unit-specific-vs-population-average-models/"
+class="uri">https://quantscience.rbind.io/2020/12/28/unit-specific-vs-population-average-models/</a>.
+You may also check out an example in this paper: <a
+href="https://journals.sagepub.com/doi/full/10.3102/10769986211017480"
+class="uri">https://journals.sagepub.com/doi/full/10.3102/10769986211017480</a></p>
+<p>The <code>GLMMadaptive</code> package computes coefficients in both
+CS and PA. Below is an example showing the difference:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://drizopoulos.github.io/GLMMadaptive/'>GLMMadaptive</a></span><span class='op'>)</span>
@@ -2903,8 +3045,8 @@ pss
 &gt;#  link: logit 
 &gt;# 
 &gt;# Fit statistics:
-&gt;#   log.Lik     AIC      BIC
-&gt;#  -3128.23 6268.46 6286.911
+&gt;#  log.Lik  AIC  BIC
+&gt;#    -3128 6268 6287
 &gt;# 
 &gt;# Random effects covariance matrix:
 &gt;#              StdDev    Corr
@@ -2912,10 +3054,10 @@ pss
 &gt;# ses_cmc      0.1174 -0.9369
 &gt;# 
 &gt;# Fixed effects:
-&gt;#             Estimate Std.Err  z-value p-value
-&gt;# (Intercept)  -1.7584  0.0570 -30.8705 &lt; 1e-04
-&gt;# meanses       1.4370  0.1357  10.5920 &lt; 1e-04
-&gt;# ses_cmc       0.6057  0.0560  10.8093 &lt; 1e-04
+&gt;#             Estimate Std.Err z-value p-value
+&gt;# (Intercept)  -1.7584  0.0570  -30.87  &lt;1e-04
+&gt;# meanses       1.4370  0.1357   10.59  &lt;1e-04
+&gt;# ses_cmc       0.6057  0.0560   10.81  &lt;1e-04
 &gt;# 
 &gt;# Integration:
 &gt;# method: adaptive Gauss-Hermite quadrature rule
@@ -2929,14 +3071,22 @@ pss
 <span class='fu'><a href='https://drizopoulos.github.io/GLMMadaptive/reference/marginal_coefs.html'>marginal_coefs</a></span><span class='op'>(</span><span class='va'>m1_pa</span>, std_errors <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#             Estimate Std.Err  z-value p-value
-&gt;# (Intercept)  -1.6713  0.0917 -18.2274 &lt; 1e-04
-&gt;# meanses       1.3913  0.1312  10.6034 &lt; 1e-04
-&gt;# ses_cmc       0.5497  0.0689   7.9741 &lt; 1e-04</code></pre>
+<pre><code>&gt;#             Estimate Std.Err z-value p-value
+&gt;# (Intercept)  -1.6713  0.0917 -18.227  &lt;1e-04
+&gt;# meanses       1.3913  0.1312  10.603  &lt;1e-04
+&gt;# ses_cmc       0.5497  0.0689   7.974  &lt;1e-04</code></pre>
 </div>
-<p>The main thing to note is that when interpreting coefficients in MLM using something other than the identity link, one should note the coefficients are conditional on the random effects. If the interest is in making statements about population-average predictions, such as the difference in probabilities of being commended for students with high and low SES, across all schools, then one needs to obtain the population-average coefficients.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>The main thing to note is that when interpreting coefficients in MLM
+using something other than the identity link, one should note the
+coefficients are conditional on the random effects. If the interest is
+in making statements about population-average predictions, such as the
+difference in probabilities of being commended for students with high
+and low SES, across all schools, then one needs to obtain the
+population-average coefficients.</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2962,7 +3112,10 @@ pss
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

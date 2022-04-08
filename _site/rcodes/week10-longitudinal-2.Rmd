@@ -407,7 +407,7 @@ broom.mixed::augment(m1) %>%
 
 ## Add `stressor`
 
-```{r m2, message=TRUE, results='hide', cache=TRUE}
+```{r m2}
 # Convert stressor to a factor
 stress_data$stressor <- factor(stress_data$stressor,
                                levels = c(0, 1),

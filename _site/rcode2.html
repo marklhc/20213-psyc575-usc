@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2092,6 +2092,10 @@ Lectures
 <a href="week7.html">Week 7</a>
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
+<a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2110,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,27 +2141,34 @@ R Codes
 <h3>Contents</h3>
 <ul>
 <li><a href="#simulation">Simulation</a></li>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a>
 <ul>
 <li><a href="#import-data">Import Data</a></li>
 </ul></li>
-<li><a href="#quick-scatterplot-matrix">Quick Scatterplot Matrix</a></li>
-<li><a href="#linear-regression-of-salary-on-pub">1. Linear Regression of <code>salary</code> on <code>pub</code></a>
+<li><a href="#quick-scatterplot-matrix">Quick Scatterplot
+Matrix</a></li>
+<li><a href="#linear-regression-of-salary-on-pub">1. Linear Regression
+of <code>salary</code> on <code>pub</code></a>
 <ul>
 <li><a href="#visualize-the-data">Visualize the data</a></li>
 <li><a href="#linear-regression">Linear regression</a></li>
-<li><a href="#visualize-fitted-regression-line">Visualize fitted regression line:</a></li>
+<li><a href="#visualize-fitted-regression-line">Visualize fitted
+regression line:</a></li>
 <li><a href="#confidence-intervals">Confidence intervals</a></li>
 <li><a href="#interpretations">Interpretations</a></li>
 <li><a href="#simulations">Simulations</a></li>
-<li><a href="#p-values"><span class="math inline">\(p\)</span> values</a></li>
+<li><a href="#p-values"><span class="math inline">\(p\)</span>
+values</a></li>
 <li><a href="#centering">Centering</a></li>
 </ul></li>
 <li><a href="#categorical-predictor">2. Categorical Predictor</a>
 <ul>
-<li><a href="#equivalence-to-the-t-test">Equivalence to the <span class="math inline">\(t\)</span>-test</a></li>
+<li><a href="#equivalence-to-the-t-test">Equivalence to the <span
+class="math inline">\(t\)</span>-test</a></li>
 </ul></li>
-<li><a href="#multiple-predictors-multiple-regression">3. Multiple Predictors (Multiple Regression)</a>
+<li><a href="#multiple-predictors-multiple-regression">3. Multiple
+Predictors (Multiple Regression)</a>
 <ul>
 <li><a href="#plotting">Plotting</a></li>
 <li><a href="#interpretations-1">Interpretations</a></li>
@@ -2165,9 +2179,12 @@ R Codes
 <ul>
 <li><a href="#interaction-plots">Interaction Plots</a></li>
 </ul></li>
-<li><a href="#tabulate-the-regression-results">5. Tabulate the Regression Results</a></li>
-<li><a href="#bonus-matrix-form-of-regression">Bonus: Matrix Form of Regression</a></li>
-<li><a href="#bonus-more-options-in-formatting-tables">Bonus: More Options in Formatting Tables</a></li>
+<li><a href="#tabulate-the-regression-results">5. Tabulate the
+Regression Results</a></li>
+<li><a href="#bonus-matrix-form-of-regression">Bonus: Matrix Form of
+Regression</a></li>
+<li><a href="#bonus-more-options-in-formatting-tables">Bonus: More
+Options in Formatting Tables</a></li>
 </ul>
 </nav>
 </div>
@@ -2176,34 +2193,45 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week2-review-multiple-regression.Rmd">week2-review-multiple-regression.Rmd</a></p>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week2-review-multiple-regression.Rmd">week2-review-multiple-regression.Rmd</a></p>
 <h2 id="simulation">Simulation</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/ka4Y5jYL3wM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Practice yourself: From the simulation code provided, try to increase the sample size from 62 to something larger, like 200. How does this affect the uncertainty in the sample slopes?</p>
+<p>Practice yourself: From the simulation code provided, try to increase
+the sample size from 62 to something larger, like 200. How does this
+affect the uncertainty in the sample slopes?</p>
 <hr />
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
-<p>You can use add the <code>message=FALSE</code> option to suppress the package loading messages</p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
+<p>You can use add the <code>message=FALSE</code> option to suppress the
+package loading messages</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
 <span class='co'># install.packages("psych")  </span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://personality-project.org/r/psych/'>psych</a></span><span class='op'>)</span>  <span class='co'># for scatterplot matrix</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://personality-project.org/r/psych/'>psych</a></span>, include.only <span class='op'>=</span> <span class='st'>"pairs.panels"</span><span class='op'>)</span>  <span class='co'># for scatterplot matrix</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://here.r-lib.org/'>here</a></span><span class='op'>)</span>  <span class='co'># makes reading data more consistent</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span>  <span class='co'># for data manipulation and plotting</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://r-forge.r-project.org/projects/car/'>car</a></span><span class='op'>)</span>  <span class='co'># some useful functions for regression</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>  <span class='co'># for plotting slopes</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for plotting interactions</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
 <h3 id="import-data">Import Data</h3>
-<p>First, download the data file <code>salary.txt</code> from <a href="https://raw.githubusercontent.com/marklhc/marklai-pages/master/data_files/salary.txt" class="uri">https://raw.githubusercontent.com/marklhc/marklai-pages/master/data_files/salary.txt</a>, and import the data. A robust way to do so is to download the data to a folder called <code>data_files</code> under the project directory, and then use the <code>here</code> package. This avoids a lot of data import issues that I’ve seen.</p>
+<p>First, download the data file <code>salary.txt</code> from <a
+href="https://raw.githubusercontent.com/marklhc/marklai-pages/master/data_files/salary.txt"
+class="uri">https://raw.githubusercontent.com/marklhc/marklai-pages/master/data_files/salary.txt</a>,
+and import the data. A robust way to do so is to download the data to a
+folder called <code>data_files</code> under the project directory, and
+then use the <code>here</code> package. This avoids a lot of data import
+issues that I’ve seen.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The `here()` function forces the use of the project directory</span>
@@ -2213,7 +2241,9 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>Alternatively, from the menu, click <code>File</code> → <code>Import Dataset</code> → <code>From Text (base)...</code>, and select the file.</p>
+<p>Alternatively, from the menu, click <code>File</code> →
+<code>Import Dataset</code> → <code>From Text (base)...</code>, and
+select the file.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Show the data</span>
@@ -2284,7 +2314,9 @@ R Codes
 &gt;# 61 61    3  25   1       27  44301
 &gt;# 62 62    4   4   1       28  58582</code></pre>
 </div>
-<p>You can see the description of the variables here: <a href="https://rdrr.io/cran/MBESS/man/prof.salary.html" class="uri">https://rdrr.io/cran/MBESS/man/prof.salary.html</a></p>
+<p>You can see the description of the variables here: <a
+href="https://rdrr.io/cran/MBESS/man/prof.salary.html"
+class="uri">https://rdrr.io/cran/MBESS/man/prof.salary.html</a></p>
 <h2 id="quick-scatterplot-matrix">Quick Scatterplot Matrix</h2>
 <p>Import to screen your data before any statistical modeling</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2295,32 +2327,38 @@ R Codes
 </div>
 <p><img src="rcode2_files/figure-html5/pairs-salary_dat-1.png" width="624" /></p>
 </div>
-<h2 id="linear-regression-of-salary-on-pub">1. Linear Regression of <code>salary</code> on <code>pub</code></h2>
+<h2 id="linear-regression-of-salary-on-pub">1. Linear Regression of
+<code>salary</code> on <code>pub</code></h2>
 <h3 id="visualize-the-data">Visualize the data</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Visualize the data ("gg" stands for grammar of graphics)</span>
-<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>salary_dat</span>,  <span class='co'># specify data</span>
+<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>salary_dat</span>,  <span class='co'># specify data</span>
              <span class='co'># aesthetics: mapping variable to axes)</span>
-             <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  
+             <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  
              <span class='co'># geom: geometric objects, such as points, lines, shapes, etc</span>
-             <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+             <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># Add a smoother geom to visualize mean salary as a function of pub</span>
-<span class='va'>p1</span> <span class='op'>+</span> <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>p1</span> <span class='op'>+</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/p1-smooth-1.png" width="624" /></p>
 </div>
-<p>A little bit of non-linearity on the plot. Now fit the regression model</p>
+<p>A little bit of non-linearity on the plot. Now fit the regression
+model</p>
 <h3 id="linear-regression">Linear regression</h3>
-<p>You can type equations (with LaTeX; see a <a href="https://www.latex-tutorial.com/tutorials/amsmath/">quick reference</a>).</p>
+<p>You can type equations (with LaTeX; see a <a
+href="https://www.latex-tutorial.com/tutorials/amsmath/">quick
+reference</a>).</p>
 <p>P.S. Use <code>\text{}</code> to specify variable names</p>
 <p>P.S. Pay attention to the subscripts</p>
-<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}_i + e_i\]</span></p>
+<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1
+\text{pub}_i + e_i\]</span></p>
 <ul>
 <li>Outcome: <code>salary</code></li>
 <li>Predictor: <code>pub</code></li>
-<li><span class="math inline">\(\beta_0\)</span>: regression intercept</li>
+<li><span class="math inline">\(\beta_0\)</span>: regression
+intercept</li>
 <li><span class="math inline">\(\beta_1\)</span>: regression slope</li>
 <li><span class="math inline">\(e\)</span>: error</li>
 </ul>
@@ -2354,14 +2392,15 @@ R Codes
 &gt;# Multiple R-squared:  0.256,  Adjusted R-squared:  0.244 
 &gt;# F-statistic: 20.7 on 1 and 60 DF,  p-value: 2.71e-05</code></pre>
 </div>
-<h3 id="visualize-fitted-regression-line">Visualize fitted regression line:</h3>
+<h3 id="visualize-fitted-regression-line">Visualize fitted regression
+line:</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p1</span> <span class='op'>+</span>
   <span class='co'># Non-parametric fit</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Linear regression line (in red)</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/p1-fitted-1.png" width="624" /></p>
@@ -2379,17 +2418,52 @@ R Codes
 </div>
 <h3 id="interpretations">Interpretations</h3>
 <blockquote>
-<p>Based on our model, faculty with one more publication have predicted salary of $350.8, 95% CI [$196.4, $505.2], higher than those with one less publication.</p>
+<p>Based on our model, faculty with one more publication have predicted
+salary of $350.8, 95% CI [$196.4, $505.2], higher than those with one
+less publication.</p>
 </blockquote>
-<p>But what do the confidence intervals and the standard errors mean? To understanding what exactly a regression model is, let’s run some simulations.</p>
+<p>But what do the confidence intervals and the standard errors mean? To
+understanding what exactly a regression model is, let’s run some
+simulations.</p>
 <hr />
 <h3 id="simulations">Simulations</h3>
-<p>Before you go on, take a look on a <a href="https://www.youtube.com/watch?v=pGvJl8vvlXY">brief introductory video</a> by Clark Caylord on Youtube on simulating data based on a simple linear regression model.</p>
-<p>To my delight, I also found out a gentle introduction of simulation method by one of our clinical science students at USC (Thanks Kayla!). You can access it through the USC library <a href="https://libproxy1.usc.edu/login?url=http://sk.sagepub.com.libproxy2.usc.edu/reference/sage-encyclopedia-of-educational-research-measurement-evaluation/i13837.xml">here</a> (Sign-on required). Here’s the citation:</p>
-<p>Tureson, K. &amp; Odland, A. (2018). Monte Carlo simulation studies. In B. Frey (Ed.),The SAGE Encyclopedia of Educational Research, Measurement, and Evaluation. Thousand Oaks, CA: SAGE Publications.</p>
-<p>Based on the analyses, the sample regression line is <span class="math display">\[\widehat{\text{salary}} = 48439.09 + 350.80 \text{pub}.\]</span> The numbers are only sample estimates as there are sampling errors. However, if we assume that this line truly describe the relation between <code>salary</code> and <code>pub</code>, then we can simulate some fake data, which represents what we could have obtained in a different sample.</p>
-<p>Going back to the equation <span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}_i + e_i,\]</span> the only thing that changes across different samples, based on the statistical model, is <span class="math inline">\(e_i\)</span>. Conceptually, you can think of the error term <span class="math inline">\(e_i\)</span> as <strong>the deviation of person <span class="math inline">\(i\)</span>’s salary from the mean salary of everyone in the population who has the same number of publications as person <span class="math inline">\(i\)</span>.</strong> Here we assume that <span class="math inline">\(e_i\)</span> is normally distributed, written as <span class="math inline">\(e_i \sim N(0, \sigma)\)</span>, where <span class="math inline">\(\sigma\)</span> describes the conditional standard deviation (i.e., the standard deviation across individuals who have the same number of publications). From the regression results, <span class="math inline">\(\sigma\)</span> is estimated as the <code>Residual standard error</code> = 8,440.</p>
-<p>Based on these model assumptions, we can imagine a large population, say with 10,000 people</p>
+<p>Before you go on, take a look on a <a
+href="https://www.youtube.com/watch?v=pGvJl8vvlXY">brief introductory
+video</a> by Clark Caylord on Youtube on simulating data based on a
+simple linear regression model.</p>
+<p>To my delight, I also found out a gentle introduction of simulation
+method by one of our clinical science students at USC (Thanks Kayla!).
+You can access it through the USC library <a
+href="https://libproxy1.usc.edu/login?url=http://sk.sagepub.com.libproxy2.usc.edu/reference/sage-encyclopedia-of-educational-research-measurement-evaluation/i13837.xml">here</a>
+(Sign-on required). Here’s the citation:</p>
+<p>Tureson, K. &amp; Odland, A. (2018). Monte Carlo simulation studies.
+In B. Frey (Ed.),The SAGE Encyclopedia of Educational Research,
+Measurement, and Evaluation. Thousand Oaks, CA: SAGE Publications.</p>
+<p>Based on the analyses, the sample regression line is <span
+class="math display">\[\widehat{\text{salary}} = 48439.09 + 350.80
+\text{pub}.\]</span> The numbers are only sample estimates as there are
+sampling errors. However, if we assume that this line truly describe the
+relation between <code>salary</code> and <code>pub</code>, then we can
+simulate some fake data, which represents what we could have obtained in
+a different sample.</p>
+<p>Going back to the equation <span
+class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}_i
++ e_i,\]</span> the only thing that changes across different samples,
+based on the statistical model, is <span
+class="math inline">\(e_i\)</span>. Conceptually, you can think of the
+error term <span class="math inline">\(e_i\)</span> as <strong>the
+deviation of person <span class="math inline">\(i\)</span>’s salary from
+the mean salary of everyone in the population who has the same number of
+publications as person <span class="math inline">\(i\)</span>.</strong>
+Here we assume that <span class="math inline">\(e_i\)</span> is normally
+distributed, written as <span class="math inline">\(e_i \sim N(0,
+\sigma)\)</span>, where <span class="math inline">\(\sigma\)</span>
+describes the conditional standard deviation (i.e., the standard
+deviation across individuals who have the same number of publications).
+From the regression results, <span class="math inline">\(\sigma\)</span>
+is estimated as the <code>Residual standard error</code> = 8,440.</p>
+<p>Based on these model assumptions, we can imagine a large population,
+say with 10,000 people</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Simulating a large population. The code in this chunk </span>
@@ -2399,7 +2473,7 @@ R Codes
 <span class='va'>beta1</span> <span class='op'>&lt;-</span> <span class='fl'>350.80</span>
 <span class='va'>sigma</span> <span class='op'>&lt;-</span> <span class='fl'>8440</span>
 <span class='co'># Simulate population data</span>
-<span class='va'>simulated_population</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+<span class='va'>simulated_population</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   <span class='co'># Simulate population pub</span>
   pub <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/eval.html'>local</a></span><span class='op'>(</span><span class='op'>{</span>
     <span class='va'>dens</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/density.html'>density</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>pub</span>, <span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>pub</span><span class='op'>)</span>,
@@ -2423,45 +2497,49 @@ R Codes
 <span class='va'>simulated_population</span><span class='op'>$</span><span class='va'>salary</span> <span class='op'>&lt;-</span>
   <span class='va'>beta0</span> <span class='op'>+</span> <span class='va'>beta1</span> <span class='op'>*</span> <span class='va'>simulated_population</span><span class='op'>$</span><span class='va'>pub</span> <span class='op'>+</span> <span class='va'>simulated_population</span><span class='op'>$</span><span class='va'>e</span>
 <span class='co'># Plot</span>
-<span class='va'>p_pop</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span>
+<span class='va'>p_pop</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>
   data <span class='op'>=</span> <span class='va'>simulated_population</span>,
-  <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span>
 <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add population regression line in blue</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span>, method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span>, method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span>
 <span class='va'>p_pop</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/fake-pop-1.png" width="624" /></p>
 </div>
-<p>Now, we can simulate some fake (but plausible) samples. An important thing to remember is we want to <strong>simulate data that have the same size as the original sample</strong>, because we’re comparing to other plausible samples with equal size. In R there is a handy <code>simulate()</code> function to do that.</p>
+<p>Now, we can simulate some fake (but plausible) samples. An important
+thing to remember is we want to <strong>simulate data that have the same
+size as the original sample</strong>, because we’re comparing to other
+plausible samples with equal size. In R there is a handy
+<code>simulate()</code> function to do that.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>simulated_salary</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/simulate.html'>simulate</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span>
 <span class='co'># Add simulated salary to the original data</span>
 <span class='co'># Note: the simulated variable is called `sim_1`</span>
-<span class='va'>sim_data1</span> <span class='op'>&lt;-</span> <span class='fu'>bind_cols</span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='va'>simulated_salary</span><span class='op'>)</span>
+<span class='va'>sim_data1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='va'>simulated_salary</span><span class='op'>)</span>
 <span class='co'># Show the first six rows</span>
 <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>sim_data1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>&gt;#   id time pub sex citation salary sim_1
-&gt;# 1  1    3  18   1       50  51876 58988
-&gt;# 2  2    6   3   1       26  54511 50447
-&gt;# 3  3    3   2   1       50  53425 57358
-&gt;# 4  4    8  17   0       34  61863 70553
-&gt;# 5  5    9  11   1       41  52926 45277
-&gt;# 6  6    6   6   0       37  47034 46810</code></pre>
+&gt;# 1  1    3  18   1       50  51876 62700
+&gt;# 2  2    6   3   1       26  54511 63635
+&gt;# 3  3    3   2   1       50  53425 38307
+&gt;# 4  4    8  17   0       34  61863 62060
+&gt;# 5  5    9  11   1       41  52926 48844
+&gt;# 6  6    6   6   0       37  47034 45108</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the data (add on to the population)</span>
 <span class='va'>p_pop</span> <span class='op'>+</span> 
-  <span class='fu'>geom_point</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>sim_data1</span>, 
-             <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>sim_1</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>sim_data1</span>, 
+             <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>sim_1</span><span class='op'>)</span>,
              col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='co'># Add sample regression line</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>sim_data1</span>, 
-              <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>sim_1</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>sim_data1</span>, 
+              <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>sim_1</span><span class='op'>)</span>,
               method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2472,7 +2550,7 @@ R Codes
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To be more transparent, here's what the simulate() function essentially is</span>
 <span class='co'># doing</span>
 <span class='va'>sample_size</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>salary_dat</span><span class='op'>)</span>
-<span class='va'>sim_data1</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+<span class='va'>sim_data1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   pub <span class='op'>=</span> <span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>pub</span>,
   <span class='co'># simulate error</span>
   e <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>sample_size</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='va'>sigma</span><span class='op'>)</span>
@@ -2482,7 +2560,8 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>As you can see, the sample regression line in red is different from the blue line.</p>
+<p>As you can see, the sample regression line in red is different from
+the blue line.</p>
 <h4 id="drawing-100-samples">Drawing 100 samples</h4>
 <p>Let’s draw more samples</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2490,23 +2569,23 @@ R Codes
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>num_samples</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
 <span class='va'>simulated_salary100</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/simulate.html'>simulate</a></span><span class='op'>(</span><span class='va'>m1</span>, nsim <span class='op'>=</span> <span class='va'>num_samples</span><span class='op'>)</span>
 <span class='co'># Form a giant data set with 100 samples</span>
-<span class='va'>sim_data100</span> <span class='op'>&lt;-</span> <span class='fu'>bind_cols</span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='va'>simulated_salary100</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>pivot_longer</span><span class='op'>(</span><span class='va'>sim_1</span><span class='op'>:</span><span class='va'>sim_100</span>,
+<span class='va'>sim_data100</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='va'>simulated_salary100</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='va'>sim_1</span><span class='op'>:</span><span class='va'>sim_100</span>,
     names_prefix <span class='op'>=</span> <span class='st'>"sim_"</span>,
     names_to <span class='op'>=</span> <span class='st'>"sim"</span>,
     values_to <span class='op'>=</span> <span class='st'>"simulated_salary"</span>
   <span class='op'>)</span>
 <span class='co'># Plot by samples</span>
-<span class='va'>p_sim100</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span>
+<span class='va'>p_sim100</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>
   <span class='va'>sim_data100</span>,
-  <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>simulated_salary</span>, group <span class='op'>=</span> <span class='va'>sim</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>simulated_salary</span>, group <span class='op'>=</span> <span class='va'>sim</span><span class='op'>)</span>
 <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"red"</span>, alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span>
 <span class='co'># Use gganimate (this takes some time to render)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gganimate.com'>gganimate</a></span><span class='op'>)</span>
 <span class='va'>p_sim100</span> <span class='op'>+</span> <span class='fu'><a href='https://gganimate.com/reference/transition_states.html'>transition_states</a></span><span class='op'>(</span><span class='va'>sim</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>ggtitle</span><span class='op'>(</span><span class='st'>"Simulation {frame} of {nframes}"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>ggtitle</a></span><span class='op'>(</span><span class='st'>"Simulation {frame} of {nframes}"</span><span class='op'>)</span>
 <span class='fu'><a href='https://gganimate.com/reference/anim_save.html'>anim_save</a></span><span class='op'>(</span><span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"sim-100-samples.gif"</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2515,9 +2594,9 @@ R Codes
 <p>We can show the regression lines for all 100 samples</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>sim_data100</span>,
-       <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>simulated_salary</span>, group <span class='op'>=</span> <span class='va'>sim</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>stat_smooth</span><span class='op'>(</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>sim_data100</span>,
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>simulated_salary</span>, group <span class='op'>=</span> <span class='va'>sim</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>stat_smooth</a></span><span class='op'>(</span>
     geom <span class='op'>=</span> <span class='st'>"line"</span>,
     col <span class='op'>=</span> <span class='st'>"red"</span>,
     se <span class='op'>=</span> <span class='cn'>FALSE</span>,
@@ -2528,47 +2607,61 @@ R Codes
 </div>
 <p><img src="rcode2_files/figure-html5/plot-sim_data100-1.png" width="624" /></p>
 </div>
-<p>The confidence intervals of the intercept and the slope how much uncertainty there is.</p>
+<p>The confidence intervals of the intercept and the slope how much
+uncertainty there is.</p>
 <h3 id="p-values"><span class="math inline">\(p\)</span> values</h3>
-<p>Now, we can also understand the <span class="math inline">\(p\)</span> value for the regression slope of <code>pub</code> is. Remember that the <span class="math inline">\(p\)</span> value is the probability that, if the regression slope of <code>pub</code> is zero (i.e., no association), how likely/unlikely would we get the sample slope (i.e., 350.80) in our data. So now we’ll repeat the simulation, but without <code>pub</code> as a predictor (i.e., assuming <span class="math inline">\(\beta_1 = 0\)</span>).</p>
+<p>Now, we can also understand the <span
+class="math inline">\(p\)</span> value for the regression slope of
+<code>pub</code> is. Remember that the <span
+class="math inline">\(p\)</span> value is the probability that, if the
+regression slope of <code>pub</code> is zero (i.e., no association), how
+likely/unlikely would we get the sample slope (i.e., 350.80) in our
+data. So now we’ll repeat the simulation, but without <code>pub</code>
+as a predictor (i.e., assuming <span class="math inline">\(\beta_1 =
+0\)</span>).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>num_samples</span> <span class='op'>&lt;-</span> <span class='fl'>100</span>
 <span class='va'>m0</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>salary</span> <span class='op'>~</span> <span class='fl'>1</span>, data <span class='op'>=</span> <span class='va'>salary_dat</span><span class='op'>)</span>  <span class='co'># null model</span>
 <span class='va'>simulated_salary100_null</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/simulate.html'>simulate</a></span><span class='op'>(</span><span class='va'>m0</span>, nsim <span class='op'>=</span> <span class='va'>num_samples</span><span class='op'>)</span>
 <span class='co'># Form a giant data set with 100 samples</span>
-<span class='va'>sim_null100</span> <span class='op'>&lt;-</span> <span class='fu'>bind_cols</span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='va'>simulated_salary100_null</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>pivot_longer</span><span class='op'>(</span><span class='va'>sim_1</span><span class='op'>:</span><span class='va'>sim_100</span>, 
+<span class='va'>sim_null100</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_cols</a></span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='va'>simulated_salary100_null</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span><span class='va'>sim_1</span><span class='op'>:</span><span class='va'>sim_100</span>, 
                names_prefix <span class='op'>=</span> <span class='st'>"sim_"</span>, 
                names_to <span class='op'>=</span> <span class='st'>"sim"</span>, 
                values_to <span class='op'>=</span> <span class='st'>"simulated_salary"</span><span class='op'>)</span>
 <span class='co'># Show the null slopes</span>
-<span class='fu'>ggplot</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>salary_dat</span>,
-       <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>stat_smooth</span><span class='op'>(</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>salary_dat</span>,
+       <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>stat_smooth</a></span><span class='op'>(</span>
     data <span class='op'>=</span> <span class='va'>sim_null100</span>,
-    <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>simulated_salary</span>, group <span class='op'>=</span> <span class='va'>sim</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>pub</span>, y <span class='op'>=</span> <span class='va'>simulated_salary</span>, group <span class='op'>=</span> <span class='va'>sim</span><span class='op'>)</span>,
     geom <span class='op'>=</span> <span class='st'>"line"</span>,
     col <span class='op'>=</span> <span class='st'>"darkgrey"</span>,
     se <span class='op'>=</span> <span class='cn'>FALSE</span>,
     method <span class='op'>=</span> <span class='st'>"lm"</span>
   <span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/sim-null-1.png" width="624" /></p>
 </div>
-<p>So you can see the sample slope is larger than what you would expect to see if the true slope is zero. So the <span class="math inline">\(p\)</span> value is very small, and the result is statistically significant (at, say, .05 level).</p>
+<p>So you can see the sample slope is larger than what you would expect
+to see if the true slope is zero. So the <span
+class="math inline">\(p\)</span> value is very small, and the result is
+statistically significant (at, say, .05 level).</p>
 <hr />
 <h3 id="centering">Centering</h3>
-<p>So that the intercept refers to a more meaningful value. It’s a major issue in multilevel modeling.</p>
-<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}^c_i + e_i\]</span></p>
+<p>So that the intercept refers to a more meaningful value. It’s a major
+issue in multilevel modeling.</p>
+<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1
+\text{pub}^c_i + e_i\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using pipe operator</span>
-<span class='va'>salary_dat</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>pub_c <span class='op'>=</span> <span class='va'>pub</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pub</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>salary_dat</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>pub_c <span class='op'>=</span> <span class='va'>pub</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>pub</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Equivalent to:</span>
 <span class='co'># salary_dat &lt;- mutate(salary_dat, </span>
 <span class='co'>#                      pub_c = pub - mean(pub))</span>
@@ -2599,32 +2692,35 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>p1</span> <span class='op'>+</span> 
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, col <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='co'># Intercept without centering</span>
-  <span class='fu'>geom_vline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Not centered"</span>, xintercept <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Not centered"</span>, xintercept <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='co'># Intercept with centering</span>
-  <span class='fu'>geom_vline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Centered"</span>, xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>pub</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>labs</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_abline.html'>geom_vline</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Centered"</span>, xintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>pub</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/p1-center-1.png" width="624" /></p>
 </div>
 <h2 id="categorical-predictor">2. Categorical Predictor</h2>
-<p>Recode <code>sex</code> as <code>factor</code> variable in R (which allows R to automatically do dummy coding). This should be done in general for categorical predictors.</p>
+<p>Recode <code>sex</code> as <code>factor</code> variable in R (which
+allows R to automatically do dummy coding). This should be done in
+general for categorical predictors.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>salary_dat</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sex</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>salary_dat</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>sex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sex</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
                       labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"male"</span>, <span class='st'>"female"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{sex}_i + e_i\]</span></p>
+<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1
+\text{sex}_i + e_i\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sex</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-    <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
-    <span class='fu'>geom_jitter</span><span class='op'>(</span>height <span class='op'>=</span> <span class='fl'>0</span>, width <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># move the points to left/right a bit</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sex</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_jitter.html'>geom_jitter</a></span><span class='op'>(</span>height <span class='op'>=</span> <span class='fl'>0</span>, width <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># move the points to left/right a bit</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/p2-1.png" width="624" /></p>
@@ -2654,9 +2750,12 @@ R Codes
 &gt;# Multiple R-squared:  0.0404, Adjusted R-squared:  0.0244 
 &gt;# F-statistic: 2.53 on 1 and 60 DF,  p-value: 0.117</code></pre>
 </div>
-<p>The <code>(Intercept)</code> coefficient is for the ‘0’ category, i.e., predicted salary for males; the <code>female</code> coefficient is the difference between males and females.</p>
+<p>The <code>(Intercept)</code> coefficient is for the ‘0’ category,
+i.e., predicted salary for males; the <code>female</code> coefficient is
+the difference between males and females.</p>
 <p>Predicted female salary = 56515 + (-3902) = 52613.</p>
-<h3 id="equivalence-to-the-t-test">Equivalence to the <span class="math inline">\(t\)</span>-test</h3>
+<h3 id="equivalence-to-the-t-test">Equivalence to the <span
+class="math inline">\(t\)</span>-test</h3>
 <p>When assuming homogeneity of variance</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2675,13 +2774,16 @@ R Codes
 &gt;#   mean in group male mean in group female 
 &gt;#                56515                52613</code></pre>
 </div>
-<h2 id="multiple-predictors-multiple-regression">3. Multiple Predictors (Multiple Regression)</h2>
-<p>Now add one more predictor, <code>time</code> <span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}^c_i + \beta_2 \text{time}_i + e_i\]</span></p>
+<h2 id="multiple-predictors-multiple-regression">3. Multiple Predictors
+(Multiple Regression)</h2>
+<p>Now add one more predictor, <code>time</code> <span
+class="math display">\[\text{salary}_i = \beta_0 + \beta_1
+\text{pub}^c_i + \beta_2 \text{time}_i + e_i\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>salary_dat</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>salary</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode2_files/figure-html5/p3-1.png" width="624" /></p>
@@ -2721,7 +2823,8 @@ R Codes
 &gt;# time          488.56  1703.5</code></pre>
 </div>
 <p>The regression coefficients are the <em>partial</em> effects.</p>
-<p><img src="https://github.com/marklhc/marklai-pages/raw/master/static/img/regression_venn.png" /></p>
+<p><img
+src="https://github.com/marklhc/marklai-pages/raw/master/static/img/regression_venn.png" /></p>
 <h3 id="plotting">Plotting</h3>
 <p>The <code>sjPlot::plot_model()</code> function is handy</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2738,7 +2841,11 @@ R Codes
 </div>
 <h3 id="interpretations-1">Interpretations</h3>
 <blockquote>
-<p>Faculty who have worked <em>longer</em> tended to have <em>more</em> publications <strong>For faculty who graduate around the same time</strong>, a difference of 1 publication is associated with an estimated difference in salary of $133.0, 95% CI [$-52.6, $318.6], which was not significant.</p>
+<p>Faculty who have worked <em>longer</em> tended to have <em>more</em>
+publications <strong>For faculty who graduate around the same
+time</strong>, a difference of 1 publication is associated with an
+estimated difference in salary of $133.0, 95% CI [$-52.6, $318.6], which
+was not significant.</p>
 </blockquote>
 <h3 id="diagnostics">Diagnostics</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2748,7 +2855,10 @@ R Codes
 </div>
 <p><img src="rcode2_files/figure-html5/m3-diagnostics-1.png" width="624" /></p>
 </div>
-<p>The red line is the implied association based on the model, whereas the blue line is a non-parametric smoother not based on the model. If the two lines show big discrepancies (especially if in the middle), it may suggest the linearity assumptions in the model does not hold.</p>
+<p>The red line is the implied association based on the model, whereas
+the blue line is a non-parametric smoother not based on the model. If
+the two lines show big discrepancies (especially if in the middle), it
+may suggest the linearity assumptions in the model does not hold.</p>
 <h3 id="effect-size">Effect size</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2765,14 +2875,19 @@ R Codes
 </div>
 <pre><code>&gt;# [1] 0.3701</code></pre>
 </div>
-<p>Proportion of predicted variance: <span class="math inline">\(R^2\)</span> = 39%, adj. <span class="math inline">\(R^2\)</span> = 37%.</p>
+<p>Proportion of predicted variance: <span
+class="math inline">\(R^2\)</span> = 39%, adj. <span
+class="math inline">\(R^2\)</span> = 37%.</p>
 <h2 id="interaction">4. Interaction</h2>
-<p>For interpretation purposes, it’s recommended to center the predictors (at least the continuous ones)</p>
-<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1 \text{pub}^c_i + \beta_2 \text{time}^c_i + \beta_3 (\text{pub}^c_i)(\text{time}^c_i) + e_i\]</span></p>
+<p>For interpretation purposes, it’s recommended to center the
+predictors (at least the continuous ones)</p>
+<p><span class="math display">\[\text{salary}_i = \beta_0 + \beta_1
+\text{pub}^c_i + \beta_2 \text{time}^c_i + \beta_3
+(\text{pub}^c_i)(\text{time}^c_i) + e_i\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>salary_dat</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>time_c <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>salary_dat</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>time_c <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Fit the model with interactions:</span>
 <span class='va'>m4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>salary</span> <span class='op'>~</span> <span class='va'>pub_c</span> <span class='op'>*</span> <span class='va'>time_c</span>, data <span class='op'>=</span> <span class='va'>salary_dat</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m4</span><span class='op'>)</span>  <span class='co'># summary</span>
@@ -2822,7 +2937,24 @@ R Codes
 </div>
 <p><img src="rcode2_files/figure-html5/interaction-plot-1.png" width="624" /></p>
 </div>
-<p>Another approach is to plug in numbers to the equation: <span class="math display">\[\widehat{\text{salary}} = \hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 \text{time}^c + \hat \beta_3 (\text{pub}^c)(\text{time}^c)\]</span> For example, consider people who’ve graduated for seven years, i.e., <code>time</code> = 7. First, be careful that in the model we have <code>time_c</code>, and <code>time</code> = 7 corresponds to <code>time_c</code> = 0.2097 years. So if we plug that into the equation, <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = \hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 (0.21) + \hat \beta_3 (\text{pub}^c)(0.21)\]</span> Combining terms with pub<sup>c</sup>, <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = [\hat \beta_0 + \hat \beta_2 (0.21)] + [\hat \beta_1 + \hat \beta_3 (0.21)] (\text{pub}^c)\]</span> Now plug in the numbers for <span class="math inline">\(\hat \beta_0\)</span>, <span class="math inline">\(\hat \beta_1\)</span>, <span class="math inline">\(\hat \beta_2\)</span>, <span class="math inline">\(\hat \beta_3\)</span>,</p>
+<p>Another approach is to plug in numbers to the equation: <span
+class="math display">\[\widehat{\text{salary}} = \hat \beta_0 + \hat
+\beta_1 \text{pub}^c + \hat \beta_2 \text{time}^c + \hat \beta_3
+(\text{pub}^c)(\text{time}^c)\]</span> For example, consider people
+who’ve graduated for seven years, i.e., <code>time</code> = 7. First, be
+careful that in the model we have <code>time_c</code>, and
+<code>time</code> = 7 corresponds to <code>time_c</code> = 0.2097 years.
+So if we plug that into the equation, <span
+class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} =
+\hat \beta_0 + \hat \beta_1 \text{pub}^c + \hat \beta_2 (0.21) + \hat
+\beta_3 (\text{pub}^c)(0.21)\]</span> Combining terms with
+pub<sup>c</sup>, <span class="math display">\[\widehat{\text{salary}}
+|_{\text{time} = 7} = [\hat \beta_0 + \hat \beta_2 (0.21)] + [\hat
+\beta_1 + \hat \beta_3 (0.21)] (\text{pub}^c)\]</span> Now plug in the
+numbers for <span class="math inline">\(\hat \beta_0\)</span>, <span
+class="math inline">\(\hat \beta_1\)</span>, <span
+class="math inline">\(\hat \beta_2\)</span>, <span
+class="math inline">\(\hat \beta_3\)</span>,</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># beta0 + beta2 * 0.21</span>
@@ -2837,12 +2969,18 @@ R Codes
 </div>
 <pre><code>&gt;# [1] 107.9</code></pre>
 </div>
-<p>resulting in <span class="math display">\[\widehat{\text{salary}} |_{\text{time} = 7} = 54440.6 + 107.9 (\text{pub}^c), \]</span> which is the regression line for <code>time</code> = 7. Note, however, when an interaction is present, the regression slope will be different with a different value of <code>time</code>. So remember that</p>
+<p>resulting in <span class="math display">\[\widehat{\text{salary}}
+|_{\text{time} = 7} = 54440.6 + 107.9 (\text{pub}^c), \]</span> which is
+the regression line for <code>time</code> = 7. Note, however, when an
+interaction is present, the regression slope will be different with a
+different value of <code>time</code>. So remember that</p>
 <blockquote>
-<p>An interaction means that the regression slope of a predictor depends on another predictor.</p>
+<p>An interaction means that the regression slope of a predictor depends
+on another predictor.</p>
 </blockquote>
 <p>We will further explore this in the class exercise this week.</p>
-<h2 id="tabulate-the-regression-results">5. Tabulate the Regression Results</h2>
+<h2 id="tabulate-the-regression-results">5. Tabulate the Regression
+Results</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/msummary.html'>msummary</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>
@@ -3191,11 +3329,33 @@ F
 12.817
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+RMSE
+</td>
+<td style="text-align:center;">
+8440.40
+</td>
+<td style="text-align:center;">
+9586.92
+</td>
+<td style="text-align:center;">
+7703.16
+</td>
+<td style="text-align:center;">
+7718.81
+</td>
+</tr>
 </tbody>
 </table>
 </div>
-<h2 id="bonus-matrix-form-of-regression">Bonus: Matrix Form of Regression</h2>
-<p>The regression model can be represented more succintly in matrix form: <span class="math display">\[\bv y = \bv X \bv \beta + \bv e,\]</span> where <span class="math inline">\(\bv y\)</span> is a column vector (which can be considered a <span class="math inline">\(N \times 1\)</span> matrix). For example, for our data</p>
+<h2 id="bonus-matrix-form-of-regression">Bonus: Matrix Form of
+Regression</h2>
+<p>The regression model can be represented more succintly in matrix
+form: <span class="math display">\[\bv y = \bv X \bv \beta + \bv
+e,\]</span> where <span class="math inline">\(\bv y\)</span> is a column
+vector (which can be considered a <span class="math inline">\(N \times
+1\)</span> matrix). For example, for our data</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>salary_dat</span><span class='op'>)</span>
@@ -3214,7 +3374,10 @@ F
             54,511 \\
             53,425 \\
             \vdots
-          \end{bmatrix}\]</span> <span class="math inline">\(\bv X\)</span> is the predictor matrix (sometimes also called the design matrix), where the first column is the constant 1, and each subsequent column represent a predictor. You can see this in R</p>
+          \end{bmatrix}\]</span> <span class="math inline">\(\bv
+X\)</span> is the predictor matrix (sometimes also called the design
+matrix), where the first column is the constant 1, and each subsequent
+column represent a predictor. You can see this in R</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span>
@@ -3230,14 +3393,32 @@ F
 &gt;# 5           1  -7.1774    9
 &gt;# 6           1 -12.1774    6</code></pre>
 </div>
-<p>The coefficient <span class="math inline">\(\bv \beta\)</span> is a vector, with elements <span class="math inline">\(\beta_0, \beta_1, \ldots\)</span>. The least square estimation method is used to find estimates of <span class="math inline">\(\beta\)</span> that minimizes the sum of squared differences between <span class="math inline">\(\bv y\)</span> and <span class="math inline">\(\bv X \hat{\bv \beta}\)</span>, which can be written as <span class="math display">\[(\bv y - \bv X \bv \beta)^\top(\bv y - \bv X \bv \beta).\]</span> The above means that: for each value observation, subtract the predicted value of <span class="math inline">\(y\)</span> from the observed <span class="math inline">\(y\)</span> (i.e., <span class="math inline">\(y_i - \beta_0 + \beta_1 x_{1i} + \ldots\)</span>), then squared the value (<span class="math inline">\([y_i - \beta_0 + \beta_1 x_{1i} + \ldots]^2\)</span>), then sum these squared values across observations. Or sometimes you’ll see it written as <span class="math display">\[\lVert\bv y - \bv X \bv \beta)\rVert^2\]</span> It can be shown that the least square estimates can be obtained as <span class="math display">\[(\bv X^\top \bv X)^{-1} \bv X^\top \bv y\]</span> You can do the matrix form in R:</p>
+<p>The coefficient <span class="math inline">\(\bv \beta\)</span> is a
+vector, with elements <span class="math inline">\(\beta_0, \beta_1,
+\ldots\)</span>. The least square estimation method is used to find
+estimates of <span class="math inline">\(\beta\)</span> that minimizes
+the sum of squared differences between <span class="math inline">\(\bv
+y\)</span> and <span class="math inline">\(\bv X \hat{\bv
+\beta}\)</span>, which can be written as <span
+class="math display">\[(\bv y - \bv X \bv \beta)^\top(\bv y - \bv X \bv
+\beta).\]</span> The above means that: for each value observation,
+subtract the predicted value of <span class="math inline">\(y\)</span>
+from the observed <span class="math inline">\(y\)</span> (i.e., <span
+class="math inline">\(y_i - \beta_0 + \beta_1 x_{1i} + \ldots\)</span>),
+then squared the value (<span class="math inline">\([y_i - \beta_0 +
+\beta_1 x_{1i} + \ldots]^2\)</span>), then sum these squared values
+across observations. Or sometimes you’ll see it written as <span
+class="math display">\[\lVert\bv y - \bv X \bv \beta)\rVert^2\]</span>
+It can be shown that the least square estimates can be obtained as <span
+class="math display">\[(\bv X^\top \bv X)^{-1} \bv X^\top \bv y\]</span>
+You can do the matrix form in R:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='va'>salary_dat</span><span class='op'>$</span><span class='va'>salary</span>
 <span class='va'>X</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/model.matrix.html'>model.matrix</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span>
 <span class='co'># beta = (X'X)^{-1} X'y</span>
 <span class='co'># solve() is matrix inverse; t(X) is the transpose of X; use `%*%` for matrix multiplication</span>
-<span class='op'>(</span><span class='va'>betahat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/solve.html'>solve</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>X</span>, <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'>%*%</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># same as the coefficients in m3</span>
+<span class='op'>(</span><span class='va'>betahat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/Matrix/man/solve-methods.html'>solve</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span> <span class='va'>X</span>, <span class='fu'><a href='https://rdrr.io/r/base/t.html'>t</a></span><span class='op'>(</span><span class='va'>X</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># same as the coefficients in m3</span>
 </code></pre>
 </div>
 <pre><code>&gt;#              [,1]
@@ -3246,19 +3427,27 @@ F
 &gt;# time         1096</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Sum of squared residual</span>
-<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>&gt;# [1] 3.501e+09</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Root mean squared residual (Residual standard error)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>59</span><span class='op'>)</span>  <span class='co'># same as in R</span>
+<span class='fu'><a href='https://rdrr.io/r/base/MathFun.html'>sqrt</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span> <span class='va'>betahat</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>59</span><span class='op'>)</span>  <span class='co'># same as in R</span>
 </code></pre>
 </div>
 <pre><code>&gt;# [1] 7703</code></pre>
 </div>
-<h2 id="bonus-more-options-in-formatting-tables">Bonus: More Options in Formatting Tables</h2>
-<p>Here’s some code you can explore to make the table output from <code>msummary()</code> to look more lik APA style (with an example here: <a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression" class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>). However, for this course I don’t recommend spending too much time on tailoring the tables; something clear and readable will be good enough.</p>
+<h2 id="bonus-more-options-in-formatting-tables">Bonus: More Options in
+Formatting Tables</h2>
+<p>Here’s some code you can explore to make the table output from
+<code>msummary()</code> to look more lik APA style (with an example
+here: <a
+href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression"
+class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>).
+However, for this course I don’t recommend spending too much time on
+tailoring the tables; something clear and readable will be good
+enough.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Show confidence intervals and p values</span>
@@ -3358,8 +3547,10 @@ Publications x Time
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3385,7 +3576,10 @@ Publications x Time
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

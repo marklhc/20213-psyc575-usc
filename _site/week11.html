@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2095,6 +2095,8 @@ Lectures
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
 <a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2114,6 +2116,8 @@ R Codes
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
 <a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2144,13 +2148,15 @@ R Codes
 <li><a href="#lecture">Lecture</a>
 <ul>
 <li><a href="#slides">Slides</a></li>
-<li><a href="#predictive-models-in-mlm">Predictive Models in MLM</a></li>
+<li><a href="#predictive-models-in-mlm">Predictive Models in
+MLM</a></li>
 <li><a href="#example">Example</a>
 <ul>
 <li><a href="#prediction-error">Prediction Error</a></li>
 </ul></li>
 <li><a href="#overfitting">Overfitting</a></li>
-<li><a href="#out-of-sample-prediction-errors">Out-Of-Sample Prediction Errors</a>
+<li><a href="#out-of-sample-prediction-errors">Out-Of-Sample Prediction
+Errors</a>
 <ul>
 <li><a href="#cross-validation">Cross Validation</a></li>
 <li><a href="#information-criterion">Information Criterion</a></li>
@@ -2163,8 +2169,10 @@ R Codes
 <h1 id="week-learning-objectives">Week Learning Objectives</h1>
 <p>By the end of this module, you will be able to</p>
 <ul>
-<li>Describe the role of <strong>prediction</strong> in data analysis</li>
-<li>Describe the problem of <strong>overfitting</strong> when fitting complex models</li>
+<li>Describe the role of <strong>prediction</strong> in data
+analysis</li>
+<li>Describe the problem of <strong>overfitting</strong> when fitting
+complex models</li>
 <li>Use <strong>information criteria</strong> to compare models</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
@@ -2172,15 +2180,23 @@ R Codes
 <li>Review the resources (lecture videos and slides)</li>
 <li>Complete the assigned readings
 <ul>
-<li><a href="http://jakewestfall.org/publications/Yarkoni_Westfall_choosing_prediction.pdf">Yarkoni &amp; Westfall (2017)</a></li>
+<li><a
+href="http://jakewestfall.org/publications/Yarkoni_Westfall_choosing_prediction.pdf">Yarkoni
+&amp; Westfall (2017)</a></li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
-<li>Post progress of your project to the Discussion Board on Blackboard for peer review</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
+<li>Post progress of your project to the Discussion Board on Blackboard
+for peer review</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p><span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span></p>
-<p>You can view and download the slides here: <a href="slides/11_prediction.pdf" target="_blank">PDF</a></p>
+<p><span style="color:red">Note that in some of the videos below the
+Bayeisan analyses were used; however, for the class this year we will
+stay with frequentist analyses. The results and interpretations are
+basically; just note some differences in the terminology.</span></p>
+<p>You can view and download the slides here: <a
+href="slides/11_prediction.pdf" target="_blank">PDF</a></p>
 <h2 id="predictive-models-in-mlm">Predictive Models in MLM</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -2193,7 +2209,8 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Think more: Think about a prominent theory in your area of research. What predictions does it make? Does it give precise predictions?</p>
+<p>Think more: Think about a prominent theory in your area of research.
+What predictions does it make? Does it give precise predictions?</p>
 <hr />
 <h2 id="example">Example</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2202,18 +2219,28 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In a multilevel model with students nested within schools and with student math achievement as the outcome variable, what is a cluster-specific prediction?</p>
+<p>Check your learning: In a multilevel model with students nested
+within schools and with student math achievement as the outcome
+variable, what is a cluster-specific prediction?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_45380" onsubmit="return validate_form_45380()" method="post">
-<input type="radio" name="answer_45380" id="45380_1" value="The predicted achievement for a student from one of the schools included in the sample."><label for="1">The predicted achievement for a student from one of the schools included in the sample.</label><br><input type="radio" name="answer_45380" id="45380_2" value="The predicted mean achievement of a new school."><label for="2">The predicted mean achievement of a new school.</label><br><input type="radio" name="answer_45380" id="45380_3" value="The predicted achievement for a student from a new school that are not part of the sample."><label for="3">The predicted achievement for a student from a new school that are not part of the sample.</label><br><input type="submit" value="check">
+<form name="form_60997" onsubmit="return validate_form_60997()" method="post">
+<input type="radio" name="answer_60997" id="60997_1" value="The predicted achievement for a student from one of the schools included in the sample."><label for="1">The
+predicted achievement for a student from one of the schools included in
+the
+sample.</label><br><input type="radio" name="answer_60997" id="60997_2" value="The predicted mean achievement of a new school."><label for="2">The
+predicted mean achievement of a new
+school.</label><br><input type="radio" name="answer_60997" id="60997_3" value="The predicted achievement for a student from a new school that are not part of the sample."><label for="3">The
+predicted achievement for a student from a new school that are not part
+of the sample.</label><br><input type="submit" value="check">
 </form>
-<p id="result_45380">
+<p id="result_60997">
 </p>
-<script> function validate_form_45380() {var x, text; var x = document.forms["form_45380"]["answer_45380"].value;if (x == "The predicted achievement for a student from one of the schools included in the sample."){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_45380').innerHTML = text; return false;} </script>
+<script> function validate_form_60997() {var x, text; var x = document.forms["form_60997"]["answer_60997"].value;if (x == "The predicted achievement for a student from one of the schools included in the sample."){text = 'That is right!';} else {text = 'Try again. You can do it!';} document.getElementById('result_60997').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="prediction-error">Prediction Error</h3>
-<p><span style="color:red">Some information has been updated since the video was recorded. Check out the updated slides</span></p>
+<p><span style="color:red">Some information has been updated since the
+video was recorded. Check out the updated slides</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/CCRqTspEXlc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
@@ -2226,31 +2253,47 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: Which of the following growth curve model would show the largest degree of overfitting, given a sample of 15 participants across 5 time points?</p>
+<p>Check your learning: Which of the following growth curve model would
+show the largest degree of overfitting, given a sample of 15
+participants across 5 time points?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_15988" onsubmit="return validate_form_15988()" method="post">
-<input type="radio" name="answer_15988" id="15988_1" value="A linear growth model."><label for="1">A linear growth model.</label><br><input type="radio" name="answer_15988" id="15988_2" value="A piecewise growth model with two phases."><label for="2">A piecewise growth model with two phases.</label><br><input type="radio" name="answer_15988" id="15988_3" value="A piecewise growth model with four phases."><label for="3">A piecewise growth model with four phases.</label><br><input type="submit" value="check">
+<form name="form_37871" onsubmit="return validate_form_37871()" method="post">
+<input type="radio" name="answer_37871" id="37871_1" value="A linear growth model."><label for="1">A
+linear growth
+model.</label><br><input type="radio" name="answer_37871" id="37871_2" value="A piecewise growth model with two phases."><label for="2">A
+piecewise growth model with two
+phases.</label><br><input type="radio" name="answer_37871" id="37871_3" value="A piecewise growth model with four phases."><label for="3">A
+piecewise growth model with four
+phases.</label><br><input type="submit" value="check">
 </form>
-<p id="result_15988">
+<p id="result_37871">
 </p>
-<script> function validate_form_15988() {var x, text; var x = document.forms["form_15988"]["answer_15988"].value;if (x == "A piecewise growth model with four phases."){text = 'That is right!';} else {text = 'Try again. You can do it!';} document.getElementById('result_15988').innerHTML = text; return false;} </script>
+<script> function validate_form_37871() {var x, text; var x = document.forms["form_37871"]["answer_37871"].value;if (x == "A piecewise growth model with four phases."){text = 'That is right!';} else {text = 'Try again. You can do it!';} document.getElementById('result_37871').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<h2 id="out-of-sample-prediction-errors">Out-Of-Sample Prediction Errors</h2>
+<h2 id="out-of-sample-prediction-errors">Out-Of-Sample Prediction
+Errors</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/vVQpY1vh208" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
 <hr />
-<p>Check your learning: Why shouldn’t we just choose a model with the lowest in-sample prediction error?</p>
+<p>Check your learning: Why shouldn’t we just choose a model with the
+lowest in-sample prediction error?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_35737" onsubmit="return validate_form_35737()" method="post">
-<input type="radio" name="answer_35737" id="35737_1" value="Prediction error should not be a criterion for choosing among models."><label for="1">Prediction error should not be a criterion for choosing among models.</label><br><input type="radio" name="answer_35737" id="35737_2" value="One should use a likelihood ratio test instead."><label for="2">One should use a likelihood ratio test instead.</label><br><input type="radio" name="answer_35737" id="35737_3" value="A model that fits one data set too well usually does not fit well with other data sets."><label for="3">A model that fits one data set too well usually does not fit well with other data sets.</label><br><input type="submit" value="check">
+<form name="form_22260" onsubmit="return validate_form_22260()" method="post">
+<input type="radio" name="answer_22260" id="22260_1" value="Prediction error should not be a criterion for choosing among models."><label for="1">Prediction
+error should not be a criterion for choosing among
+models.</label><br><input type="radio" name="answer_22260" id="22260_2" value="One should use a likelihood ratio test instead."><label for="2">One
+should use a likelihood ratio test
+instead.</label><br><input type="radio" name="answer_22260" id="22260_3" value="A model that fits one data set too well usually does not fit well with other data sets."><label for="3">A
+model that fits one data set too well usually does not fit well with
+other data sets.</label><br><input type="submit" value="check">
 </form>
-<p id="result_35737">
+<p id="result_22260">
 </p>
-<script> function validate_form_35737() {var x, text; var x = document.forms["form_35737"]["answer_35737"].value;if (x == "A model that fits one data set too well usually does not fit well with other data sets."){text = 'That is right!';} else {text = 'Try again. You can do it!';} document.getElementById('result_35737').innerHTML = text; return false;} </script>
+<script> function validate_form_22260() {var x, text; var x = document.forms["form_22260"]["answer_22260"].value;if (x == "A model that fits one data set too well usually does not fit well with other data sets."){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_22260').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="cross-validation">Cross Validation</h3>
@@ -2260,14 +2303,21 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: Why does cross-validation, compared to in-sample MSE, give a better estimate of the out-of-sample prediction error?</p>
+<p>Check your learning: Why does cross-validation, compared to in-sample
+MSE, give a better estimate of the out-of-sample prediction error?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_43702" onsubmit="return validate_form_43702()" method="post">
-<input type="radio" name="answer_43702" id="43702_1" value="It uses different subsets of the data for estimation and for prediction."><label for="1">It uses different subsets of the data for estimation and for prediction.</label><br><input type="radio" name="answer_43702" id="43702_2" value="It is developed in the machine learning literature."><label for="2">It is developed in the machine learning literature.</label><br><input type="radio" name="answer_43702" id="43702_3" value="It uses less data for estimation, so the results are more stable."><label for="3">It uses less data for estimation, so the results are more stable.</label><br><input type="submit" value="check">
+<form name="form_37846" onsubmit="return validate_form_37846()" method="post">
+<input type="radio" name="answer_37846" id="37846_1" value="It uses different subsets of the data for estimation and for prediction."><label for="1">It
+uses different subsets of the data for estimation and for
+prediction.</label><br><input type="radio" name="answer_37846" id="37846_2" value="It is developed in the machine learning literature."><label for="2">It
+is developed in the machine learning
+literature.</label><br><input type="radio" name="answer_37846" id="37846_3" value="It uses less data for estimation, so the results are more stable."><label for="3">It
+uses less data for estimation, so the results are more
+stable.</label><br><input type="submit" value="check">
 </form>
-<p id="result_43702">
+<p id="result_37846">
 </p>
-<script> function validate_form_43702() {var x, text; var x = document.forms["form_43702"]["answer_43702"].value;if (x == "It uses different subsets of the data for estimation and for prediction."){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_43702').innerHTML = text; return false;} </script>
+<script> function validate_form_37846() {var x, text; var x = document.forms["form_37846"]["answer_37846"].value;if (x == "It uses different subsets of the data for estimation and for prediction."){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_37846').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h3 id="information-criterion">Information Criterion</h3>
@@ -2282,17 +2332,23 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: Which of the following two models are nested?</p>
+<p>Check your learning: Which of the following two models are
+nested?</p>
 <p>M1: <code>mathach ~ meanses + ses_cmc + sector + (1 | ID)</code></p>
 <p>M2: <code>mathach ~ sector + (1 | ID)</code></p>
 <p>M3: <code>mathach ~ meanses + sector + (ses_cmc | ID)</code></p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_78500" onsubmit="return validate_form_78500()" method="post">
-<input type="radio" name="answer_78500" id="78500_1" value="M1 and M2"><label for="1">M1 and M2</label><br><input type="radio" name="answer_78500" id="78500_2" value="M2 and M3"><label for="2">M2 and M3</label><br><input type="radio" name="answer_78500" id="78500_3" value="M1 and M3"><label for="3">M1 and M3</label><br><input type="submit" value="check">
+<form name="form_80584" onsubmit="return validate_form_80584()" method="post">
+<input type="radio" name="answer_80584" id="80584_1" value="M1 and M2"><label for="1">M1
+and
+M2</label><br><input type="radio" name="answer_80584" id="80584_2" value="M2 and M3"><label for="2">M2
+and
+M3</label><br><input type="radio" name="answer_80584" id="80584_3" value="M1 and M3"><label for="3">M1
+and M3</label><br><input type="submit" value="check">
 </form>
-<p id="result_78500">
+<p id="result_80584">
 </p>
-<script> function validate_form_78500() {var x, text; var x = document.forms["form_78500"]["answer_78500"].value;if (x == "M1 and M2"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_78500').innerHTML = text; return false;} </script>
+<script> function validate_form_80584() {var x, text; var x = document.forms["form_80584"]["answer_80584"].value;if (x == "M1 and M2"){text = 'That is right!';} else {text = 'Try again. You can do it!';} document.getElementById('result_80584').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="model-comparison">Model Comparison</h2>
@@ -2307,20 +2363,25 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: Which of the following model is the best based on AIC?</p>
+<p>Check your learning: Which of the following model is the best based
+on AIC?</p>
 <p>M1: mAIC = 1203, cAIC = 1037</p>
 <p>M2: mAIC = 1202, cAIC = 1000</p>
 <p>M3: mAIC = 1210, cAIC = 1055</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_78934" onsubmit="return validate_form_78934()" method="post">
-<input type="radio" name="answer_78934" id="78934_1" value="M1"><label for="1">M1</label> <input type="radio" name="answer_78934" id="78934_2" value="M2"><label for="2">M2</label> <input type="radio" name="answer_78934" id="78934_3" value="M3"><label for="3">M3</label> <br><input type="submit" value="check">
+<form name="form_31973" onsubmit="return validate_form_31973()" method="post">
+<input type="radio" name="answer_31973" id="31973_1" value="M1"><label for="1">M1</label>
+<input type="radio" name="answer_31973" id="31973_2" value="M2"><label for="2">M2</label>
+<input type="radio" name="answer_31973" id="31973_3" value="M3"><label for="3">M3</label>
+<br><input type="submit" value="check">
 </form>
-<p id="result_78934">
+<p id="result_31973">
 </p>
-<script> function validate_form_78934() {var x, text; var x = document.forms["form_78934"]["answer_78934"].value;if (x == "M2"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_78934').innerHTML = text; return false;} </script>
+<script> function validate_form_31973() {var x, text; var x = document.forms["form_31973"]["answer_31973"].value;if (x == "M2"){text = 'That is right!';} else {text = 'Try again. You can do it!';} document.getElementById('result_31973').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2337,7 +2398,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

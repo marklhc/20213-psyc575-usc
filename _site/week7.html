@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
   <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2049,12 +2049,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2096,6 +2096,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2114,6 +2117,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2151,7 +2157,9 @@ R Codes
 <ul>
 <li><a href="#unconditional-model">Unconditional model</a></li>
 </ul></li>
-<li><a href="#cross-classified-random-effect-model-with-random-slopes">Cross-Classified Random-Effect Model With Random Slopes</a></li>
+<li><a
+href="#cross-classified-random-effect-model-with-random-slopes">Cross-Classified
+Random-Effect Model With Random Slopes</a></li>
 <li><a href="#full-model">Full Model</a></li>
 <li><a href="#effect-size">Effect Size</a></li>
 </ul></li>
@@ -2163,29 +2171,40 @@ R Codes
 <ul>
 <li>Identify the correct levels with experimental studies</li>
 <li>Describe designs with crossed random levels</li>
-<li>Assign variables to appropriate levels, and tell which variables can have random slopes at which levels</li>
-<li>Compute a version of effect size (<span class="math inline">\(R^2\)</span>) for experimental data</li>
+<li>Assign variables to appropriate levels, and tell which variables can
+have random slopes at which levels</li>
+<li>Compute a version of effect size (<span
+class="math inline">\(R^2\)</span>) for experimental data</li>
 </ul>
-<p>Note: In the video the slides use <span class="math inline">\(d\)</span> for effect size, but we will use <span class="math inline">\(R^2\)</span> in this class.</p>
+<p>Note: In the video the slides use <span
+class="math inline">\(d\)</span> for effect size, but we will use <span
+class="math inline">\(R^2\)</span> in this class.</p>
 <h2 id="task-lists">Task Lists</h2>
 <ol type="1">
 <li>Review the resources (lecture videos and slides)</li>
 <li>Complete the assigned readings
 <ul>
 <li>Snijders &amp; Bosker 13.1</li>
-<li><a href="https://link.springer.com/content/pdf/10.3758/BF03192848.pdf">Hoffman &amp; Rovine (2007)</a></li>
+<li><a
+href="https://link.springer.com/content/pdf/10.3758/BF03192848.pdf">Hoffman
+&amp; Rovine (2007)</a></li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
 <li>Complete Homework 7</li>
 <li>Think about your project—Prospectus will be due in two weeks</li>
 <li>Additional resources for learning MLM for experimental designs
 <ul>
-<li><a href="https://www.annualreviews.org/doi/abs/10.1146/annurev-psych-122414-033702">This paper</a> by Judd et al. </li>
+<li><a
+href="https://www.annualreviews.org/doi/abs/10.1146/annurev-psych-122414-033702">This
+paper</a> by Judd et al. </li>
 </ul></li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p>You can view and download the slides here: <a href="slides/07_mlm_for_experimental_data.pdf" target="_blank">PDF</a></p>
+<p>You can view and download the slides here: <a
+href="slides/07_mlm_for_experimental_data.pdf"
+target="_blank">PDF</a></p>
 <h2 id="multilevel-experiments">Multilevel Experiments</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -2193,10 +2212,18 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In a research study, 10 hospitals are randomly assigned to a treatment condition to adopt a new drug, whereas the other 10 hospitals use the conventional method. What is the design of this study?</p>
+<p>Check your learning: In a research study, 10 hospitals are randomly
+assigned to a treatment condition to adopt a new drug, whereas the other
+10 hospitals use the conventional method. What is the design of this
+study?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_93900" onsubmit="return validate_form_93900()" method="post">
-<input type="radio" name="answer_93900" id="93900_1" value="A cluster-randomized trial"><label for="1">A cluster-randomized trial</label><br><input type="radio" name="answer_93900" id="93900_2" value="A multisite trial"><label for="2">A multisite trial</label><br><input type="radio" name="answer_93900" id="93900_3" value="A within-subjects design"><label for="3">A within-subjects design</label><br><input type="submit" value="check">
+<input type="radio" name="answer_93900" id="93900_1" value="A cluster-randomized trial"><label for="1">A
+cluster-randomized
+trial</label><br><input type="radio" name="answer_93900" id="93900_2" value="A multisite trial"><label for="2">A
+multisite
+trial</label><br><input type="radio" name="answer_93900" id="93900_3" value="A within-subjects design"><label for="3">A
+within-subjects design</label><br><input type="submit" value="check">
 </form>
 <p id="result_93900">
 </p>
@@ -2210,10 +2237,14 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In the data set, how many observations are there at level 1?</p>
+<p>Check your learning: In the data set, how many observations are there
+at level 1?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_71072" onsubmit="return validate_form_71072()" method="post">
-<input type="radio" name="answer_71072" id="71072_1" value="7,803"><label for="1">7,803</label> <input type="radio" name="answer_71072" id="71072_2" value="153"><label for="2">153</label> <input type="radio" name="answer_71072" id="71072_3" value="51"><label for="3">51</label> <br><input type="submit" value="check">
+<input type="radio" name="answer_71072" id="71072_1" value="7,803"><label for="1">7,803</label>
+<input type="radio" name="answer_71072" id="71072_2" value="153"><label for="2">153</label>
+<input type="radio" name="answer_71072" id="71072_3" value="51"><label for="3">51</label>
+<br><input type="submit" value="check">
 </form>
 <p id="result_71072">
 </p>
@@ -2227,7 +2258,9 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In the following data, <code>hvltt</code> to <code>hvltt4</code> are the test score of a verbal learning test across four time points. Is this a long or a wide data set?</p>
+<p>Check your learning: In the following data, <code>hvltt</code> to
+<code>hvltt4</code> are the test score of a verbal learning test across
+four time points. Is this a long or a wide data set?</p>
 <div class="layout-chunk" data-layout="l-body">
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -2237,7 +2270,9 @@ R Codes
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_26760" onsubmit="return validate_form_26760()" method="post">
-<input type="radio" name="answer_26760" id="26760_1" value="long"><label for="1">long</label> <input type="radio" name="answer_26760" id="26760_2" value="wide"><label for="2">wide</label> <br><input type="submit" value="check">
+<input type="radio" name="answer_26760" id="26760_1" value="long"><label for="1">long</label>
+<input type="radio" name="answer_26760" id="26760_2" value="wide"><label for="2">wide</label>
+<br><input type="submit" value="check">
 </form>
 <p id="result_26760">
 </p>
@@ -2250,7 +2285,9 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Think more: What is the data structure if there are 1,000 students from 100 schools and 30 neighborhoods, and each school has students from multiple neighborhoods?</p>
+<p>Think more: What is the data structure if there are 1,000 students
+from 100 schools and 30 neighborhoods, and each school has students from
+multiple neighborhoods?</p>
 <hr />
 <h3 id="unconditional-model">Unconditional model</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2259,20 +2296,32 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Practice yourself: Compute the design effects for the person level and for the item level. Do the design effects suggest the need for both levels? (That is, are both design effects &gt; 1.1?)</p>
-<p>Answer: See the computation in the <a href="rcode7.html#intraclass-correlations-and-design-effects">R code</a></p>
+<p>Practice yourself: Compute the design effects for the person level
+and for the item level. Do the design effects suggest the need for both
+levels? (That is, are both design effects &gt; 1.1?)</p>
+<p>Answer: See the computation in the <a
+href="rcode7.html#intraclass-correlations-and-design-effects">R
+code</a></p>
 <hr />
-<h2 id="cross-classified-random-effect-model-with-random-slopes">Cross-Classified Random-Effect Model With Random Slopes</h2>
+<h2
+id="cross-classified-random-effect-model-with-random-slopes">Cross-Classified
+Random-Effect Model With Random Slopes</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/dyDKHC0sugE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
 <hr />
-<p>Check your learning: If in the experiment, each person respond to each item 3 times, each time with a different <code>duration</code>. At what level(s) can <code>duration</code> have random slopes?</p>
+<p>Check your learning: If in the experiment, each person respond to
+each item 3 times, each time with a different <code>duration</code>. At
+what level(s) can <code>duration</code> have random slopes?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_66385" onsubmit="return validate_form_66385()" method="post">
-<input type="radio" name="answer_66385" id="66385_1" value="Both person and item"><label for="1">Both person and item</label><br><input type="radio" name="answer_66385" id="66385_2" value="Person only"><label for="2">Person only</label><br><input type="radio" name="answer_66385" id="66385_3" value="Item only"><label for="3">Item only</label><br><input type="radio" name="answer_66385" id="66385_4" value="Within-cell"><label for="4">Within-cell</label><br><input type="submit" value="check">
+<input type="radio" name="answer_66385" id="66385_1" value="Both person and item"><label for="1">Both
+person and
+item</label><br><input type="radio" name="answer_66385" id="66385_2" value="Person only"><label for="2">Person
+only</label><br><input type="radio" name="answer_66385" id="66385_3" value="Item only"><label for="3">Item
+only</label><br><input type="radio" name="answer_66385" id="66385_4" value="Within-cell"><label for="4">Within-cell</label><br><input type="submit" value="check">
 </form>
 <p id="result_66385">
 </p>
@@ -2286,8 +2335,10 @@ R Codes
 </div>
 </div>
 <h2 id="effect-size">Effect Size</h2>
-<p>Please check out the slides and the examples in the <a href="rcode7.html#effect-size">R code</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Please check out the slides and the examples in the <a
+href="rcode7.html#effect-size">R code</a></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2313,7 +2364,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

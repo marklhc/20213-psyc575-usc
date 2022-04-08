@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2094,6 +2094,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2112,6 +2115,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2142,10 +2148,13 @@ R Codes
 <li><a href="#lecture">Lecture</a>
 <ul>
 <li><a href="#slides">Slides</a></li>
-<li><a href="#longitudinal-data-analysis-ii">Longitudinal Data Analysis II</a></li>
-<li><a href="#temporal-covariancecorrelation">Temporal Covariance/Correlation</a>
+<li><a href="#longitudinal-data-analysis-ii">Longitudinal Data Analysis
+II</a></li>
+<li><a href="#temporal-covariancecorrelation">Temporal
+Covariance/Correlation</a>
 <ul>
-<li><a href="#covariance-structure-in-mlm">Covariance Structure in MLM</a></li>
+<li><a href="#covariance-structure-in-mlm">Covariance Structure in
+MLM</a></li>
 </ul></li>
 <li><a href="#analyzing-dynamics">Analyzing Dynamics</a></li>
 <li><a href="#model-1">Model 1</a></li>
@@ -2158,8 +2167,10 @@ R Codes
 <p>By the end of this module, you will be able to</p>
 <ul>
 <li>Specify models with alternative error covariance structures</li>
-<li>Describe the difference between analyzing trends vs. analyzing <strong>fluctuations</strong> with longitudinal data</li>
-<li>Run analyses with <strong>time-varying predictors</strong> (i.e., level-1 predictors)</li>
+<li>Describe the difference between analyzing trends vs. analyzing
+<strong>fluctuations</strong> with longitudinal data</li>
+<li>Run analyses with <strong>time-varying predictors</strong> (i.e.,
+level-1 predictors)</li>
 <li>Interpret and plot results</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
@@ -2167,40 +2178,62 @@ R Codes
 <li>Review the resources (lecture videos and slides)</li>
 <li>Complete the assigned readings
 <ul>
-<li><a href="https://www-taylorfrancis-com.libproxy1.usc.edu/books/9781315744094/chapters/10.4324/9781315744094-12">Hoffman (2014) ch 4.1</a> (USC SSO required)</li>
-<li><a href="https://www-taylorfrancis-com.libproxy1.usc.edu/books/9781315744094/chapters/10.4324/9781315744094-17">Hoffman (2014) ch 8</a> (USC SSO required)</li>
+<li><a
+href="https://www-taylorfrancis-com.libproxy1.usc.edu/books/9781315744094/chapters/10.4324/9781315744094-12">Hoffman
+(2014) ch 4.1</a> (USC SSO required)</li>
+<li><a
+href="https://www-taylorfrancis-com.libproxy1.usc.edu/books/9781315744094/chapters/10.4324/9781315744094-17">Hoffman
+(2014) ch 8</a> (USC SSO required)</li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
 <li>Complete Homework 8</li>
-<li>(Optional) Read the bonus R code on the generalized estimating equations (GEE) method
+<li>(Optional) Read the bonus R code on the generalized estimating
+equations (GEE) method
 <ul>
-<li>Additional reference: <a href="https://journals.sagepub.com/doi/abs/10.3102/10769986211017480" class="uri">https://journals.sagepub.com/doi/abs/10.3102/10769986211017480</a></li>
+<li>Additional reference: <a
+href="https://journals.sagepub.com/doi/abs/10.3102/10769986211017480"
+class="uri">https://journals.sagepub.com/doi/abs/10.3102/10769986211017480</a></li>
 </ul></li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p><span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span></p>
-<p>You can view and download the slides here: <a href="slides/10_longitudinal_analysis_2.pdf" target="_blank">PDF</a></p>
-<h2 id="longitudinal-data-analysis-ii">Longitudinal Data Analysis II</h2>
+<p><span style="color:red">Note that in some of the videos below the
+Bayeisan analyses were used; however, for the class this year we will
+stay with frequentist analyses. The results and interpretations are
+basically; just note some differences in the terminology.</span></p>
+<p>You can view and download the slides here: <a
+href="slides/10_longitudinal_analysis_2.pdf" target="_blank">PDF</a></p>
+<h2 id="longitudinal-data-analysis-ii">Longitudinal Data Analysis
+II</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/k5WyosL97B0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<h2 id="temporal-covariancecorrelation">Temporal Covariance/Correlation</h2>
+<h2 id="temporal-covariancecorrelation">Temporal
+Covariance/Correlation</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/pzsL1y5XsQ0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: Assume that the temporal correlation decreases with a longer time gap. A researcher collects data at baseline (Time 1), 3-month follow-up (Time 2), and then 5-month follow-up (Time 3). Which correlation should be strongest?</p>
+<p>Check your learning: Assume that the temporal correlation decreases
+with a longer time gap. A researcher collects data at baseline (Time 1),
+3-month follow-up (Time 2), and then 5-month follow-up (Time 3). Which
+correlation should be strongest?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_11973" onsubmit="return validate_form_11973()" method="post">
-<input type="radio" name="answer_11973" id="11973_1" value="Between Time 1 and Time 2"><label for="1">Between Time 1 and Time 2</label><br><input type="radio" name="answer_11973" id="11973_2" value="Between Time 2 and Time 3"><label for="2">Between Time 2 and Time 3</label><br><input type="radio" name="answer_11973" id="11973_3" value="Between Time 1 and Time 3"><label for="3">Between Time 1 and Time 3</label><br><input type="submit" value="check">
+<form name="form_78219" onsubmit="return validate_form_78219()" method="post">
+<input type="radio" name="answer_78219" id="78219_1" value="Between Time 1 and Time 2"><label for="1">Between
+Time 1 and Time
+2</label><br><input type="radio" name="answer_78219" id="78219_2" value="Between Time 2 and Time 3"><label for="2">Between
+Time 2 and Time
+3</label><br><input type="radio" name="answer_78219" id="78219_3" value="Between Time 1 and Time 3"><label for="3">Between
+Time 1 and Time 3</label><br><input type="submit" value="check">
 </form>
-<p id="result_11973">
+<p id="result_78219">
 </p>
-<script> function validate_form_11973() {var x, text; var x = document.forms["form_11973"]["answer_11973"].value;if (x == "Between Time 2 and Time 3"){text = 'Correct :+1:';} else {text = 'Think about which time period is shortest';} document.getElementById('result_11973').innerHTML = text; return false;} </script>
+<script> function validate_form_78219() {var x, text; var x = document.forms["form_78219"]["answer_78219"].value;if (x == "Between Time 2 and Time 3"){text = 'Great job :+1:';} else {text = 'Think about which time period is shortest';} document.getElementById('result_78219').innerHTML = text; return false;} </script>
 </div>
 <h3 id="covariance-structure-in-mlm">Covariance Structure in MLM</h3>
 <p>OLS and RI-MLM/RM-ANOVA</p>
@@ -2209,14 +2242,19 @@ R Codes
 <iframe src="https://www.youtube.com/embed/UKxumumURd0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: The random-intercept model/repeated-measures ANOVA assumes a specific temporal covariance structure. What is that structure called?</p>
+<p>Check your learning: The random-intercept model/repeated-measures
+ANOVA assumes a specific temporal covariance structure. What is that
+structure called?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_31174" onsubmit="return validate_form_31174()" method="post">
-<input type="radio" name="answer_31174" id="31174_1" value="Independence"><label for="1">Independence</label><br><input type="radio" name="answer_31174" id="31174_2" value="Autoregressive"><label for="2">Autoregressive</label><br><input type="radio" name="answer_31174" id="31174_3" value="Autoregressive and Moving Average"><label for="3">Autoregressive and Moving Average</label><br><input type="radio" name="answer_31174" id="31174_4" value="Compound Symmetry"><label for="4">Compound Symmetry</label><br><input type="submit" value="check">
+<form name="form_82" onsubmit="return validate_form_82()" method="post">
+<input type="radio" name="answer_82" id="82_1" value="Independence"><label for="1">Independence</label><br><input type="radio" name="answer_82" id="82_2" value="Autoregressive"><label for="2">Autoregressive</label><br><input type="radio" name="answer_82" id="82_3" value="Autoregressive and Moving Average"><label for="3">Autoregressive
+and Moving
+Average</label><br><input type="radio" name="answer_82" id="82_4" value="Compound Symmetry"><label for="4">Compound
+Symmetry</label><br><input type="submit" value="check">
 </form>
-<p id="result_31174">
+<p id="result_82">
 </p>
-<script> function validate_form_31174() {var x, text; var x = document.forms["form_31174"]["answer_31174"].value;if (x == "Compound Symmetry"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_31174').innerHTML = text; return false;} </script>
+<script> function validate_form_82() {var x, text; var x = document.forms["form_82"]["answer_82"].value;if (x == "Compound Symmetry"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_82').innerHTML = text; return false;} </script>
 </div>
 <p>Random Slopes</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2230,14 +2268,20 @@ R Codes
 <iframe src="https://www.youtube.com/embed/Z5ZghnvZkYI" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In an AR(1) covariance structure, what is the implied correlation between Time 2 and Time 4, if <span class="math inline">\(\rho = .4\)</span>?</p>
+<p>Check your learning: In an AR(1) covariance structure, what is the
+implied correlation between Time 2 and Time 4, if <span
+class="math inline">\(\rho = .4\)</span>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_51014" onsubmit="return validate_form_51014()" method="post">
-<input type="radio" name="answer_51014" id="51014_1" value=".4"><label for="1">.4</label> <input type="radio" name="answer_51014" id="51014_2" value=".2"><label for="2">.2</label> <input type="radio" name="answer_51014" id="51014_3" value=".16"><label for="3">.16</label> <input type="radio" name="answer_51014" id="51014_4" value=".064"><label for="4">.064</label> <br><input type="submit" value="check">
+<form name="form_73769" onsubmit="return validate_form_73769()" method="post">
+<input type="radio" name="answer_73769" id="73769_1" value=".4"><label for="1">.4</label>
+<input type="radio" name="answer_73769" id="73769_2" value=".2"><label for="2">.2</label>
+<input type="radio" name="answer_73769" id="73769_3" value=".16"><label for="3">.16</label>
+<input type="radio" name="answer_73769" id="73769_4" value=".064"><label for="4">.064</label>
+<br><input type="submit" value="check">
 </form>
-<p id="result_51014">
+<p id="result_73769">
 </p>
-<script> function validate_form_51014() {var x, text; var x = document.forms["form_51014"]["answer_51014"].value;if (x == ".16"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_51014').innerHTML = text; return false;} </script>
+<script> function validate_form_73769() {var x, text; var x = document.forms["form_73769"]["answer_73769"].value;if (x == ".16"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_73769').innerHTML = text; return false;} </script>
 </div>
 <h2 id="analyzing-dynamics">Analyzing Dynamics</h2>
 <div class="layout-chunk" data-layout="l-body">
@@ -2251,14 +2295,19 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: When analyzing a conversation between a couple, a researcher is interested in whether a person follow up the partner’s complaints with positive or negative behaviors. Is this an example of studying trends or fluctuations?</p>
+<p>Check your learning: When analyzing a conversation between a couple,
+a researcher is interested in whether a person follow up the partner’s
+complaints with positive or negative behaviors. Is this an example of
+studying trends or fluctuations?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_36177" onsubmit="return validate_form_36177()" method="post">
-<input type="radio" name="answer_36177" id="36177_1" value="Trends"><label for="1">Trends</label> <input type="radio" name="answer_36177" id="36177_2" value="Fluctuations"><label for="2">Fluctuations</label> <br><input type="submit" value="check">
+<form name="form_60053" onsubmit="return validate_form_60053()" method="post">
+<input type="radio" name="answer_60053" id="60053_1" value="Trends"><label for="1">Trends</label>
+<input type="radio" name="answer_60053" id="60053_2" value="Fluctuations"><label for="2">Fluctuations</label>
+<br><input type="submit" value="check">
 </form>
-<p id="result_36177">
+<p id="result_60053">
 </p>
-<script> function validate_form_36177() {var x, text; var x = document.forms["form_36177"]["answer_36177"].value;if (x == "Fluctuations"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_36177').innerHTML = text; return false;} </script>
+<script> function validate_form_60053() {var x, text; var x = document.forms["form_60053"]["answer_60053"].value;if (x == "Fluctuations"){text = 'Great job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_60053').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="model-1">Model 1</h2>
@@ -2268,14 +2317,24 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In the model above, what is the interpretation of the contextual effect of <code>mood1</code>?</p>
+<p>Check your learning: In the model above, what is the interpretation
+of the contextual effect of <code>mood1</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_7498" onsubmit="return validate_form_7498()" method="post">
-<input type="radio" name="answer_7498" id="7498_1" value="The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood"><label for="1">The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood</label><br><input type="radio" name="answer_7498" id="7498_2" value="The predicted difference in symptoms for an individual across two days with 1 unit difference in mood"><label for="2">The predicted difference in symptoms for an individual across two days with 1 unit difference in mood</label><br><input type="radio" name="answer_7498" id="7498_3" value="The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"><label for="3">The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level</label><br><input type="submit" value="check">
+<form name="form_74230" onsubmit="return validate_form_74230()" method="post">
+<input type="radio" name="answer_74230" id="74230_1" value="The predicted difference in average symptoms between two individuals with 1 unit difference in average negative mood"><label for="1">The
+predicted difference in average symptoms between two individuals with 1
+unit difference in average negative
+mood</label><br><input type="radio" name="answer_74230" id="74230_2" value="The predicted difference in symptoms for an individual across two days with 1 unit difference in mood"><label for="2">The
+predicted difference in symptoms for an individual across two days with
+1 unit difference in
+mood</label><br><input type="radio" name="answer_74230" id="74230_3" value="The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"><label for="3">The
+predicted difference in symptoms between two individuals with 1 unit
+difference in average negative mood on a day when both individuals have
+the same daily mood level</label><br><input type="submit" value="check">
 </form>
-<p id="result_7498">
+<p id="result_74230">
 </p>
-<script> function validate_form_7498() {var x, text; var x = document.forms["form_7498"]["answer_7498"].value;if (x == "The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_7498').innerHTML = text; return false;} </script>
+<script> function validate_form_74230() {var x, text; var x = document.forms["form_74230"]["answer_74230"].value;if (x == "The predicted difference in symptoms between two individuals with 1 unit difference in average negative mood on a day when both individuals have the same daily mood level"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_74230').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="model-2">Model 2</h2>
@@ -2284,8 +2343,13 @@ R Codes
 <iframe src="https://www.youtube.com/embed/bbNaNi2hUXQ" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Note: For the coefficients of <code>stressor</code> and <code>stressor_pm</code> in the above model, the coefficients are ones adjusting for the other predictors in the model (e.g., <code>mood1_pm</code>, <code>mood1_pmc</code>, <code>women</code>, and their interactions).</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Note: For the coefficients of <code>stressor</code> and
+<code>stressor_pm</code> in the above model, the coefficients are ones
+adjusting for the other predictors in the model (e.g.,
+<code>mood1_pm</code>, <code>mood1_pmc</code>, <code>women</code>, and
+their interactions).</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2311,7 +2375,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

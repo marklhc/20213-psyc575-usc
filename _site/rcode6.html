@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2093,6 +2093,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2111,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,33 +2140,49 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a></li>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a></li>
 <li><a href="#fitting-the-model">Fitting the model</a></li>
 <li><a href="#diagnostics">Diagnostics</a>
 <ul>
-<li><a href="#does-the-fixed-part-contain-the-right-variables">Does the fixed part contain the right variables?</a>
+<li><a href="#does-the-fixed-part-contain-the-right-variables">Does the
+fixed part contain the right variables?</a>
 <ul>
-<li><a href="#cluster-means-for-lower-level-variables">Cluster means for lower-level variables</a></li>
+<li><a href="#cluster-means-for-lower-level-variables">Cluster means for
+lower-level variables</a></li>
 <li><a href="#omitted-variables">Omitted variables</a></li>
 <li><a href="#linearity">Linearity</a></li>
 </ul></li>
-<li><a href="#does-the-random-part-contain-the-right-variables">Does the random part contain the right variables?</a>
+<li><a href="#does-the-random-part-contain-the-right-variables">Does the
+random part contain the right variables?</a>
 <ul>
-<li><a href="#testing-for-random-slopes">Testing for random slopes</a></li>
+<li><a href="#testing-for-random-slopes">Testing for random
+slopes</a></li>
 </ul></li>
 <li><a href="#residual-plots">Residual Plots</a>
 <ul>
-<li><a href="#residuals-across-clusters">Residuals across clusters</a></li>
-<li><a href="#level-1-residuals-across-predictors">Level-1 residuals across predictors</a></li>
-<li><a href="#level-2-residuals-across-lv-2-predictors">Level-2 residuals across lv-2 predictors</a></li>
-<li><a href="#bonus-modeling-heteroscedastisticity">Bonus: Modeling heteroscedastisticity</a></li>
-<li><a href="#bonus-heteroscedasticity-consistent-hc-variance-estimates">Bonus: Heteroscedasticity-consistent (HC) variance estimates</a></li>
-<li><a href="#q-q-plot-for-lv-1-residuals">Q-Q Plot for Lv-1 Residuals</a></li>
-<li><a href="#q-q-plot-for-lv-2-residuals">Q-Q Plot for Lv-2 Residuals</a></li>
+<li><a href="#residuals-across-clusters">Residuals across
+clusters</a></li>
+<li><a href="#level-1-residuals-across-predictors">Level-1 residuals
+across predictors</a></li>
+<li><a href="#level-2-residuals-across-lv-2-predictors">Level-2
+residuals across lv-2 predictors</a></li>
+<li><a href="#bonus-modeling-heteroscedastisticity">Bonus: Modeling
+heteroscedastisticity</a></li>
+<li><a
+href="#bonus-heteroscedasticity-consistent-hc-variance-estimates">Bonus:
+Heteroscedasticity-consistent (HC) variance estimates</a></li>
+<li><a href="#q-q-plot-for-lv-1-residuals">Q-Q Plot for Lv-1
+Residuals</a></li>
+<li><a href="#q-q-plot-for-lv-2-residuals">Q-Q Plot for Lv-2
+Residuals</a></li>
 </ul></li>
-<li><a href="#bonus-variance-inflation-factor-vif">Bonus: Variance Inflation Factor (VIF)</a></li>
-<li><a href="#bonus-influence-index-plots">Bonus: Influence Index Plots</a></li>
-<li><a href="#bonus-bayesian-robust-mlm">Bonus: Bayesian Robust MLM</a></li>
+<li><a href="#bonus-variance-inflation-factor-vif">Bonus: Variance
+Inflation Factor (VIF)</a></li>
+<li><a href="#bonus-influence-index-plots">Bonus: Influence Index
+Plots</a></li>
+<li><a href="#bonus-bayesian-robust-mlm">Bonus: Bayesian Robust
+MLM</a></li>
 </ul></li>
 <li><a href="#convergence">Convergence</a>
 <ul>
@@ -2186,9 +2208,13 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Click here to download the Rmd file: <a href="rcodes/week6-mlm-diagnostic.Rmd">week6-mlm-diagnostic.Rmd</a></p>
-<p>In R, there are many quite a few diagnostic tools for MLM, although they are not necessarily straightforward to use. In this note I will show some basic tools.</p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week6-mlm-diagnostic.Rmd">week6-mlm-diagnostic.Rmd</a></p>
+<p>In R, there are many quite a few diagnostic tools for MLM, although
+they are not necessarily straightforward to use. In this note I will
+show some basic tools.</p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2201,7 +2227,7 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>splines</span><span class='op'>)</span>  <span class='co'># for nonlinear trend</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/bbolker/broom.mixed'>broom.mixed</a></span><span class='op'>)</span>  <span class='co'># for getting predicted values/residuals</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for plotting</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
@@ -2221,20 +2247,20 @@ R Codes
                           idvar <span class='op'>=</span> <span class='st'>".rowid"</span><span class='op'>)</span>
   <span class='va'>plot_df_long</span><span class='op'>$</span><span class='va'>varname</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>xvar</span>, <span class='st'>".fitted"</span><span class='op'>)</span>,
                               each <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>plot_df</span><span class='op'>)</span><span class='op'>)</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>
     data <span class='op'>=</span> <span class='va'>plot_df_long</span>,
-    <span class='fu'>aes_string</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"xvar"</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>form</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes_.html'>aes_string</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"xvar"</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>form</span><span class='op'>[[</span><span class='fl'>2</span><span class='op'>]</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span>
   <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span>, col <span class='op'>=</span> <span class='st'>"model"</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"data"</span><span class='op'>)</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span>, col <span class='op'>=</span> <span class='st'>"model"</span><span class='op'>)</span>,
       linetype <span class='op'>=</span> <span class='st'>"dashed"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>
     <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>varname</span>, scales <span class='op'>=</span> <span class='st'>"free_x"</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>labs</span><span class='op'>(</span>color <span class='op'>=</span> <span class='cn'>NULL</span>, x <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"data"</span> <span class='op'>=</span> <span class='st'>"blue"</span>,
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>varname</span>, scales <span class='op'>=</span> <span class='st'>"free_x"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='cn'>NULL</span>, x <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"data"</span> <span class='op'>=</span> <span class='st'>"blue"</span>,
                                   <span class='st'>"model"</span> <span class='op'>=</span> <span class='st'>"red"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span>
 <span class='op'>}</span>
 </code></pre>
 </div>
@@ -2244,17 +2270,19 @@ R Codes
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data (pay attention to the directory)</span>
 <span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://haven.tidyverse.org/reference/read_spss.html'>read_sav</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"data_files"</span>, <span class='st'>"hsball.sav"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Cluster-mean centering</span>
-<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='co'># operate within schools</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,  <span class='co'># create cluster means (the same as `meanses`)</span>
-         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='co'># cluster-mean centered</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
+<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='co'># operate within schools</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,  <span class='co'># create cluster means (the same as `meanses`)</span>
+         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='co'># cluster-mean centered</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
 </code></pre>
 </div>
 </div>
-<p>The discussion will follow chapter 10 of Snijders &amp; Bosker (2012)</p>
+<p>The discussion will follow chapter 10 of Snijders &amp; Bosker
+(2012)</p>
 <h2 id="fitting-the-model">Fitting the model</h2>
-<p>We will first use a model with <code>ses</code> and <code>sector</code>, without contextual effects or random slopes.</p>
+<p>We will first use a model with <code>ses</code> and
+<code>sector</code>, without contextual effects or random slopes.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2263,9 +2291,13 @@ R Codes
 </div>
 </div>
 <h1 id="diagnostics">Diagnostics</h1>
-<h2 id="does-the-fixed-part-contain-the-right-variables">Does the fixed part contain the right variables?</h2>
-<h3 id="cluster-means-for-lower-level-variables">Cluster means for lower-level variables</h3>
-<p>One can test whether <code>ses_cm</code> should be included in the model, in addition to the raw level-1 variable. Let’s use likelihood ratio tests for it:</p>
+<h2 id="does-the-fixed-part-contain-the-right-variables">Does the fixed
+part contain the right variables?</h2>
+<h3 id="cluster-means-for-lower-level-variables">Cluster means for
+lower-level variables</h3>
+<p>One can test whether <code>ses_cm</code> should be included in the
+model, in addition to the raw level-1 variable. Let’s use likelihood
+ratio tests for it:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m1_cm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='va'>ses_cm</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2274,19 +2306,33 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>m1_cm</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                  2.5 %    97.5 %
-&gt;# .sig01       1.3013272  1.769307
-&gt;# .sigma       5.9849982  6.186295
-&gt;# (Intercept) 11.7392184 12.517199
-&gt;# sector       0.6267857  1.822315
-&gt;# ses          1.9781613  2.404183
-&gt;# ses_cm       2.3941778  3.896384</code></pre>
+<pre><code>&gt;#               2.5 % 97.5 %
+&gt;# .sig01       1.3013  1.769
+&gt;# .sigma       5.9850  6.186
+&gt;# (Intercept) 11.7392 12.517
+&gt;# sector       0.6268  1.822
+&gt;# ses          1.9782  2.404
+&gt;# ses_cm       2.3942  3.896</code></pre>
 </div>
 <p>So it looks like we need <code>ses_cm</code>.</p>
 <h3 id="omitted-variables">Omitted variables</h3>
-<p>If there are any potential confounding variable, those should be included as well. This requires knowledge of the research question under investigation. One good thing is that if one is interested in effects at a lower level, doing cluster-mean centering or including the cluster mean will rule out potential confounders at a higher level. This is because one is now comparing individuals within the same school (or the same level-2 unit), so any confounders that are related to school characteristics can be ruled out, as they will be held constant.</p>
+<p>If there are any potential confounding variable, those should be
+included as well. This requires knowledge of the research question under
+investigation. One good thing is that if one is interested in effects at
+a lower level, doing cluster-mean centering or including the cluster
+mean will rule out potential confounders at a higher level. This is
+because one is now comparing individuals within the same school (or the
+same level-2 unit), so any confounders that are related to school
+characteristics can be ruled out, as they will be held constant.</p>
 <h3 id="linearity">Linearity</h3>
-<p>A quick way to check whether there are any unmodelled non-linear trends is to use marginal model plots, which shows the outcome variable against each individual predictor. The plot shows two lines: one shows a nonparametric smoother that does not depend on the model, and the other shows the implied association based on the model. If the two lines are close to each other, then there is no need to include extra curvillinear terms of the predictors; otherwise, one may need to consider adding quadratic or other non-linear terms.</p>
+<p>A quick way to check whether there are any unmodelled non-linear
+trends is to use marginal model plots, which shows the outcome variable
+against each individual predictor. The plot shows two lines: one shows a
+nonparametric smoother that does not depend on the model, and the other
+shows the implied association based on the model. If the two lines are
+close to each other, then there is no need to include extra curvillinear
+terms of the predictors; otherwise, one may need to consider adding
+quadratic or other non-linear terms.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='va'>ses_cm</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2298,11 +2344,11 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># SES</span>
-<span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"blue"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># blue line from data</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+<span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m2</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"blue"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># blue line from data</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
     col <span class='op'>=</span> <span class='st'>"red"</span>,
     se <span class='op'>=</span> <span class='cn'>FALSE</span>, linetype <span class='op'>=</span> <span class='st'>"dashed"</span>
   <span class='op'>)</span>  <span class='co'># red line from model</span>
@@ -2310,7 +2356,14 @@ R Codes
 </div>
 <p><img src="rcode6_files/figure-html5/mmp-ses-1.png" width="384" /></p>
 </div>
-<p>The above shows some deviation between the model (red line) and the data (blue line), but the discrepancy is mostly driven by two data points, one on the left and one on the right. So this is mostly fine, although it is possible to check whether the results are similar without those two points. You can modify the code to check all other predictors as well. To make things easier, I’ve made a small function, <code>mmps_lmer()</code>, defined in the beginning of the file, that automatically generates the marginal model plots for all predictors:</p>
+<p>The above shows some deviation between the model (red line) and the
+data (blue line), but the discrepancy is mostly driven by two data
+points, one on the left and one on the right. So this is mostly fine,
+although it is possible to check whether the results are similar without
+those two points. You can modify the code to check all other predictors
+as well. To make things easier, I’ve made a small function,
+<code>mmps_lmer()</code>, defined in the beginning of the file, that
+automatically generates the marginal model plots for all predictors:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>mmps_lmer</span><span class='op'>(</span><span class='va'>m2</span><span class='op'>)</span>
@@ -2318,13 +2371,21 @@ R Codes
 </div>
 <p><img src="rcode6_files/figure-html5/mmps-m2-1.png" width="624" /></p>
 </div>
-<p>There are two things to note. First, for binary predictors <code>female</code> and <code>sector</code>, the plot is not meaningful, as there are only two possible values in the predictor. Second, the plot labelled <code>.fitted</code> is one where it plots the outcome against the <em>linear precictor</em>, which is the predicted value of the outcome based on the predictors (i.e., <span class="math inline">\(\gamma_{00} + \gamma_{01}\)</span>). You can think about it as a combination of all predictors.</p>
-<p>To show what it is like when linearity is violated, I simulate some data by adding a quadratic term:</p>
+<p>There are two things to note. First, for binary predictors
+<code>female</code> and <code>sector</code>, the plot is not meaningful,
+as there are only two possible values in the predictor. Second, the plot
+labelled <code>.fitted</code> is one where it plots the outcome against
+the <em>linear precictor</em>, which is the predicted value of the
+outcome based on the predictors (i.e., <span
+class="math inline">\(\gamma_{00} + \gamma_{01}\)</span>). You can think
+about it as a combination of all predictors.</p>
+<p>To show what it is like when linearity is violated, I simulate some
+data by adding a quadratic term:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'>## Fake example: Add quadratic trend for ses</span>
-<span class='va'>hsball_quad</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>mathach <span class='op'>=</span> <span class='va'>mathach</span> <span class='op'>+</span> <span class='va'>ses</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>hsball_quad</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mathach <span class='op'>=</span> <span class='va'>mathach</span> <span class='op'>+</span> <span class='va'>ses</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 <span class='va'>m2_quad</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/refit.html'>refit</a></span><span class='op'>(</span><span class='va'>m2</span>, newresp <span class='op'>=</span> <span class='va'>hsball_quad</span><span class='op'>$</span><span class='va'>mathach</span><span class='op'>)</span>
 <span class='fu'>mmps_lmer</span><span class='op'>(</span><span class='va'>m2_quad</span><span class='op'>)</span>
 </code></pre>
@@ -2332,10 +2393,12 @@ R Codes
 <p><img src="rcode6_files/figure-html5/mmp2-m2_quad-1.png" width="624" /></p>
 </div>
 <p>The above shows a misfit for the plot with <code>ses</code>.</p>
-<h4 id="what-to-do-if-linearity-is-violated">What to do if linearity is violated?</h4>
+<h4 id="what-to-do-if-linearity-is-violated">What to do if linearity is
+violated?</h4>
 <ul>
 <li>Include non-linear terms (e.g., quadratic)</li>
-<li>Include interactions (but note that interactions can be present even when linearity is not violated)</li>
+<li>Include interactions (but note that interactions can be present even
+when linearity is not violated)</li>
 <li>Using splines. Below is an example:</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
@@ -2352,15 +2415,16 @@ R Codes
 &gt;# Models:
 &gt;# m2: mathach ~ sector + ses + ses_cm + (1 | id)
 &gt;# m2_spline: mathach ~ sector + bs(ses) + bs(ses_cm) + (1 | id)
-&gt;#           npar   AIC   BIC logLik deviance  Chisq Df Pr(&gt;Chisq)
-&gt;# m2           6 46560 46602 -23274    46548                     
-&gt;# m2_spline   10 46565 46634 -23272    46545 3.3118  4     0.5071</code></pre>
+&gt;#           npar   AIC   BIC logLik deviance Chisq Df Pr(&gt;Chisq)
+&gt;# m2           6 46560 46602 -23274    46548                    
+&gt;# m2_spline   10 46565 46634 -23273    46545  3.31  4       0.51</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># So insufficient evidence for a nonlinear trend for `ses` and `ses_cm`</span>
 </code></pre>
 </div>
 </div>
-<h2 id="does-the-random-part-contain-the-right-variables">Does the random part contain the right variables?</h2>
+<h2 id="does-the-random-part-contain-the-right-variables">Does the
+random part contain the right variables?</h2>
 <h3 id="testing-for-random-slopes">Testing for random slopes</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2373,63 +2437,72 @@ R Codes
 &gt;# 
 &gt;# Model:
 &gt;# mathach ~ sector + ses + ses_cm + (ses | id)
-&gt;#                   npar logLik   AIC    LRT Df Pr(&gt;Chisq)  
-&gt;# &lt;none&gt;               8 -23274 46563                       
-&gt;# ses in (ses | id)    6 -23277 46566 6.3614  2    0.04156 *
+&gt;#                   npar logLik   AIC  LRT Df Pr(&gt;Chisq)  
+&gt;# &lt;none&gt;               8 -23274 46563                     
+&gt;# ses in (ses | id)    6 -23277 46566 6.36  2      0.042 *
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>The random slope for <code>ses</code> was significant, so it should be included.</p>
+<p>The random slope for <code>ses</code> was significant, so it should
+be included.</p>
 <h2 id="residual-plots">Residual Plots</h2>
-<p>Residuals can be used to check a lot of assumptions, including linearity, homoscedasticity, normality, and outliers</p>
+<p>Residuals can be used to check a lot of assumptions, including
+linearity, homoscedasticity, normality, and outliers</p>
 <h3 id="residuals-across-clusters">Residuals across clusters</h3>
-<p>The following computes the standardized residuals and plot them across different clusters. The following plot shows:</p>
+<p>The following computes the standardized residuals and plot them
+across different clusters. The following plot shows:</p>
 <ul>
-<li>Most of the standardized residuals are between -3 and 3, so not a lot of outliers;</li>
-<li>The variability of the residuals is similar across clusters, so heteroscedastisticity is likely not an issue across clusters.</li>
+<li>Most of the standardized residuals are between -3 and 3, so not a
+lot of outliers;</li>
+<li>The variability of the residuals is similar across clusters, so
+heteroscedastisticity is likely not an issue across clusters.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>.resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_boxplot</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>.resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode6_files/figure-html5/std_resid-id-1.png" width="624" /></p>
 </div>
-<h3 id="level-1-residuals-across-predictors">Level-1 residuals across predictors</h3>
-<p>The plot below shows that heteroscedastisticity is likely not a problem, as we do not see clearly bigger/smaller variance at certain levels of the predictors.</p>
+<h3 id="level-1-residuals-across-predictors">Level-1 residuals across
+predictors</h3>
+<p>The plot below shows that heteroscedastisticity is likely not a
+problem, as we do not see clearly bigger/smaller variance at certain
+levels of the predictors.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>.std_resid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>resid</a></span><span class='op'>(</span><span class='va'>m3</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.std_resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>.std_resid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>resid</a></span><span class='op'>(</span><span class='va'>m3</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.std_resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="rcode6_files/figure-html5/std_resid-pred-1.png" width="624" />
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>.std_resid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>resid</a></span><span class='op'>(</span><span class='va'>m3</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses_cm</span>, y <span class='op'>=</span> <span class='va'>.std_resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>.std_resid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>resid</a></span><span class='op'>(</span><span class='va'>m3</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses_cm</span>, y <span class='op'>=</span> <span class='va'>.std_resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="rcode6_files/figure-html5/std_resid-pred-2.png" width="624" />
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>.std_resid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>resid</a></span><span class='op'>(</span><span class='va'>m3</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sector</span>, y <span class='op'>=</span> <span class='va'>.std_resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>.std_resid <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/residuals.html'>resid</a></span><span class='op'>(</span><span class='va'>m3</span>, scaled <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sector</span>, y <span class='op'>=</span> <span class='va'>.std_resid</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># use `geom_jitter` for discrete predictor</span>
-  <span class='fu'>geom_jitter</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span>, width <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_jitter.html'>geom_jitter</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span>, width <span class='op'>=</span> <span class='fl'>0.05</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode6_files/figure-html5/std_resid-pred-3.png" width="624" /></p>
 </div>
-<h3 id="level-2-residuals-across-lv-2-predictors">Level-2 residuals across lv-2 predictors</h3>
+<h3 id="level-2-residuals-across-lv-2-predictors">Level-2 residuals
+across lv-2 predictors</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>resid_lv2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/ranef.html'>ranef</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span><span class='op'>$</span><span class='va'>id</span>
@@ -2438,35 +2511,38 @@ R Codes
   <span class='va'>resid_lv2_var</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span>, <span class='op'>]</span>,
   <span class='va'>resid_lv2_var</span><span class='op'>[</span><span class='fl'>2</span>, <span class='fl'>2</span>, <span class='op'>]</span>
 <span class='op'>)</span><span class='op'>)</span>
-<span class='va'>std_resid_lv2</span> <span class='op'>&lt;-</span> <span class='va'>resid_lv2</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>rownames_to_column</span><span class='op'>(</span><span class='st'>"id"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>transmute</span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span>,
+<span class='va'>std_resid_lv2</span> <span class='op'>&lt;-</span> <span class='va'>resid_lv2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span><span class='op'>(</span><span class='st'>"id"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>transmute</a></span><span class='op'>(</span>id <span class='op'>=</span> <span class='va'>id</span>,
             u0 <span class='op'>=</span> <span class='va'>`(Intercept)`</span> <span class='op'>/</span> <span class='va'>resid_lv2_sd</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span>,
             u1 <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>/</span> <span class='va'>resid_lv2_sd</span><span class='op'>[</span>, <span class='fl'>2</span><span class='op'>]</span><span class='op'>)</span>
 <span class='co'># Merge lv-2 data with lv-2 standardized residuals</span>
-<span class='va'>hsball_lv2</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>summarise</span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='va'>ses_cm</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>left_join</span><span class='op'>(</span>
+<span class='va'>hsball_lv2</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='va'>ses_cm</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>left_join</a></span><span class='op'>(</span>
     <span class='va'>std_resid_lv2</span>
   <span class='op'>)</span>
 <span class='co'># Plot lv-2 residual against `ses_cm`</span>
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>hsball_lv2</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses_cm</span>, y <span class='op'>=</span> <span class='va'>u0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>hsball_lv2</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses_cm</span>, y <span class='op'>=</span> <span class='va'>u0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="rcode6_files/figure-html5/resid-lv2-1.png" width="624" />
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>hsball_lv2</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses_cm</span>, y <span class='op'>=</span> <span class='va'>u1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>hsball_lv2</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses_cm</span>, y <span class='op'>=</span> <span class='va'>u1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.7</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>se <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode6_files/figure-html5/resid-lv2-2.png" width="624" /></p>
 </div>
-<h3 id="bonus-modeling-heteroscedastisticity">Bonus: Modeling heteroscedastisticity</h3>
-<p>You can model <span class="math inline">\(\log(\sigma_{ij}) = \gamma^{s}_{00} + \gamma^{s}_{10} x_{ij} + \gamma^{s}_{01} w_{j}\)</span></p>
+<h3 id="bonus-modeling-heteroscedastisticity">Bonus: Modeling
+heteroscedastisticity</h3>
+<p>You can model <span class="math inline">\(\log(\sigma_{ij}) =
+\gamma^{s}_{00} + \gamma^{s}_{10} x_{ij} + \gamma^{s}_{01}
+w_{j}\)</span></p>
 <p>Let’s model the variance as a function of <code>sector</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2490,30 +2566,30 @@ R Codes
 &gt;# Data: hsball
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#  46531.3  46593.2 -23256.6  46513.3     7176 
+&gt;#    46531    46593   -23257    46513     7176 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Variance Std.Dev. Corr 
-&gt;#  id       (Intercept) 2.372    1.5402        
-&gt;#           ses         0.458    0.6767   0.21 
-&gt;#  Residual                NA        NA        
+&gt;#  id       (Intercept) 2.372    1.540         
+&gt;#           ses         0.458    0.677    0.21 
+&gt;#  Residual                NA       NA         
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Conditional model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept)  12.0682     0.2189   55.12  &lt; 2e-16 ***
-&gt;# sector        1.3528     0.3609    3.75 0.000178 ***
-&gt;# ses           2.1476     0.1227   17.51  &lt; 2e-16 ***
-&gt;# ses_cm        3.2171     0.3982    8.08 6.55e-16 ***
+&gt;# (Intercept)   12.068      0.219    55.1  &lt; 2e-16 ***
+&gt;# sector         1.353      0.361     3.7  0.00018 ***
+&gt;# ses            2.148      0.123    17.5  &lt; 2e-16 ***
+&gt;# ses_cm         3.217      0.398     8.1  6.5e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
 &gt;# Dispersion model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept)  3.69133    0.02391  154.40  &lt; 2e-16 ***
-&gt;# sector      -0.18333    0.03400   -5.39 6.96e-08 ***
+&gt;# (Intercept)   3.6913     0.0239   154.4   &lt;2e-16 ***
+&gt;# sector       -0.1833     0.0340    -5.4    7e-08 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
@@ -2525,9 +2601,9 @@ R Codes
 &gt;# Models:
 &gt;# m3_tmb: mathach ~ sector + ses + ses_cm + (ses | id), zi=~0, disp=~1
 &gt;# m3_heter_tmb: mathach ~ sector + ses + ses_cm + (ses | id), zi=~0, disp=~sector
-&gt;#              Df   AIC   BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)
-&gt;# m3_tmb        8 46558 46613 -23271    46542                         
-&gt;# m3_heter_tmb  9 46531 46593 -23257    46513 29.009      1  7.203e-08
+&gt;#              Df   AIC   BIC logLik deviance Chisq Chi Df Pr(&gt;Chisq)
+&gt;# m3_tmb        8 46558 46613 -23271    46542                        
+&gt;# m3_heter_tmb  9 46531 46593 -23257    46513    29      1    7.2e-08
 &gt;#                 
 &gt;# m3_tmb          
 &gt;# m3_heter_tmb ***
@@ -2684,6 +2760,17 @@ sd__Observation
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -2718,8 +2805,13 @@ Log.Lik.
 </tbody>
 </table>
 </div>
-<h3 id="bonus-heteroscedasticity-consistent-hc-variance-estimates">Bonus: Heteroscedasticity-consistent (HC) variance estimates</h3>
-<p>If you suspect that heteroscedastisticity may be a problem, you can also use the heteroskedasticity-consistent variance estimators with the <code>clubSandwich</code> package, which computes the HC correction for the test results</p>
+<h3
+id="bonus-heteroscedasticity-consistent-hc-variance-estimates">Bonus:
+Heteroscedasticity-consistent (HC) variance estimates</h3>
+<p>If you suspect that heteroscedastisticity may be a problem, you can
+also use the heteroskedasticity-consistent variance estimators with the
+<code>clubSandwich</code> package, which computes the HC correction for
+the test results</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jepusto/clubSandwich'>clubSandwich</a></span><span class='op'>)</span>
@@ -2734,26 +2826,28 @@ Log.Lik.
 <span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#               REML-SE     HC-SE
-&gt;# (Intercept) 0.2016592 0.1779908
-&gt;# sector      0.3090955 0.3157639
-&gt;# ses         0.1223825 0.1287679
-&gt;# ses_cm      0.3880834 0.3659749</code></pre>
+<pre><code>&gt;#             REML-SE  HC-SE
+&gt;# (Intercept)  0.2017 0.1780
+&gt;# sector       0.3091 0.3158
+&gt;# ses          0.1224 0.1288
+&gt;# ses_cm       0.3881 0.3660</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Testing fixed effects adjusting for heteroscedasticity</span>
 <span class='fu'><a href='https://rdrr.io/pkg/clubSandwich/man/coef_test.html'>coef_test</a></span><span class='op'>(</span><span class='va'>m3</span>, vcov <span class='op'>=</span> <span class='st'>"CR2"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#         Coef. Estimate    SE t-stat  d.f. p-val (Satt) Sig.
-&gt;# 1 (Intercept)    12.04 0.178  67.66  84.8       &lt;0.001  ***
-&gt;# 2      sector     1.41 0.316   4.46  99.0       &lt;0.001  ***
-&gt;# 3         ses     2.20 0.129  17.05 146.9       &lt;0.001  ***
-&gt;# 4      ses_cm     3.16 0.366   8.62  62.2       &lt;0.001  ***</code></pre>
+<pre><code>&gt;#        Coef. Estimate    SE t-stat d.f. (Satt) p-val (Satt) Sig.
+&gt;#  (Intercept)    12.04 0.178  67.66        84.8       &lt;0.001  ***
+&gt;#       sector     1.41 0.316   4.46        99.0       &lt;0.001  ***
+&gt;#          ses     2.20 0.129  17.05       146.9       &lt;0.001  ***
+&gt;#       ses_cm     3.16 0.366   8.62        62.2       &lt;0.001  ***</code></pre>
 </div>
-<p>Note: To my knowledge, currently it is not possible to combine HC estimator with the small-sample Kenward-Roger correction.</p>
+<p>Note: To my knowledge, currently it is not possible to combine HC
+estimator with the small-sample Kenward-Roger correction.</p>
 <h3 id="q-q-plot-for-lv-1-residuals">Q-Q Plot for Lv-1 Residuals</h3>
 <p>For: normality</p>
-<p>You want to see the points line up nicely along the 45 degree line</p>
+<p>You want to see the points line up nicely along the 45 degree
+line</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://lattice.r-forge.r-project.org/'>lattice</a></span><span class='op'>)</span>  <span class='co'># need this package to use the built-in functions</span>
@@ -2762,10 +2856,15 @@ Log.Lik.
 </div>
 <p><img src="rcode6_files/figure-html5/qq_lv1-1.png" width="624" /></p>
 </div>
-<p>There are some deviations from normality on the two tail areas, which is likely due to less kurtosis because of the boundedness of the outcome variable. Generally the impact of kurtosis is not as severe as skewness, and the above plot did not suggest a major issue to the results.</p>
+<p>There are some deviations from normality on the two tail areas, which
+is likely due to less kurtosis because of the boundedness of the outcome
+variable. Generally the impact of kurtosis is not as severe as skewness,
+and the above plot did not suggest a major issue to the results.</p>
 <h3 id="q-q-plot-for-lv-2-residuals">Q-Q Plot for Lv-2 Residuals</h3>
 <p>For: normality</p>
-<p>At level 2 there can be more then one set of residuals. For example, in this model, we have one set for the random intercept, and the other set for the random slope</p>
+<p>At level 2 there can be more then one set of residuals. For example,
+in this model, we have one set for the random intercept, and the other
+set for the random slope</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># the code is a bit more complex in order to add the reference line, but you </span>
@@ -2782,7 +2881,8 @@ Log.Lik.
 <p><img src="rcode6_files/figure-html5/qq_lv2-1.png" width="624" /></p>
 </div>
 <p>Normality does not appear to be an issue at level 2.</p>
-<h2 id="bonus-variance-inflation-factor-vif">Bonus: Variance Inflation Factor (VIF)</h2>
+<h2 id="bonus-variance-inflation-factor-vif">Bonus: Variance Inflation
+Factor (VIF)</h2>
 <p>For: multicollinearity</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2790,13 +2890,17 @@ Log.Lik.
 <span class='fu'>car</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/car/man/vif.html'>vif</a></span><span class='op'>(</span><span class='va'>m3</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#   sector      ses   ses_cm 
-&gt;# 1.135375 1.081972 1.217836</code></pre>
+<pre><code>&gt;# sector    ses ses_cm 
+&gt;#  1.135  1.082  1.218</code></pre>
 </div>
-<p>As a rule of thumb, one would worry about multicollinearity in the predictors when VIF &gt; 4, and VIF &gt; 10 indicates strong multicollinearity.</p>
+<p>As a rule of thumb, one would worry about multicollinearity in the
+predictors when VIF &gt; 4, and VIF &gt; 10 indicates strong
+multicollinearity.</p>
 <h2 id="bonus-influence-index-plots">Bonus: Influence Index Plots</h2>
 <p>For: leverage points and outliers</p>
-<p>To examine whether some cases gives disproportionately strong influence on the results, we can look at influence index plot and dfbeta</p>
+<p>To examine whether some cases gives disproportionately strong
+influence on the results, we can look at influence index plot and
+dfbeta</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># It seems that the influence() function only supports object of class `data.frame`, so we need to </span>
@@ -2810,9 +2914,30 @@ Log.Lik.
 </div>
 <p><img src="rcode6_files/figure-html5/influence_plots-1.png" width="624" /></p>
 </div>
-<p>If you need some cutoffs, the cutoff for dfbeta is <span class="math inline">\(2 / \sqrt{job}\)</span>, which would be 0.1581139 in our example; cutoff for Cook’s distance is <span class="math inline">\(4 / (J - 2)\)</span>, which would be 0.0253165 in our example. So while some of the clusters exert more influence on the results than others, they all seem to be within the normal sampling variability that one would expect. If some clusters are above the cutoffs, then you may want to take a look on those clusters to see whether there are coding errors, or whether there is something unique about them. You can do a sensitivity analysis with and without those clusters.</p>
+<p>If you need some cutoffs, the cutoff for dfbeta is <span
+class="math inline">\(2 / \sqrt{job}\)</span>, which would be 0.1581 in
+our example; cutoff for Cook’s distance is <span class="math inline">\(4
+/ (J - 2)\)</span>, which would be 0.0253 in our example. So while some
+of the clusters exert more influence on the results than others, they
+all seem to be within the normal sampling variability that one would
+expect. If some clusters are above the cutoffs, then you may want to
+take a look on those clusters to see whether there are coding errors, or
+whether there is something unique about them. You can do a sensitivity
+analysis with and without those clusters.</p>
 <h2 id="bonus-bayesian-robust-mlm">Bonus: Bayesian Robust MLM</h2>
-<p>There has not been a lot of discussion on MLM that is robust to outliers. One useful technique, however, is to use a heavy-tailed distribution for the errors and random effects. Instead of assuming that they follow normal distributions, we assume them to follow Student’s <span class="math inline">\(t\)</span> distributions, which have heavier tails. What it does is to allow for a higher probability of extreme value, so that those extreme values will have less influence on estimating the pattern of the data. You will need to use the <code>brms</code> package. The installation of this package, however, is not straightforward (<a href="https://github.com/paul-buerkner/brms" class="uri">https://github.com/paul-buerkner/brms</a>), so if you are not able to run it here, don’t worry as we don’t need it for the remainder of the class.</p>
+<p>There has not been a lot of discussion on MLM that is robust to
+outliers. One useful technique, however, is to use a heavy-tailed
+distribution for the errors and random effects. Instead of assuming that
+they follow normal distributions, we assume them to follow Student’s
+<span class="math inline">\(t\)</span> distributions, which have heavier
+tails. What it does is to allow for a higher probability of extreme
+value, so that those extreme values will have less influence on
+estimating the pattern of the data. You will need to use the
+<code>brms</code> package. The installation of this package, however, is
+not straightforward (<a href="https://github.com/paul-buerkner/brms"
+class="uri">https://github.com/paul-buerkner/brms</a>), so if you are
+not able to run it here, don’t worry as we don’t need it for the
+remainder of the class.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/paul-buerkner/brms'>brms</a></span><span class='op'>)</span>
@@ -3022,6 +3147,7 @@ sd__Observation
 Num.Obs.
 </td>
 <td style="text-align:center;">
+7185
 </td>
 <td style="text-align:center;">
 7185
@@ -3059,6 +3185,16 @@ Log.Lik.
 </tr>
 <tr>
 <td style="text-align:left;">
+REMLcrit
+</td>
+<td style="text-align:center;">
+46547.471
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 algorithm
 </td>
 <td style="text-align:center;">
@@ -3077,21 +3213,13 @@ pss
 2000.000
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-REMLcrit
-</td>
-<td style="text-align:center;">
-46547.471
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
 </tbody>
 </table>
 </div>
 <h1 id="convergence">Convergence</h1>
-<p>It’s not uncommon to run into convergence issues when the model contains two or more random slopes, or when the sample size (i.e., number of clusters) is small.</p>
+<p>It’s not uncommon to run into convergence issues when the model
+contains two or more random slopes, or when the sample size (i.e.,
+number of clusters) is small.</p>
 <h2 id="multiple-random-slopes">Multiple Random Slopes</h2>
 <p>Here I include <code>female</code> and its random slopes</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -3103,17 +3231,26 @@ REMLcrit
 </code></pre>
 </div>
 </div>
-<p>You will see the above warning. This almost always happens with two or more random slopes.</p>
-<p>You can consult <a href="https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#troubleshooting" class="uri">https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#troubleshooting</a> regarding some suggestions on what to do (and I recommend that you save this page for your future reference).</p>
-<p>The first thing you can do is to do centering and scaling. For scaling, it means making the predictors to have a smaller range. For example, if one of your predictor is income in dollars, I would suggest dividing income by $10,000 so that the resulting values are smaller. For centering, we can try using the cluster-mean centered variables:</p>
+<p>You will see the above warning. This almost always happens with two
+or more random slopes.</p>
+<p>You can consult <a
+href="https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#troubleshooting"
+class="uri">https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#troubleshooting</a>
+regarding some suggestions on what to do (and I recommend that you save
+this page for your future reference).</p>
+<p>The first thing you can do is to do centering and scaling. For
+scaling, it means making the predictors to have a smaller range. For
+example, if one of your predictor is income in dollars, I would suggest
+dividing income by $10,000 so that the resulting values are smaller. For
+centering, we can try using the cluster-mean centered variables:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cluster-mean centering</span>
-<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>female_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>female</span><span class='op'>)</span>,
-         female_cmc <span class='op'>=</span> <span class='va'>female</span> <span class='op'>-</span> <span class='va'>female_cm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
+<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>female_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>female</span><span class='op'>)</span>,
+         female_cmc <span class='op'>=</span> <span class='va'>female</span> <span class='op'>-</span> <span class='va'>female_cm</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
 </code></pre>
 </div>
 </div>
@@ -3127,7 +3264,8 @@ REMLcrit
 </code></pre>
 </div>
 </div>
-<p>The warning actually goes away now. If it does not, the next thing you can do is to try a different optimizer:</p>
+<p>The warning actually goes away now. If it does not, the next thing
+you can do is to try a different optimizer:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m_complex_all</span> <span class='op'>&lt;-</span> <span class='fu'>lme4</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/allFit.html'>allFit</a></span><span class='op'>(</span><span class='va'>m_complex</span><span class='op'>)</span>
@@ -3160,36 +3298,32 @@ REMLcrit
 </code></pre>
 </div>
 <pre><code>&gt;#                        bobyqa                   Nelder_Mead 
-&gt;#                     -23314.34                     -23244.43 
+&gt;#                        -23314                        -23244 
 &gt;#                    nlminbwrap                         nmkbw 
-&gt;#                     -23244.43                     -23244.43 
+&gt;#                        -23244                        -23244 
 &gt;#               optimx.L-BFGS-B nloptwrap.NLOPT_LN_NELDERMEAD 
-&gt;#                     -23314.34                     -23244.43 
+&gt;#                        -23314                        -23244 
 &gt;#     nloptwrap.NLOPT_LN_BOBYQA 
-&gt;#                     -23244.43</code></pre>
+&gt;#                        -23244</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compare the fixed effects</span>
 <span class='va'>ss</span><span class='op'>$</span><span class='va'>fixef</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                               (Intercept)   sector      ses   ses_cm
-&gt;# bobyqa                           12.81487 1.279043 2.160235 3.104912
-&gt;# Nelder_Mead                      12.66714 1.376844 2.154596 3.075339
-&gt;# nlminbwrap                       12.66713 1.376870 2.154598 3.075333
-&gt;# nmkbw                            12.66716 1.376797 2.154596 3.075361
-&gt;# optimx.L-BFGS-B                  12.81496 1.278858 2.160219 3.104946
-&gt;# nloptwrap.NLOPT_LN_NELDERMEAD    12.66713 1.376860 2.154596 3.075341
-&gt;# nloptwrap.NLOPT_LN_BOBYQA        12.66716 1.376774 2.154590 3.075422
-&gt;#                                  female
-&gt;# bobyqa                        -1.344823
-&gt;# Nelder_Mead                   -1.192094
-&gt;# nlminbwrap                    -1.192102
-&gt;# nmkbw                         -1.192100
-&gt;# optimx.L-BFGS-B               -1.344837
-&gt;# nloptwrap.NLOPT_LN_NELDERMEAD -1.192093
-&gt;# nloptwrap.NLOPT_LN_BOBYQA     -1.192069</code></pre>
+<pre><code>&gt;#                               (Intercept) sector   ses ses_cm female
+&gt;# bobyqa                              12.81  1.279 2.160  3.105 -1.345
+&gt;# Nelder_Mead                         12.67  1.377 2.155  3.075 -1.192
+&gt;# nlminbwrap                          12.67  1.377 2.155  3.075 -1.192
+&gt;# nmkbw                               12.67  1.377 2.155  3.075 -1.192
+&gt;# optimx.L-BFGS-B                     12.81  1.279 2.160  3.105 -1.345
+&gt;# nloptwrap.NLOPT_LN_NELDERMEAD       12.67  1.377 2.155  3.075 -1.192
+&gt;# nloptwrap.NLOPT_LN_BOBYQA           12.67  1.377 2.155  3.075 -1.192</code></pre>
 </div>
-<p>So it looks like the <code>bobyqa</code> optimizer (the default) converge to a different solution than other optimizers. The log-likelihood value is better (i.e., less negative) for the other optimizers than the default, so we should try those. Let’s use <code>nlminbwrap</code></p>
+<p>So it looks like the <code>bobyqa</code> optimizer (the default)
+converge to a different solution than other optimizers. The
+log-likelihood value is better (i.e., less negative) for the other
+optimizers than the default, so we should try those. Let’s use
+<code>nlminbwrap</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m_complex</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span>
@@ -3202,14 +3336,15 @@ REMLcrit
 </div>
 <p>The warning goes away.</p>
 <h2 id="singular-models">Singular Models</h2>
-<p>Especially in small samples, you will run into a message of singular model fit, like</p>
+<p>Especially in small samples, you will run into a message of singular
+model fit, like</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Randomly select 10 school ids</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1059</span><span class='op'>)</span>  <span class='co'># use the same seed so that the same 10 schools are selected</span>
 <span class='va'>random_ids</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
-<span class='va'>hsbsub</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span>
+<span class='va'>hsbsub</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span>
 <span class='co'># Fit a model</span>
 <span class='va'>m3_small</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses</span> <span class='op'>+</span> <span class='va'>ses_cm</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
                  data <span class='op'>=</span> <span class='va'>hsbsub</span><span class='op'>)</span>
@@ -3221,25 +3356,25 @@ REMLcrit
 &gt;# Formula: mathach ~ sector + ses + ses_cm + (ses | id)
 &gt;#    Data: hsbsub
 &gt;# 
-&gt;# REML criterion at convergence: 2798.7
+&gt;# REML criterion at convergence: 2799
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -2.56377 -0.69920 -0.03495  0.74830  2.88703 
+&gt;#    Min     1Q Median     3Q    Max 
+&gt;# -2.564 -0.699 -0.035  0.748  2.887 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev. Corr 
-&gt;#  id       (Intercept)  3.0198  1.7377        
-&gt;#           ses          0.2445  0.4944   -1.00
-&gt;#  Residual             40.1346  6.3352        
+&gt;#  id       (Intercept)  3.020   1.738         
+&gt;#           ses          0.244   0.494    -1.00
+&gt;#  Residual             40.135   6.335         
 &gt;# Number of obs: 428, groups:  id, 10
 &gt;# 
 &gt;# Fixed effects:
 &gt;#             Estimate Std. Error     df t value Pr(&gt;|t|)    
-&gt;# (Intercept)   11.944      0.875  6.904  13.650    3e-06 ***
-&gt;# sector        -1.018      1.478  6.342  -0.689 0.515508    
-&gt;# ses            2.247      0.473 18.902   4.750 0.000141 ***
-&gt;# ses_cm         3.701      2.322  8.475   1.594 0.147534    
+&gt;# (Intercept)   11.944      0.875  6.904   13.65    3e-06 ***
+&gt;# sector        -1.018      1.478  6.342   -0.69  0.51551    
+&gt;# ses            2.247      0.473 18.902    4.75  0.00014 ***
+&gt;# ses_cm         3.701      2.322  8.475    1.59  0.14753    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
@@ -3249,9 +3384,16 @@ REMLcrit
 &gt;# ses    -0.251  0.045       
 &gt;# ses_cm  0.480 -0.478 -0.240
 &gt;# optimizer (nloptwrap) convergence code: 0 (OK)
-&gt;# boundary (singular) fit: see ?isSingular</code></pre>
+&gt;# boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
 </div>
-<p>If you look at the random effect matrix, the correlation between the random intercepts and the random slopes is -1, which is small. Usually this is not a big problem for the fixed effects. If you have a highly complex model with a small sample, then the recommendation would be to simplify the model a bit by taking out one of the random slope term. An alternative is to use Bayesian estimation, which is less prone to small sample estimation problems. For example, I will use the <code>rstanarm</code> package</p>
+<p>If you look at the random effect matrix, the correlation between the
+random intercepts and the random slopes is -1, which is small. Usually
+this is not a big problem for the fixed effects. If you have a highly
+complex model with a small sample, then the recommendation would be to
+simplify the model a bit by taking out one of the random slope term. An
+alternative is to use Bayesian estimation, which is less prone to small
+sample estimation problems. For example, I will use the
+<code>rstanarm</code> package</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Same syntax; just replace `lmer` with `brm`</span>
@@ -3453,6 +3595,7 @@ sd__Observation
 Num.Obs.
 </td>
 <td style="text-align:center;">
+428
 </td>
 <td style="text-align:center;">
 428
@@ -3490,6 +3633,16 @@ Log.Lik.
 </tr>
 <tr>
 <td style="text-align:left;">
+REMLcrit
+</td>
+<td style="text-align:center;">
+2798.669
+</td>
+<td style="text-align:center;">
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 algorithm
 </td>
 <td style="text-align:center;">
@@ -3508,22 +3661,16 @@ pss
 4000.000
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-REMLcrit
-</td>
-<td style="text-align:center;">
-2798.669
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
 </tbody>
 </table>
 </div>
-<p>If the two are similar, then the REML results should be fine. Otherwise, as is the case here, the Bayesian result should be more trustworthy.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>If the two are similar, then the REML results should be fine.
+Otherwise, as is the case here, the Bayesian result should be more
+trustworthy.</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3549,7 +3696,10 @@ REMLcrit
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

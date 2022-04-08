@@ -20,7 +20,7 @@ You can use add the `message=FALSE` option to suppress the package loading messa
 ```{r load-pkg, message=FALSE}
 # To install a package, run the following ONCE (and only once on your computer)
 # install.packages("psych")  
-library(psych)  # for scatterplot matrix
+library(psych, include.only = "pairs.panels")  # for scatterplot matrix
 library(here)  # makes reading data more consistent
 library(tidyverse)  # for data manipulation and plotting
 library(car)  # some useful functions for regression

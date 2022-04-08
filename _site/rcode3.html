@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2092,6 +2092,10 @@ Lectures
 <a href="week7.html">Week 7</a>
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
+<a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2110,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2133,24 +2140,32 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a>
 <ul>
 <li><a href="#import-data">Import Data</a></li>
 </ul></li>
-<li><a href="#run-the-random-intercept-model">Run the Random Intercept Model</a>
+<li><a href="#run-the-random-intercept-model">Run the Random Intercept
+Model</a>
 <ul>
 <li><a href="#model-equations">Model equations</a></li>
 <li><a href="#running-the-model-in-r">Running the model in R</a></li>
-<li><a href="#showing-the-variations-across-a-subset-of-schools">Showing the variations across (a subset of) schools</a></li>
-<li><a href="#simulating-data-based-on-the-random-intercept-model">Simulating data based on the random intercept model</a></li>
-<li><a href="#plotting-the-random-effects-i.e.-u_0j">Plotting the random effects (i.e., <span class="math inline">\(u_{0j}\)</span>)</a></li>
+<li><a href="#showing-the-variations-across-a-subset-of-schools">Showing
+the variations across (a subset of) schools</a></li>
+<li><a
+href="#simulating-data-based-on-the-random-intercept-model">Simulating
+data based on the random intercept model</a></li>
+<li><a href="#plotting-the-random-effects-i.e.-u_0j">Plotting the random
+effects (i.e., <span class="math inline">\(u_{0j}\)</span>)</a></li>
 <li><a href="#intraclass-correlations">Intraclass correlations</a></li>
 </ul></li>
 <li><a href="#adding-lv-2-predictors">Adding Lv-2 Predictors</a></li>
 <li><a href="#model-equation">Model Equation</a>
 <ul>
-<li><a href="#proportion-of-variance-predicted">Proportion of variance predicted</a></li>
-<li><a href="#comparing-to-ols-regression">Comparing to OLS regression</a></li>
+<li><a href="#proportion-of-variance-predicted">Proportion of variance
+predicted</a></li>
+<li><a href="#comparing-to-ols-regression">Comparing to OLS
+regression</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2160,9 +2175,12 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week3-random-intercept-model.Rmd">week3-random-intercept-model.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
-<p>You can use the <code>message=FALSE</code> option to suppress the package loading messages</p>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week3-random-intercept-model.Rmd">week3-random-intercept-model.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
+<p>You can use the <code>message=FALSE</code> option to suppress the
+package loading messages</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2177,13 +2195,24 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/mkshaw/r2mlm'>r2mlm</a></span><span class='op'>)</span>  <span class='co'># for computing r-squared</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/bbolker/broom.mixed'>broom.mixed</a></span><span class='op'>)</span>  <span class='co'># for summarizing results</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
-<p>In R, there are many packages for multilevel modeling, two of the most common ones are the <code>lme4</code> package and the <code>nlme</code> package. In this note I will show how to run different basic multilevel models using the <code>lme4</code> package, which is newer. However, some of the models, like unstructured covariance structure, will need the <code>nlme</code> package or other packages (like the <code>brms</code> and the <code>rstanarm</code> packages with Bayesian estimation).</p>
+<p>In R, there are many packages for multilevel modeling, two of the
+most common ones are the <code>lme4</code> package and the
+<code>nlme</code> package. In this note I will show how to run different
+basic multilevel models using the <code>lme4</code> package, which is
+newer. However, some of the models, like unstructured covariance
+structure, will need the <code>nlme</code> package or other packages
+(like the <code>brms</code> and the <code>rstanarm</code> packages with
+Bayesian estimation).</p>
 <h3 id="import-data">Import Data</h3>
-<p>First, download the data from <a href="https://github.com/marklhc/marklai-pages/raw/master/data_files/hsball.sav" class="uri">https://github.com/marklhc/marklai-pages/raw/master/data_files/hsball.sav</a>. We’ll import the data in .sav format using the <code>read_sav()</code> function from the <code>haven</code> package.</p>
+<p>First, download the data from <a
+href="https://github.com/marklhc/marklai-pages/raw/master/data_files/hsball.sav"
+class="uri">https://github.com/marklhc/marklai-pages/raw/master/data_files/hsball.sav</a>.
+We’ll import the data in .sav format using the <code>read_sav()</code>
+function from the <code>haven</code> package.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Read in the data (pay attention to the directory)</span>
@@ -2207,16 +2236,32 @@ R Codes
 &gt;# # … with 7,175 more rows, and 2 more variables: himinty &lt;dbl&gt;,
 &gt;# #   meanses &lt;dbl&gt;</code></pre>
 </div>
-<h2 id="run-the-random-intercept-model">Run the Random Intercept Model</h2>
+<h2 id="run-the-random-intercept-model">Run the Random Intercept
+Model</h2>
 <h3 id="model-equations">Model equations</h3>
-<p>Lv-1: <span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + e_{ij}\]</span> where <span class="math inline">\(\beta_{0j}\)</span> is the population mean math achievement of the <span class="math inline">\(j\)</span>th school, and <span class="math inline">\(e_{ij}\)</span> is the level-1 random error term for the <span class="math inline">\(i\)</span>th individual of the <span class="math inline">\(j\)</span>th school.</p>
-<p>Lv-2: <span class="math display">\[\beta_{0j} = \gamma_{00} + u_{0j}\]</span> where <span class="math inline">\(\gamma_{00}\)</span> is the grand mean, and <span class="math inline">\(u_{0j}\)</span> is the deviation of the mean of the <span class="math inline">\(j\)</span>th school from the grand mean.</p>
+<p>Lv-1: <span class="math display">\[\text{mathach}_{ij} = \beta_{0j} +
+e_{ij}\]</span> where <span class="math inline">\(\beta_{0j}\)</span> is
+the population mean math achievement of the <span
+class="math inline">\(j\)</span>th school, and <span
+class="math inline">\(e_{ij}\)</span> is the level-1 random error term
+for the <span class="math inline">\(i\)</span>th individual of the <span
+class="math inline">\(j\)</span>th school.</p>
+<p>Lv-2: <span class="math display">\[\beta_{0j} = \gamma_{00} +
+u_{0j}\]</span> where <span class="math inline">\(\gamma_{00}\)</span>
+is the grand mean, and <span class="math inline">\(u_{0j}\)</span> is
+the deviation of the mean of the <span
+class="math inline">\(j\)</span>th school from the grand mean.</p>
 <h3 id="running-the-model-in-r">Running the model in R</h3>
 <p>The <code>lme4</code> package require input in the format of</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>outcome <span class="sc">~</span> fixed <span class="sc">+</span> (random <span class="sc">|</span> cluster ID)</span></code></pre></div>
-<p>For our data, the combined equation is <span class="math display">\[\text{mathach}_{ij} = \gamma_{00} + u_{0j} + e_{ij}, \]</span> which we can explicitly write <span class="math display">\[\color{red}{\text{mathach}}_{ij} = \color{green}{\gamma_{00} (1)} 
+<p>For our data, the combined equation is <span
+class="math display">\[\text{mathach}_{ij} = \gamma_{00} + u_{0j} +
+e_{ij}, \]</span> which we can explicitly write <span
+class="math display">\[\color{red}{\text{mathach}}_{ij} =
+\color{green}{\gamma_{00} (1)}
                                      + \color{blue}{u_{0j} (1)}
-                                     + e_{ij}. \]</span> With that, we can see</p>
+                                     + e_{ij}. \]</span> With that, we
+can see</p>
 <ul>
 <li>outcome = <code>mathach</code>,</li>
 <li>fixed = <code>1</code>,</li>
@@ -2238,7 +2283,7 @@ R Codes
 &gt;# Formula: mathach ~ 1 + (1 | id)
 &gt;#    Data: hsball
 &gt;# 
-&gt;# REML criterion at convergence: 47116.8
+&gt;# REML criterion at convergence: 47117
 &gt;# 
 &gt;# Scaled residuals: 
 &gt;#     Min      1Q  Median      3Q     Max 
@@ -2246,25 +2291,26 @@ R Codes
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept)  8.614   2.935   
-&gt;#  Residual             39.148   6.257   
+&gt;#  id       (Intercept)  8.61    2.93    
+&gt;#  Residual             39.15    6.26    
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Fixed effects:
 &gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6370     0.2444   51.71</code></pre>
+&gt;# (Intercept)   12.637      0.244    51.7</code></pre>
 </div>
-<h3 id="showing-the-variations-across-a-subset-of-schools">Showing the variations across (a subset of) schools</h3>
+<h3 id="showing-the-variations-across-a-subset-of-schools">Showing the
+variations across (a subset of) schools</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Randomly select 10 school ids</span>
 <span class='va'>random_ids</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
-<span class='op'>(</span><span class='va'>p_subset</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='co'># select only 10 schools</span>
-    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>id</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>geom_jitter</span><span class='op'>(</span>height <span class='op'>=</span> <span class='fl'>0</span>, width <span class='op'>=</span> <span class='fl'>0.1</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='op'>(</span><span class='va'>p_subset</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='co'># select only 10 schools</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>id</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_jitter.html'>geom_jitter</a></span><span class='op'>(</span>height <span class='op'>=</span> <span class='fl'>0</span>, width <span class='op'>=</span> <span class='fl'>0.1</span>, alpha <span class='op'>=</span> <span class='fl'>0.3</span><span class='op'>)</span> <span class='op'>+</span>
     <span class='co'># Add school means</span>
-    <span class='fu'>stat_summary</span><span class='op'>(</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>
       fun <span class='op'>=</span> <span class='st'>"mean"</span>,
       geom <span class='op'>=</span> <span class='st'>"point"</span>,
       col <span class='op'>=</span> <span class='st'>"red"</span>,
@@ -2277,8 +2323,10 @@ R Codes
 </div>
 <p><img src="rcode3_files/figure-html5/plot-means-1.png" width="624" /></p>
 </div>
-<h3 id="simulating-data-based-on-the-random-intercept-model">Simulating data based on the random intercept model</h3>
-<p><span class="math display">\[Y_{ij} = \gamma_{00} + u_{0j} + e_{ij},\]</span></p>
+<h3 id="simulating-data-based-on-the-random-intercept-model">Simulating
+data based on the random intercept model</h3>
+<p><span class="math display">\[Y_{ij} = \gamma_{00} + u_{0j} +
+e_{ij},\]</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>gamma00</span> <span class='op'>&lt;-</span> <span class='fl'>12.6370</span>
@@ -2287,67 +2335,72 @@ R Codes
 <span class='va'>num_students</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>hsball</span><span class='op'>)</span>
 <span class='va'>num_schools</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span>
 <span class='co'># Simulate with only gamma00 (i.e., tau0 = 0 and sigma = 0)</span>
-<span class='va'>simulated_data1</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+<span class='va'>simulated_data1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   id <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span>, 
   mathach <span class='op'>=</span> <span class='va'>gamma00</span>
 <span class='op'>)</span>
 <span class='co'># Show data with no variation</span>
 <span class='co'># The `%+%` operator is use to substitute with a different data set</span>
-<span class='va'>p_subset</span> <span class='op'>%+%</span>
-  <span class='op'>(</span><span class='va'>simulated_data1</span> <span class='op'>%&gt;%</span>
-     <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>p_subset</span> <span class='op'><a href='https://ggplot2.tidyverse.org/reference/gg-add.html'>%+%</a></span>
+  <span class='op'>(</span><span class='va'>simulated_data1</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="rcode3_files/figure-html5/sim-ran_int-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Simulate with gamma00 + e_ij (i.e., tau0 = 0)</span>
-<span class='va'>simulated_data2</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+<span class='va'>simulated_data2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   id <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span>, 
   mathach <span class='op'>=</span> <span class='va'>gamma00</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>num_students</span>, sd <span class='op'>=</span> <span class='va'>sigma</span><span class='op'>)</span>
 <span class='op'>)</span>
 <span class='co'># Show data with no school-level variation</span>
-<span class='va'>p_subset</span> <span class='op'>%+%</span>
-  <span class='op'>(</span><span class='va'>simulated_data2</span> <span class='op'>%&gt;%</span>
-     <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>p_subset</span> <span class='op'><a href='https://ggplot2.tidyverse.org/reference/gg-add.html'>%+%</a></span>
+  <span class='op'>(</span><span class='va'>simulated_data2</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="rcode3_files/figure-html5/sim-ran_int-2.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Simulate with gamma00 + u_0j + e_ij</span>
 <span class='co'># First, obtain group indices that starts from 1 to 160</span>
-<span class='va'>group_idx</span> <span class='op'>&lt;-</span> <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>hsball</span>, <span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>group_indices</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>group_idx</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>hsball</span>, <span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_data.html'>group_indices</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># Then simulate 160 u0j</span>
 <span class='va'>u0j</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>num_schools</span>, sd <span class='op'>=</span> <span class='va'>tau0</span><span class='op'>)</span>
-<span class='va'>simulated_data3</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+<span class='va'>simulated_data3</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   id <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span>, 
   mathach <span class='op'>=</span> <span class='va'>gamma00</span> <span class='op'>+</span> 
     <span class='va'>u0j</span><span class='op'>[</span><span class='va'>group_idx</span><span class='op'>]</span> <span class='op'>+</span>  <span class='co'># expand the u0j's from 160 to 7185</span>
     <span class='fu'><a href='https://rdrr.io/r/stats/Normal.html'>rnorm</a></span><span class='op'>(</span><span class='va'>num_students</span>, sd <span class='op'>=</span> <span class='va'>sigma</span><span class='op'>)</span>
 <span class='op'>)</span>
 <span class='co'># Show data with both school and student variations</span>
-<span class='va'>p_subset</span> <span class='op'>%+%</span>
-  <span class='op'>(</span><span class='va'>simulated_data3</span> <span class='op'>%&gt;%</span>
-     <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>p_subset</span> <span class='op'><a href='https://ggplot2.tidyverse.org/reference/gg-add.html'>%+%</a></span>
+  <span class='op'>(</span><span class='va'>simulated_data3</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode3_files/figure-html5/sim-ran_int-3.png" width="624" /></p>
 </div>
-<p>The handy <code>simulate()</code> function can also be used to simulate the data</p>
+<p>The handy <code>simulate()</code> function can also be used to
+simulate the data</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>simulated_math</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/simulate.html'>simulate</a></span><span class='op'>(</span><span class='va'>ran_int</span>, nsim <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>simulated_data4</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>
+<span class='va'>simulated_data4</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>
   id <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span>, 
   mathach <span class='op'>=</span> <span class='va'>simulated_math</span><span class='op'>$</span><span class='va'>sim_1</span>
 <span class='op'>)</span>
-<span class='va'>p_subset</span> <span class='op'>%+%</span>
-  <span class='op'>(</span><span class='va'>simulated_data4</span> <span class='op'>%&gt;%</span>
-     <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>p_subset</span> <span class='op'><a href='https://ggplot2.tidyverse.org/reference/gg-add.html'>%+%</a></span>
+  <span class='op'>(</span><span class='va'>simulated_data4</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h3 id="plotting-the-random-effects-i.e.-u_0j">Plotting the random effects (i.e., <span class="math inline">\(u_{0j}\)</span>)</h3>
-<p>You can easily plot the estimated school means (also called BLUP, best linear unbiased predictor, or the empirical Bayes (EB) estimates, which are different from the mean of the sample observations for a particular school) using the <code>lattice</code> package:</p>
+<h3 id="plotting-the-random-effects-i.e.-u_0j">Plotting the random
+effects (i.e., <span class="math inline">\(u_{0j}\)</span>)</h3>
+<p>You can easily plot the estimated school means (also called BLUP,
+best linear unbiased predictor, or the empirical Bayes (EB) estimates,
+which are different from the mean of the sample observations for a
+particular school) using the <code>lattice</code> package:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/lattice/man/xyplot.html'>dotplot</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/ranef.html'>ranef</a></span><span class='op'>(</span><span class='va'>ran_int</span>, condVar <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span>
@@ -2356,26 +2409,27 @@ R Codes
 <pre><code>&gt;# $id</code></pre>
 <p><img src="rcode3_files/figure-html5/dotplot-ran_int-1.png" width="624" /></p>
 </div>
-<p>Here’s a plot showing the sample schools means (with no borrowing of information) vs. the EB means (borrowing information).</p>
+<p>Here’s a plot showing the sample schools means (with no borrowing of
+information) vs. the EB means (borrowing information).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute raw school means and EB means</span>
-<span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+<span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
   <span class='co'># Raw means</span>
-  <span class='fu'>summarise</span><span class='op'>(</span>mathach_raw_means <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>mathach_raw_means</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='co'># sort by the means</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>mathach_raw_means <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='va'>mathach_raw_means</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='co'># sort by the means</span>
   <span class='co'># EB means (the "." means using the current data)</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>mathach_eb_means <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>ran_int</span>, <span class='va'>.</span><span class='op'>)</span>, 
-         index <span class='op'>=</span> <span class='fu'>row_number</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>  <span class='co'># add row number as index for plotting</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>index</span>, y <span class='op'>=</span> <span class='va'>mathach_raw_means</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Raw"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mathach_eb_means <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>ran_int</span>, <span class='va'>.</span><span class='op'>)</span>, 
+         index <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/ranking.html'>row_number</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>  <span class='co'># add row number as index for plotting</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>index</span>, y <span class='op'>=</span> <span class='va'>mathach_raw_means</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"Raw"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='co'># Add EB means</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>mathach_eb_means</span>, col <span class='op'>=</span> <span class='st'>"EB"</span><span class='op'>)</span>, shape <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_segment</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>index</span>, xend <span class='op'>=</span> <span class='va'>index</span>, 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>mathach_eb_means</span>, col <span class='op'>=</span> <span class='st'>"EB"</span><span class='op'>)</span>, shape <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_segment.html'>geom_segment</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>index</span>, xend <span class='op'>=</span> <span class='va'>index</span>, 
                    y <span class='op'>=</span> <span class='va'>mathach_eb_means</span>, yend <span class='op'>=</span> <span class='va'>mathach_raw_means</span>, 
                    col <span class='op'>=</span> <span class='st'>"EB"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"School mean achievement"</span>, col <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"School mean achievement"</span>, col <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode3_files/figure-html5/eb-vs-ols-1.png" width="624" /></p>
@@ -2389,7 +2443,7 @@ R Codes
 <span class='op'>(</span><span class='va'>icc</span> <span class='op'>&lt;-</span> <span class='va'>between_var</span> <span class='op'>/</span> <span class='op'>(</span><span class='va'>between_var</span> <span class='op'>+</span> <span class='va'>within_var</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.1803518</code></pre>
+<pre><code>&gt;# [1] 0.1804</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># 95% confidence intervals (require installing the bootmlm package)</span>
 <span class='co'># if (!require("devtools")) {</span>
@@ -2399,26 +2453,36 @@ R Codes
 <span class='fu'>bootmlm</span><span class='fu'>:::</span><span class='fu'><a href='https://rdrr.io/pkg/bootmlm/man/prof_ci_icc.html'>prof_ci_icc</a></span><span class='op'>(</span><span class='va'>ran_int</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#     2.5 %    97.5 % 
-&gt;# 0.1471784 0.2210131</code></pre>
+<pre><code>&gt;#  2.5 % 97.5 % 
+&gt;# 0.1472 0.2210</code></pre>
 </div>
 <h2 id="adding-lv-2-predictors">Adding Lv-2 Predictors</h2>
 <p>We have one predictor, <code>meanses</code>, in the fixed part.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, col <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_point</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>guides</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, col <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode3_files/figure-html5/mathach-meanses-1.png" width="624" /></p>
 </div>
 <h2 id="model-equation">Model Equation</h2>
 <p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} +
+e_{ij}\]</span></p>
 <p>Lv-2:</p>
-<p><span class="math display">\[\beta_{0j} = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}\]</span> where <span class="math inline">\(\gamma_{00}\)</span> is the grand <em>intercept</em>, <span class="math inline">\(\gamma_{10}\)</span> is the regression coefficient of <code>meanses</code> that represents the expected difference in school mean achievement between two schools with one unit difference in <code>meanses</code>, and and <span class="math inline">\(u_{0j}\)</span> is the deviation of the mean of the <span class="math inline">\(j\)</span>th school from the grand mean.</p>
+<p><span class="math display">\[\beta_{0j} = \gamma_{00} + \gamma_{01}
+\text{meanses}_j + u_{0j}\]</span> where <span
+class="math inline">\(\gamma_{00}\)</span> is the grand
+<em>intercept</em>, <span class="math inline">\(\gamma_{10}\)</span> is
+the regression coefficient of <code>meanses</code> that represents the
+expected difference in school mean achievement between two schools with
+one unit difference in <code>meanses</code>, and and <span
+class="math inline">\(u_{0j}\)</span> is the deviation of the mean of
+the <span class="math inline">\(j\)</span>th school from the grand
+mean.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m_lv2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
@@ -2429,22 +2493,22 @@ R Codes
 &gt;# Formula: mathach ~ meanses + (1 | id)
 &gt;#    Data: hsball
 &gt;# 
-&gt;# REML criterion at convergence: 46961.3
+&gt;# REML criterion at convergence: 46961
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -3.13480 -0.75256  0.02409  0.76773  2.78501 
+&gt;#     Min      1Q  Median      3Q     Max 
+&gt;# -3.1348 -0.7526  0.0241  0.7677  2.7850 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept)  2.639   1.624   
-&gt;#  Residual             39.157   6.258   
+&gt;#  id       (Intercept)  2.64    1.62    
+&gt;#  Residual             39.16    6.26    
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Fixed effects:
 &gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6494     0.1493   84.74
-&gt;# meanses       5.8635     0.3615   16.22
+&gt;# (Intercept)   12.649      0.149    84.7
+&gt;# meanses        5.864      0.361    16.2
 &gt;# 
 &gt;# Correlation of Fixed Effects:
 &gt;#         (Intr)
@@ -2455,18 +2519,22 @@ R Codes
 <span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>m_lv2</span>, parm <span class='op'>=</span> <span class='st'>"beta_"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                 2.5 %    97.5 %
-&gt;# (Intercept) 12.356615 12.941707
-&gt;# meanses      5.155769  6.572415</code></pre>
+<pre><code>&gt;#              2.5 % 97.5 %
+&gt;# (Intercept) 12.357 12.942
+&gt;# meanses      5.156  6.572</code></pre>
 </div>
-<p>The 95% confidence intervals (CIs) above showed the uncertainty associated with the estimates. Also, as the 95% CI for <code>meanses</code> does not contain zero, there is evidence for the positive association of SES and <code>mathach</code> at the school level.</p>
+<p>The 95% confidence intervals (CIs) above showed the uncertainty
+associated with the estimates. Also, as the 95% CI for
+<code>meanses</code> does not contain zero, there is evidence for the
+positive association of SES and <code>mathach</code> at the school
+level.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>sjPlot</span><span class='fu'>::</span><span class='fu'><a href='https://strengejacke.github.io/sjPlot/reference/plot_model.html'>plot_model</a></span><span class='op'>(</span><span class='va'>m_lv2</span>, type <span class='op'>=</span> <span class='st'>"pred"</span>, terms <span class='op'>=</span> <span class='st'>"meanses"</span>, 
                    show.data <span class='op'>=</span> <span class='cn'>TRUE</span>, title <span class='op'>=</span> <span class='st'>""</span>, 
                    dot.size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span> 
   <span class='co'># Add the group means</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>hsball</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span>, 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>hsball</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span>, 
                fun <span class='op'>=</span> <span class='va'>mean</span>, geom <span class='op'>=</span> <span class='st'>"point"</span>,
                col <span class='op'>=</span> <span class='st'>"red"</span>,
                shape <span class='op'>=</span> <span class='fl'>17</span>,
@@ -2477,8 +2545,17 @@ R Codes
 </div>
 <p><img src="rcode3_files/figure-html5/plot-m_lv2-1.png" width="624" /></p>
 </div>
-<h3 id="proportion-of-variance-predicted">Proportion of variance predicted</h3>
-<p>We will use the <span class="math inline">\(R^2\)</span> statistic proposed by <a href="https://doi.org/10.1098/rsif.2017.0213">Nakagawa, Johnson &amp; Schielzeth (2017)</a> to obtain an <span class="math inline">\(R^2\)</span> statistic. There are multiple versions of <span class="math inline">\(R^2\)</span> in the literature, but personally I think this <span class="math inline">\(R^2\)</span> avoids many of the problems in other variants and is most meaningful to interpret. Note that I only interpret the marginal <span class="math inline">\(R^2\)</span>.</p>
+<h3 id="proportion-of-variance-predicted">Proportion of variance
+predicted</h3>
+<p>We will use the <span class="math inline">\(R^2\)</span> statistic
+proposed by <a href="https://doi.org/10.1098/rsif.2017.0213">Nakagawa,
+Johnson &amp; Schielzeth (2017)</a> to obtain an <span
+class="math inline">\(R^2\)</span> statistic. There are multiple
+versions of <span class="math inline">\(R^2\)</span> in the literature,
+but personally I think this <span class="math inline">\(R^2\)</span>
+avoids many of the problems in other variants and is most meaningful to
+interpret. Note that I only interpret the marginal <span
+class="math inline">\(R^2\)</span>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Generally, you should use the marginal R^2 (R2m) for the variance predicted by</span>
@@ -2486,10 +2563,14 @@ R Codes
 <span class='fu'>MuMIn</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>m_lv2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#            R2m       R2c
-&gt;# [1,] 0.1233346 0.1786815</code></pre>
+<pre><code>&gt;#         R2m    R2c
+&gt;# [1,] 0.1233 0.1787</code></pre>
 </div>
-<p>An alternative, more comprehensive approach is by Rights &amp; Sterba (2019, Psychological Methods, <a href="https://doi.org/10.1037/met0000184" class="uri">https://doi.org/10.1037/met0000184</a>), with the <code>r2mlm</code> package</p>
+<p>An alternative, more comprehensive approach is by Rights &amp; Sterba
+(2019, Psychological Methods, <a
+href="https://doi.org/10.1037/met0000184"
+class="uri">https://doi.org/10.1037/met0000184</a>), with the
+<code>r2mlm</code> package</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>r2mlm</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/r2mlm/man/r2mlm.html'>r2mlm</a></span><span class='op'>(</span><span class='va'>m_lv2</span><span class='op'>)</span>
@@ -2514,9 +2595,13 @@ R Codes
 &gt;# fv  0.123334641367122  0      NA               
 &gt;# fvm 0.178681458281692  NA     NA</code></pre>
 </div>
-<p>Note the <code>fixed, between</code> number in the <code>total</code> column is the same as the one from <code>MuMIn::r.squaredGLMM()</code>. Including school means of SES in the model accounted for about 12% of the total variance of math achievement.</p>
+<p>Note the <code>fixed, between</code> number in the <code>total</code>
+column is the same as the one from <code>MuMIn::r.squaredGLMM()</code>.
+Including school means of SES in the model accounted for about 12% of
+the total variance of math achievement.</p>
 <h3 id="comparing-to-ols-regression">Comparing to OLS regression</h3>
-<p>Notice that the standard error with regression is only half of that with MLM.</p>
+<p>Notice that the standard error with regression is only half of that
+with MLM.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m_lm</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
@@ -2605,6 +2690,7 @@ sd__Observation
 Num.Obs.
 </td>
 <td style="text-align:center;">
+7185
 </td>
 <td style="text-align:center;">
 7185
@@ -2675,6 +2761,16 @@ F
 </tr>
 <tr>
 <td style="text-align:left;">
+RMSE
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+6.46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 REMLcrit
 </td>
 <td style="text-align:center;">
@@ -2686,8 +2782,10 @@ REMLcrit
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2713,7 +2811,10 @@ REMLcrit
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

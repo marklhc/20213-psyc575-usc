@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2093,6 +2093,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2111,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,11 +2140,13 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a>
 <ul>
 <li><a href="#import-data">Import Data</a></li>
 </ul></li>
-<li><a href="#between-within-decomposition">Between-Within Decomposition</a>
+<li><a href="#between-within-decomposition">Between-Within
+Decomposition</a>
 <ul>
 <li><a href="#cluster-mean-centering">Cluster-mean centering</a></li>
 <li><a href="#model-equation">Model Equation</a></li>
@@ -2151,26 +2159,32 @@ R Codes
 </ul></li>
 <li><a href="#random-coefficients-model">Random-Coefficients Model</a>
 <ul>
-<li><a href="#explore-variations-in-slopes">Explore Variations in Slopes</a></li>
+<li><a href="#explore-variations-in-slopes">Explore Variations in
+Slopes</a></li>
 <li><a href="#model-equation-2">Model Equation</a></li>
 <li><a href="#running-in-r-2">Running in R</a></li>
 <li><a href="#plotting-random-slopes">Plotting Random Slopes</a>
 <ul>
-<li><a href="#including-the-effect-of-meanses">Including the effect of <code>meanses</code></a></li>
+<li><a href="#including-the-effect-of-meanses">Including the effect of
+<code>meanses</code></a></li>
 </ul></li>
 <li><a href="#effect-size">Effect Size</a></li>
 </ul></li>
-<li><a href="#analyzing-cross-level-interactions">Analyzing Cross-Level Interactions</a>
+<li><a href="#analyzing-cross-level-interactions">Analyzing Cross-Level
+Interactions</a>
 <ul>
 <li><a href="#model-equation-3">Model Equation</a></li>
 <li><a href="#running-in-r-3">Running in R</a></li>
 <li><a href="#effect-size-1">Effect Size</a></li>
 <li><a href="#simple-slopes">Simple Slopes</a></li>
-<li><a href="#plotting-the-interactions">Plotting the Interactions</a></li>
+<li><a href="#plotting-the-interactions">Plotting the
+Interactions</a></li>
 </ul></li>
-<li><a href="#summaizing-analyses-in-a-table">Summaizing Analyses in a Table</a>
+<li><a href="#summaizing-analyses-in-a-table">Summaizing Analyses in a
+Table</a>
 <ul>
-<li><a href="#bonus-more-apa-like-table">Bonus: More “APA-like” Table</a></li>
+<li><a href="#bonus-more-apa-like-table">Bonus: More “APA-like”
+Table</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -2180,8 +2194,10 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week4-level-1-predictor.Rmd">week4-level-1-predictor.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week4-level-1-predictor.Rmd">week4-level-1-predictor.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2195,7 +2211,7 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/bbolker/broom.mixed'>broom.mixed</a></span><span class='op'>)</span>  <span class='co'># for summarizing results</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for plotting interactions</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
@@ -2203,11 +2219,11 @@ R Codes
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>msummary_mixed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>models</span>, <span class='va'>coef_map</span> <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='st'>"list"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='st'>"list"</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
       <span class='va'>models</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span>
     <span class='op'>}</span>
     <span class='kw'>for</span> <span class='op'>(</span><span class='va'>model</span> <span class='kw'>in</span> <span class='va'>models</span><span class='op'>)</span> <span class='op'>{</span>
-      <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>union</a></span><span class='op'>(</span><span class='va'>coef_map</span>, <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span><span class='op'>$</span><span class='va'>term</span><span class='op'>)</span>
+      <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/setops.html'>union</a></span><span class='op'>(</span><span class='va'>coef_map</span>, <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span><span class='op'>$</span><span class='va'>term</span><span class='op'>)</span>
     <span class='op'>}</span>
     <span class='va'>ranef_index</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span><span class='op'>(</span><span class='st'>"^(sd|cor)__"</span>, x <span class='op'>=</span> <span class='va'>coef_map</span><span class='op'>)</span>
     <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>[</span><span class='op'>-</span><span class='va'>ranef_index</span><span class='op'>]</span>, <span class='va'>coef_map</span><span class='op'>[</span><span class='va'>ranef_index</span><span class='op'>]</span><span class='op'>)</span>
@@ -2221,7 +2237,7 @@ R Codes
     <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span>
   <span class='op'>)</span><span class='op'>)</span>
   <span class='va'>length_fes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>ranef_index</span><span class='op'>)</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='st'>"statistic"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>$</span><span class='va'>statistic</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='st'>"statistic"</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>$</span><span class='va'>statistic</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
   <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
     <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>
@@ -2241,18 +2257,19 @@ R Codes
 </div>
 <h1 id="between-within-decomposition">Between-Within Decomposition</h1>
 <h2 id="cluster-mean-centering">Cluster-mean centering</h2>
-<p>To separate the effects of a lv-1 predictor into different levels, one needs to first center the predictor on the cluster means:</p>
+<p>To separate the effects of a lv-1 predictor into different levels,
+one needs to first center the predictor on the cluster means:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># operate within schools</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,   <span class='co'># create cluster means (the same as `meanses`)</span>
-         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># cluster-mean centered</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># operate within schools</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,   <span class='co'># create cluster means (the same as `meanses`)</span>
+         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># cluster-mean centered</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
 <span class='co'># The meanses variable already exists in the original data, but it's slightly</span>
 <span class='co'># different from computing it by hand</span>
-<span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>ses</span>, <span class='va'>meanses</span>, <span class='va'>ses_cm</span>, <span class='va'>ses_cmc</span><span class='op'>)</span>
+<span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>ses</span>, <span class='va'>meanses</span>, <span class='va'>ses_cm</span>, <span class='va'>ses_cmc</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>&gt;# # A tibble: 7,185 × 5
@@ -2272,18 +2289,25 @@ R Codes
 </div>
 <h2 id="model-equation">Model Equation</h2>
 <p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} +
+\beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
 <p>Lv-2:</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
+  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j +
+u_{0j}  \\
   \beta_{1j} &amp; = \gamma_{10}
 \end{aligned}
 \]</span> where</p>
 <ul>
-<li><span class="math inline">\(\gamma_{10}\)</span> = regression coefficient of student-level <code>ses</code> representing the expected difference in student achievement between two students <em>in the same school</em> with one unit difference in <code>ses</code>,<br />
+<li><span class="math inline">\(\gamma_{10}\)</span> = regression
+coefficient of student-level <code>ses</code> representing the expected
+difference in student achievement between two students <em>in the same
+school</em> with one unit difference in <code>ses</code>,<br />
 </li>
-<li><span class="math inline">\(\gamma_{01}\)</span> = between-school effect, which is the expected difference in mean achievement between two schools with one unit difference in <code>meanses</code>.</li>
+<li><span class="math inline">\(\gamma_{01}\)</span> = between-school
+effect, which is the expected difference in mean achievement between two
+schools with one unit difference in <code>meanses</code>.</li>
 </ul>
 <h2 id="running-in-r">Running in R</h2>
 <p>We can specify the model as:</p>
@@ -2303,23 +2327,23 @@ R Codes
 &gt;# Formula: mathach ~ meanses + ses_cmc + (1 | id)
 &gt;#    Data: hsball
 &gt;# 
-&gt;# REML criterion at convergence: 46568.6
+&gt;# REML criterion at convergence: 46569
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#     Min      1Q  Median      3Q     Max 
-&gt;# -3.1666 -0.7253  0.0174  0.7557  2.9453 
+&gt;#    Min     1Q Median     3Q    Max 
+&gt;# -3.167 -0.725  0.017  0.756  2.945 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept)  2.692   1.641   
-&gt;#  Residual             37.019   6.084   
+&gt;#  id       (Intercept)  2.69    1.64    
+&gt;#  Residual             37.02    6.08    
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Fixed effects:
 &gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6481     0.1494   84.68
-&gt;# meanses       5.8662     0.3617   16.22
-&gt;# ses_cmc       2.1912     0.1087   20.16
+&gt;# (Intercept)   12.648      0.149    84.7
+&gt;# meanses        5.866      0.362    16.2
+&gt;# ses_cmc        2.191      0.109    20.2
 &gt;# 
 &gt;# Correlation of Fixed Effects:
 &gt;#         (Intr) meanss
@@ -2327,21 +2351,33 @@ R Codes
 &gt;# ses_cmc  0.000  0.000</code></pre>
 </div>
 <h1 id="contextual-effect">Contextual Effect</h1>
-<p>With a level-1 predictor like <code>ses</code>, which has both student-level and school-level variance, we can include both the level-1 variable and the school mean variable as predictors. When the level-1 predictor is present, the coefficient for the group mean variable becomes the <em>contextual</em> effect.</p>
+<p>With a level-1 predictor like <code>ses</code>, which has both
+student-level and school-level variance, we can include both the level-1
+variable and the school mean variable as predictors. When the level-1
+predictor is present, the coefficient for the group mean variable
+becomes the <em>contextual</em> effect.</p>
 <h2 id="model-equation-1">Model Equation</h2>
 <p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses}_{ij} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} +
+\beta_{1j} \text{ses}_{ij} + e_{ij}\]</span></p>
 <p>Lv-2:</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
+  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j +
+u_{0j}  \\
   \beta_{1j} &amp; = \gamma_{10}
 \end{aligned}
 \]</span> where</p>
 <ul>
-<li><span class="math inline">\(\gamma_{10}\)</span> = regression coefficient of student-level <code>ses</code> representing the expected difference in student achievement between two students <em>in the same school</em> with one unit difference in <code>ses</code>,<br />
+<li><span class="math inline">\(\gamma_{10}\)</span> = regression
+coefficient of student-level <code>ses</code> representing the expected
+difference in student achievement between two students <em>in the same
+school</em> with one unit difference in <code>ses</code>,<br />
 </li>
-<li><span class="math inline">\(\gamma_{01}\)</span> = contextual effect, which is the expected difference in student achievement between two students <em>with the same <code>ses</code></em> but from two schools with one unit difference in <code>meanses</code>.</li>
+<li><span class="math inline">\(\gamma_{01}\)</span> = contextual
+effect, which is the expected difference in student achievement between
+two students <em>with the same <code>ses</code></em> but from two
+schools with one unit difference in <code>meanses</code>.</li>
 </ul>
 <h2 id="running-in-r-1">Running in R</h2>
 <p>We can specify the model as:</p>
@@ -2361,55 +2397,65 @@ R Codes
 &gt;# Formula: mathach ~ meanses + ses + (1 | id)
 &gt;#    Data: hsball
 &gt;# 
-&gt;# REML criterion at convergence: 46568.6
+&gt;# REML criterion at convergence: 46569
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#     Min      1Q  Median      3Q     Max 
-&gt;# -3.1666 -0.7253  0.0174  0.7557  2.9453 
+&gt;#    Min     1Q Median     3Q    Max 
+&gt;# -3.167 -0.725  0.017  0.756  2.945 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept)  2.692   1.641   
-&gt;#  Residual             37.019   6.084   
+&gt;#  id       (Intercept)  2.69    1.64    
+&gt;#  Residual             37.02    6.08    
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Fixed effects:
 &gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6613     0.1494  84.763
-&gt;# meanses       3.6750     0.3777   9.731
-&gt;# ses           2.1912     0.1087  20.164
+&gt;# (Intercept)   12.661      0.149   84.76
+&gt;# meanses        3.675      0.378    9.73
+&gt;# ses            2.191      0.109   20.16
 &gt;# 
 &gt;# Correlation of Fixed Effects:
 &gt;#         (Intr) meanss
 &gt;# meanses -0.005       
 &gt;# ses      0.004 -0.288</code></pre>
 </div>
-<p>If you compare the <code>REML criterion at convergence</code> number you can see this is the same as the between-within model. The estimated contextual effect is the coefficient of <code>meanses</code> minus the coefficient of <code>ses_cmc</code>, which is the same as what you will get in the contextual effect model.</p>
+<p>If you compare the <code>REML criterion at convergence</code> number
+you can see this is the same as the between-within model. The estimated
+contextual effect is the coefficient of <code>meanses</code> minus the
+coefficient of <code>ses_cmc</code>, which is the same as what you will
+get in the contextual effect model.</p>
 <h1 id="random-coefficients-model">Random-Coefficients Model</h1>
 <h2 id="explore-variations-in-slopes">Explore Variations in Slopes</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># randomly sample 16 schools</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>, <span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span><span class='va'>id</span><span class='op'>)</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>, <span class='fl'>16</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>id</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode4_files/figure-html5/var-in-slopes-1.png" width="624" /></p>
 </div>
 <h2 id="model-equation-2">Model Equation</h2>
 <p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} +
+\beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
 <p>Lv-2:</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + u_{0j}  \\
+  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j +
+u_{0j}  \\
   \beta_{1j} &amp; = \gamma_{10} + u_{1j}  
 \end{aligned}
-\]</span> The additional term is <span class="math inline">\(u_{1j}\)</span>, which represents the deviation of the slope of school <span class="math inline">\(j\)</span> from the average slope (i.e., <span class="math inline">\(\gamma_{10}\)</span>).</p>
+\]</span> The additional term is <span
+class="math inline">\(u_{1j}\)</span>, which represents the deviation of
+the slope of school <span class="math inline">\(j\)</span> from the
+average slope (i.e., <span
+class="math inline">\(\gamma_{10}\)</span>).</p>
 <h2 id="running-in-r-2">Running in R</h2>
 <p>We have to put <code>ses</code> in the random part:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2428,24 +2474,24 @@ R Codes
 &gt;# Formula: mathach ~ meanses + ses_cmc + (ses_cmc | id)
 &gt;#    Data: hsball
 &gt;# 
-&gt;# REML criterion at convergence: 46557.7
+&gt;# REML criterion at convergence: 46558
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#     Min      1Q  Median      3Q     Max 
-&gt;# -3.1768 -0.7269  0.0160  0.7560  2.9406 
+&gt;#    Min     1Q Median     3Q    Max 
+&gt;# -3.177 -0.727  0.016  0.756  2.941 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev. Corr 
-&gt;#  id       (Intercept)  2.6931  1.6411        
-&gt;#           ses_cmc      0.6858  0.8281   -0.19
-&gt;#  Residual             36.7132  6.0591        
+&gt;#  id       (Intercept)  2.693   1.641         
+&gt;#           ses_cmc      0.686   0.828    -0.19
+&gt;#  Residual             36.713   6.059         
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Fixed effects:
 &gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  12.6454     0.1492   84.74
-&gt;# meanses       5.8963     0.3600   16.38
-&gt;# ses_cmc       2.1913     0.1280   17.11
+&gt;# (Intercept)   12.645      0.149    84.7
+&gt;# meanses        5.896      0.360    16.4
+&gt;# ses_cmc        2.191      0.128    17.1
 &gt;# 
 &gt;# Correlation of Fixed Effects:
 &gt;#         (Intr) meanss
@@ -2455,28 +2501,29 @@ R Codes
 <h2 id="plotting-random-slopes">Plotting Random Slopes</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># augmented data (adding EB estimates)</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Predicted mathach"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='co'># augmented data (adding EB estimates)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Predicted mathach"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode4_files/figure-html5/plot-ran-slp-1.png" width="624" /></p>
 </div>
-<h3 id="including-the-effect-of-meanses">Including the effect of <code>meanses</code></h3>
+<h3 id="including-the-effect-of-meanses">Including the effect of
+<code>meanses</code></h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># augmented data (adding EB estimates)</span>
-<span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add points</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add within-cluster lines</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
               method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add group means</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>,
                    fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span>,
                color <span class='op'>=</span> <span class='st'>"red"</span>,  <span class='co'># add border</span>
                fun <span class='op'>=</span> <span class='va'>mean</span>, 
@@ -2485,12 +2532,12 @@ R Codes
                <span class='co'># use triangles</span>
                size <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add between coefficient</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
               method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>,
               color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Math Achievement"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Math Achievement"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Suppress legend</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span>, fill <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span>, fill <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode4_files/figure-html5/plot-ran-slp-meanses-1.png" width="624" /></p>
@@ -2499,29 +2546,29 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create a common base graph</span>
-<span class='va'>pbase</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='va'>pbase</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>ran_slp</span>, data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>mathach</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add points</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Math Achievement"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Math Achievement"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Suppress legend</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 <span class='co'># Lv-1 effect</span>
 <span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='va'>pbase</span> <span class='op'>+</span> 
   <span class='co'># Add within-cluster lines</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
               method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 <span class='co'># Lv-2 effect</span>
 <span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='va'>pbase</span> <span class='op'>+</span>
   <span class='co'># Add group means</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
                fun <span class='op'>=</span> <span class='va'>mean</span>,
                geom <span class='op'>=</span> <span class='st'>"point"</span>,
                shape <span class='op'>=</span> <span class='fl'>17</span>,
                <span class='co'># use triangles</span>
                size <span class='op'>=</span> <span class='fl'>2.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add between coefficient</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>meanses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
               method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>,
               color <span class='op'>=</span> <span class='st'>"black"</span><span class='op'>)</span>
 <span class='co'># Put the two graphs together (need the gridExtra package)</span>
@@ -2531,35 +2578,49 @@ R Codes
 <p><img src="rcode4_files/figure-html5/plot-ran-slp-meanses-arrange-1.png" width="624" /></p>
 </div>
 <h2 id="effect-size">Effect Size</h2>
-<p>As discussed in the previous week, we can obtain the effect size (<span class="math inline">\(R^2\)</span>) for the model:</p>
+<p>As discussed in the previous week, we can obtain the effect size
+(<span class="math inline">\(R^2\)</span>) for the model:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>r2_ran_slp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#            R2m       R2c
-&gt;# [1,] 0.1684161 0.2310862</code></pre>
+<pre><code>&gt;#         R2m    R2c
+&gt;# [1,] 0.1684 0.2311</code></pre>
 </div>
-<h1 id="analyzing-cross-level-interactions">Analyzing Cross-Level Interactions</h1>
-<p><code>sector</code> is added to the level-2 intercept and slope equations</p>
+<h1 id="analyzing-cross-level-interactions">Analyzing Cross-Level
+Interactions</h1>
+<p><code>sector</code> is added to the level-2 intercept and slope
+equations</p>
 <h2 id="model-equation-3">Model Equation</h2>
 <p>Lv-1:</p>
-<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} + \beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{mathach}_{ij} = \beta_{0j} +
+\beta_{1j} \text{ses_cmc}_{ij} + e_{ij}\]</span></p>
 <p>Lv-2:</p>
 <p><span class="math display">\[
 \begin{aligned}
-  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j + 
+  \beta_{0j} &amp; = \gamma_{00} + \gamma_{01} \text{meanses}_j +
                  \gamma_{02} \text{sector}_j + u_{0j}  \\
-  \beta_{1j} &amp; = \gamma_{10} + \gamma_{11} \text{sector}_j + u_{1j}  
+  \beta_{1j} &amp; = \gamma_{10} + \gamma_{11} \text{sector}_j +
+u_{1j}  
 \end{aligned}
-\]</span> where - <span class="math inline">\(\gamma_{02}\)</span> = regression coefficient of school-level <code>sector</code> variable representing the expected difference in achievement between two students with the same SES level and from two schools with the same school-level SES, but one is a catholic school and the other a private school. - <span class="math inline">\(\gamma_{11}\)</span> = cross-level interaction coefficient of the expected <em>slope</em> difference between a catholic and a private school with the same school-level SES.</p>
+\]</span> where - <span class="math inline">\(\gamma_{02}\)</span> =
+regression coefficient of school-level <code>sector</code> variable
+representing the expected difference in achievement between two students
+with the same SES level and from two schools with the same school-level
+SES, but one is a catholic school and the other a private school. -
+<span class="math inline">\(\gamma_{11}\)</span> = cross-level
+interaction coefficient of the expected <em>slope</em> difference
+between a catholic and a private school with the same school-level
+SES.</p>
 <h2 id="running-in-r-3">Running in R</h2>
-<p>We have to put the <code>sector * ses</code> interaction to the fixed part:</p>
+<p>We have to put the <code>sector * ses</code> interaction to the fixed
+part:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># The first step is optional, but let's recode sector into a factor variable</span>
-<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>mutate</span><span class='op'>(</span>sector <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sector</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
+<span class='va'>hsball</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>sector <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sector</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
                          labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Public"</span>, <span class='st'>"Catholic"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>crlv_int</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>sector</span> <span class='op'>*</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, 
                  data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span>
@@ -2576,26 +2637,26 @@ R Codes
 &gt;# Formula: mathach ~ meanses + sector * ses_cmc + (ses_cmc | id)
 &gt;#    Data: hsball
 &gt;# 
-&gt;# REML criterion at convergence: 46514.5
+&gt;# REML criterion at convergence: 46514
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -3.11560 -0.72905  0.01592  0.75280  3.01543 
+&gt;#     Min      1Q  Median      3Q     Max 
+&gt;# -3.1156 -0.7291  0.0159  0.7528  3.0154 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev. Corr
-&gt;#  id       (Intercept)  2.3807  1.5430       
-&gt;#           ses_cmc      0.2716  0.5212   0.24
-&gt;#  Residual             36.7077  6.0587       
+&gt;#  id       (Intercept)  2.381   1.543        
+&gt;#           ses_cmc      0.272   0.521    0.24
+&gt;#  Residual             36.708   6.059        
 &gt;# Number of obs: 7185, groups:  id, 160
 &gt;# 
 &gt;# Fixed effects:
 &gt;#                        Estimate Std. Error t value
-&gt;# (Intercept)             12.0846     0.1987   60.81
-&gt;# meanses                  5.2450     0.3682   14.24
-&gt;# sectorCatholic           1.2523     0.3062    4.09
-&gt;# ses_cmc                  2.7877     0.1559   17.89
-&gt;# sectorCatholic:ses_cmc  -1.3478     0.2348   -5.74
+&gt;# (Intercept)              12.085      0.199   60.81
+&gt;# meanses                   5.245      0.368   14.24
+&gt;# sectorCatholic            1.252      0.306    4.09
+&gt;# ses_cmc                   2.788      0.156   17.89
+&gt;# sectorCatholic:ses_cmc   -1.348      0.235   -5.74
 &gt;# 
 &gt;# Correlation of Fixed Effects:
 &gt;#             (Intr) meanss sctrCt ss_cmc
@@ -2605,41 +2666,64 @@ R Codes
 &gt;# sctrCthlc:_ -0.048 -0.001  0.071 -0.664</code></pre>
 </div>
 <h2 id="effect-size-1">Effect Size</h2>
-<p>By comparing the <span class="math inline">\(R^2\)</span> of this model (with interaction) and the previous model (without the interaction), we can obtain the proportion of variance accounted for by the cross-level interaction:</p>
+<p>By comparing the <span class="math inline">\(R^2\)</span> of this
+model (with interaction) and the previous model (without the
+interaction), we can obtain the proportion of variance accounted for by
+the cross-level interaction:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>r2_crlv_int</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/MuMIn/man/r.squaredGLMM.html'>r.squaredGLMM</a></span><span class='op'>(</span><span class='va'>crlv_int</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#            R2m       R2c
-&gt;# [1,] 0.1759122 0.2284431</code></pre>
+<pre><code>&gt;#         R2m    R2c
+&gt;# [1,] 0.1759 0.2284</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Change</span>
 <span class='va'>r2_crlv_int</span> <span class='op'>-</span> <span class='va'>r2_ran_slp</span>
 </code></pre>
 </div>
-<pre><code>&gt;#              R2m          R2c
-&gt;# [1,] 0.007496143 -0.002643047</code></pre>
+<pre><code>&gt;#           R2m       R2c
+&gt;# [1,] 0.007496 -0.002643</code></pre>
 </div>
-<p>Therefore, the cross-level interaction between sector and SES accounted for an effect size of <span class="math inline">\(\Delta R^2\)</span> = 0.7%. This is usually considered a small effect size (i.e., &lt; 1%), but interpreting the magnitude of an effect size needs to take into account the area of research, the importance of the outcome, and the effect sizes when using other predictors to predict the same outcome.</p>
+<p>Therefore, the cross-level interaction between sector and SES
+accounted for an effect size of <span class="math inline">\(\Delta
+R^2\)</span> = 0.7%. This is usually considered a small effect size
+(i.e., &lt; 1%), but interpreting the magnitude of an effect size needs
+to take into account the area of research, the importance of the
+outcome, and the effect sizes when using other predictors to predict the
+same outcome.</p>
 <h2 id="simple-slopes">Simple Slopes</h2>
-<p>With a cross-level interaction, the slope between <code>ses_cmc</code> and <code>mathach</code> depends on a moderator, <code>sector</code>. To find out what the model suggests to be the slope at a particular level of <code>sector</code>, which is also called a <em>simple slope</em> in the literature, you just need to look at the equation for <span class="math inline">\(\beta_{1j}\)</span>, which shows that the predicted slope is <span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} \text{sector}.\]</span> So when <code>sector</code> = 0 (public school), the simple slope is <span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} (0),\]</span> or 2.7877417. When <code>sector</code> = 1 (private school), the simple slope is <span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} (1),\]</span> or 2.7877417 + (-1.3477638)(1) = 1.4399779.</p>
+<p>With a cross-level interaction, the slope between
+<code>ses_cmc</code> and <code>mathach</code> depends on a moderator,
+<code>sector</code>. To find out what the model suggests to be the slope
+at a particular level of <code>sector</code>, which is also called a
+<em>simple slope</em> in the literature, you just need to look at the
+equation for <span class="math inline">\(\beta_{1j}\)</span>, which
+shows that the predicted slope is <span class="math display">\[\hat
+\beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} \text{sector}.\]</span>
+So when <code>sector</code> = 0 (public school), the simple slope is
+<span class="math display">\[\hat \beta_{1} = \hat \gamma_{10} + \hat
+\gamma_{11} (0),\]</span> or 2.7877. When <code>sector</code> = 1
+(private school), the simple slope is <span class="math display">\[\hat
+\beta_{1} = \hat \gamma_{10} + \hat \gamma_{11} (1),\]</span> or 2.7877
++ (-1.3478)(1) = 1.44.</p>
 <h2 id="plotting-the-interactions">Plotting the Interactions</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>crlv_int</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>crlv_int</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>hsball</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>
     x <span class='op'>=</span> <span class='va'>ses</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span>,
     color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>sector</span><span class='op'>)</span>  <span class='co'># use `sector` for coloring lines</span>
   <span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Predicted mathach"</span>, color <span class='op'>=</span> <span class='st'>"sector"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Predicted mathach"</span>, color <span class='op'>=</span> <span class='st'>"sector"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode4_files/figure-html5/plot-crlv_int-slopes-1.png" width="624" /></p>
 </div>
-<p>You can also use the <code>interactions::interact_plot()</code> function for just the fixed effects:</p>
+<p>You can also use the <code>interactions::interact_plot()</code>
+function for just the fixed effects:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://interactions.jacob-long.com/reference/interact_plot.html'>interact_plot</a></span><span class='op'>(</span><span class='va'>crlv_int</span>, 
@@ -2656,8 +2740,12 @@ R Codes
 </div>
 <p><img src="rcode4_files/figure-html5/plot-crlv_int-1.png" width="624" /></p>
 </div>
-<h1 id="summaizing-analyses-in-a-table">Summaizing Analyses in a Table</h1>
-<p>You can again use the <code>msummary()</code> function from the <code>modelsummary</code> package to quickly summarize the results in a table. However, there is an issue as the order of the coefficients are messed up, as shown below.</p>
+<h1 id="summaizing-analyses-in-a-table">Summaizing Analyses in a
+Table</h1>
+<p>You can again use the <code>msummary()</code> function from the
+<code>modelsummary</code> package to quickly summarize the results in a
+table. However, there is an issue as the order of the coefficients are
+messed up, as shown below.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Basic table from `modelsummary` (ordering messed up)</span>
@@ -2933,6 +3021,23 @@ sectorCatholic × ses_cmc
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -3002,7 +3107,10 @@ REMLcrit
 </tbody>
 </table>
 </div>
-<p>I’ve made a function <code>msummary_mixed()</code>, defined in the beginning of this page, as a hack to get a nicer table. Basically, you can just replace <code>msummary()</code> with <code>msummary_mixed()</code>, with everything else being the same:</p>
+<p>I’ve made a function <code>msummary_mixed()</code>, defined in the
+beginning of this page, as a hack to get a nicer table. Basically, you
+can just replace <code>msummary()</code> with
+<code>msummary_mixed()</code>, with everything else being the same:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Basic table using `msummary_mixed`</span>
@@ -3304,6 +3412,23 @@ sd__ses_cmc
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -3374,7 +3499,12 @@ REMLcrit
 </table>
 </div>
 <h2 id="bonus-more-apa-like-table">Bonus: More “APA-like” Table</h2>
-<p>Make it look like the table at <a href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression" class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>. You can see a recent recommendation in <a href="https://doi.org/10.1016/j.jml.2020.104092">this paper published in the Journal of Memory and Language</a></p>
+<p>Make it look like the table at <a
+href="https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression"
+class="uri">https://apastyle.apa.org/style-grammar-guidelines/tables-figures/sample-tables#regression</a>.
+You can see a recent recommendation in <a
+href="https://doi.org/10.1016/j.jml.2020.104092">this paper published in
+the Journal of Memory and Language</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Step 1. Create a map for the predictors and the terms in the model.</span>
@@ -3562,6 +3692,20 @@ Random effects
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+<td style="text-align:center;">
+7185
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -3619,8 +3763,10 @@ REMLcrit
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3646,7 +3792,10 @@ REMLcrit
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

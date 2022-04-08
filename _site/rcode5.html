@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2093,6 +2093,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2111,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,15 +2140,20 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a></li>
-<li><a href="#log-likelihood-function-ell">Log-Likelihood Function <span class="math inline">\(\ell\)</span></a>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a></li>
+<li><a href="#log-likelihood-function-ell">Log-Likelihood Function <span
+class="math inline">\(\ell\)</span></a>
 <ul>
-<li><a href="#example-ellgamma_01">Example: <span class="math inline">\(\ell(\gamma_{01})\)</span></a></li>
+<li><a href="#example-ellgamma_01">Example: <span
+class="math inline">\(\ell(\gamma_{01})\)</span></a></li>
 </ul></li>
 <li><a href="#ml-vs-reml">ML vs REML</a></li>
 <li><a href="#testing-fixed-effects">Testing Fixed Effects</a>
 <ul>
-<li><a href="#small-sample-correction-kenward-roger-approximation-of-degrees-of-freedom">Small-Sample Correction: Kenward-Roger Approximation of Degrees of Freedom</a></li>
+<li><a
+href="#small-sample-correction-kenward-roger-approximation-of-degrees-of-freedom">Small-Sample
+Correction: Kenward-Roger Approximation of Degrees of Freedom</a></li>
 </ul></li>
 <li><a href="#testing-random-slopes">Testing Random Slopes</a></li>
 <li><a href="#bootstrap">Bootstrap</a>
@@ -2151,7 +2162,8 @@ R Codes
 <li><a href="#variance-components">Variance Components</a></li>
 <li><a href="#r2"><span class="math inline">\(R^2\)</span></a>
 <ul>
-<li><a href="#bonus-bias-corrected-estimates">Bonus: Bias-corrected estimates</a></li>
+<li><a href="#bonus-bias-corrected-estimates">Bonus: Bias-corrected
+estimates</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2162,8 +2174,10 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week5-estimation-testing.Rmd">week5-estimation-testing.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week5-estimation-testing.Rmd">week5-estimation-testing.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2175,20 +2189,24 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>MuMIn</span><span class='op'>)</span>  <span class='co'># for computing r-squared</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/bbolker/broom.mixed'>broom.mixed</a></span><span class='op'>)</span>  <span class='co'># for summarizing results</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
-<p>In addition, because the table obtained from <code>modelsummary::msummary()</code> mixed up the ordering of the fixed- and the random-effect coefficients, I provided a quick fix to that by defining the <code>msummary_mixed()</code> function, which you need to load every time if you want to use it:</p>
+<p>In addition, because the table obtained from
+<code>modelsummary::msummary()</code> mixed up the ordering of the
+fixed- and the random-effect coefficients, I provided a quick fix to
+that by defining the <code>msummary_mixed()</code> function, which you
+need to load every time if you want to use it:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>msummary_mixed</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>models</span>, <span class='va'>output</span> <span class='op'>=</span> <span class='st'>"default"</span>, <span class='va'>coef_map</span> <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-    <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='st'>"list"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+    <span class='kw'>if</span> <span class='op'>(</span><span class='op'>!</span><span class='st'>"list"</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
       <span class='va'>models</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span>
     <span class='op'>}</span>
     <span class='kw'>for</span> <span class='op'>(</span><span class='va'>model</span> <span class='kw'>in</span> <span class='va'>models</span><span class='op'>)</span> <span class='op'>{</span>
-      <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sets.html'>union</a></span><span class='op'>(</span><span class='va'>coef_map</span>, <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span><span class='op'>$</span><span class='va'>term</span><span class='op'>)</span>
+      <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/setops.html'>union</a></span><span class='op'>(</span><span class='va'>coef_map</span>, <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span><span class='op'>$</span><span class='va'>term</span><span class='op'>)</span>
     <span class='op'>}</span>
     <span class='va'>ranef_index</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/grep.html'>grep</a></span><span class='op'>(</span><span class='st'>"^(sd|cor)__"</span>, x <span class='op'>=</span> <span class='va'>coef_map</span><span class='op'>)</span>
     <span class='va'>coef_map</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>[</span><span class='op'>-</span><span class='va'>ranef_index</span><span class='op'>]</span>, <span class='va'>coef_map</span><span class='op'>[</span><span class='va'>ranef_index</span><span class='op'>]</span><span class='op'>)</span>
@@ -2202,7 +2220,7 @@ R Codes
     <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>models</span><span class='op'>)</span><span class='op'>)</span>
   <span class='op'>)</span><span class='op'>)</span>
   <span class='va'>length_fes</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>coef_map</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>ranef_index</span><span class='op'>)</span>
-  <span class='kw'>if</span> <span class='op'>(</span><span class='st'>"statistic"</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>$</span><span class='va'>statistic</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'>if</span> <span class='op'>(</span><span class='st'>"statistic"</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/NULL.html'>is.null</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span><span class='op'>$</span><span class='va'>statistic</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
     <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
   <span class='op'>}</span> <span class='kw'>else</span> <span class='op'>{</span>
     <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>rows</span>, <span class='st'>"position"</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='op'>(</span><span class='va'>length_fes</span> <span class='op'>+</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='fl'>2</span><span class='op'>)</span>
@@ -2225,24 +2243,41 @@ R Codes
 </code></pre>
 </div>
 </div>
-<p>To demonstrate differences in smaller samples, we will use a subset of 16 schools</p>
+<p>To demonstrate differences in smaller samples, we will use a subset
+of 16 schools</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Randomly select 16 school ids</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>840</span><span class='op'>)</span>  <span class='co'># use the same seed so that the same 16 schools are selected</span>
 <span class='va'>random_ids</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>hsball</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>16</span><span class='op'>)</span>
-<span class='va'>hsbsub</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_ids</span><span class='op'>)</span>
+<span class='va'>hsbsub</span> <span class='op'>&lt;-</span> <span class='va'>hsball</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_ids</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
-<h1 id="log-likelihood-function-ell">Log-Likelihood Function <span class="math inline">\(\ell\)</span></h1>
-<p>If you don’t feel comfortable with linear algebra and matrices, it is okay to skip this part, as it is more important to understand what the likelihood function is doing conceptually. If you are a stat/quant major or are interested in the math, then you may want to study the equation a little bit.</p>
-<p>The mixed model can be written in matrix form. Let <span class="math inline">\(\bv y_j = [\bv y_1, \bv y_2, \ldots, \bv y_J]^\top\)</span> be the column vector of length <span class="math inline">\(N\)</span> for the outcome variable, <span class="math inline">\(\bv X\)</span> be the <span class="math inline">\(N \times p\)</span> predictor matrix (with the first column as the intercept), and <span class="math inline">\(\bv Z\)</span> be the <span class="math inline">\(N \times Jq\)</span> design matrix for the random effects with <span class="math inline">\(q\)</span> being the number of random coefficients. To make things more concrete, if we have the model</p>
+<h1 id="log-likelihood-function-ell">Log-Likelihood Function <span
+class="math inline">\(\ell\)</span></h1>
+<p>If you don’t feel comfortable with linear algebra and matrices, it is
+okay to skip this part, as it is more important to understand what the
+likelihood function is doing conceptually. If you are a stat/quant major
+or are interested in the math, then you may want to study the equation a
+little bit.</p>
+<p>The mixed model can be written in matrix form. Let <span
+class="math inline">\(\bv y_j = [\bv y_1, \bv y_2, \ldots, \bv
+y_J]^\top\)</span> be the column vector of length <span
+class="math inline">\(N\)</span> for the outcome variable, <span
+class="math inline">\(\bv X\)</span> be the <span
+class="math inline">\(N \times p\)</span> predictor matrix (with the
+first column as the intercept), and <span class="math inline">\(\bv
+Z\)</span> be the <span class="math inline">\(N \times Jq\)</span>
+design matrix for the random effects with <span
+class="math inline">\(q\)</span> being the number of random
+coefficients. To make things more concrete, if we have the model</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p><span class="math inline">\(\bv y\)</span> is the outcome <code>mathach</code></p>
+<p><span class="math inline">\(\bv y\)</span> is the outcome
+<code>mathach</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/getME.html'>getME</a></span><span class='op'>(</span><span class='va'>m1</span>, <span class='st'>"y"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
@@ -2256,7 +2291,10 @@ R Codes
 &gt;# [5,] 17.898
 &gt;# [6,]  4.583</code></pre>
 </div>
-<p><span class="math inline">\(\bv X\)</span> is a <span class="math inline">\(N \times 3\)</span> matrix, with the first column containing all 1s (for the intercept), the second column is <code>meanses</code>, and the third column is <code>ses</code></p>
+<p><span class="math inline">\(\bv X\)</span> is a <span
+class="math inline">\(N \times 3\)</span> matrix, with the first column
+containing all 1s (for the intercept), the second column is
+<code>meanses</code>, and the third column is <code>ses</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/getME.html'>getME</a></span><span class='op'>(</span><span class='va'>m1</span>, <span class='st'>"X"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2270,7 +2308,13 @@ R Codes
 &gt;# 5           1  -0.428 -0.158
 &gt;# 6           1  -0.428  0.022</code></pre>
 </div>
-<p>And <span class="math inline">\(\bv Z\)</span> is a block-diagonal matrix <span class="math inline">\(\mathrm{diag}[\bv Z_1, \bv Z_2, \ldots, \bv Z_J]\)</span>, where each <span class="math inline">\(\bv Z_j\)</span> is an <span class="math inline">\(n_j \times 2\)</span> matrix with the first column containing all 1s and the second column containing the <code>ses</code> variable for cluster <span class="math inline">\(j\)</span></p>
+<p>And <span class="math inline">\(\bv Z\)</span> is a block-diagonal
+matrix <span class="math inline">\(\mathrm{diag}[\bv Z_1, \bv Z_2,
+\ldots, \bv Z_J]\)</span>, where each <span class="math inline">\(\bv
+Z_j\)</span> is an <span class="math inline">\(n_j \times 2\)</span>
+matrix with the first column containing all 1s and the second column
+containing the <code>ses</code> variable for cluster <span
+class="math inline">\(j\)</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/getME.html'>getME</a></span><span class='op'>(</span><span class='va'>m1</span>, <span class='st'>"Z"</span><span class='op'>)</span><span class='op'>)</span>
@@ -2357,21 +2401,52 @@ R Codes
 &gt;# 71    .  .        1  0.322
 &gt;# 72    .  .        1  0.592</code></pre>
 </div>
-<p>The matrix form of the model is <span class="math display">\[\bv y = \bv X \bv \gamma + \bv Z \bv u + \bv e,\]</span> with <span class="math inline">\(\bv \gamma\)</span> being a <span class="math inline">\(N \times p\)</span> vector of fixed effects, <span class="math inline">\(\bv \tau\)</span> a vector of random effect variances, <span class="math inline">\(\sigma\)</span> the level-1 error term, <span class="math inline">\(\bv u\)</span> containing the <span class="math inline">\(u_0\)</span> and <span class="math inline">\(u_1\)</span> values for all clusters (320 in total), and <span class="math inline">\(\bv e\)</span> containing the level-1 errors. The distributional assumptions are <span class="math inline">\(\bv u_j \sim N_2(\bv 0, \bv G)\)</span> and <span class="math inline">\(e_{ij} \sim N(0, \sigma)\)</span>.</p>
-<p>The marginal distribution of <span class="math inline">\(\bv y\)</span> is thus <span class="math display">\[\bv y \sim N_p\left(\bv X \bv \gamma, \bv V(\bv \tau, \sigma)\right),\]</span> where <span class="math inline">\(\bv V(\bv \tau, \sigma) = \bv Z \bv G \bv Z^\top + \sigma^2 \bv I\)</span> with <span class="math inline">\(\bv I\)</span> being an <span class="math inline">\(N \times N\)</span> identity matrix.</p>
-<p>The log-likelihood function for a multilevel model is <span class="math display">\[\ell(\bv \gamma, \bv \tau, \sigma; \bv y) = - \frac{1}{2} \left\{\log | \bv V(\bv \tau, \sigma)| + (\bv y - \bv X \bv \gamma)^\top \bv V^{-1}(\bv \tau, \sigma) (\bv y - \bv X \bv \gamma) \right\} + K\]</span> with <span class="math inline">\(K\)</span> not involving the model parameters. Check out <a href="https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf">this paper</a> if you want to learn more about the log likelihood function used in <code>lme4</code>.</p>
+<p>The matrix form of the model is <span class="math display">\[\bv y =
+\bv X \bv \gamma + \bv Z \bv u + \bv e,\]</span> with <span
+class="math inline">\(\bv \gamma\)</span> being a <span
+class="math inline">\(N \times p\)</span> vector of fixed effects, <span
+class="math inline">\(\bv \tau\)</span> a vector of random effect
+variances, <span class="math inline">\(\sigma\)</span> the level-1 error
+term, <span class="math inline">\(\bv u\)</span> containing the <span
+class="math inline">\(u_0\)</span> and <span
+class="math inline">\(u_1\)</span> values for all clusters (320 in
+total), and <span class="math inline">\(\bv e\)</span> containing the
+level-1 errors. The distributional assumptions are <span
+class="math inline">\(\bv u_j \sim N_2(\bv 0, \bv G)\)</span> and <span
+class="math inline">\(e_{ij} \sim N(0, \sigma)\)</span>.</p>
+<p>The marginal distribution of <span class="math inline">\(\bv
+y\)</span> is thus <span class="math display">\[\bv y \sim N_p\left(\bv
+X \bv \gamma, \bv V(\bv \tau, \sigma)\right),\]</span> where <span
+class="math inline">\(\bv V(\bv \tau, \sigma) = \bv Z \bv G \bv Z^\top +
+\sigma^2 \bv I\)</span> with <span class="math inline">\(\bv I\)</span>
+being an <span class="math inline">\(N \times N\)</span> identity
+matrix.</p>
+<p>The log-likelihood function for a multilevel model is <span
+class="math display">\[\ell(\bv \gamma, \bv \tau, \sigma; \bv y) = -
+\frac{1}{2} \left\{\log | \bv V(\bv \tau, \sigma)| + (\bv y - \bv X \bv
+\gamma)^\top \bv V^{-1}(\bv \tau, \sigma) (\bv y - \bv X \bv \gamma)
+\right\} + K\]</span> with <span class="math inline">\(K\)</span> not
+involving the model parameters. Check out <a
+href="https://cran.r-project.org/web/packages/lme4/vignettes/lmer.pdf">this
+paper</a> if you want to learn more about the log likelihood function
+used in <code>lme4</code>.</p>
 <blockquote>
-<p>Note: When statistician says log it means the natural logarithm, i.e., log with base e (sometimes written as ln)</p>
+<p>Note: When statistician says log it means the natural logarithm,
+i.e., log with base e (sometimes written as ln)</p>
 </blockquote>
-<h2 id="example-ellgamma_01">Example: <span class="math inline">\(\ell(\gamma_{01})\)</span></h2>
-<p>We’ll use the model with <code>meanses</code> as the predictor on the full data set (<code>hsball</code>), and use R to write the log-likelihood function for <span class="math inline">\(\gamma_{01}\)</span></p>
+<h2 id="example-ellgamma_01">Example: <span
+class="math inline">\(\ell(\gamma_{01})\)</span></h2>
+<p>We’ll use the model with <code>meanses</code> as the predictor on the
+full data set (<code>hsball</code>), and use R to write the
+log-likelihood function for <span
+class="math inline">\(\gamma_{01}\)</span></p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Extract V from the model</span>
-<span class='va'>V_m_lv2</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/crossprod.html'>crossprod</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/getME.html'>getME</a></span><span class='op'>(</span><span class='va'>m_lv2</span>, <span class='st'>"A"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>Matrix</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Matrix/man/Diagonal.html'>Diagonal</a></span><span class='op'>(</span><span class='fl'>7185</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span>
+<span class='va'>V_m_lv2</span> <span class='op'>&lt;-</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>crossprod</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/getME.html'>getME</a></span><span class='op'>(</span><span class='va'>m_lv2</span>, <span class='st'>"A"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'>Matrix</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/Matrix/man/Diagonal.html'>Diagonal</a></span><span class='op'>(</span><span class='fl'>7185</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span>
   <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/sigma.html'>sigma</a></span><span class='op'>(</span><span class='va'>m_lv2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>
 <span class='co'># Log-likelihood function with respect to gamma01</span>
 <span class='va'>llfun</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>gamma01</span>, 
@@ -2380,17 +2455,17 @@ R Codes
                   <span class='va'>X</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='va'>m_lv2</span><span class='op'>@</span><span class='va'>frame</span><span class='op'>$</span><span class='va'>meanses</span><span class='op'>)</span>, 
                   <span class='va'>V</span> <span class='op'>=</span> <span class='va'>V_m_lv2</span><span class='op'>)</span> <span class='op'>{</span>
   <span class='va'>gamma</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>gamma00</span>, <span class='va'>gamma01</span><span class='op'>)</span>
-  <span class='va'>y_minus_Xgamma</span> <span class='op'>&lt;-</span> <span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'>%*%</span> <span class='va'>gamma</span>
+  <span class='va'>y_minus_Xgamma</span> <span class='op'>&lt;-</span> <span class='va'>y</span> <span class='op'>-</span> <span class='va'>X</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span> <span class='va'>gamma</span>
   <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span>
-   <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/crossprod.html'>crossprod</a></span><span class='op'>(</span><span class='va'>y_minus_Xgamma</span>, <span class='fu'><a href='https://rdrr.io/r/base/solve.html'>solve</a></span><span class='op'>(</span><span class='va'>V</span>, <span class='va'>y_minus_Xgamma</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2</span>
+   <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>crossprod</a></span><span class='op'>(</span><span class='va'>y_minus_Xgamma</span>, <span class='fu'><a href='https://rdrr.io/pkg/Matrix/man/solve-methods.html'>solve</a></span><span class='op'>(</span><span class='va'>V</span>, <span class='va'>y_minus_Xgamma</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>/</span> <span class='fl'>2</span>
   <span class='op'>)</span>
 <span class='op'>}</span>
 <span class='co'># Vectorize</span>
 <span class='va'>llfun</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/Vectorize.html'>Vectorize</a></span><span class='op'>(</span><span class='va'>llfun</span><span class='op'>)</span>
 <span class='co'># Plot</span>
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>tibble</span><span class='op'>(</span>gamma01 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gamma01</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='va'>llfun</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>[</span><span class='fl'>0</span><span class='op'>]</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='st'>"log(Likelihood)"</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>gamma01 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>5</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>gamma01</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_function.html'>stat_function</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='va'>llfun</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span><span class='op'>(</span><span class='va'>gamma</span><span class='op'>[</span><span class='fl'>0</span><span class='op'>]</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='st'>"log(Likelihood)"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode5_files/figure-html5/loglik-meanses-1.png" width="624" /></p>
@@ -2400,11 +2475,11 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Cluster-mean centering</span>
-<span class='va'>hsbsub</span> <span class='op'>&lt;-</span> <span class='va'>hsbsub</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># operate within schools</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,   <span class='co'># create cluster means (the same as `meanses`)</span>
-         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># cluster-mean centered</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
+<span class='va'>hsbsub</span> <span class='op'>&lt;-</span> <span class='va'>hsbsub</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># operate within schools</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>ses_cm <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ses</span><span class='op'>)</span>,   <span class='co'># create cluster means (the same as `meanses`)</span>
+         ses_cmc <span class='op'>=</span> <span class='va'>ses</span> <span class='op'>-</span> <span class='va'>ses_cm</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># cluster-mean centered</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='co'># exit the "editing within groups" mode</span>
 <span class='co'># Default is REML</span>
 <span class='va'>crlv_int</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>sector</span> <span class='op'>*</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
                  data <span class='op'>=</span> <span class='va'>hsbsub</span><span class='op'>)</span>
@@ -2601,6 +2676,17 @@ sd__Observation
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+686
+</td>
+<td style="text-align:center;">
+686
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -2645,8 +2731,15 @@ REMLcrit
 </tbody>
 </table>
 </div>
-<p>Notice that the standard errors are generally larger for REML than for ML, and it’s generally more accurate with REML in small samples. Also the <span class="math inline">\(\tau^2\)</span> estimates (i.e., labelled <code>sd__(Intercept)</code> for <span class="math inline">\(\tau^2_0\)</span> and <code>sd__ses_cmc</code> for <span class="math inline">\(\tau^2_1\)</span>) are larger (and more accurately estimated) for REML.</p>
-<p>To see more details on how <code>lme4</code> iteratively tries to arrive at the REML/ML estimates, try</p>
+<p>Notice that the standard errors are generally larger for REML than
+for ML, and it’s generally more accurate with REML in small samples.
+Also the <span class="math inline">\(\tau^2\)</span> estimates (i.e.,
+labelled <code>sd__(Intercept)</code> for <span
+class="math inline">\(\tau^2_0\)</span> and <code>sd__ses_cmc</code> for
+<span class="math inline">\(\tau^2_1\)</span>) are larger (and more
+accurately estimated) for REML.</p>
+<p>To see more details on how <code>lme4</code> iteratively tries to
+arrive at the REML/ML estimates, try</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>crlv_int2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>sector</span> <span class='op'>*</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2730,23 +2823,36 @@ REMLcrit
 &gt;# iteration: 38
 &gt;#  f(x) = 4347.125056</code></pre>
 </div>
-<p>The numbers shown above are the <em>deviance</em>, that is, -2 <span class="math inline">\(\times\)</span> log-likelihood. Because probabilities (as well as likelihood) are less than or equal to 1, the log will be less than or equal to 0, meaning that the log likelihood values are generally negative. Multiplying it by -2 results in positive deviance that is a bit easier to work with (and the factor 2 is related to converting a normal distribution to a <span class="math inline">\(\chi^2\)</span> distribution).</p>
+<p>The numbers shown above are the <em>deviance</em>, that is, -2 <span
+class="math inline">\(\times\)</span> log-likelihood. Because
+probabilities (as well as likelihood) are less than or equal to 1, the
+log will be less than or equal to 0, meaning that the log likelihood
+values are generally negative. Multiplying it by -2 results in positive
+deviance that is a bit easier to work with (and the factor 2 is related
+to converting a normal distribution to a <span
+class="math inline">\(\chi^2\)</span> distribution).</p>
 <h1 id="testing-fixed-effects">Testing Fixed Effects</h1>
-<p>To test the null that a predictor has a non-zero coefficient given other predictors in the model, an easy way is to use the likelihood-based 95% CI (also called the profile-likelihood CI, as discussed in your text):</p>
+<p>To test the null that a predictor has a non-zero coefficient given
+other predictors in the model, an easy way is to use the
+likelihood-based 95% CI (also called the profile-likelihood CI, as
+discussed in your text):</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use parm = "beta_" for only fixed effects</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/confint.html'>confint</a></span><span class='op'>(</span><span class='va'>crlv_int</span>, parm <span class='op'>=</span> <span class='st'>"beta_"</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;#                     2.5 %     97.5 %
-&gt;# (Intercept)    10.4692542 12.9863640
-&gt;# meanses         4.0885277  8.9516323
-&gt;# sector          0.1915185  3.5912387
-&gt;# ses_cmc         1.9257690  3.7740789
-&gt;# sector:ses_cmc -2.1748867  0.4629693</code></pre>
+<pre><code>&gt;#                  2.5 % 97.5 %
+&gt;# (Intercept)    10.4693 12.986
+&gt;# meanses         4.0885  8.952
+&gt;# sector          0.1915  3.591
+&gt;# ses_cmc         1.9258  3.774
+&gt;# sector:ses_cmc -2.1749  0.463</code></pre>
 </div>
-<p>If 0 is not in the 95% CI, the null is rejected at .05 significance level. This is basically equivalent to the likelihood ratio test, which can be obtained by comparing the model without one of the coefficients (e.g., the cross-level interaction):</p>
+<p>If 0 is not in the 95% CI, the null is rejected at .05 significance
+level. This is basically equivalent to the likelihood ratio test, which
+can be obtained by comparing the model without one of the coefficients
+(e.g., the cross-level interaction):</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>model_no_crlv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>sector</span> <span class='op'>+</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2759,12 +2865,9 @@ REMLcrit
 &gt;# Models:
 &gt;# model_no_crlv: mathach ~ meanses + sector + ses_cmc + (ses_cmc | id)
 &gt;# crlv_int: mathach ~ meanses + sector * ses_cmc + (ses_cmc | id)
-&gt;#               npar    AIC    BIC  logLik deviance  Chisq Df
-&gt;# model_no_crlv    8 4369.0 4405.2 -2176.5   4353.0          
-&gt;# crlv_int         9 4369.2 4410.0 -2175.6   4351.2 1.7377  1
-&gt;#               Pr(&gt;Chisq)
-&gt;# model_no_crlv           
-&gt;# crlv_int          0.1874</code></pre>
+&gt;#               npar  AIC  BIC logLik deviance Chisq Df Pr(&gt;Chisq)
+&gt;# model_no_crlv    8 4369 4405  -2176     4353                    
+&gt;# crlv_int         9 4369 4410  -2176     4351  1.74  1       0.19</code></pre>
 </div>
 <p>Or with the <code>drop1()</code> function and adding the formula:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2778,17 +2881,24 @@ REMLcrit
 &gt;# 
 &gt;# Model:
 &gt;# mathach ~ meanses + sector * ses_cmc + (ses_cmc | id)
-&gt;#                npar    AIC     LRT   Pr(Chi)    
-&gt;# &lt;none&gt;              4369.2                      
-&gt;# meanses           1 4384.8 17.6087 2.713e-05 ***
-&gt;# sector            1 4371.8  4.5846   0.03226 *  
-&gt;# ses_cmc           1 4387.1 19.8347 8.444e-06 ***
-&gt;# sector:ses_cmc    1 4369.0  1.7377   0.18743    
+&gt;#                npar  AIC   LRT Pr(Chi)    
+&gt;# &lt;none&gt;              4369                  
+&gt;# meanses           1 4385 17.61 2.7e-05 ***
+&gt;# sector            1 4372  4.58   0.032 *  
+&gt;# ses_cmc           1 4387 19.83 8.4e-06 ***
+&gt;# sector:ses_cmc    1 4369  1.74   0.187    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<h2 id="small-sample-correction-kenward-roger-approximation-of-degrees-of-freedom">Small-Sample Correction: Kenward-Roger Approximation of Degrees of Freedom</h2>
-<p>In small sample situation (with &lt; 50 clusters), the Kenward-Roger (KR) approximation of degrees of freedom will give more accurate tests. To do this in R, you should load the <code>lmerTest</code> package before running the model. Since I’ve already run the model, I will load the package and convert the results using the <code>as_lmerModLmerTest()</code> function:</p>
+<h2
+id="small-sample-correction-kenward-roger-approximation-of-degrees-of-freedom">Small-Sample
+Correction: Kenward-Roger Approximation of Degrees of Freedom</h2>
+<p>In small sample situation (with &lt; 50 clusters), the Kenward-Roger
+(KR) approximation of degrees of freedom will give more accurate tests.
+To do this in R, you should load the <code>lmerTest</code> package
+before running the model. Since I’ve already run the model, I will load
+the package and convert the results using the
+<code>as_lmerModLmerTest()</code> function:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/runehaubo/lmerTestR'>lmerTest</a></span><span class='op'>)</span>
@@ -2798,11 +2908,11 @@ REMLcrit
 </code></pre>
 </div>
 <pre><code>&gt;# Type III Analysis of Variance Table with Kenward-Roger&#39;s method
-&gt;#                 Sum Sq Mean Sq NumDF   DenDF F value    Pr(&gt;F)    
-&gt;# meanses         959.83  959.83     1 13.0241 29.5678 0.0001129 ***
-&gt;# sector          141.61  141.61     1 13.2258  4.3624 0.0566181 .  
-&gt;# ses_cmc        1150.22 1150.22     1  8.6559 35.4328 0.0002505 ***
-&gt;# sector:ses_cmc   55.15   55.15     1 11.7341  1.6990 0.2174123    
+&gt;#                Sum Sq Mean Sq NumDF DenDF F value  Pr(&gt;F)    
+&gt;# meanses           960     960     1 13.02   29.57 0.00011 ***
+&gt;# sector            142     142     1 13.23    4.36 0.05662 .  
+&gt;# ses_cmc          1150    1150     1  8.66   35.43 0.00025 ***
+&gt;# sector:ses_cmc     55      55     1 11.73    1.70 0.21741    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
@@ -2815,26 +2925,26 @@ REMLcrit
 &gt;# Formula: mathach ~ meanses + sector * ses_cmc + (ses_cmc | id)
 &gt;#    Data: hsbsub
 &gt;# 
-&gt;# REML criterion at convergence: 4347.1
+&gt;# REML criterion at convergence: 4347
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -3.11430 -0.75641  0.02989  0.72275  2.25163 
+&gt;#     Min      1Q  Median      3Q     Max 
+&gt;# -3.1143 -0.7564  0.0299  0.7227  2.2516 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev. Corr
-&gt;#  id       (Intercept)  2.3097  1.5198       
-&gt;#           ses_cmc      0.1255  0.3542   1.00
-&gt;#  Residual             32.4620  5.6975       
+&gt;#  id       (Intercept)  2.310   1.520        
+&gt;#           ses_cmc      0.125   0.354    1.00
+&gt;#  Residual             32.462   5.698        
 &gt;# Number of obs: 686, groups:  id, 16
 &gt;# 
 &gt;# Fixed effects:
-&gt;#                Estimate Std. Error      df t value Pr(&gt;|t|)    
-&gt;# (Intercept)     11.7282     0.6704 13.2107  17.493  1.6e-10 ***
-&gt;# meanses          6.6327     1.2198 13.0241   5.438 0.000113 ***
-&gt;# sector           1.8900     0.9049 13.2258   2.089 0.056618 .  
-&gt;# ses_cmc          2.8601     0.4805  8.6559   5.953 0.000250 ***
-&gt;# sector:ses_cmc  -0.8848     0.6788 11.7341  -1.303 0.217412    
+&gt;#                Estimate Std. Error     df t value Pr(&gt;|t|)    
+&gt;# (Intercept)      11.728      0.670 13.211   17.49  1.6e-10 ***
+&gt;# meanses           6.633      1.220 13.024    5.44  0.00011 ***
+&gt;# sector            1.890      0.905 13.226    2.09  0.05662 .  
+&gt;# ses_cmc           2.860      0.480  8.656    5.95  0.00025 ***
+&gt;# sector:ses_cmc   -0.885      0.679 11.734   -1.30  0.21741    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 &gt;# 
@@ -2845,7 +2955,7 @@ REMLcrit
 &gt;# ses_cmc      0.253 -0.020 -0.184       
 &gt;# sctr:ss_cmc -0.178  0.007  0.232 -0.701
 &gt;# optimizer (nloptwrap) convergence code: 0 (OK)
-&gt;# boundary (singular) fit: see ?isSingular</code></pre>
+&gt;# boundary (singular) fit: see help(&#39;isSingular&#39;)</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Table (need to specify the `ddf` argument)</span>
 <span class='fu'>msummary_mixed</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>REML <span class='op'>=</span> <span class='va'>crlv_int</span>, `REML-KR` <span class='op'>=</span> <span class='va'>crlv_int_test</span><span class='op'>)</span>, 
@@ -3035,6 +3145,17 @@ sd__Observation
 </tr>
 <tr>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+686
+</td>
+<td style="text-align:center;">
+686
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -3080,12 +3201,40 @@ REMLcrit
 </tbody>
 </table>
 </div>
-<p>You can see now <code>sector</code> was actually not significant (although it’s part of an interaction so the test of the conditional effect may not be very meaningful). Note KR requires using REML.</p>
+<p>You can see now <code>sector</code> was actually not significant
+(although it’s part of an interaction so the test of the conditional
+effect may not be very meaningful). Note KR requires using REML.</p>
 <hr />
-<p>If you’re interested in knowing more, KR is based on an <span class="math inline">\(F\)</span> test, as opposed to a <span class="math inline">\(\chi^2\)</span> test for LRT. When the denominator degrees of freedom for <span class="math inline">\(F\)</span> is large, which happens in large sample (with many clusters), the <span class="math inline">\(F\)</span> distribution converges to a <span class="math inline">\(\chi^2\)</span> distribution, so there is no need to know exactly the degrees of freedom. However, in small samples, these two look different, and to get more accurate <span class="math inline">\(p\)</span> values one needs to have a good estimate of the denominator degrees of freedom, but it’s not straightforward with MLM, especially with unbalanced data (i.e., clusters having different sizes). There are several methods to approximate the degrees of freedom, but KR has generally been found to perform the best.</p>
+<p>If you’re interested in knowing more, KR is based on an <span
+class="math inline">\(F\)</span> test, as opposed to a <span
+class="math inline">\(\chi^2\)</span> test for LRT. When the denominator
+degrees of freedom for <span class="math inline">\(F\)</span> is large,
+which happens in large sample (with many clusters), the <span
+class="math inline">\(F\)</span> distribution converges to a <span
+class="math inline">\(\chi^2\)</span> distribution, so there is no need
+to know exactly the degrees of freedom. However, in small samples, these
+two look different, and to get more accurate <span
+class="math inline">\(p\)</span> values one needs to have a good
+estimate of the denominator degrees of freedom, but it’s not
+straightforward with MLM, especially with unbalanced data (i.e.,
+clusters having different sizes). There are several methods to
+approximate the degrees of freedom, but KR has generally been found to
+perform the best.</p>
 <hr />
 <h1 id="testing-random-slopes">Testing Random Slopes</h1>
-<p>To test the null hypothesis that the random slope variance, <span class="math inline">\(\tau^2_1\)</span>, is zero, one can again rely on the LRT. However, because <span class="math inline">\(\tau^2_1\)</span> is non-negative (i.e., zero or positive), using the regular LRT will lead to a overly conservative test, meaning that power is too small. Technically, as pointed out in your text, under the null the sampling distribution of the LRT will follow approximately a mixture <span class="math inline">\(\chi^2\)</span> distribution. There are several ways to improve the test, but as shown in LaHuis and Ferguson (2009, <a href="https://doi.org/10.1177/1094428107308984" class="uri">https://doi.org/10.1177/1094428107308984</a>), a simple way is to divide the <span class="math inline">\(p\)</span> value you obtain from software by 2 so that it resembles a one-tailed test.</p>
+<p>To test the null hypothesis that the random slope variance, <span
+class="math inline">\(\tau^2_1\)</span>, is zero, one can again rely on
+the LRT. However, because <span class="math inline">\(\tau^2_1\)</span>
+is non-negative (i.e., zero or positive), using the regular LRT will
+lead to a overly conservative test, meaning that power is too small.
+Technically, as pointed out in your text, under the null the sampling
+distribution of the LRT will follow approximately a mixture <span
+class="math inline">\(\chi^2\)</span> distribution. There are several
+ways to improve the test, but as shown in LaHuis and Ferguson (2009, <a
+href="https://doi.org/10.1177/1094428107308984"
+class="uri">https://doi.org/10.1177/1094428107308984</a>), a simple way
+is to divide the <span class="math inline">\(p\)</span> value you obtain
+from software by 2 so that it resembles a one-tailed test.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ran_slp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lmerTest/man/lmer.html'>lmer</a></span><span class='op'>(</span><span class='va'>mathach</span> <span class='op'>~</span> <span class='va'>meanses</span> <span class='op'>+</span> <span class='va'>ses_cmc</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>ses_cmc</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>hsbsub</span><span class='op'>)</span>
@@ -3095,20 +3244,26 @@ REMLcrit
 <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/merMod-class.html'>REMLcrit</a></span><span class='op'>(</span><span class='va'>m_bw</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/merMod-class.html'>REMLcrit</a></span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.01432169</code></pre>
+<pre><code>&gt;# [1] 0.01432</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Find the p value from a chi-squared distribution</span>
 <span class='fu'><a href='https://rdrr.io/r/stats/Chisquare.html'>pchisq</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/merMod-class.html'>REMLcrit</a></span><span class='op'>(</span><span class='va'>m_bw</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/merMod-class.html'>REMLcrit</a></span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span>, df <span class='op'>=</span> <span class='fl'>2</span>, lower.tail <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.9928647</code></pre>
+<pre><code>&gt;# [1] 0.9929</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Need to divide the p by 2 for a one-tailed test</span>
 </code></pre>
 </div>
 </div>
-<p>So the <span class="math inline">\(p\)</span> value in our example for testing the random slope variance was 0.5, which suggested that <strong>for the subsample, there was insufficient evidence that the slope between <code>ses_cmc</code> and <code>mathach</code> varied across schools.</strong></p>
-<p>You can also use <code>ranova()</code> to get the same results (again, the <span class="math inline">\(p\)</span> values need to be divded by 2)</p>
+<p>So the <span class="math inline">\(p\)</span> value in our example
+for testing the random slope variance was 0.5, which suggested that
+<strong>for the subsample, there was insufficient evidence that the
+slope between <code>ses_cmc</code> and <code>mathach</code> varied
+across schools.</strong></p>
+<p>You can also use <code>ranova()</code> to get the same results
+(again, the <span class="math inline">\(p\)</span> values need to be
+divded by 2)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/lmerTest/man/ranova.html'>ranova</a></span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span>
@@ -3118,13 +3273,24 @@ REMLcrit
 &gt;# 
 &gt;# Model:
 &gt;# mathach ~ meanses + ses_cmc + (ses_cmc | id)
-&gt;#                           npar  logLik    AIC      LRT Df Pr(&gt;Chisq)
-&gt;# &lt;none&gt;                       7 -2178.4 4370.8                       
-&gt;# ses_cmc in (ses_cmc | id)    5 -2178.4 4366.8 0.014322  2     0.9929</code></pre>
+&gt;#                           npar logLik  AIC    LRT Df Pr(&gt;Chisq)
+&gt;# &lt;none&gt;                       7  -2178 4371                     
+&gt;# ses_cmc in (ses_cmc | id)    5  -2178 4367 0.0143  2       0.99</code></pre>
 </div>
 <h1 id="bootstrap">Bootstrap</h1>
-<p>The bootstrap is a simulation-based method to approximate the sampling distribution of parameter estimates. Indeed, you’ve already seen a version of it in previous weeks when we talk about simulation. In the previous weeks, we generated data assuming that the sample model perfectly described the population, which notably includes the normality assumption. That simulation method is also called <em>parametric bootstrap</em>. Here we’ll use another version of the bootstrap, called the <em>residual bootstrap</em>, which does not assume that the normality assumptions hold for the population. You can check out <a href="https://doi.org/10.1080/00273171.2020.1746902">Lai (2021)</a>.</p>
-<p>To perform the bootstrap, you’ll need to supply functions that extract different parameter estimates or other quantities (e.g., effect sizes) from a fitted model. Below are some examples:</p>
+<p>The bootstrap is a simulation-based method to approximate the
+sampling distribution of parameter estimates. Indeed, you’ve already
+seen a version of it in previous weeks when we talk about simulation. In
+the previous weeks, we generated data assuming that the sample model
+perfectly described the population, which notably includes the normality
+assumption. That simulation method is also called <em>parametric
+bootstrap</em>. Here we’ll use another version of the bootstrap, called
+the <em>residual bootstrap</em>, which does not assume that the
+normality assumptions hold for the population. You can check out <a
+href="https://doi.org/10.1080/00273171.2020.1746902">Lai (2021)</a>.</p>
+<p>To perform the bootstrap, you’ll need to supply functions that
+extract different parameter estimates or other quantities (e.g., effect
+sizes) from a fitted model. Below are some examples:</p>
 <h2 id="fixed-effects">Fixed Effects</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3136,7 +3302,10 @@ REMLcrit
 </div>
 </div>
 <blockquote>
-<p>Note: Because running the bootstrap takes a long time, you can include the chunk option <code>chache=TRUE</code> so that when knitting the file, it will not rerun the chunk unless the content of it has been changed.</p>
+<p>Note: Because running the bootstrap takes a long time, you can
+include the chunk option <code>chache=TRUE</code> so that when knitting
+the file, it will not rerun the chunk unless the content of it has been
+changed.</p>
 </blockquote>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3166,7 +3335,8 @@ REMLcrit
 &gt;# Calculations and Intervals on Original Scale</code></pre>
 </div>
 <h2 id="variance-components">Variance Components</h2>
-<p>Extracting variance components from <code>lmer()</code> results requires a little bit more efforts.</p>
+<p>Extracting variance components from <code>lmer()</code> results
+requires a little bit more efforts.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Define function to extract variance components</span>
@@ -3178,7 +3348,7 @@ REMLcrit
 <span class='fu'>get_vc</span><span class='op'>(</span><span class='va'>ran_slp</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1]  3.04994425  0.04159963  0.08850399 32.55971461</code></pre>
+<pre><code>&gt;# [1]  3.0499  0.0416  0.0885 32.5597</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># This again takes a few minutes to run</span>
 <span class='va'>boot_ran_slp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/bootmlm/man/bootstrap_mer.html'>bootstrap_mer</a></span><span class='op'>(</span>
@@ -3231,8 +3401,10 @@ REMLcrit
 </div>
 <p><img src="rcode5_files/figure-html5/plot-boot-r2-1.png" width="624" /></p>
 </div>
-<h3 id="bonus-bias-corrected-estimates">Bonus: Bias-corrected estimates</h3>
-<p>The bootstrap method is commonly used for obtaining standard errors and confidence intervals. You can get the bootstrap standard error:</p>
+<h3 id="bonus-bias-corrected-estimates">Bonus: Bias-corrected
+estimates</h3>
+<p>The bootstrap method is commonly used for obtaining standard errors
+and confidence intervals. You can get the bootstrap standard error:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>boot_r2</span>
@@ -3248,12 +3420,16 @@ REMLcrit
 &gt;# 
 &gt;# 
 &gt;# Bootstrap Statistics :
-&gt;#      original      bias    std. error
-&gt;# t1* 0.2480355 0.006134273  0.04270710
-&gt;# t2* 0.2991689 0.006499889  0.04570883</code></pre>
+&gt;#     original   bias    std. error
+&gt;# t1*   0.2480 0.006134     0.04271
+&gt;# t2*   0.2992 0.006500     0.04571</code></pre>
 </div>
-<p>The above also showed the original estimate for the marginal <span class="math inline">\(R^2\)</span> (in row 1), 0.2480355, and the estimated bias using the bootstrap, which suggested that the bias is slightly upward. Therefore, one can obtain the bias-corrected estimate by</p>
-<p><span class="math display">\[\text{Bias-corrected estimate} = \text{Original estimate} - \text{Bias}\]</span></p>
+<p>The above also showed the original estimate for the marginal <span
+class="math inline">\(R^2\)</span> (in row 1), 0.248, and the estimated
+bias using the bootstrap, which suggested that the bias is slightly
+upward. Therefore, one can obtain the bias-corrected estimate by</p>
+<p><span class="math display">\[\text{Bias-corrected estimate} =
+\text{Original estimate} - \text{Bias}\]</span></p>
 <p>You can also use the following R code:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3261,16 +3437,18 @@ REMLcrit
 <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span> <span class='op'>-</span> <span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t0</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>  <span class='co'># the first index is marginal R^2; second is conditional R^2</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.006134273</code></pre>
+<pre><code>&gt;# [1] 0.006134</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Bias-corrected estimate</span>
 <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t0</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>boot_r2</span><span class='op'>$</span><span class='va'>t</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.2419012</code></pre>
+<pre><code>&gt;# [1] 0.2419</code></pre>
 </div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3296,7 +3474,10 @@ REMLcrit
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

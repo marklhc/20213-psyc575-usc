@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2094,6 +2094,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2112,6 +2115,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2144,10 +2150,12 @@ R Codes
 <li><a href="#slides">Slides</a></li>
 <li><a href="#model-diagnostics">Model Diagnostics</a>
 <ul>
-<li><a href="#assumptions-of-a-multilevel-model">Assumptions of a Multilevel Model</a></li>
+<li><a href="#assumptions-of-a-multilevel-model">Assumptions of a
+Multilevel Model</a></li>
 <li><a href="#additional-issues">Additional issues</a></li>
 </ul></li>
-<li><a href="#handling-convergence-issues">Handling Convergence Issues</a></li>
+<li><a href="#handling-convergence-issues">Handling Convergence
+Issues</a></li>
 <li><a href="#reporting-results">Reporting Results</a></li>
 </ul></li>
 </ul>
@@ -2156,11 +2164,16 @@ R Codes
 <h1 id="week-learning-objectives">Week Learning Objectives</h1>
 <p>By the end of this module, you will be able to</p>
 <ul>
-<li>Describe the major <strong>assumptions</strong> in basic multilevel models</li>
-<li>Conduct analyses to decide whether <strong>cluster means</strong> and <strong>random slopes</strong> should be included</li>
-<li>Use graphical tools to diagnose assumptions of <strong>linearity</strong>, <strong>homoscedasticity</strong> (equal variance), and <strong>normality</strong></li>
+<li>Describe the major <strong>assumptions</strong> in basic multilevel
+models</li>
+<li>Conduct analyses to decide whether <strong>cluster means</strong>
+and <strong>random slopes</strong> should be included</li>
+<li>Use graphical tools to diagnose assumptions of
+<strong>linearity</strong>, <strong>homoscedasticity</strong> (equal
+variance), and <strong>normality</strong></li>
 <li>Solve some basic <strong>convergence issues</strong></li>
-<li><strong>Report</strong> results of a multilevel analysis based on established guidelines</li>
+<li><strong>Report</strong> results of a multilevel analysis based on
+established guidelines</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
 <ol type="1">
@@ -2169,14 +2182,19 @@ R Codes
 <ul>
 <li>Snijders &amp; Bosker ch 10</li>
 <li>Meteyard &amp; Davies (2020; to be shared on Slack)</li>
-<li><a href="https://www-taylorfrancis-com.libproxy2.usc.edu/books/e/9781315755649/chapters/10.4324/9781315755649-22">McCoach (2019 chapter)</a> (USC SSO required)</li>
+<li><a
+href="https://www-taylorfrancis-com.libproxy2.usc.edu/books/e/9781315755649/chapters/10.4324/9781315755649-22">McCoach
+(2019 chapter)</a> (USC SSO required)</li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
 <li>Complete Homework 6</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p>You can view and download the slides here: <a href="slides/06_model_diagnostics.html" target="_blank">HTML</a> <a href="slides/06_model_diagnostics.pdf" target="_blank">PDF</a></p>
+<p>You can view and download the slides here: <a
+href="slides/06_model_diagnostics.html" target="_blank">HTML</a> <a
+href="slides/06_model_diagnostics.pdf" target="_blank">PDF</a></p>
 <h2 id="model-diagnostics">Model Diagnostics</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -2186,34 +2204,66 @@ R Codes
 <p>Check your learning: Homoscedasticity means</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_58342" onsubmit="return validate_form_58342()" method="post">
-<input type="radio" name="answer_58342" id="58342_1" value="Equal variance of errors"><label for="1">Equal variance of errors</label><br><input type="radio" name="answer_58342" id="58342_2" value="Each cluster has the same mean"><label for="2">Each cluster has the same mean</label><br><input type="radio" name="answer_58342" id="58342_3" value="The model resembles the data"><label for="3">The model resembles the data</label><br><input type="submit" value="check">
+<input type="radio" name="answer_58342" id="58342_1" value="Equal variance of errors"><label for="1">Equal
+variance of
+errors</label><br><input type="radio" name="answer_58342" id="58342_2" value="Each cluster has the same mean"><label for="2">Each
+cluster has the same
+mean</label><br><input type="radio" name="answer_58342" id="58342_3" value="The model resembles the data"><label for="3">The
+model resembles the data</label><br><input type="submit" value="check">
 </form>
 <p id="result_58342">
 </p>
 <script> function validate_form_58342() {var x, text; var x = document.forms["form_58342"]["answer_58342"].value;if (x == "Equal variance of errors"){text = 'Your statistical knowledge is getting better and better :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_58342').innerHTML = text; return false;} </script>
 </div>
-<h3 id="assumptions-of-a-multilevel-model">Assumptions of a Multilevel Model</h3>
+<h3 id="assumptions-of-a-multilevel-model">Assumptions of a Multilevel
+Model</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/dhh5twY9pwE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Note: <span class="math inline">\(\mathrm{E}(Y)\)</span> can also be written as <span class="math inline">\(\hat Y\)</span>, the predicted value of <span class="math inline">\(Y\)</span> based on the predictor values.</p>
-<p>The linear model is also flexible as it can allow predictors that are curvillinear terms, such as <span class="math inline">\(Y = b_0 + b_1 X_1 + b_2 X_1^2\)</span>, or <span class="math inline">\(Y = b_0 + b_1 \log(X_1)\)</span>, or more generally <span class="math display">\[Y = b_0 + \sum_{i}^p b_i f(x_1, x_2, \ldots)\]</span> The “linear” part in a linear model actually means that <span class="math inline">\(Y\)</span> is a linear function of the coefficients <span class="math inline">\(b_1, b_2, \ldots\)</span>.</p>
-<p>The second functional form in the slide, however, is a truly nonlinear function.</p>
-<p>Check your learning: Which of the following is <strong>NOT</strong> a linear model?</p>
+<p>Note: <span class="math inline">\(\mathrm{E}(Y)\)</span> can also be
+written as <span class="math inline">\(\hat Y\)</span>, the predicted
+value of <span class="math inline">\(Y\)</span> based on the predictor
+values.</p>
+<p>The linear model is also flexible as it can allow predictors that are
+curvillinear terms, such as <span class="math inline">\(Y = b_0 + b_1
+X_1 + b_2 X_1^2\)</span>, or <span class="math inline">\(Y = b_0 + b_1
+\log(X_1)\)</span>, or more generally <span class="math display">\[Y =
+b_0 + \sum_{i}^p b_i f(x_1, x_2, \ldots)\]</span> The “linear” part in a
+linear model actually means that <span class="math inline">\(Y\)</span>
+is a linear function of the coefficients <span
+class="math inline">\(b_1, b_2, \ldots\)</span>.</p>
+<p>The second functional form in the slide, however, is a truly
+nonlinear function.</p>
+<p>Check your learning: Which of the following is <strong>NOT</strong> a
+linear model?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_72330" onsubmit="return validate_form_72330()" method="post">
-<input type="radio" name="answer_72330" id="72330_1" value="Y = X1 + X2"><label for="1">Y = X1 + X2</label><br><input type="radio" name="answer_72330" id="72330_2" value="Y = b0 + b1 * X1 + b2 * X2 + b3 * X1 * X2"><label for="2">Y = b0 + b1 * X1 + b2 * X2 + b3 * X1 * X2</label><br><input type="radio" name="answer_72330" id="72330_3" value="Y = b0 * exp(b1 * X1 + b2 * X2)"><label for="3">Y = b0 * exp(b1 * X1 + b2 * X2)</label><br><input type="submit" value="check">
+<input type="radio" name="answer_72330" id="72330_1" value="Y = X1 + X2"><label for="1">Y
+= X1 +
+X2</label><br><input type="radio" name="answer_72330" id="72330_2" value="Y = b0 + b1 * X1 + b2 * X2 + b3 * X1 * X2"><label for="2">Y
+= b0 + b1 * X1 + b2 * X2 + b3 * X1 *
+X2</label><br><input type="radio" name="answer_72330" id="72330_3" value="Y = b0 * exp(b1 * X1 + b2 * X2)"><label for="3">Y
+= b0 * exp(b1 * X1 + b2 *
+X2)</label><br><input type="submit" value="check">
 </form>
 <p id="result_72330">
 </p>
 <script> function validate_form_72330() {var x, text; var x = document.forms["form_72330"]["answer_72330"].value;if (x == "Y = b0 * exp(b1 * X1 + b2 * X2)"){text = 'Nice job :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_72330').innerHTML = text; return false;} </script>
 </div>
-<p>Check your learning: What is implied when the model specifies that the variance of <span class="math inline">\(u_{0j}\)</span> is <span class="math inline">\(\tau^2_0\)</span>?</p>
+<p>Check your learning: What is implied when the model specifies that
+the variance of <span class="math inline">\(u_{0j}\)</span> is <span
+class="math inline">\(\tau^2_0\)</span>?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_8789" onsubmit="return validate_form_8789()" method="post">
-<input type="radio" name="answer_8789" id="8789_1" value="The intercept variance is constant across different clusters"><label for="1">The intercept variance is constant across different clusters</label><br><input type="radio" name="answer_8789" id="8789_2" value="The slope is different across clusters"><label for="2">The slope is different across clusters</label><br><input type="radio" name="answer_8789" id="8789_3" value="The intercept variance is different for different types of schools"><label for="3">The intercept variance is different for different types of schools</label><br><input type="submit" value="check">
+<input type="radio" name="answer_8789" id="8789_1" value="The intercept variance is constant across different clusters"><label for="1">The
+intercept variance is constant across different
+clusters</label><br><input type="radio" name="answer_8789" id="8789_2" value="The slope is different across clusters"><label for="2">The
+slope is different across
+clusters</label><br><input type="radio" name="answer_8789" id="8789_3" value="The intercept variance is different for different types of schools"><label for="3">The
+intercept variance is different for different types of
+schools</label><br><input type="submit" value="check">
 </form>
 <p id="result_8789">
 </p>
@@ -2228,7 +2278,12 @@ R Codes
 <p>Check your learning: What does “I” stand for?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_5777" onsubmit="return validate_form_5777()" method="post">
-<input type="radio" name="answer_5777" id="5777_1" value="Increasing trend of outcome"><label for="1">Increasing trend of outcome</label><br><input type="radio" name="answer_5777" id="5777_2" value="Independence of errors"><label for="2">Independence of errors</label><br><input type="radio" name="answer_5777" id="5777_3" value="Independence of predictors"><label for="3">Independence of predictors</label><br><input type="submit" value="check">
+<input type="radio" name="answer_5777" id="5777_1" value="Increasing trend of outcome"><label for="1">Increasing
+trend of
+outcome</label><br><input type="radio" name="answer_5777" id="5777_2" value="Independence of errors"><label for="2">Independence
+of
+errors</label><br><input type="radio" name="answer_5777" id="5777_3" value="Independence of predictors"><label for="3">Independence
+of predictors</label><br><input type="submit" value="check">
 </form>
 <p id="result_5777">
 </p>
@@ -2242,7 +2297,14 @@ R Codes
 <p>Check your learning: What is shown in a marginal model plot?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_47043" onsubmit="return validate_form_47043()" method="post">
-<input type="radio" name="answer_47043" id="47043_1" value="Whether the model shows a linear association between a predictor and the outcome"><label for="1">Whether the model shows a linear association between a predictor and the outcome</label><br><input type="radio" name="answer_47043" id="47043_2" value="Whether the model-implied association is similar to the model-free (i.e., marginal) association"><label for="2">Whether the model-implied association is similar to the model-free (i.e., marginal) association</label><br><input type="radio" name="answer_47043" id="47043_3" value="Whether the margin of error in the model is small enough"><label for="3">Whether the margin of error in the model is small enough</label><br><input type="submit" value="check">
+<input type="radio" name="answer_47043" id="47043_1" value="Whether the model shows a linear association between a predictor and the outcome"><label for="1">Whether
+the model shows a linear association between a predictor and the
+outcome</label><br><input type="radio" name="answer_47043" id="47043_2" value="Whether the model-implied association is similar to the model-free (i.e., marginal) association"><label for="2">Whether
+the model-implied association is similar to the model-free (i.e.,
+marginal)
+association</label><br><input type="radio" name="answer_47043" id="47043_3" value="Whether the margin of error in the model is small enough"><label for="3">Whether
+the margin of error in the model is small
+enough</label><br><input type="submit" value="check">
 </form>
 <p id="result_47043">
 </p>
@@ -2258,13 +2320,18 @@ R Codes
 <iframe src="https://www.youtube.com/embed/4GKjDRYcWyM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: Which assumption(s) are likely violated in the following plot?</p>
+<p>Check your learning: Which assumption(s) are likely violated in the
+following plot?</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="week6_files/figure-html5/practice-assumption-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_87326" onsubmit="return validate_form_87326()" method="post">
-<input type="radio" name="answer_87326" id="87326_1" value="linearity"><label for="1">linearity</label><br><input type="radio" name="answer_87326" id="87326_2" value="equal variance of errors"><label for="2">equal variance of errors</label><br><input type="radio" name="answer_87326" id="87326_3" value="normality"><label for="3">normality</label><br><input type="radio" name="answer_87326" id="87326_4" value="linearity and equal variance of errors"><label for="4">linearity and equal variance of errors</label><br><input type="submit" value="check">
+<input type="radio" name="answer_87326" id="87326_1" value="linearity"><label for="1">linearity</label><br><input type="radio" name="answer_87326" id="87326_2" value="equal variance of errors"><label for="2">equal
+variance of
+errors</label><br><input type="radio" name="answer_87326" id="87326_3" value="normality"><label for="3">normality</label><br><input type="radio" name="answer_87326" id="87326_4" value="linearity and equal variance of errors"><label for="4">linearity
+and equal variance of
+errors</label><br><input type="submit" value="check">
 </form>
 <p id="result_87326">
 </p>
@@ -2275,14 +2342,19 @@ R Codes
 <li>Outliers/influential observations
 <ul>
 <li>Check coding error</li>
-<li>Don’t drop outliers unless you adjust the standard errors accordingly, or use robust models</li>
+<li>Don’t drop outliers unless you adjust the standard errors
+accordingly, or use robust models</li>
 </ul></li>
-<li>Reliability (e.g., <span class="math inline">\(\alpha\)</span> coefficient)
+<li>Reliability (e.g., <span class="math inline">\(\alpha\)</span>
+coefficient)
 <ul>
 <li>Reliability may be high at one level but low at another level</li>
-<li>See Lai (2021, doi: 10.1037/met0000287) for level-specific reliability
+<li>See Lai (2021, doi: 10.1037/met0000287) for level-specific
+reliability
 <ul>
-<li>You can use the <code>multilevel_alpha()</code> function from <a href="https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R" class="uri">https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R</a></li>
+<li>You can use the <code>multilevel_alpha()</code> function from <a
+href="https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R"
+class="uri">https://github.com/marklhc/mcfa_reliability_supp/blob/master/multilevel_alpha.R</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -2294,7 +2366,8 @@ R Codes
 <iframe src="https://www.youtube.com/embed/12tK6d468u0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2320,7 +2393,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

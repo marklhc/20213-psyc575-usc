@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2094,6 +2094,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2112,6 +2115,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2142,17 +2148,20 @@ R Codes
 <li><a href="#lecture">Lecture</a>
 <ul>
 <li><a href="#slides">Slides</a></li>
-<li><a href="#longitudinal-data-analysis">Longitudinal Data Analysis</a></li>
+<li><a href="#longitudinal-data-analysis">Longitudinal Data
+Analysis</a></li>
 <li><a href="#example-data">Example data</a>
 <ul>
-<li><a href="#basic-attrition-analysis">Basic attrition analysis</a></li>
+<li><a href="#basic-attrition-analysis">Basic attrition
+analysis</a></li>
 </ul></li>
 <li><a href="#growth-curve-modeling">Growth Curve Modeling</a>
 <ul>
 <li><a href="#linear-growth">Linear growth</a></li>
 <li><a href="#piecewise-linear-growth">Piecewise linear growth</a></li>
 </ul></li>
-<li><a href="#time-invariant-covariates">Time-Invariant Covariates</a></li>
+<li><a href="#time-invariant-covariates">Time-Invariant
+Covariates</a></li>
 <li><a href="#varying-occasions">Varying Occasions</a></li>
 <li><a href="#using-github">Using GitHub</a></li>
 </ul></li>
@@ -2162,10 +2171,12 @@ R Codes
 <h1 id="week-learning-objectives">Week Learning Objectives</h1>
 <p>By the end of this module, you will be able to</p>
 <ul>
-<li>Describe the similarities and differences between longitudinal data and cross-sectional clustered data</li>
+<li>Describe the similarities and differences between longitudinal data
+and cross-sectional clustered data</li>
 <li>Perform some basic <strong>attrition analyses</strong></li>
 <li>Specify and run <strong>growth curve analysis</strong></li>
-<li>Analyze models with <strong>time-invariant covariates</strong> (i.e., lv-2 predictors) and interpret the results</li>
+<li>Analyze models with <strong>time-invariant covariates</strong>
+(i.e., lv-2 predictors) and interpret the results</li>
 <li>Create a GitHub repository to be used for your class project</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
@@ -2175,17 +2186,25 @@ R Codes
 <ul>
 <li>Snijders &amp; Bosker ch 15 (you can skip 15.1.3 and 15.1.4)</li>
 </ul></li>
-<li>Prepare the prospectus and schedule a meeting with the instructor</li>
+<li>Prepare the prospectus and schedule a meeting with the
+instructor</li>
 <li>Additional resources for learning MLM for longitudinal data analysis
 <ul>
-<li><a href="https://www-taylorfrancis-com.libproxy2.usc.edu/books/9781315744094">This excellent book by Hoffman (2014)</a> (USC SSO required)</li>
+<li><a
+href="https://www-taylorfrancis-com.libproxy2.usc.edu/books/9781315744094">This
+excellent book by Hoffman (2014)</a> (USC SSO required)</li>
 </ul></li>
-<li>HW 8 is not due until October 30, but you may start working on Part A of it</li>
+<li>HW 8 is not due until October 30, but you may start working on Part
+A of it</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p><span style="color:red">Note that in some of the videos below the Bayeisan analyses were used; however, for the class this year we will stay with frequentist analyses. The results and interpretations are basically; just note some differences in the terminology.</span></p>
-<p>You can view and download the slides here: <a href="slides/08_longitudinal_analysis_1.pdf" target="_blank">PDF</a></p>
+<p><span style="color:red">Note that in some of the videos below the
+Bayeisan analyses were used; however, for the class this year we will
+stay with frequentist analyses. The results and interpretations are
+basically; just note some differences in the terminology.</span></p>
+<p>You can view and download the slides here: <a
+href="slides/08_longitudinal_analysis_1.pdf" target="_blank">PDF</a></p>
 <h2 id="longitudinal-data-analysis">Longitudinal Data Analysis</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -2193,10 +2212,16 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In a research study, data were collected for a group of patients on symptoms of eating disorder on a weekly interval across 5 weeks. What type of data is this?</p>
+<p>Check your learning: In a research study, data were collected for a
+group of patients on symptoms of eating disorder on a weekly interval
+across 5 weeks. What type of data is this?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_33931" onsubmit="return validate_form_33931()" method="post">
-<input type="radio" name="answer_33931" id="33931_1" value="Panel data"><label for="1">Panel data</label><br><input type="radio" name="answer_33931" id="33931_2" value="Intensive longitudinal data"><label for="2">Intensive longitudinal data</label><br><input type="radio" name="answer_33931" id="33931_3" value="Cross-sectional data"><label for="3">Cross-sectional data</label><br><input type="submit" value="check">
+<input type="radio" name="answer_33931" id="33931_1" value="Panel data"><label for="1">Panel
+data</label><br><input type="radio" name="answer_33931" id="33931_2" value="Intensive longitudinal data"><label for="2">Intensive
+longitudinal
+data</label><br><input type="radio" name="answer_33931" id="33931_3" value="Cross-sectional data"><label for="3">Cross-sectional
+data</label><br><input type="submit" value="check">
 </form>
 <p id="result_33931">
 </p>
@@ -2210,10 +2235,15 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Check your learning: In the data set, at what level is <code>homecog</code>, which is a measure of mother’s cognitive stimulation at baseline?</p>
+<p>Check your learning: In the data set, at what level is
+<code>homecog</code>, which is a measure of mother’s cognitive
+stimulation at baseline?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_58245" onsubmit="return validate_form_58245()" method="post">
-<input type="radio" name="answer_58245" id="58245_1" value="Level 1"><label for="1">Level 1</label> <input type="radio" name="answer_58245" id="58245_2" value="Level 2"><label for="2">Level 2</label> <br><input type="submit" value="check">
+<input type="radio" name="answer_58245" id="58245_1" value="Level 1"><label for="1">Level
+1</label>
+<input type="radio" name="answer_58245" id="58245_2" value="Level 2"><label for="2">Level
+2</label> <br><input type="submit" value="check">
 </form>
 <p id="result_58245">
 </p>
@@ -2226,12 +2256,20 @@ R Codes
 <iframe src="https://www.youtube.com/embed/b2dto5JwRQ8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>See the <a href="../rcode8/#attrition-analyses">R code section</a>.</p>
+<p>See the <a href="../rcode8/#attrition-analyses">R code
+section</a>.</p>
 <hr />
-<p>Check your learning: In the spaghetti plot, what does the average trend line mean?</p>
+<p>Check your learning: In the spaghetti plot, what does the average
+trend line mean?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_1489" onsubmit="return validate_form_1489()" method="post">
-<input type="radio" name="answer_1489" id="1489_1" value="That every child showed an increasing trend"><label for="1">That every child showed an increasing trend</label><br><input type="radio" name="answer_1489" id="1489_2" value="That the sample average reading score increased across time"><label for="2">That the sample average reading score increased across time</label><br><input type="radio" name="answer_1489" id="1489_3" value="That there is no variability in individual trajectories"><label for="3">That there is no variability in individual trajectories</label><br><input type="submit" value="check">
+<input type="radio" name="answer_1489" id="1489_1" value="That every child showed an increasing trend"><label for="1">That
+every child showed an increasing
+trend</label><br><input type="radio" name="answer_1489" id="1489_2" value="That the sample average reading score increased across time"><label for="2">That
+the sample average reading score increased across
+time</label><br><input type="radio" name="answer_1489" id="1489_3" value="That there is no variability in individual trajectories"><label for="3">That
+there is no variability in individual
+trajectories</label><br><input type="submit" value="check">
 </form>
 <p id="result_1489">
 </p>
@@ -2239,17 +2277,29 @@ R Codes
 </div>
 <hr />
 <h2 id="growth-curve-modeling">Growth Curve Modeling</h2>
-<p><span style="color:red">Note that in the video, the function <code>brm()</code> from the <code>brms</code> package was used for Bayesian analyses. However, in this class we will use the <code>glmmTMB()</code> function instead (see the updated slides). The parameter estimates and interpretations are basically the same.</span></p>
+<p><span style="color:red">Note that in the video, the function
+<code>brm()</code> from the <code>brms</code> package was used for
+Bayesian analyses. However, in this class we will use the
+<code>glmmTMB()</code> function instead (see the updated slides). The
+parameter estimates and interpretations are basically the
+same.</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/iT7kzf2gIUs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
 <hr />
-<p>Thinking exercise: In a growth model, what does it mean when <span class="math inline">\(\tau_1 = 0\)</span>?</p>
+<p>Thinking exercise: In a growth model, what does it mean when <span
+class="math inline">\(\tau_1 = 0\)</span>?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_23793" onsubmit="return validate_form_23793()" method="post">
-<input type="radio" name="answer_23793" id="23793_1" value="That on average, there is no change on the outcome across time"><label for="1">That on average, there is no change on the outcome across time</label><br><input type="radio" name="answer_23793" id="23793_2" value="That every participant has the same rate of change"><label for="2">That every participant has the same rate of change</label><br><input type="radio" name="answer_23793" id="23793_3" value="That every participant has the same outcome score"><label for="3">That every participant has the same outcome score</label><br><input type="submit" value="check">
+<input type="radio" name="answer_23793" id="23793_1" value="That on average, there is no change on the outcome across time"><label for="1">That
+on average, there is no change on the outcome across
+time</label><br><input type="radio" name="answer_23793" id="23793_2" value="That every participant has the same rate of change"><label for="2">That
+every participant has the same rate of
+change</label><br><input type="radio" name="answer_23793" id="23793_3" value="That every participant has the same outcome score"><label for="3">That
+every participant has the same outcome
+score</label><br><input type="submit" value="check">
 </form>
 <p id="result_23793">
 </p>
@@ -2257,17 +2307,24 @@ R Codes
 </div>
 <hr />
 <h3 id="linear-growth">Linear growth</h3>
-<p><span style="color:red">Note that what is labelled as SD<sub>post</sub> is the Bayesian analogue of the standard error.</span></p>
+<p><span style="color:red">Note that what is labelled as
+SD<sub>post</sub> is the Bayesian analogue of the standard
+error.</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/4xHz4OIPVh8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
 <hr />
-<p>Check you learning: What is the advantage of having time to start at 0?</p>
+<p>Check you learning: What is the advantage of having time to start at
+0?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_39652" onsubmit="return validate_form_39652()" method="post">
-<input type="radio" name="answer_39652" id="39652_1" value="The intercept corresponds to the predicted score at the first time point"><label for="1">The intercept corresponds to the predicted score at the first time point</label><br><input type="radio" name="answer_39652" id="39652_2" value="So that tau_1 will be the SD of the slopes"><label for="2">So that tau_1 will be the SD of the slopes</label><br><input type="submit" value="check">
+<input type="radio" name="answer_39652" id="39652_1" value="The intercept corresponds to the predicted score at the first time point"><label for="1">The
+intercept corresponds to the predicted score at the first time
+point</label><br><input type="radio" name="answer_39652" id="39652_2" value="So that tau_1 will be the SD of the slopes"><label for="2">So
+that tau_1 will be the SD of the
+slopes</label><br><input type="submit" value="check">
 </form>
 <p id="result_39652">
 </p>
@@ -2281,20 +2338,29 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Practice yourself: What should the coding of phase 1 and phase 2 be if the turning point is set at <code>time</code> = 2?</p>
+<p>Practice yourself: What should the coding of phase 1 and phase 2 be
+if the turning point is set at <code>time</code> = 2?</p>
 <hr />
-<p><span style="color:red">Instead of using the LOOIC in the Bayesian analysis as discussed in the video, we can use the more popular AIC statistic to compare the two models.</span></p>
+<p><span style="color:red">Instead of using the LOOIC in the Bayesian
+analysis as discussed in the video, we can use the more popular AIC
+statistic to compare the two models.</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/MbDcv05wOrU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Note: In this example, the turning point was chosen mostly based on the spaghetti plot and was arbitrary. For your research, you should justify your choice.</p>
+<p>Note: In this example, the turning point was chosen mostly based on
+the spaghetti plot and was arbitrary. For your research, you should
+justify your choice.</p>
 <hr />
-<p>Check your learning: If a piecewise growth model has an AIC of 23745, and a linear growth model has an AIC of 23650, which model should be preferred?</p>
+<p>Check your learning: If a piecewise growth model has an AIC of 23745,
+and a linear growth model has an AIC of 23650, which model should be
+preferred?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_31903" onsubmit="return validate_form_31903()" method="post">
-<input type="radio" name="answer_31903" id="31903_1" value="Piecewise"><label for="1">Piecewise</label> <input type="radio" name="answer_31903" id="31903_2" value="Linear"><label for="2">Linear</label> <br><input type="submit" value="check">
+<input type="radio" name="answer_31903" id="31903_1" value="Piecewise"><label for="1">Piecewise</label>
+<input type="radio" name="answer_31903" id="31903_2" value="Linear"><label for="2">Linear</label>
+<br><input type="submit" value="check">
 </form>
 <p id="result_31903">
 </p>
@@ -2308,17 +2374,28 @@ R Codes
 </div>
 </div>
 <hr />
-<p>Thinking exercise: What does the coefficient for <code>phase1</code> mean when the model includes an interaction between <code>phase1</code> and <code>homecog9</code>?</p>
+<p>Thinking exercise: What does the coefficient for <code>phase1</code>
+mean when the model includes an interaction between <code>phase1</code>
+and <code>homecog9</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
 <form name="form_40124" onsubmit="return validate_form_40124()" method="post">
-<input type="radio" name="answer_40124" id="40124_1" value="The average slope from time 0 to time 1"><label for="1">The average slope from time 0 to time 1</label><br><input type="radio" name="answer_40124" id="40124_2" value="The average slope from time 0 to time 1 for kids with homecog = 9"><label for="2">The average slope from time 0 to time 1 for kids with homecog = 9</label><br><input type="radio" name="answer_40124" id="40124_3" value="The average slope from time 0 to time 1, holding constant homecog"><label for="3">The average slope from time 0 to time 1, holding constant homecog</label><br><input type="submit" value="check">
+<input type="radio" name="answer_40124" id="40124_1" value="The average slope from time 0 to time 1"><label for="1">The
+average slope from time 0 to time
+1</label><br><input type="radio" name="answer_40124" id="40124_2" value="The average slope from time 0 to time 1 for kids with homecog = 9"><label for="2">The
+average slope from time 0 to time 1 for kids with homecog =
+9</label><br><input type="radio" name="answer_40124" id="40124_3" value="The average slope from time 0 to time 1, holding constant homecog"><label for="3">The
+average slope from time 0 to time 1, holding constant
+homecog</label><br><input type="submit" value="check">
 </form>
 <p id="result_40124">
 </p>
 <script> function validate_form_40124() {var x, text; var x = document.forms["form_40124"]["answer_40124"].value;if (x == "The average slope from time 0 to time 1 for kids with homecog = 9"){text = 'Correct :+1:';} else {text = 'Try again. You can do it!';} document.getElementById('result_40124').innerHTML = text; return false;} </script>
 </div>
 <h2 id="varying-occasions">Varying Occasions</h2>
-<p>Instead of using <code>time</code> as the duration since a particular point in history (e.g., when the study started), one can use some other ways of quantifying time, such as the duration since one is born (i.e., chronological age). See R code.</p>
+<p>Instead of using <code>time</code> as the duration since a particular
+point in history (e.g., when the study started), one can use some other
+ways of quantifying time, such as the duration since one is born (i.e.,
+chronological age). See R code.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/XsbxN2m_si4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
@@ -2330,26 +2407,36 @@ R Codes
 </div>
 </div>
 <h2 id="using-github">Using GitHub</h2>
-<p>First, create a GitHub account at github.com. You can see some advice at <a href="https://happygitwithr.com/github-acct.html" class="uri">https://happygitwithr.com/github-acct.html</a></p>
+<p>First, create a GitHub account at github.com. You can see some advice
+at <a href="https://happygitwithr.com/github-acct.html"
+class="uri">https://happygitwithr.com/github-acct.html</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/56uFYU9SHdg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check out this page for system-specific instructions for installing Git: <a href="https://happygitwithr.com/install-git.html" class="uri">https://happygitwithr.com/install-git.html</a></p>
+<p>Check out this page for system-specific instructions for installing
+Git: <a href="https://happygitwithr.com/install-git.html"
+class="uri">https://happygitwithr.com/install-git.html</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/pHfBQA2DoJY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check out this page for getting a personal access token (PAT) for GitHub: <a href="https://happygitwithr.com/credential-caching.html#get-a-pat" class="uri">https://happygitwithr.com/credential-caching.html#get-a-pat</a></p>
+<p>Check out this page for getting a personal access token (PAT) for
+GitHub: <a
+href="https://happygitwithr.com/credential-caching.html#get-a-pat"
+class="uri">https://happygitwithr.com/credential-caching.html#get-a-pat</a></p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/7H6DR_C9s0A" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>As an example, here is the GitHub repository for this class website: <a href="https://github.com/marklhc/20213-psyc575-usc" class="uri">https://github.com/marklhc/20213-psyc575-usc</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>As an example, here is the GitHub repository for this class website:
+<a href="https://github.com/marklhc/20213-psyc575-usc"
+class="uri">https://github.com/marklhc/20213-psyc575-usc</a></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2375,7 +2462,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

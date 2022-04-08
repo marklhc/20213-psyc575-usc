@@ -2037,7 +2037,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -2047,12 +2047,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2094,6 +2094,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2112,6 +2115,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2143,21 +2149,27 @@ R Codes
 <ul>
 <li><a href="#slides">Slides</a></li>
 <li><a href="#overview">Overview</a></li>
-<li><a href="#unconditional-random-intercept-model">Unconditional Random Intercept Model</a>
+<li><a href="#unconditional-random-intercept-model">Unconditional Random
+Intercept Model</a>
 <ul>
 <li><a href="#equations">Equations</a></li>
 <li><a href="#path-diagram">Path diagram</a></li>
 </ul></li>
-<li><a href="#fixed-and-random-effects">Fixed and Random Effects</a></li>
-<li><a href="#the-intraclass-correlation">The Intraclass Correlation</a></li>
-<li><a href="#empirical-bayes-estimates">Empirical Bayes Estimates</a></li>
+<li><a href="#fixed-and-random-effects">Fixed and Random
+Effects</a></li>
+<li><a href="#the-intraclass-correlation">The Intraclass
+Correlation</a></li>
+<li><a href="#empirical-bayes-estimates">Empirical Bayes
+Estimates</a></li>
 <li><a href="#adding-a-level-2-predictor">Adding a Level-2 Predictor</a>
 <ul>
 <li><a href="#the-design-effect">The design effect</a></li>
 <li><a href="#aggregation">Aggregation</a></li>
-<li><a href="#standard-error-estimates-under-ols-and-mlm">Standard error estimates under OLS and MLM</a></li>
+<li><a href="#standard-error-estimates-under-ols-and-mlm">Standard error
+estimates under OLS and MLM</a></li>
 <li><a href="#model-equations">Model equations</a></li>
-<li><a href="#mlm-with-a-level-2-predictor-in-r">MLM with a level-2 predictor in R</a></li>
+<li><a href="#mlm-with-a-level-2-predictor-in-r">MLM with a level-2
+predictor in R</a></li>
 <li><a href="#statistical-inference">Statistical inference</a></li>
 </ul></li>
 </ul></li>
@@ -2170,8 +2182,10 @@ R Codes
 <li>Explain the components of a random intercept model</li>
 <li>Interpret intraclass correlations</li>
 <li>Use the design effect to decide whether MLM is needed</li>
-<li>Explain why ignoring clustering (e.g., regression) leads to inflated chances of Type I errors</li>
-<li>Describe how MLM pools information to obtain more stable inferences of groups</li>
+<li>Explain why ignoring clustering (e.g., regression) leads to inflated
+chances of Type I errors</li>
+<li>Describe how MLM pools information to obtain more stable inferences
+of groups</li>
 </ul>
 <h2 id="task-lists">Task Lists</h2>
 <ol type="1">
@@ -2180,56 +2194,63 @@ R Codes
 <ul>
 <li>Snijders &amp; Bosker ch 3.1–3.4, 4.1–4.5, 4.8</li>
 </ul></li>
-<li>Attend the Thursday session and participate in the class exercise</li>
+<li>Attend the Thursday session and participate in the class
+exercise</li>
 <li>Complete Homework 3</li>
 </ol>
 <h1 id="lecture">Lecture</h1>
 <h2 id="slides">Slides</h2>
-<p>You can view and download the slides here: <a href="slides/03_random_intercept_model.pdf" target="_blank">PDF</a></p>
+<p>You can view and download the slides here: <a
+href="slides/03_random_intercept_model.pdf" target="_blank">PDF</a></p>
 <h2 id="overview">Overview</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/fyup2VnsVLM" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: Here’s a snapshot of the <code>sleepstudy</code> data:</p>
+<p>Check your learning: Here’s a snapshot of the <code>sleepstudy</code>
+data:</p>
 <div class="layout-chunk" data-layout="l-body">
 <pre><code>   Reaction Days Subject
-1  249.5600    0     308
-2  258.7047    1     308
-3  250.8006    2     308
-11 222.7339    0     309
-12 205.2658    1     309
-13 202.9778    2     309
-21 199.0539    0     310
-22 194.3322    1     310
-23 234.3200    2     310</code></pre>
+1     249.6    0     308
+2     258.7    1     308
+3     250.8    2     308
+11    222.7    0     309
+12    205.3    1     309
+13    203.0    2     309
+21    199.1    0     310
+22    194.3    1     310
+23    234.3    2     310</code></pre>
 </div>
-<p>where <code>Subject</code> is the cluster ID. Is <code>Days</code> a level-1 or a level-2 variable?</p>
+<p>where <code>Subject</code> is the cluster ID. Is <code>Days</code> a
+level-1 or a level-2 variable?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_60047" onsubmit="return validate_form_60047()" method="post">
-<input type="radio" name="answer_60047" id="60047_1" value="Level-1"><label for="1">Level-1</label><br><input type="radio" name="answer_60047" id="60047_2" value="Level-2"><label for="2">Level-2</label><br><input type="submit" value="check">
+<form name="form_84356" onsubmit="return validate_form_84356()" method="post">
+<input type="radio" name="answer_84356" id="84356_1" value="Level-1"><label for="1">Level-1</label><br><input type="radio" name="answer_84356" id="84356_2" value="Level-2"><label for="2">Level-2</label><br><input type="submit" value="check">
 </form>
-<p id="result_60047">
+<p id="result_84356">
 </p>
-<script> function validate_form_60047() {var x, text; var x = document.forms["form_60047"]["answer_60047"].value;if (x == "Level-1"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_60047').innerHTML = text; return false;} </script>
+<script> function validate_form_84356() {var x, text; var x = document.forms["form_84356"]["answer_84356"].value;if (x == "Level-1"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_84356').innerHTML = text; return false;} </script>
 </div>
 <hr />
-<h2 id="unconditional-random-intercept-model">Unconditional Random Intercept Model</h2>
+<h2 id="unconditional-random-intercept-model">Unconditional Random
+Intercept Model</h2>
 <h3 id="equations">Equations</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/w7jOQMQFvnc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: <span class="math inline">\(u_{0j}\)</span> is the new term in a multilevel model (compared to regression). Is it a level-1 or a level-2 deviation variable?</p>
+<p>Check your learning: <span class="math inline">\(u_{0j}\)</span> is
+the new term in a multilevel model (compared to regression). Is it a
+level-1 or a level-2 deviation variable?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_15597" onsubmit="return validate_form_15597()" method="post">
-<input type="radio" name="answer_15597" id="15597_1" value="Level-1"><label for="1">Level-1</label><br><input type="radio" name="answer_15597" id="15597_2" value="Level-2"><label for="2">Level-2</label><br><input type="submit" value="check">
+<form name="form_36947" onsubmit="return validate_form_36947()" method="post">
+<input type="radio" name="answer_36947" id="36947_1" value="Level-1"><label for="1">Level-1</label><br><input type="radio" name="answer_36947" id="36947_2" value="Level-2"><label for="2">Level-2</label><br><input type="submit" value="check">
 </form>
-<p id="result_15597">
+<p id="result_36947">
 </p>
-<script> function validate_form_15597() {var x, text; var x = document.forms["form_15597"]["answer_15597"].value;if (x == "Level-2"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_15597').innerHTML = text; return false;} </script>
+<script> function validate_form_36947() {var x, text; var x = document.forms["form_36947"]["answer_36947"].value;if (x == "Level-2"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_36947').innerHTML = text; return false;} </script>
 </div>
 <h3 id="path-diagram">Path diagram</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2237,14 +2258,19 @@ R Codes
 <iframe src="https://www.youtube.com/embed/YoS0-Q2dQo4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: For the diagram in the video, which one is an actual variable in the data?</p>
+<p>Check your learning: For the diagram in the video, which one is an
+actual variable in the data?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_27037" onsubmit="return validate_form_27037()" method="post">
-<input type="radio" name="answer_27037" id="27037_1" value="$\gamma_{00}$"><label for="1"><span class="math inline">\(\gamma_{00}\)</span></label><br><input type="radio" name="answer_27037" id="27037_2" value="$\beta_{0j}$"><label for="2"><span class="math inline">\(\beta_{0j}\)</span></label><br><input type="radio" name="answer_27037" id="27037_3" value="$u_{0j}$"><label for="3"><span class="math inline">\(u_{0j}\)</span></label><br><input type="radio" name="answer_27037" id="27037_4" value="$Y_{ij}$"><label for="4"><span class="math inline">\(Y_{ij}\)</span></label><br><input type="submit" value="check">
+<form name="form_65125" onsubmit="return validate_form_65125()" method="post">
+<input type="radio" name="answer_65125" id="65125_1" value="$\gamma_{00}$"><label for="1"><span
+class="math inline">\(\gamma_{00}\)</span></label><br><input type="radio" name="answer_65125" id="65125_2" value="$\beta_{0j}$"><label for="2"><span
+class="math inline">\(\beta_{0j}\)</span></label><br><input type="radio" name="answer_65125" id="65125_3" value="$u_{0j}$"><label for="3"><span
+class="math inline">\(u_{0j}\)</span></label><br><input type="radio" name="answer_65125" id="65125_4" value="$Y_{ij}$"><label for="4"><span
+class="math inline">\(Y_{ij}\)</span></label><br><input type="submit" value="check">
 </form>
-<p id="result_27037">
+<p id="result_65125">
 </p>
-<script> function validate_form_27037() {var x, text; var x = document.forms["form_27037"]["answer_27037"].value;if (x == "$Y_{ij}$"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_27037').innerHTML = text; return false;} </script>
+<script> function validate_form_65125() {var x, text; var x = document.forms["form_65125"]["answer_65125"].value;if (x == "$Y_{ij}$"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_65125').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="fixed-and-random-effects">Fixed and Random Effects</h2>
@@ -2253,14 +2279,19 @@ R Codes
 <iframe src="https://www.youtube.com/embed/8uLgaLNPJbk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: For the unconditional model, which of the following is a fixed effect?</p>
+<p>Check your learning: For the unconditional model, which of the
+following is a fixed effect?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_73649" onsubmit="return validate_form_73649()" method="post">
-<input type="radio" name="answer_73649" id="73649_1" value="school means"><label for="1">school means</label><br><input type="radio" name="answer_73649" id="73649_2" value="individual scores"><label for="2">individual scores</label><br><input type="radio" name="answer_73649" id="73649_3" value="variance components"><label for="3">variance components</label><br><input type="radio" name="answer_73649" id="73649_4" value="the grand mean"><label for="4">the grand mean</label><br><input type="submit" value="check">
+<form name="form_21888" onsubmit="return validate_form_21888()" method="post">
+<input type="radio" name="answer_21888" id="21888_1" value="school means"><label for="1">school
+means</label><br><input type="radio" name="answer_21888" id="21888_2" value="individual scores"><label for="2">individual
+scores</label><br><input type="radio" name="answer_21888" id="21888_3" value="variance components"><label for="3">variance
+components</label><br><input type="radio" name="answer_21888" id="21888_4" value="the grand mean"><label for="4">the
+grand mean</label><br><input type="submit" value="check">
 </form>
-<p id="result_73649">
+<p id="result_21888">
 </p>
-<script> function validate_form_73649() {var x, text; var x = document.forms["form_73649"]["answer_73649"].value;if (x == "the grand mean"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_73649').innerHTML = text; return false;} </script>
+<script> function validate_form_21888() {var x, text; var x = document.forms["form_21888"]["answer_21888"].value;if (x == "the grand mean"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_21888').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="the-intraclass-correlation">The Intraclass Correlation</h2>
@@ -2269,53 +2300,74 @@ R Codes
 <iframe src="https://www.youtube.com/embed/x4VT8sSyckg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Note: On the slide around the 9 minute mark, the numbers labeled the “Std.Dev.” is just the square root of the variance components. That is, the standard deviation of the school means and the within-school standard deviation.</p>
-<p>Check your learning: For a study, if <span class="math inline">\(\tau^2_0 = 5\)</span>, <span class="math inline">\(\sigma^2 = 10\)</span>, what is the ICC?</p>
+<p>Note: On the slide around the 9 minute mark, the numbers labeled the
+“Std.Dev.” is just the square root of the variance components. That is,
+the standard deviation of the school means and the within-school
+standard deviation.</p>
+<p>Check your learning: For a study, if <span
+class="math inline">\(\tau^2_0 = 5\)</span>, <span
+class="math inline">\(\sigma^2 = 10\)</span>, what is the ICC?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_79945" onsubmit="return validate_form_79945()" method="post">
-<input type="radio" name="answer_79945" id="79945_1" value="0.5"><label for="1">0.5</label><br><input type="radio" name="answer_79945" id="79945_2" value="2.0"><label for="2">2.0</label><br><input type="radio" name="answer_79945" id="79945_3" value="0.333"><label for="3">0.333</label><br><input type="submit" value="check">
+<form name="form_93448" onsubmit="return validate_form_93448()" method="post">
+<input type="radio" name="answer_93448" id="93448_1" value="0.5"><label for="1">0.5</label><br><input type="radio" name="answer_93448" id="93448_2" value="2.0"><label for="2">2.0</label><br><input type="radio" name="answer_93448" id="93448_3" value="0.333"><label for="3">0.333</label><br><input type="submit" value="check">
 </form>
-<p id="result_79945">
+<p id="result_93448">
 </p>
-<script> function validate_form_79945() {var x, text; var x = document.forms["form_79945"]["answer_79945"].value;if (x == "0.333"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_79945').innerHTML = text; return false;} </script>
+<script> function validate_form_93448() {var x, text; var x = document.forms["form_93448"]["answer_93448"].value;if (x == "0.333"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_93448').innerHTML = text; return false;} </script>
 </div>
-<p>Check your learning: The graph below shows the distribution of the <code>Reaction</code> variable in the <code>sleepstudy</code> data. What do you think is a good guess for the its ICC?</p>
+<p>Check your learning: The graph below shows the distribution of the
+<code>Reaction</code> variable in the <code>sleepstudy</code> data. What
+do you think is a good guess for the its ICC?</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="week3_files/figure-html5/unnamed-chunk-13-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_8094" onsubmit="return validate_form_8094()" method="post">
-<input type="radio" name="answer_8094" id="8094_1" value="0"><label for="1">0</label><br><input type="radio" name="answer_8094" id="8094_2" value="0.4"><label for="2">0.4</label><br><input type="radio" name="answer_8094" id="8094_3" value="0.9"><label for="3">0.9</label><br><input type="submit" value="check">
+<form name="form_15370" onsubmit="return validate_form_15370()" method="post">
+<input type="radio" name="answer_15370" id="15370_1" value="0"><label for="1">0</label><br><input type="radio" name="answer_15370" id="15370_2" value="0.4"><label for="2">0.4</label><br><input type="radio" name="answer_15370" id="15370_3" value="0.9"><label for="3">0.9</label><br><input type="submit" value="check">
 </form>
-<p id="result_8094">
+<p id="result_15370">
 </p>
-<script> function validate_form_8094() {var x, text; var x = document.forms["form_8094"]["answer_8094"].value;if (x == "0.4"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_8094').innerHTML = text; return false;} </script>
+<script> function validate_form_15370() {var x, text; var x = document.forms["form_15370"]["answer_15370"].value;if (x == "0.4"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_15370').innerHTML = text; return false;} </script>
 </div>
 <hr />
 <h2 id="empirical-bayes-estimates">Empirical Bayes Estimates</h2>
-<p>Note: OLS = ordinary least squares, the estimation method commonly used in regular regression.</p>
+<p>Note: OLS = ordinary least squares, the estimation method commonly
+used in regular regression.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/cs-t0Xitr8k" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Thinking exercise: When <span class="math inline">\(\sigma^2 / n_j = 0\)</span>, <span class="math inline">\(\lambda_j = 1\)</span>, and the empirical Bayes estimate will be the same as the sample school mean, meaning that there is no borrowing of information. Why is there no need to borrow information in this situation?</p>
+<p>Thinking exercise: When <span class="math inline">\(\sigma^2 / n_j =
+0\)</span>, <span class="math inline">\(\lambda_j = 1\)</span>, and the
+empirical Bayes estimate will be the same as the sample school mean,
+meaning that there is no borrowing of information. Why is there no need
+to borrow information in this situation?</p>
 <hr />
 <h2 id="adding-a-level-2-predictor">Adding a Level-2 Predictor</h2>
-<p>Note that the <code>ses</code> was standardized in the data set, meaning that <code>ses</code> = 0 is at the sample mean, and <code>ses</code> = 1 means one standard deviation above the mean.</p>
+<p>Note that the <code>ses</code> was standardized in the data set,
+meaning that <code>ses</code> = 0 is at the sample mean, and
+<code>ses</code> = 1 means one standard deviation above the mean.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/5kiBrPO_WTs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In regression, the independent observation assumption means that</p>
+<p>Check your learning: In regression, the independent observation
+assumption means that</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_53497" onsubmit="return validate_form_53497()" method="post">
-<input type="radio" name="answer_53497" id="53497_1" value="The predictor variables should be independent"><label for="1">The predictor variables should be independent</label><br><input type="radio" name="answer_53497" id="53497_2" value="Knowing the score of one observation gives no information about other observations"><label for="2">Knowing the score of one observation gives no information about other observations</label><br><input type="radio" name="answer_53497" id="53497_3" value="The data should follow a hierarchical structure"><label for="3">The data should follow a hierarchical structure</label><br><input type="submit" value="check">
+<form name="form_57135" onsubmit="return validate_form_57135()" method="post">
+<input type="radio" name="answer_57135" id="57135_1" value="The predictor variables should be independent"><label for="1">The
+predictor variables should be
+independent</label><br><input type="radio" name="answer_57135" id="57135_2" value="Knowing the score of one observation gives no information about other observations"><label for="2">Knowing
+the score of one observation gives no information about other
+observations</label><br><input type="radio" name="answer_57135" id="57135_3" value="The data should follow a hierarchical structure"><label for="3">The
+data should follow a hierarchical
+structure</label><br><input type="submit" value="check">
 </form>
-<p id="result_53497">
+<p id="result_57135">
 </p>
-<script> function validate_form_53497() {var x, text; var x = document.forms["form_53497"]["answer_53497"].value;if (x == "Knowing the score of one observation gives no information about other observations"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_53497').innerHTML = text; return false;} </script>
+<script> function validate_form_57135() {var x, text; var x = document.forms["form_57135"]["answer_57135"].value;if (x == "Knowing the score of one observation gives no information about other observations"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_57135').innerHTML = text; return false;} </script>
 </div>
 <h3 id="the-design-effect">The design effect</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2323,28 +2375,39 @@ R Codes
 <iframe src="https://www.youtube.com/embed/0pRpU6-8zGs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Practice yourself: Compute the design effect for <code>mathach</code> for the HSB data. Which of the following is the closest to your computation?</p>
+<p>Practice yourself: Compute the design effect for <code>mathach</code>
+for the HSB data. Which of the following is the closest to your
+computation?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_29473" onsubmit="return validate_form_29473()" method="post">
-<input type="radio" name="answer_29473" id="29473_1" value="8.1"><label for="1">8.1</label><br><input type="radio" name="answer_29473" id="29473_2" value="8.9"><label for="2">8.9</label><br><input type="radio" name="answer_29473" id="29473_3" value="29.6"><label for="3">29.6</label><br><input type="radio" name="answer_29473" id="29473_4" value="1294.1"><label for="4">1294.1</label><br><input type="submit" value="check">
+<form name="form_53190" onsubmit="return validate_form_53190()" method="post">
+<input type="radio" name="answer_53190" id="53190_1" value="8.1"><label for="1">8.1</label><br><input type="radio" name="answer_53190" id="53190_2" value="8.9"><label for="2">8.9</label><br><input type="radio" name="answer_53190" id="53190_3" value="29.6"><label for="3">29.6</label><br><input type="radio" name="answer_53190" id="53190_4" value="1294.1"><label for="4">1294.1</label><br><input type="submit" value="check">
 </form>
-<p id="result_29473">
+<p id="result_53190">
 </p>
-<script> function validate_form_29473() {var x, text; var x = document.forms["form_29473"]["answer_29473"].value;if (x == "8.9"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_29473').innerHTML = text; return false;} </script>
+<script> function validate_form_53190() {var x, text; var x = document.forms["form_53190"]["answer_53190"].value;if (x == "8.9"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_53190').innerHTML = text; return false;} </script>
 </div>
-<p>Bonus Challenge: What is the design effect for a longitudinal study of 5 waves with 30 individuals, and with an ICC for the outcome of 0.5?</p>
+<p>Bonus Challenge: What is the design effect for a longitudinal study
+of 5 waves with 30 individuals, and with an ICC for the outcome of
+0.5?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_59537" onsubmit="return validate_form_59537()" method="post">
-<input type="radio" name="answer_59537" id="59537_1" value="1"><label for="1">1</label><br><input type="radio" name="answer_59537" id="59537_2" value="3"><label for="2">3</label><br><input type="radio" name="answer_59537" id="59537_3" value="15.5"><label for="3">15.5</label><br><input type="submit" value="check">
+<form name="form_13412" onsubmit="return validate_form_13412()" method="post">
+<input type="radio" name="answer_13412" id="13412_1" value="1"><label for="1">1</label><br><input type="radio" name="answer_13412" id="13412_2" value="3"><label for="2">3</label><br><input type="radio" name="answer_13412" id="13412_3" value="15.5"><label for="3">15.5</label><br><input type="submit" value="check">
 </form>
-<p id="result_59537">
+<p id="result_13412">
 </p>
-<script> function validate_form_59537() {var x, text; var x = document.forms["form_59537"]["answer_59537"].value;if (x == "3"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_59537').innerHTML = text; return false;} </script>
+<script> function validate_form_13412() {var x, text; var x = document.forms["form_13412"]["answer_13412"].value;if (x == "3"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_13412').innerHTML = text; return false;} </script>
 </div>
 <h3 id="aggregation">Aggregation</h3>
-<p>While disaggregation yields results with standard errors being too small, aggregation generally results in standard errors that are slightly larger. The main problem of aggregation, however, is that it removes all the information in the lower level, so level-1 predictors cannot be studied. MLM avoids problems of both disaggregation and aggregation.</p>
-<h3 id="standard-error-estimates-under-ols-and-mlm">Standard error estimates under OLS and MLM</h3>
-<p>This part is optional but gives a mathematical explanation of why OLS underestimates the standard error</p>
+<p>While disaggregation yields results with standard errors being too
+small, aggregation generally results in standard errors that are
+slightly larger. The main problem of aggregation, however, is that it
+removes all the information in the lower level, so level-1 predictors
+cannot be studied. MLM avoids problems of both disaggregation and
+aggregation.</p>
+<h3 id="standard-error-estimates-under-ols-and-mlm">Standard error
+estimates under OLS and MLM</h3>
+<p>This part is optional but gives a mathematical explanation of why OLS
+underestimates the standard error</p>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/cQ4DZXe8BZw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
@@ -2356,29 +2419,44 @@ R Codes
 <iframe src="https://www.youtube.com/embed/RJeo9BwLnJw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: In the level-2 equation with <code>meanses</code> as the predictor, what is the outcome variable?</p>
+<p>Check your learning: In the level-2 equation with
+<code>meanses</code> as the predictor, what is the outcome variable?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_595" onsubmit="return validate_form_595()" method="post">
-<input type="radio" name="answer_595" id="595_1" value="student math achievement scores"><label for="1">student math achievement scores</label><br><input type="radio" name="answer_595" id="595_2" value="school mean math achievement"><label for="2">school mean math achievement</label><br><input type="radio" name="answer_595" id="595_3" value="variance of school means"><label for="3">variance of school means</label><br><input type="submit" value="check">
+<form name="form_43975" onsubmit="return validate_form_43975()" method="post">
+<input type="radio" name="answer_43975" id="43975_1" value="student math achievement scores"><label for="1">student
+math achievement
+scores</label><br><input type="radio" name="answer_43975" id="43975_2" value="school mean math achievement"><label for="2">school
+mean math
+achievement</label><br><input type="radio" name="answer_43975" id="43975_3" value="variance of school means"><label for="3">variance
+of school means</label><br><input type="submit" value="check">
 </form>
-<p id="result_595">
+<p id="result_43975">
 </p>
-<script> function validate_form_595() {var x, text; var x = document.forms["form_595"]["answer_595"].value;if (x == "school mean math achievement"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_595').innerHTML = text; return false;} </script>
+<script> function validate_form_43975() {var x, text; var x = document.forms["form_43975"]["answer_43975"].value;if (x == "school mean math achievement"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_43975').innerHTML = text; return false;} </script>
 </div>
-<h3 id="mlm-with-a-level-2-predictor-in-r">MLM with a level-2 predictor in R</h3>
+<h3 id="mlm-with-a-level-2-predictor-in-r">MLM with a level-2 predictor
+in R</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
 <iframe src="https://www.youtube.com/embed/U9dozP0VFUg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Check your learning: How do you interpret the coefficient for <code>meanses</code>?</p>
+<p>Check your learning: How do you interpret the coefficient for
+<code>meanses</code>?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_77100" onsubmit="return validate_form_77100()" method="post">
-<input type="radio" name="answer_77100" id="77100_1" value="The predicted difference in math achievement between two schools with one unit difference in mean SES"><label for="1">The predicted difference in math achievement between two schools with one unit difference in mean SES</label><br><input type="radio" name="answer_77100" id="77100_2" value="The mean achievement for a school with meanses = 0"><label for="2">The mean achievement for a school with meanses = 0</label><br><input type="radio" name="answer_77100" id="77100_3" value="The variance of math achievement accounted for by meanses"><label for="3">The variance of math achievement accounted for by meanses</label><br><input type="submit" value="check">
+<form name="form_23915" onsubmit="return validate_form_23915()" method="post">
+<input type="radio" name="answer_23915" id="23915_1" value="The predicted difference in math achievement between two schools with one unit difference in mean SES"><label for="1">The
+predicted difference in math achievement between two schools with one
+unit difference in mean
+SES</label><br><input type="radio" name="answer_23915" id="23915_2" value="The mean achievement for a school with meanses = 0"><label for="2">The
+mean achievement for a school with meanses =
+0</label><br><input type="radio" name="answer_23915" id="23915_3" value="The variance of math achievement accounted for by meanses"><label for="3">The
+variance of math achievement accounted for by
+meanses</label><br><input type="submit" value="check">
 </form>
-<p id="result_77100">
+<p id="result_23915">
 </p>
-<script> function validate_form_77100() {var x, text; var x = document.forms["form_77100"]["answer_77100"].value;if (x == "The predicted difference in math achievement between two schools with one unit difference in mean SES"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_77100').innerHTML = text; return false;} </script>
+<script> function validate_form_23915() {var x, text; var x = document.forms["form_23915"]["answer_23915"].value;if (x == "The predicted difference in math achievement between two schools with one unit difference in mean SES"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_23915').innerHTML = text; return false;} </script>
 </div>
 <h3 id="statistical-inference">Statistical inference</h3>
 <div class="layout-chunk" data-layout="l-body">
@@ -2386,17 +2464,20 @@ R Codes
 <iframe src="https://www.youtube.com/embed/oV14ScItiV4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube Video" allowfullscreen=""></iframe>
 </div>
 </div>
-<p>Note: If the 95% CI exlcudes zero, there is evidence that the predictor has a nonzero relation with the outcome.</p>
-<p>Check your learning: By default, what type of confidence interval is computed by the <code>lme4</code> package?</p>
+<p>Note: If the 95% CI exlcudes zero, there is evidence that the
+predictor has a nonzero relation with the outcome.</p>
+<p>Check your learning: By default, what type of confidence interval is
+computed by the <code>lme4</code> package?</p>
 <div class="layout-chunk" data-layout="l-body">
-<form name="form_41770" onsubmit="return validate_form_41770()" method="post">
-<input type="radio" name="answer_41770" id="41770_1" value="Likelihood-based"><label for="1">Likelihood-based</label><br><input type="radio" name="answer_41770" id="41770_2" value="Wald"><label for="2">Wald</label><br><input type="radio" name="answer_41770" id="41770_3" value="Score"><label for="3">Score</label><br><input type="radio" name="answer_41770" id="41770_4" value="Bootstrap"><label for="4">Bootstrap</label><br><input type="submit" value="check">
+<form name="form_48608" onsubmit="return validate_form_48608()" method="post">
+<input type="radio" name="answer_48608" id="48608_1" value="Likelihood-based"><label for="1">Likelihood-based</label><br><input type="radio" name="answer_48608" id="48608_2" value="Wald"><label for="2">Wald</label><br><input type="radio" name="answer_48608" id="48608_3" value="Score"><label for="3">Score</label><br><input type="radio" name="answer_48608" id="48608_4" value="Bootstrap"><label for="4">Bootstrap</label><br><input type="submit" value="check">
 </form>
-<p id="result_41770">
+<p id="result_48608">
 </p>
-<script> function validate_form_41770() {var x, text; var x = document.forms["form_41770"]["answer_41770"].value;if (x == "Likelihood-based"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_41770').innerHTML = text; return false;} </script>
+<script> function validate_form_48608() {var x, text; var x = document.forms["form_48608"]["answer_48608"].value;if (x == "Likelihood-based"){text = 'Correct :+1:';} else {text = 'That is not correct. Rewatch the video if needed';} document.getElementById('result_48608').innerHTML = text; return false;} </script>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -2422,7 +2503,10 @@ R Codes
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

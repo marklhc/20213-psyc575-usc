@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2093,6 +2093,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2111,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,27 +2140,34 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a>
 <ul>
 <li><a href="#wide-to-long">Wide to Long</a></li>
 </ul></li>
 <li><a href="#data-exploration">Data Exploration</a>
 <ul>
 <li><a href="#spaghetti-plot">Spaghetti Plot</a></li>
-<li><a href="#temporal-covariances-and-correlations">Temporal Covariances and Correlations</a></li>
+<li><a href="#temporal-covariances-and-correlations">Temporal
+Covariances and Correlations</a></li>
 <li><a href="#attrition-analyses">Attrition Analyses</a></li>
 </ul></li>
 <li><a href="#unconditional-model">Unconditional Model</a></li>
-<li><a href="#unstructured-fixed-partcompound-symmetry-15.1.1-of-snijders-bosker-2012">Unstructured Fixed Part/Compound Symmetry* (15.1.1 of Snijders &amp; Bosker, 2012)</a></li>
+<li><a
+href="#unstructured-fixed-partcompound-symmetry-15.1.1-of-snijders-bosker-2012">Unstructured
+Fixed Part/Compound Symmetry* (15.1.1 of Snijders &amp; Bosker,
+2012)</a></li>
 <li><a href="#linear-growth-models">Linear Growth Models</a>
 <ul>
 <li><a href="#linear-model-with-time">Linear Model With Time</a></li>
 </ul></li>
 <li><a href="#piecewise-growth-model">Piecewise Growth Model</a>
 <ul>
-<li><a href="#plotting-the-predicted-trajectories">Plotting the predicted trajectories</a></li>
+<li><a href="#plotting-the-predicted-trajectories">Plotting the
+predicted trajectories</a></li>
 </ul></li>
-<li><a href="#saturated-model-15.1.3-of-snijders-bosker-2012">Saturated Model* (15.1.3 of Snijders &amp; Bosker, 2012)</a></li>
+<li><a href="#saturated-model-15.1.3-of-snijders-bosker-2012">Saturated
+Model* (15.1.3 of Snijders &amp; Bosker, 2012)</a></li>
 <li><a href="#time-invariant-covariates">Time-Invariant Covariates</a>
 <ul>
 <li><a href="#table-of-coefficients">Table of Coefficients</a></li>
@@ -2171,8 +2184,10 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week8-longitudinal-1.Rmd">week8-longitudinal-1.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week8-longitudinal-1.Rmd">week8-longitudinal-1.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2184,7 +2199,7 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/glmmTMB/glmmTMB'>glmmTMB</a></span><span class='op'>)</span>  <span class='co'># for longitudinal analysis</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for interaction plots</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
@@ -2213,12 +2228,13 @@ R Codes
 &gt;# #   kidage &lt;dbl&gt;, homecog &lt;dbl&gt;, homeemo &lt;dbl&gt;, nmis &lt;dbl&gt;</code></pre>
 </div>
 <h3 id="wide-to-long">Wide to Long</h3>
-<p>To perform multilevel analysis, we need to restructure the data from a wide format to a long format:</p>
+<p>To perform multilevel analysis, we need to restructure the data from
+a wide format to a long format:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using the new `tidyr::pivot_longer()` function</span>
-<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>pivot_longer</span><span class='op'>(</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>
     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>anti1</span><span class='op'>:</span><span class='va'>anti4</span>, <span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span>,  <span class='co'># variables that are repeated measures</span>
     <span class='co'># Convert 8 columns to 3: 2 columns each for anti/read (.value), and</span>
     <span class='co'># one column for time</span>
@@ -2229,8 +2245,8 @@ R Codes
     <span class='co'># Convert the "time" column to integers</span>
     names_transform <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>time <span class='op'>=</span> <span class='va'>as.integer</span><span class='op'>)</span>
   <span class='op'>)</span>
-<span class='va'>curran_long</span> <span class='op'>%&gt;%</span> 
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>anti</span>, <span class='va'>read</span>, <span class='va'>time</span>, <span class='fu'>everything</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>id</span>, <span class='va'>anti</span>, <span class='va'>read</span>, <span class='va'>time</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/everything.html'>everything</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>&gt;# # A tibble: 1,620 × 10
@@ -2251,54 +2267,66 @@ R Codes
 <h1 id="data-exploration">Data Exploration</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>select</span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>kidage</span>, <span class='va'>homecog</span>, <span class='va'>anti</span>, <span class='va'>read</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>kidage</span>, <span class='va'>homecog</span>, <span class='va'>anti</span>, <span class='va'>read</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='fu'>psych</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psych/man/pairs.panels.html'>pairs.panels</a></span><span class='op'>(</span>jiggle <span class='op'>=</span> <span class='cn'>TRUE</span>, factor <span class='op'>=</span> <span class='fl'>0.5</span>, ellipses <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         cex.cor <span class='op'>=</span> <span class='fl'>1</span>, cex <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/pairs-data-1.png" width="624" /></p>
 </div>
-<p>What distinguishes longitudinal data from usual cross-sectional multilevel data is the <em>temporal ordering</em>. In the example of students nested within schools, we don’t say that student 1 is naturally before student 2, and it doesn’t really matter if one just reorder the students. However, in longitudinal data such temporal sequence is very important, and we cannot simply rearrange the observation at time 2 to be at time 1. A related concern is the presence of autocorrelation, with which observations closer in time will be more similar to each other.</p>
+<p>What distinguishes longitudinal data from usual cross-sectional
+multilevel data is the <em>temporal ordering</em>. In the example of
+students nested within schools, we don’t say that student 1 is naturally
+before student 2, and it doesn’t really matter if one just reorder the
+students. However, in longitudinal data such temporal sequence is very
+important, and we cannot simply rearrange the observation at time 2 to
+be at time 1. A related concern is the presence of autocorrelation, with
+which observations closer in time will be more similar to each
+other.</p>
 <h2 id="spaghetti-plot">Spaghetti Plot</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plotting</span>
-<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>curran_long</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
+<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>curran_long</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
   <span class='co'># add a mean trajectory</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span>
 <span class='va'>p1</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/p1-1.png" width="624" /></p>
 </div>
-<p>We can see that on average there is an increasing trend across time, but also there is a lot of variations in each individual’s starting point and the trajectory of change.</p>
-<p>We can also plot the trajectory for a random sample of individuals:</p>
+<p>We can see that on average there is an increasing trend across time,
+but also there is a lot of variations in each individual’s starting
+point and the trajectory of change.</p>
+<p>We can also plot the trajectory for a random sample of
+individuals:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Randomly sample 40 individuals</span>
 <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>1349</span><span class='op'>)</span>
 <span class='va'>sampled_id</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>curran_long</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, <span class='fl'>40</span><span class='op'>)</span>
-<span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>sampled_id</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+<span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>sampled_id</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/facet-traj-1.png" width="624" /></p>
 </div>
-<h2 id="temporal-covariances-and-correlations">Temporal Covariances and Correlations</h2>
+<h2 id="temporal-covariances-and-correlations">Temporal Covariances and
+Correlations</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Easier with the wide data set</span>
 <span class='co'># Covariance matrix:</span>
-<span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>"read"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"complete"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># listwise deletion</span>
+<span class='va'>curran_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"read"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"complete"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># listwise deletion</span>
   <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>  <span class='co'># two decimal places</span>
 </code></pre>
 </div>
@@ -2309,9 +2337,9 @@ R Codes
 &gt;# read4  0.48  0.92  1.09  1.48</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Correlation matrix</span>
-<span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='fu'>starts_with</span><span class='op'>(</span><span class='st'>"read"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"complete"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>   <span class='co'># listwise deletion</span>
+<span class='va'>curran_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>starts_with</a></span><span class='op'>(</span><span class='st'>"read"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"complete"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>   <span class='co'># listwise deletion</span>
   <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='fl'>2L</span><span class='op'>)</span>  <span class='co'># two decimal places</span>
 </code></pre>
 </div>
@@ -2321,20 +2349,24 @@ R Codes
 &gt;# read3  0.53  0.81  1.00  0.81
 &gt;# read4  0.45  0.75  0.81  1.00</code></pre>
 </div>
-<p>You can see the variances increase over time, and the correlation is generally stronger for observations closer in time.</p>
+<p>You can see the variances increase over time, and the correlation is
+generally stronger for observations closer in time.</p>
 <h2 id="attrition-analyses">Attrition Analyses</h2>
-<p>To see whether those who dropped out or had missing data differed in some characteristics as those who did not drop out, let’s identify the group with complete data on <code>read</code>, and the group without complete data on <code>read</code></p>
+<p>To see whether those who dropped out or had missing data differed in
+some characteristics as those who did not drop out, let’s identify the
+group with complete data on <code>read</code>, and the group without
+complete data on <code>read</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Create grouping</span>
-<span class='va'>curran_wide</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
+<span class='va'>curran_wide</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Compute summaries by rows</span>
-  <span class='fu'>rowwise</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/rowwise.html'>rowwise</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># First compute the number of missing occasions</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>nmis_read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='fu'>c_across</span><span class='op'>(</span><span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>nmis_read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/c_across.html'>c_across</a></span><span class='op'>(</span><span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
          <span class='co'># Complete only when nmis_read = 0</span>
-         complete <span class='op'>=</span> <span class='fu'>if_else</span><span class='op'>(</span><span class='va'>nmis_read</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='st'>"complete"</span>, <span class='st'>"incomplete"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+         complete <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/if_else.html'>if_else</a></span><span class='op'>(</span><span class='va'>nmis_read</span> <span class='op'>==</span> <span class='fl'>0</span>, <span class='st'>"complete"</span>, <span class='st'>"incomplete"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='co'># Compare the differences</span>
 <span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/datasummary.html'>datasummary</a></span><span class='op'>(</span><span class='op'>(</span><span class='va'>anti1</span> <span class='op'>+</span> <span class='va'>read1</span> <span class='op'>+</span> <span class='va'>kidgen</span> <span class='op'>+</span> <span class='va'>momage</span> <span class='op'>+</span> <span class='va'>kidage</span> <span class='op'>+</span> <span class='va'>homecog</span> <span class='op'>+</span> <span class='va'>homeemo</span><span class='op'>)</span> <span class='op'>~</span>
               <span class='va'>complete</span> <span class='op'>*</span> <span class='op'>(</span><span class='va'>Mean</span> <span class='op'>+</span> <span class='va'>SD</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_wide</span><span class='op'>)</span>
@@ -2496,8 +2528,15 @@ homeemo
 </tbody>
 </table>
 </div>
-<p>The two groups are pretty similar, except that the group with missing seem to have higher baseline antisocial score, and lower <code>homecog</code>. In actually analyses, you may want to adjust for these variables by including them in the model (as covariates), if you suspect the results may be confounded by higher probability of dropping out.</p>
-<p>Of course, the two groups could still be different in important characteristics that are not included in the data. It requires careful investigation of why the data were missing</p>
+<p>The two groups are pretty similar, except that the group with missing
+seem to have higher baseline antisocial score, and lower
+<code>homecog</code>. In actually analyses, you may want to adjust for
+these variables by including them in the model (as covariates), if you
+suspect the results may be confounded by higher probability of dropping
+out.</p>
+<p>Of course, the two groups could still be different in important
+characteristics that are not included in the data. It requires careful
+investigation of why the data were missing</p>
 <h1 id="unconditional-model">Unconditional Model</h1>
 <p>You can use the <code>lme4</code> package for the basic model:</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2506,28 +2545,45 @@ homeemo
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m00_lme4</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# Linear mixed model fit by REML [&#39;lmerMod&#39;]
+<pre><code>&gt;# Linear mixed model fit by REML. t-tests use Satterthwaite&#39;s method [
+&gt;# lmerModLmerTest]
 &gt;# Formula: read ~ (1 | id)
 &gt;#    Data: curran_long
 &gt;# 
-&gt;# REML criterion at convergence: 5055.9
+&gt;# REML criterion at convergence: 5056
 &gt;# 
 &gt;# Scaled residuals: 
-&gt;#      Min       1Q   Median       3Q      Max 
-&gt;# -2.21699 -0.79402  0.02351  0.72466  2.34342 
+&gt;#     Min      1Q  Median      3Q     Max 
+&gt;# -2.2170 -0.7940  0.0235  0.7247  2.3434 
 &gt;# 
 &gt;# Random effects:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept) 0.3005   0.5482  
-&gt;#  Residual             2.3903   1.5461  
+&gt;#  id       (Intercept) 0.30     0.548   
+&gt;#  Residual             2.39     1.546   
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Fixed effects:
-&gt;#             Estimate Std. Error t value
-&gt;# (Intercept)  4.11279    0.05093   80.75</code></pre>
+&gt;#             Estimate Std. Error       df t value Pr(&gt;|t|)    
+&gt;# (Intercept)   4.1128     0.0509 379.7112    80.8   &lt;2e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>However, <code>lme4</code> has some limitations with longitudinal data analysis, as it assumes that what is called a compound symmetry error covariance structure. Basically that means that the within-person (level-1) error has constant variance (i.e., <span class="math inline">\(\sigma^2\)</span>) over time, and the errors from one time point to the next is not correlated after conditioning on the fixed and random effects. In other words, whatever that causes one to has a higher (or lower) score than predicted for today will not carry over for tomorrow.</p>
-<p>There are a few more flexible packages for handling longitudinal data. You will see people use <code>nlme</code> a lot. There are also packages with Bayesian estimation, such as <code>MCMCglmm</code> and <code>brms</code>. For this class, we will use <code>glmmTMB</code>, a package that has a lot of the features for longitudinal data and has a very similar structure as <code>lme4</code>. Let’s replicate the results from <code>lme4</code>:</p>
+<p>However, <code>lme4</code> has some limitations with longitudinal
+data analysis, as it assumes that what is called a compound symmetry
+error covariance structure. Basically that means that the within-person
+(level-1) error has constant variance (i.e., <span
+class="math inline">\(\sigma^2\)</span>) over time, and the errors from
+one time point to the next is not correlated after conditioning on the
+fixed and random effects. In other words, whatever that causes one to
+has a higher (or lower) score than predicted for today will not carry
+over for tomorrow.</p>
+<p>There are a few more flexible packages for handling longitudinal
+data. You will see people use <code>nlme</code> a lot. There are also
+packages with Bayesian estimation, such as <code>MCMCglmm</code> and
+<code>brms</code>. For this class, we will use <code>glmmTMB</code>, a
+package that has a lot of the features for longitudinal data and has a
+very similar structure as <code>lme4</code>. Let’s replicate the results
+from <code>lme4</code>:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Default in glmmTMB is ML; need to specify REML is desired</span>
@@ -2540,25 +2596,26 @@ homeemo
 &gt;# Data: curran_long
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#   5061.9   5077.5  -2528.0   5055.9     1323 
+&gt;#     5062     5078    -2528     5056     1323 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept) 0.3005   0.5482  
-&gt;#  Residual             2.3903   1.5461  
+&gt;#  id       (Intercept) 0.30     0.548   
+&gt;#  Residual             2.39     1.546   
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Dispersion estimate for gaussian family (sigma^2): 2.39 
 &gt;# 
 &gt;# Conditional model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept)   4.1128     0.0513   80.18   &lt;2e-16 ***
+&gt;# (Intercept)   4.1128     0.0513    80.2   &lt;2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>You can see that the results are similar. Let’s look at the ICC (i.e., proportion of variance at the between-person level).</p>
+<p>You can see that the results are similar. Let’s look at the ICC
+(i.e., proportion of variance at the between-person level).</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>vc_m00</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m00</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># shows the random effect SDs</span>
@@ -2567,28 +2624,36 @@ homeemo
 <pre><code>&gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Std.Dev.
-&gt;#  id       (Intercept) 0.54816 
-&gt;#  Residual             1.54606</code></pre>
+&gt;#  id       (Intercept) 0.548   
+&gt;#  Residual             1.546</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>  <span class='co'># intercept variance (tau_0^2)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.3004824</code></pre>
+<pre><code>&gt;# [1] 0.3005</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>  <span class='co'># lv-1 error variance (sigma^2)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 2.390294</code></pre>
+<pre><code>&gt;# [1] 2.39</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># ICC: tau_0^2 / (tau_0^2 + sigma^2)</span>
 <span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span> 
   <span class='op'>(</span><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m00</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.1116713</code></pre>
+<pre><code>&gt;# [1] 0.1117</code></pre>
 </div>
-<h1 id="unstructured-fixed-partcompound-symmetry-15.1.1-of-snijders-bosker-2012">Unstructured Fixed Part/Compound Symmetry* (15.1.1 of Snijders &amp; Bosker, 2012)</h1>
-<p>Instead of assuming a specific growth shape (e.g., linear), one can instead just allow each time point to have its own mean. This provides good fit to the data, but is limited because it does not allow for interpretable description of how individuals change over time, and does not test for any trends. Therefore, more commonly it is used as a comparison to more simplified growth models.</p>
+<h1
+id="unstructured-fixed-partcompound-symmetry-15.1.1-of-snijders-bosker-2012">Unstructured
+Fixed Part/Compound Symmetry* (15.1.1 of Snijders &amp; Bosker,
+2012)</h1>
+<p>Instead of assuming a specific growth shape (e.g., linear), one can
+instead just allow each time point to have its own mean. This provides
+good fit to the data, but is limited because it does not allow for
+interpretable description of how individuals change over time, and does
+not test for any trends. Therefore, more commonly it is used as a
+comparison to more simplified growth models.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compound Symmetry (i.e., same as repeated measure ANOVA)</span>
@@ -2605,24 +2670,24 @@ homeemo
 &gt;# Data: curran_long
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#   3387.6   3418.7  -1687.8   3375.6     1323 
+&gt;#     3388     3419    -1688     3376     1323 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Variance Std.Dev.
-&gt;#  id       (Intercept) 0.7900   0.8888  
-&gt;#  Residual             0.4075   0.6383  
+&gt;#  id       (Intercept) 0.790    0.889   
+&gt;#  Residual             0.407    0.638   
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Dispersion estimate for gaussian family (sigma^2): 0.407 
 &gt;# 
 &gt;# Conditional model:
 &gt;#               Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# factor(time)1  2.52272    0.05438   46.39   &lt;2e-16 ***
-&gt;# factor(time)2  4.06800    0.05548   73.32   &lt;2e-16 ***
-&gt;# factor(time)3  5.01187    0.06015   83.33   &lt;2e-16 ***
-&gt;# factor(time)4  5.81222    0.06044   96.16   &lt;2e-16 ***
+&gt;# factor(time)1   2.5227     0.0544    46.4   &lt;2e-16 ***
+&gt;# factor(time)2   4.0680     0.0555    73.3   &lt;2e-16 ***
+&gt;# factor(time)3   5.0119     0.0601    83.3   &lt;2e-16 ***
+&gt;# factor(time)4   5.8122     0.0604    96.2   &lt;2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <div class="sourceCode">
@@ -2632,7 +2697,9 @@ homeemo
 </code></pre>
 </div>
 </div>
-<p>From this model you can compute the <strong>conditional ICC</strong>, which is the proportion of between-person variance out of the total variance in the detrended data.</p>
+<p>From this model you can compute the <strong>conditional ICC</strong>,
+which is the proportion of between-person variance out of the total
+variance in the detrended data.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='op'>(</span><span class='va'>vc_cs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m_cs</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># shows the random effect SDs</span>
@@ -2641,31 +2708,33 @@ homeemo
 <pre><code>&gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Std.Dev.
-&gt;#  id       (Intercept) 0.88884 
-&gt;#  Residual             0.63834</code></pre>
+&gt;#  id       (Intercept) 0.889   
+&gt;#  Residual             0.638</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>vc_cs</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>  <span class='co'># intercept variance (tau_0^2)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.7900319</code></pre>
+<pre><code>&gt;# [1] 0.79</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_cs</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>  <span class='co'># lv-1 error variance (sigma^2)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.4074799</code></pre>
+<pre><code>&gt;# [1] 0.4075</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># ICC: tau_0^2 / (tau_0^2 + sigma^2)</span>
 <span class='va'>vc_cs</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>/</span> 
   <span class='op'>(</span><span class='va'>vc_cs</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_cs</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
-<pre><code>&gt;# [1] 0.6597279</code></pre>
+<pre><code>&gt;# [1] 0.6597</code></pre>
 </div>
-<p>So after removing the trend, the between-person variance is larger than the within-person variance.</p>
+<p>So after removing the trend, the between-person variance is larger
+than the within-person variance.</p>
 <h1 id="linear-growth-models">Linear Growth Models</h1>
 <h2 id="linear-model-with-time">Linear Model With Time</h2>
 <p>Level 1: Within-Person</p>
-<p><span class="math display">\[\text{read}_{ti} = \beta_{0i} + \beta_{1i} \text{time}_{ti} + e_{ti}\]</span></p>
+<p><span class="math display">\[\text{read}_{ti} = \beta_{0i} +
+\beta_{1i} \text{time}_{ti} + e_{ti}\]</span></p>
 <p>Level 2: Between-Person</p>
 <p><span class="math display">\[
   \begin{aligned}
@@ -2676,8 +2745,8 @@ homeemo
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Make 0 the initial time</span>
-<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
 <span class='co'># Fit a linear growth model with no random slopes (not commonly done)</span>
 <span class='va'>m_gca</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='va'>time0</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>time0</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_long</span>, REML <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_gca</span><span class='op'>)</span>
@@ -2688,47 +2757,53 @@ homeemo
 &gt;# Data: curran_long
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#   3394.0   3425.1  -1691.0   3382.0     1321 
+&gt;#     3394     3425    -1691     3382     1321 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
 &gt;#  Groups   Name        Variance Std.Dev. Corr 
-&gt;#  id       (Intercept) 0.57310  0.7570        
-&gt;#           time0       0.07459  0.2731   0.29 
-&gt;#  Residual             0.34584  0.5881        
+&gt;#  id       (Intercept) 0.5731   0.757         
+&gt;#           time0       0.0746   0.273    0.29 
+&gt;#  Residual             0.3458   0.588         
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Dispersion estimate for gaussian family (sigma^2): 0.346 
 &gt;# 
 &gt;# Conditional model:
 &gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept)  2.69609    0.04531   59.50   &lt;2e-16 ***
-&gt;# time0        1.11915    0.02183   51.27   &lt;2e-16 ***
+&gt;# (Intercept)   2.6961     0.0453    59.5   &lt;2e-16 ***
+&gt;# time0         1.1191     0.0218    51.3   &lt;2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>random_persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>curran_long</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>
-<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_gca</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_gca</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Select only the 24 participants</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time0</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time0</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add 95% confidence band</span>
-  <span class='fu'>geom_ribbon</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
                   ymax <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span><span class='op'>)</span>,
               alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/plot-m_gca-1.png" width="624" /></p>
 </div>
 <h1 id="piecewise-growth-model">Piecewise Growth Model</h1>
-<p>A piecewise linear growth assumes that there are two or more phases of linear change across time. For example, we can assume that, for our data, phase 1 is from Time 0 to Time 1, and phase 2 is from Time 1 to Time 3.</p>
-<p>Because we’re estimating two slopes, we need two predictors: <code>phase1</code> represents the initial slope from Time 0 to Time 1, and <code>phase2</code> represents the slope from Time 1 to Time 3. The coding is shown below:</p>
+<p>A piecewise linear growth assumes that there are two or more phases
+of linear change across time. For example, we can assume that, for our
+data, phase 1 is from Time 0 to Time 1, and phase 2 is from Time 1 to
+Time 3.</p>
+<p>Because we’re estimating two slopes, we need two predictors:
+<code>phase1</code> represents the initial slope from Time 0 to Time 1,
+and <code>phase2</code> represents the slope from Time 1 to Time 3. The
+coding is shown below:</p>
 <p><span class="math display">\[\begin{bmatrix}
     \textrm{phase1} &amp; \textrm{phase2} \\
     0 &amp; 0 \\
@@ -2736,36 +2811,45 @@ homeemo
     1 &amp; 1 \\
     1 &amp; 2
   \end{bmatrix}\]</span></p>
-<p>To understand the coding, in <code>phase1</code> the line changes from Time 0 to Time 1, but stays there. <code>phase2</code> has 0 from Time 0 to Time 1 as nothing should have happened. Then, From Time 1 to Time 3 it starts to increase linearly.</p>
+<p>To understand the coding, in <code>phase1</code> the line changes
+from Time 0 to Time 1, but stays there. <code>phase2</code> has 0 from
+Time 0 to Time 1 as nothing should have happened. Then, From Time 1 to
+Time 3 it starts to increase linearly.</p>
 <blockquote>
-<p>One way to check whether you’ve specified the coding correctly is to sum the numbers in every row, which you should get back 0, 1, 2, 3, . . .</p>
+<p>One way to check whether you’ve specified the coding correctly is to
+sum the numbers in every row, which you should get back 0, 1, 2, 3, . .
+.</p>
 </blockquote>
-<p>Below is an example where intercept = 1, growth in phase 1 = 0.5, growth in phase 2 = 0.8. The dashed line shows the contribution from phase1 (plus the intercept). The red dotted line shows the contribution from phase2.</p>
+<p>Below is an example where intercept = 1, growth in phase 1 = 0.5,
+growth in phase 2 = 0.8. The dashed line shows the contribution from
+phase1 (plus the intercept). The red dotted line shows the contribution
+from phase2.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>demo_df</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>TIME <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>demo_df</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>TIME</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>0.5</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span>, 
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>demo_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>TIME <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>demo_df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>TIME</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_function.html'>stat_function</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>0.5</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span>, 
                 linetype <span class='op'>=</span> <span class='st'>"dashed"</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>0.8</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_function.html'>stat_function</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>0.8</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, 
                 linetype <span class='op'>=</span> <span class='st'>"dotted"</span>, size <span class='op'>=</span> <span class='fl'>1.5</span><span class='op'>)</span> <span class='op'>+</span> 
-  <span class='fu'>stat_function</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>0.5</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0.8</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_function.html'>stat_function</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='fl'>1</span> <span class='op'>+</span> <span class='fl'>0.5</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>0.8</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>x</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/piecewise_demo-1.png" width="624" /></p>
 </div>
-<p>Now, we assume Time 0 to Time 1 has one slope, and Time 1 to Time 3 has another slope.</p>
+<p>Now, we assume Time 0 to Time 1 has one slope, and Time 1 to Time 3
+has another slope.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute phase1 and phase2</span>
-<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>time0</span>, <span class='fl'>1</span><span class='op'>)</span>,  <span class='co'># anything bigger than 1 becomes 1</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>time0</span>, <span class='fl'>1</span><span class='op'>)</span>,  <span class='co'># anything bigger than 1 becomes 1</span>
          phase2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>time0</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># set time to start at TIME 1, and then make</span>
 <span class='co'># anything smaller than 0 to 0</span>
 <span class='co'># Check the coding:</span>
-<span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>time0</span>, <span class='va'>phase1</span>, <span class='va'>phase2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>distinct</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>time0</span>, <span class='va'>phase1</span>, <span class='va'>phase2</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/distinct.html'>distinct</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>&gt;# # A tibble: 4 × 3
@@ -2790,22 +2874,49 @@ homeemo
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          read ~ phase1 + phase2 + (phase1 + phase2 | id)
+&gt;# Data: curran_long
+&gt;# 
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#     3230     3282    -1605     3210     1318 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev. Corr        
+&gt;#  id       (Intercept) 0.6052   0.778                
+&gt;#           phase1      0.2270   0.476     0.13       
+&gt;#           phase2      0.0536   0.232    -0.15  0.96 
+&gt;#  Residual             0.2514   0.501                
+&gt;# Number of obs: 1325, groups:  id, 405
+&gt;# 
+&gt;# Dispersion estimate for gaussian family (sigma^2): 0.251 
+&gt;# 
+&gt;# Conditional model:
+&gt;#             Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)   2.5227     0.0460    54.9   &lt;2e-16 ***
+&gt;# phase1        1.5621     0.0427    36.6   &lt;2e-16 ***
+&gt;# phase2        0.8793     0.0255    34.5   &lt;2e-16 ***
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<h3 id="plotting-the-predicted-trajectories">Plotting the predicted trajectories</h3>
+<h3 id="plotting-the-predicted-trajectories">Plotting the predicted
+trajectories</h3>
 <p>Average predicted trajectory on the spaghetti plot:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the predicted growth shape (in blue):</span>
 <span class='co'># `tibble()` is used to create a tibble object, which is the data frame used in</span>
 <span class='co'># tidyverse</span>
-<span class='va'>pred_pw</span> <span class='op'>&lt;-</span> <span class='fu'>tibble</span><span class='op'>(</span>time <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>,
+<span class='va'>pred_pw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>time <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>,
                   phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>,
                   phase2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span>,
                   id <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span>
-<span class='va'>pred_pw</span> <span class='op'>&lt;-</span> <span class='va'>pred_pw</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m_pw</span>, newdata <span class='op'>=</span> <span class='va'>pred_pw</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>pred_pw</span> <span class='op'>&lt;-</span> <span class='va'>pred_pw</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>read <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/predict.html'>predict</a></span><span class='op'>(</span><span class='va'>m_pw</span>, newdata <span class='op'>=</span> <span class='va'>pred_pw</span>, re.form <span class='op'>=</span> <span class='cn'>NA</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>p1</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_pw</span>, col <span class='op'>=</span> <span class='st'>"blue"</span>, size <span class='op'>=</span> <span class='fl'>2</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>pred_pw</span>, col <span class='op'>=</span> <span class='st'>"blue"</span>, size <span class='op'>=</span> <span class='fl'>2</span>, alpha <span class='op'>=</span> <span class='fl'>0.7</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/ave-traj-pw-1.png" width="624" /></p>
@@ -2814,25 +2925,31 @@ homeemo
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Add predicted lines to individual trajectories</span>
-<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># compute the original time</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>phase1</span> <span class='op'>+</span> <span class='va'>phase2</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Select only the 24 participants</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time0</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>time0</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add 95% confidence band</span>
-  <span class='fu'>geom_ribbon</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
                   ymax <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span><span class='op'>)</span>,
               alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/pred-traj-1.png" width="624" /></p>
 </div>
-<h1 id="saturated-model-15.1.3-of-snijders-bosker-2012">Saturated Model* (15.1.3 of Snijders &amp; Bosker, 2012)</h1>
-<p>This is what is called the <em>fully multivariate model</em> in the text. The model is saturated in the sense that it perfectly fits the means and covariances of the outcome variable among the various time points. The model, however, does not allow one to test any structure one is interested, so in practice it is mostly used to check how good or bad the chosen model deviates from this “perfect” model.</p>
+<h1 id="saturated-model-15.1.3-of-snijders-bosker-2012">Saturated Model*
+(15.1.3 of Snijders &amp; Bosker, 2012)</h1>
+<p>This is what is called the <em>fully multivariate model</em> in the
+text. The model is saturated in the sense that it perfectly fits the
+means and covariances of the outcome variable among the various time
+points. The model, however, does not allow one to test any structure one
+is interested, so in practice it is mostly used to check how good or bad
+the chosen model deviates from this “perfect” model.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># I use ML estimation so that both the fixed and the random part can be compared</span>
@@ -2858,21 +2975,20 @@ homeemo
 &gt;# m_gca_ml: read ~ time0 + (time0 | id), zi=~0, disp=~1
 &gt;# m_pw_ml: read ~ phase1 + phase2 + (phase1 + phase2 | id), zi=~0, disp=~1
 &gt;# m_sat_ml: read ~ 0 + factor(time) + (0 + factor(time) | id), zi=~0, disp=~0
-&gt;#          Df    AIC    BIC  logLik deviance    Chisq Chi Df Pr(&gt;Chisq)
-&gt;# m_gca_ml  6 3383.8 3414.9 -1685.9   3371.8                           
-&gt;# m_pw_ml  10 3215.4 3267.3 -1597.7   3195.4 176.4114      4     &lt;2e-16
-&gt;# m_sat_ml 14 3218.1 3290.7 -1595.0   3190.1   5.3151      4     0.2565
-&gt;#             
-&gt;# m_gca_ml    
-&gt;# m_pw_ml  ***
-&gt;# m_sat_ml    
+&gt;#          Df  AIC  BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)    
+&gt;# m_gca_ml  6 3384 3415  -1686     3372                             
+&gt;# m_pw_ml  10 3215 3267  -1598     3195 176.41      4     &lt;2e-16 ***
+&gt;# m_sat_ml 14 3218 3291  -1595     3190   5.32      4       0.26    
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>The above shows that the fit of the piecewise model was not significantly worse than the saturated model.</p>
+<p>The above shows that the fit of the piecewise model was not
+significantly worse than the saturated model.</p>
 <h1 id="time-invariant-covariates">Time-Invariant Covariates</h1>
 <p>Time-invariant covariate = Another way to say a level-2 variable</p>
-<p>You can add <code>homecog</code> and its interaction to the model with age as predictor. Just that now there are two interaction terms: one with the first piece and the other with the second piece.</p>
+<p>You can add <code>homecog</code> and its interaction to the model
+with age as predictor. Just that now there are two interaction terms:
+one with the first piece and the other with the second piece.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Add `homecog` and its interaction with growth</span>
@@ -2892,6 +3008,36 @@ homeemo
 <span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>m_pw_homecog</span><span class='op'>)</span>
 </code></pre>
 </div>
+<pre><code>&gt;#  Family: gaussian  ( identity )
+&gt;# Formula:          
+&gt;# read ~ (phase1 + phase2) * homecog9 + (phase1 + phase2 | id)
+&gt;# Data: curran_long
+&gt;# 
+&gt;#      AIC      BIC   logLik deviance df.resid 
+&gt;#     3237     3304    -1605     3211     1318 
+&gt;# 
+&gt;# Random effects:
+&gt;# 
+&gt;# Conditional model:
+&gt;#  Groups   Name        Variance Std.Dev. Corr        
+&gt;#  id       (Intercept) 0.594    0.771                
+&gt;#           phase1      0.215    0.464     0.10       
+&gt;#           phase2      0.053    0.230    -0.17  0.96 
+&gt;#  Residual             0.252    0.502                
+&gt;# Number of obs: 1325, groups:  id, 405
+&gt;# 
+&gt;# Dispersion estimate for gaussian family (sigma^2): 0.252 
+&gt;# 
+&gt;# Conditional model:
+&gt;#                 Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)       2.5273     0.0457    55.2   &lt;2e-16 ***
+&gt;# phase1            1.5667     0.0424    37.0   &lt;2e-16 ***
+&gt;# phase2            0.8798     0.0255    34.6   &lt;2e-16 ***
+&gt;# homecog9          0.0436     0.0178     2.5    0.014 *  
+&gt;# phase1:homecog9   0.0415     0.0166     2.5    0.012 *  
+&gt;# phase2:homecog9   0.0105     0.0101     1.0    0.296    
+&gt;# ---
+&gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3351,6 +3497,25 @@ sd__Observation
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+1325
+</td>
+<td style="text-align:center;">
+1325
+</td>
+<td style="text-align:center;">
+1325
+</td>
+<td style="text-align:center;">
+1325
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 AIC
 </td>
 <td style="text-align:center;">
@@ -3408,24 +3573,34 @@ Log.Lik.
 </table>
 </div>
 <h1 id="variable-occasions">Variable Occasions</h1>
-<p>MLM can handle varying measurement occasions. For example, maybe some students are first measured in September when the semester starts, whereas other students are first measured in October or November. How important this difference depends on the research being studied. For especially infant/early childhood research, one month can already mean a lot of growth, and so it is important to take that into account.</p>
-<p>Instead of using <code>time</code>, one can instead model an outcome variable as a function of age, with the <code>kidage</code> variable. To use age, however, one may not want to start at age = 0. In the data set, the minimum <code>age</code> is 6. Therefore, we can subtract 6 from the original <code>kidage</code> variable, so that the zero point represent someone at age = 6.</p>
+<p>MLM can handle varying measurement occasions. For example, maybe some
+students are first measured in September when the semester starts,
+whereas other students are first measured in October or November. How
+important this difference depends on the research being studied. For
+especially infant/early childhood research, one month can already mean a
+lot of growth, and so it is important to take that into account.</p>
+<p>Instead of using <code>time</code>, one can instead model an outcome
+variable as a function of age, with the <code>kidage</code> variable. To
+use age, however, one may not want to start at age = 0. In the data set,
+the minimum <code>age</code> is 6. Therefore, we can subtract 6 from the
+original <code>kidage</code> variable, so that the zero point represent
+someone at age = 6.</p>
 <h2 id="quadratic-function">Quadratic Function</h2>
 <p>Here is an example:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Subtract age by 6</span>
-<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>kidagetv <span class='op'>=</span> <span class='va'>kidage</span> <span class='op'>+</span> <span class='va'>time</span> <span class='op'>*</span> <span class='fl'>2</span>,
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>kidagetv <span class='op'>=</span> <span class='va'>kidage</span> <span class='op'>+</span> <span class='va'>time</span> <span class='op'>*</span> <span class='fl'>2</span>,
          <span class='co'># Compute the age for each time point</span>
          kidage6tv <span class='op'>=</span> <span class='va'>kidagetv</span> <span class='op'>-</span> <span class='fl'>6</span><span class='op'>)</span>
 <span class='co'># Plot the data</span>
-<span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>curran_long</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>kidage6tv</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>curran_long</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>kidage6tv</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># add lines to connect the data for each person</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>group <span class='op'>=</span> <span class='va'>id</span><span class='op'>)</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># add a mean trajectory</span>
-  <span class='fu'>geom_smooth</span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/plot-age-1.png" width="624" /></p>
@@ -3449,57 +3624,60 @@ Log.Lik.
 &gt;# Data: curran_long
 &gt;# 
 &gt;#      AIC      BIC   logLik deviance df.resid 
-&gt;#       NA       NA       NA       NA     1318 
+&gt;#     3006     3058    -1493     2986     1318 
 &gt;# 
 &gt;# Random effects:
 &gt;# 
 &gt;# Conditional model:
-&gt;#  Groups   Name           Variance  Std.Dev. Corr        
-&gt;#  id       (Intercept)    0.0518108 0.2276               
-&gt;#           kidage6tv      0.1026970 0.3205    0.95       
-&gt;#           I(kidage6tv^2) 0.0009423 0.0307   -1.00 -0.93 
-&gt;#  Residual                0.2464459 0.4964               
+&gt;#  Groups   Name           Variance Std.Dev. Corr        
+&gt;#  id       (Intercept)    0.29419  0.5424               
+&gt;#           kidage6tv      0.19048  0.4364   -0.98       
+&gt;#           I(kidage6tv^2) 0.00093  0.0305    0.90 -0.96 
+&gt;#  Residual                0.24615  0.4961               
 &gt;# Number of obs: 1325, groups:  id, 405
 &gt;# 
 &gt;# Dispersion estimate for gaussian family (sigma^2): 0.246 
 &gt;# 
 &gt;# Conditional model:
-&gt;#                 Estimate Std. Error z value Pr(&gt;|z|)    
-&gt;# (Intercept)     1.737877   0.038614   45.01   &lt;2e-16 ***
-&gt;# kidage6tv       0.930178   0.028812   32.28   &lt;2e-16 ***
-&gt;# I(kidage6tv^2) -0.049597   0.003486  -14.23   &lt;2e-16 ***
+&gt;#                Estimate Std. Error z value Pr(&gt;|z|)    
+&gt;# (Intercept)    -0.32074    0.09683   -3.31  0.00093 ***
+&gt;# kidage6tv       1.12846    0.04219   26.75  &lt; 2e-16 ***
+&gt;# I(kidage6tv^2) -0.04958    0.00348  -14.24  &lt; 2e-16 ***
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>You can then perform the diagnostics and see whether the individual growth shape appears to be quadratic.</p>
+<p>You can then perform the diagnostics and see whether the individual
+growth shape appears to be quadratic.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>random_persons</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>curran_long</span><span class='op'>$</span><span class='va'>id</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>24</span><span class='op'>)</span>
-<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_agesq</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_agesq</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Select only the 24 participants</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'>%in%</span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>kidage6tv</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>id</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='va'>random_persons</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>kidage6tv</span>, y <span class='op'>=</span> <span class='va'>read</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># Add 95% confidence band</span>
-  <span class='fu'>geom_ribbon</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>geom_ribbon</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>ymin <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>-</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span>,
                   ymax <span class='op'>=</span> <span class='va'>.fitted</span> <span class='op'>+</span> <span class='fl'>2</span> <span class='op'>*</span> <span class='va'>.se.fit</span><span class='op'>)</span>,
               alpha <span class='op'>=</span> <span class='fl'>0.1</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>, col <span class='op'>=</span> <span class='st'>"blue"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>id</span>, ncol <span class='op'>=</span> <span class='fl'>6</span><span class='op'>)</span>
 </code></pre>
 </div>
 <img src="rcode8_files/figure-html5/plot-m_agesq-1.png" width="624" />
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plot the predicted trajectories on the same panel</span>
-<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_agesq</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>kidage6tv</span>, y <span class='op'>=</span> <span class='va'>read</span>, group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
+<span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m_agesq</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>kidage6tv</span>, y <span class='op'>=</span> <span class='va'>read</span>, group <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>id</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode8_files/figure-html5/plot-m_agesq-2.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb22"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
@@ -3525,7 +3703,10 @@ Log.Lik.
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 

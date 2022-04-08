@@ -2034,7 +2034,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
   <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
@@ -2046,12 +2046,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-103807117-1"></script>
+  <script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-8XFQ84B3SP"></script>
   <script type="text/javascript" cookie-consent="tracking">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'UA-103807117-1');
+  gtag('config', 'G-8XFQ84B3SP');
   </script>
   <!--/radix_placeholder_site_in_header-->
 
@@ -2093,6 +2093,9 @@ Lectures
 <a href="week8.html">Week 8</a>
 <a href="week9.html">Week 9</a>
 <a href="week10.html">Week 10</a>
+<a href="week11.html">Week 11</a>
+<a href="week12.html">Week 12</a>
+<a href="week13.html">Week 13</a>
 </div>
 </div>
 <div class="nav-dropdown">
@@ -2111,6 +2114,9 @@ R Codes
 <a href="rcode7.html">Week 7 R Code</a>
 <a href="rcode8.html">Week 8 R Code</a>
 <a href="rcode10.html">Week 10 R Code</a>
+<a href="rcode11.html">Week 11 R Code</a>
+<a href="rcode12.html">Week 12 R Code</a>
+<a href="rcode13.html">Week 13 R Code</a>
 </div>
 </div>
 <a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
@@ -2134,19 +2140,23 @@ R Codes
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#load-packages-and-import-data">Load Packages and Import Data</a></li>
+<li><a href="#load-packages-and-import-data">Load Packages and Import
+Data</a></li>
 <li><a href="#covariance-structure">Covariance Structure</a>
 <ul>
-<li><a href="#autoregressive1-error-structure">Autoregressive(1) Error Structure</a></li>
+<li><a href="#autoregressive1-error-structure">Autoregressive(1) Error
+Structure</a></li>
 <li><a href="#likelihood-ratio-test">Likelihood Ratio Test</a></li>
 </ul></li>
-<li><a href="#intensive-longitudinal-data">Intensive Longitudinal Data</a></li>
+<li><a href="#intensive-longitudinal-data">Intensive Longitudinal
+Data</a></li>
 <li><a href="#data-exploration">Data Exploration</a>
 <ul>
 <li><a href="#spaghetti-plot">Spaghetti Plot</a></li>
 </ul></li>
 <li><a href="#unconditional-models">Unconditional Models</a></li>
-<li><a href="#check-the-trend-of-the-data">Check the Trend of the Data</a></li>
+<li><a href="#check-the-trend-of-the-data">Check the Trend of the
+Data</a></li>
 <li><a href="#covariance-structure-1">Covariance Structure</a></li>
 <li><a href="#time-varying-covariate">Time-Varying Covariate</a>
 <ul>
@@ -2160,7 +2170,8 @@ R Codes
 <li><a href="#plotting-1">Plotting</a></li>
 </ul></li>
 </ul></li>
-<li><a href="#bonus-generalized-estimating-equations-gee">Bonus: Generalized Estimating Equations (GEE)</a></li>
+<li><a href="#bonus-generalized-estimating-equations-gee">Bonus:
+Generalized Estimating Equations (GEE)</a></li>
 </ul>
 </nav>
 </div>
@@ -2169,8 +2180,10 @@ R Codes
 \newcommand{\bv}[1]{\boldsymbol{\mathbf{#1}}}
 \]</span></p>
 </div>
-<p>Click here to download the Rmd file: <a href="rcodes/week10-longitudinal-2.Rmd">week10-longitudinal-2.Rmd</a></p>
-<h2 id="load-packages-and-import-data">Load Packages and Import Data</h2>
+<p>Click here to download the Rmd file: <a
+href="rcodes/week10-longitudinal-2.Rmd">week10-longitudinal-2.Rmd</a></p>
+<h2 id="load-packages-and-import-data">Load Packages and Import
+Data</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># To install a package, run the following ONCE (and only once on your computer)</span>
@@ -2183,7 +2196,7 @@ R Codes
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://strengejacke.github.io/sjPlot/'>sjPlot</a></span><span class='op'>)</span>  <span class='co'># for plotting</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://vincentarelbundock.github.io/modelsummary/'>modelsummary</a></span><span class='op'>)</span>  <span class='co'># for making tables</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://interactions.jacob-long.com'>interactions</a></span><span class='op'>)</span>  <span class='co'># for interaction plots</span>
-<span class='fu'>theme_set</span><span class='op'>(</span><span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme_get.html'>theme_set</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># Theme; just my personal preference</span>
 </code></pre>
 </div>
 </div>
@@ -2212,8 +2225,8 @@ R Codes
 &gt;# #   kidage &lt;dbl&gt;, homecog &lt;dbl&gt;, homeemo &lt;dbl&gt;, nmis &lt;dbl&gt;</code></pre>
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Using the new `tidyr::pivot_longer()` function</span>
-<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>pivot_longer</span><span class='op'>(</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>
     <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>anti1</span><span class='op'>:</span><span class='va'>anti4</span>, <span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span>,  <span class='co'># variables that are repeated measures</span>
     <span class='co'># Convert 8 columns to 3: 2 columns each for anti/read (.value), and</span>
     <span class='co'># one column for time</span>
@@ -2223,8 +2236,8 @@ R Codes
     names_pattern <span class='op'>=</span> <span class='st'>"(anti|read)([1-4])"</span>,
     <span class='co'># Convert the "time" column to integers</span>
     names_transform <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>time <span class='op'>=</span> <span class='va'>as.integer</span><span class='op'>)</span>
-  <span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
+  <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>time0 <span class='op'>=</span> <span class='va'>time</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span>
 </code></pre>
 </div>
 </div>
@@ -2232,9 +2245,9 @@ R Codes
 <p>Observed covariance matrix across time</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>curran_wide</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>select</span><span class='op'>(</span><span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"pair"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>curran_wide</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>read1</span><span class='op'>:</span><span class='va'>read4</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cov</a></span><span class='op'>(</span>use <span class='op'>=</span> <span class='st'>"pair"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2248,7 +2261,7 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_ols</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>curran_long</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/sigma.html'>sigma</a></span><span class='op'>(</span><span class='va'>m0_ols</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/lme4/man/sigma.html'>sigma</a></span><span class='op'>(</span><span class='va'>m0_ols</span><span class='op'>)</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2258,7 +2271,8 @@ R Codes
 &gt;# [3,] 0.00 0.00 1.09 0.00
 &gt;# [4,] 0.00 0.00 0.00 1.09</code></pre>
 </div>
-<p>Implied covariance based on random intercept MLM (compound symmetry)</p>
+<p>Implied covariance based on random intercept MLM (compound
+symmetry)</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_ri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>read</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>time</span><span class='op'>)</span> <span class='op'>+</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>id</span><span class='op'>)</span>,
@@ -2267,7 +2281,7 @@ R Codes
 <span class='op'>)</span>
 <span class='va'>vc_m0_ri</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m0_ri</span><span class='op'>)</span>
 <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/matrix.html'>matrix</a></span><span class='op'>(</span><span class='va'>vc_m0_ri</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>]</span>, nrow <span class='op'>=</span> <span class='fl'>4</span>, ncol <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0_ri</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_m0_ri</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2281,8 +2295,8 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Compute phase1 and phase2</span>
-<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>time0</span>, <span class='fl'>1</span><span class='op'>)</span>,  <span class='co'># anything bigger than 1 becomes 1</span>
+<span class='va'>curran_long</span> <span class='op'>&lt;-</span> <span class='va'>curran_long</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>phase1 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmin</a></span><span class='op'>(</span><span class='va'>time0</span>, <span class='fl'>1</span><span class='op'>)</span>,  <span class='co'># anything bigger than 1 becomes 1</span>
          phase2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>pmax</a></span><span class='op'>(</span><span class='va'>time0</span> <span class='op'>-</span> <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span>  <span class='co'># set time to start at TIME 1, and then make</span>
                                        <span class='co'># anything smaller than 0 to 0</span>
 </code></pre>
@@ -2301,10 +2315,10 @@ R Codes
 <span class='op'>)</span>
 <span class='va'>vc_mpw</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m_pw</span><span class='op'>)</span>
 <span class='co'># Covariance</span>
-<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%*%</span>
-  <span class='va'>vc_mpw</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>%*%</span>
+<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span>
+  <span class='va'>vc_mpw</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_mpw</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/diag.html'>diag</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/attr.html'>attr</a></span><span class='op'>(</span><span class='va'>vc_mpw</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>, <span class='st'>"sc"</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, nrow <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2314,7 +2328,8 @@ R Codes
 &gt;# [3,] 0.63 1.01 1.39  1.3
 &gt;# [4,] 0.60 1.08 1.27  1.7</code></pre>
 </div>
-<h2 id="autoregressive1-error-structure">Autoregressive(1) Error Structure</h2>
+<h2 id="autoregressive1-error-structure">Autoregressive(1) Error
+Structure</h2>
 <p>From the piecewise model, add the AR(1) error structure</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2332,10 +2347,10 @@ R Codes
 <span class='op'>)</span>
 <span class='va'>vc_mpw_ar1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/lme4/man/VarCorr.html'>VarCorr</a></span><span class='op'>(</span><span class='va'>m_pw_ar1</span><span class='op'>)</span>
 <span class='co'># Covariance</span>
-<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%*%</span>
-  <span class='va'>vc_mpw_ar1</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'>%*%</span>
+<span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>cbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span>
+  <span class='va'>vc_mpw_ar1</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>]</span> <span class='op'><a href='https://rdrr.io/pkg/Matrix/man/matrix-products.html'>%*%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/cbind.html'>rbind</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://rdrr.io/r/base/unname.html'>unname</a></span><span class='op'>(</span><span class='va'>vc_mpw_ar1</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id.1</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/unname.html'>unname</a></span><span class='op'>(</span><span class='va'>vc_mpw_ar1</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span><span class='op'>$</span><span class='va'>id.1</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span>digits <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
@@ -2346,7 +2361,8 @@ R Codes
 &gt;# [4,] 0.60 1.08 1.27  1.7</code></pre>
 </div>
 <h2 id="likelihood-ratio-test">Likelihood Ratio Test</h2>
-<p><span class="math inline">\(H_0\)</span>: <span class="math inline">\(\rho = 0\)</span></p>
+<p><span class="math inline">\(H_0\)</span>: <span
+class="math inline">\(\rho = 0\)</span></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/stats/anova.html'>anova</a></span><span class='op'>(</span><span class='va'>m_pw</span>, <span class='va'>m_pw_ar1</span><span class='op'>)</span>  <span class='co'># Not statistically significant</span>
@@ -2362,7 +2378,8 @@ R Codes
 &gt;# m_pw_ar1 11 3231.6 3288.7 -1604.8   3209.6 0.0973      1      0.755</code></pre>
 </div>
 <h1 id="intensive-longitudinal-data">Intensive Longitudinal Data</h1>
-<p>The data is the first wave of the Cognition, Health, and Aging Project.</p>
+<p>The data is the first wave of the Cognition, Health, and Aging
+Project.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Download the data from</span>
@@ -2399,20 +2416,20 @@ R Codes
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># First, separate the time-varying variables into within-person and</span>
 <span class='co'># between-person levels</span>
-<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+<span class='va'>stress_data</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Center mood (originally 1-5) at 1 for interpretation (so it becomes 0-4)</span>
   <span class='co'># Also women to factor</span>
-  <span class='fu'>mutate</span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood</span> <span class='op'>-</span> <span class='fl'>1</span>,
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood</span> <span class='op'>-</span> <span class='fl'>1</span>,
          women <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>women</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, 
-                        labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"men"</span>, <span class='st'>"women"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+                        labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"men"</span>, <span class='st'>"women"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># The `across()` function can be used to operate the same procedure on</span>
   <span class='co'># multiple variables</span>
-  <span class='fu'>mutate</span><span class='op'>(</span><span class='fu'>across</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/across.html'>across</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='va'>symptoms</span>, <span class='va'>mood1</span>, <span class='va'>stressor</span><span class='op'>)</span>,
                 <span class='co'># The `.` means the variable to be operated on</span>
                 <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='st'>"pm"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
-                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ungroup</span><span class='op'>(</span><span class='op'>)</span>
+                     <span class='st'>"pmc"</span> <span class='op'>=</span> <span class='op'>~</span> <span class='va'>.</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>.</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>stress_data</span>
 </code></pre>
 </div>
@@ -2437,8 +2454,8 @@ R Codes
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Use `datasummary_skim` for a quick summary</span>
-<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/datasummary_skim.html'>datasummary_skim</a></span><span class='op'>(</span><span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
-                   <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>PersonID</span>, <span class='op'>-</span><span class='va'>session</span>, <span class='op'>-</span><span class='va'>studyday</span>, <span class='op'>-</span><span class='va'>dayofweek</span>,
+<span class='fu'><a href='https://vincentarelbundock.github.io/modelsummary/reference/datasummary_skim.html'>datasummary_skim</a></span><span class='op'>(</span><span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+                   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='op'>-</span><span class='va'>PersonID</span>, <span class='op'>-</span><span class='va'>session</span>, <span class='op'>-</span><span class='va'>studyday</span>, <span class='op'>-</span><span class='va'>dayofweek</span>,
                           <span class='op'>-</span><span class='va'>weekend</span>, <span class='op'>-</span><span class='va'>mood</span>,
                           <span class='co'># PMC for binary variable is not very meaningful</span>
                           <span class='op'>-</span><span class='va'>stressor_pmc</span><span class='op'>)</span><span class='op'>)</span>
@@ -2511,8 +2528,12 @@ baseage
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-1.18" y="10.67" width="3.47" height="0.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="2.29" y="7.69" width="3.47" height="3.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.77" y="7.19" width="3.47" height="4.47" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.24" y="6.20" width="3.47" height="5.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.71" y="7.19" width="3.47" height="4.47" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.18" y="5.20" width="3.47" height="6.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.65" y="3.22" width="3.47" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="23.12" y="6.69" width="3.47" height="4.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.59" y="8.19" width="3.47" height="3.48" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.07" y="7.69" width="3.47" height="3.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.54" y="10.17" width="3.47" height="1.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.01" y="9.68" width="3.47" height="1.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.48" y="10.17" width="3.47" height="1.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="43.95" y="11.17" width="3.47" height="0.50" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-1.18" y="10.67" width="3.47" height="0.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="2.29" y="7.69" width="3.47" height="3.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.77" y="7.19" width="3.47" height="4.47" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.24" y="6.20" width="3.47" height="5.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.71" y="7.19" width="3.47" height="4.47" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.18" y="5.20" width="3.47" height="6.46" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.65" y="3.22" width="3.47" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="23.12" y="6.69" width="3.47" height="4.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.59" y="8.19" width="3.47" height="3.48" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="30.07" y="7.69" width="3.47" height="3.97" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.54" y="10.17" width="3.47" height="1.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.01" y="9.68" width="3.47" height="1.99" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.48" y="10.17" width="3.47" height="1.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="43.95" y="11.17" width="3.47" height="0.50" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2552,8 +2573,12 @@ symptoms
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="4.38" width="4.44" height="7.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="7.25" width="4.44" height="4.41" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="9.76" width="4.44" height="1.90" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="10.50" width="4.44" height="1.16" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="10.78" width="4.44" height="0.88" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="4.38" width="4.44" height="7.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="7.25" width="4.44" height="4.41" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="9.76" width="4.44" height="1.90" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="10.50" width="4.44" height="1.16" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="10.78" width="4.44" height="0.88" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2593,8 +2618,12 @@ stressor
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="4.87" width="4.44" height="6.80" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="4.87" width="4.44" height="6.80" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2634,8 +2663,12 @@ mood1
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="3.42" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.20" y="10.72" width="3.42" height="0.94" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.62" y="11.18" width="3.42" height="0.48" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.03" y="11.45" width="3.42" height="0.21" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.45" y="11.29" width="3.42" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.87" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.29" y="11.56" width="3.42" height="0.10" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.71" y="11.56" width="3.42" height="0.10" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.13" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.55" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.97" y="11.66" width="3.42" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.38" y="11.66" width="3.42" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.80" y="11.64" width="3.42" height="0.021" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="3.42" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.20" y="10.72" width="3.42" height="0.94" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.62" y="11.18" width="3.42" height="0.48" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="12.03" y="11.45" width="3.42" height="0.21" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.45" y="11.29" width="3.42" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="18.87" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.29" y="11.56" width="3.42" height="0.10" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.71" y="11.56" width="3.42" height="0.10" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.13" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.55" y="11.60" width="3.42" height="0.063" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.97" y="11.66" width="3.42" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.38" y="11.66" width="3.42" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.80" y="11.64" width="3.42" height="0.021" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2675,8 +2708,12 @@ symptoms_pm
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="4.24" width="4.44" height="7.42" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="9.87" width="4.44" height="1.79" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="8.59" width="4.44" height="3.07" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="9.62" width="4.44" height="2.05" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="10.64" width="4.44" height="1.02" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="10.38" width="4.44" height="1.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="10.38" width="4.44" height="1.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.41" width="4.44" height="0.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="11.41" width="4.44" height="0.26" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="4.24" width="4.44" height="7.42" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="9.87" width="4.44" height="1.79" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="8.59" width="4.44" height="3.07" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="9.62" width="4.44" height="2.05" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="10.64" width="4.44" height="1.02" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="10.38" width="4.44" height="1.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="10.38" width="4.44" height="1.28" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.41" width="4.44" height="0.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="11.41" width="4.44" height="0.26" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2716,8 +2753,12 @@ symptoms_pmc
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.95" y="11.48" width="4.12" height="0.19" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.07" y="11.59" width="4.12" height="0.074" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.19" y="10.51" width="4.12" height="1.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.30" y="9.00" width="4.12" height="2.67" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.42" y="3.22" width="4.12" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="21.53" y="8.37" width="4.12" height="3.30" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.65" y="9.40" width="4.12" height="2.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.76" y="11.11" width="4.12" height="0.56" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.88" y="11.33" width="4.12" height="0.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.99" y="11.51" width="4.12" height="0.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.11" y="11.55" width="4.12" height="0.11" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="0.95" y="11.48" width="4.12" height="0.19" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="5.07" y="11.59" width="4.12" height="0.074" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="9.19" y="10.51" width="4.12" height="1.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.30" y="9.00" width="4.12" height="2.67" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.42" y="3.22" width="4.12" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="21.53" y="8.37" width="4.12" height="3.30" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.65" y="9.40" width="4.12" height="2.26" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="29.76" y="11.11" width="4.12" height="0.56" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.88" y="11.33" width="4.12" height="0.33" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.99" y="11.51" width="4.12" height="0.15" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.11" y="11.55" width="4.12" height="0.11" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2757,8 +2798,12 @@ mood1_pm
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="2.92" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.70" y="8.58" width="2.92" height="3.09" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="7.63" y="10.04" width="2.92" height="1.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.55" y="10.04" width="2.92" height="1.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.47" y="11.18" width="2.92" height="0.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.40" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.32" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.25" y="11.01" width="2.92" height="0.65" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.17" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.09" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.02" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.94" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="36.87" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.79" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.71" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.64" y="11.50" width="2.92" height="0.16" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.22" width="2.92" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.70" y="8.58" width="2.92" height="3.09" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="7.63" y="10.04" width="2.92" height="1.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.55" y="10.04" width="2.92" height="1.62" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.47" y="11.18" width="2.92" height="0.49" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="16.40" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.32" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.25" y="11.01" width="2.92" height="0.65" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="25.17" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.09" y="11.34" width="2.92" height="0.32" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.02" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="33.94" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="36.87" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="39.79" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="42.71" y="11.66" width="2.92" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="45.64" y="11.50" width="2.92" height="0.16" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2798,8 +2843,12 @@ mood1_pmc
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-0.0000000000000027" y="11.32" width="4.44" height="0.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.44" y="11.26" width="4.44" height="0.40" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.89" y="9.96" width="4.44" height="1.71" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.33" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.78" y="9.73" width="4.44" height="1.93" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.22" y="10.64" width="4.44" height="1.02" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.67" y="11.26" width="4.44" height="0.40" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.11" y="11.46" width="4.44" height="0.20" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.56" y="11.52" width="4.44" height="0.14" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.00" y="11.52" width="4.44" height="0.14" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.44" y="11.61" width="4.44" height="0.057" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="-0.0000000000000027" y="11.32" width="4.44" height="0.34" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="4.44" y="11.26" width="4.44" height="0.40" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="8.89" y="9.96" width="4.44" height="1.71" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="13.33" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="17.78" y="9.73" width="4.44" height="1.93" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="22.22" y="10.64" width="4.44" height="1.02" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="26.67" y="11.26" width="4.44" height="0.40" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="31.11" y="11.46" width="4.44" height="0.20" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="35.56" y="11.52" width="4.44" height="0.14" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="40.00" y="11.52" width="4.44" height="0.14" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="44.44" y="11.61" width="4.44" height="0.057" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2839,8 +2888,12 @@ stressor_pm
       stroke-linejoin: round;
       stroke-miterlimit: 10.00;
     }
+    .svglite text {
+      white-space: pre;
+    }
   </style>
-</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)"> </g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.60" width="4.44" height="8.06" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="4.75" width="4.44" height="6.91" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.28" width="4.44" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="6.29" width="4.44" height="5.37" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="5.90" width="4.44" height="5.76" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="6.29" width="4.44" height="5.37" style="stroke-width: 0.38; fill: #000000;"></rect></g>
+</defs><rect width="100%" height="100%" style="stroke: none; fill: none;"></rect><defs><clipPath id="cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw"><rect x="0.00" y="0.00" width="48.00" height="12.00"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwwLjAwfDEyLjAw)">
+</g><defs><clipPath id="cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw"><rect x="0.00" y="2.88" width="48.00" height="9.12"></rect></clipPath></defs><g clip-path="url(#cpMC4wMHw0OC4wMHwyLjg4fDEyLjAw)"><rect x="1.78" y="3.60" width="4.44" height="8.06" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="6.22" y="4.75" width="4.44" height="6.91" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="10.67" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="15.11" y="3.22" width="4.44" height="8.44" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="19.56" y="11.28" width="4.44" height="0.38" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="24.00" y="6.29" width="4.44" height="5.37" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="28.44" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="32.89" y="5.90" width="4.44" height="5.76" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="37.33" y="11.66" width="4.44" height="0.00" style="stroke-width: 0.38; fill: #000000;"></rect><rect x="41.78" y="6.29" width="4.44" height="5.37" style="stroke-width: 0.38; fill: #000000;"></rect></g>
 </svg>
 </td>
 </tr>
@@ -2849,9 +2902,9 @@ stressor_pm
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>select</span><span class='op'>(</span><span class='va'>symptoms_pm</span>, <span class='va'>symptoms_pmc</span>,
-           <span class='va'>mood1_pm</span>, <span class='va'>mood1_pmc</span>, <span class='va'>stressor_pm</span>, <span class='va'>stressor</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>symptoms_pm</span>, <span class='va'>symptoms_pmc</span>,
+           <span class='va'>mood1_pm</span>, <span class='va'>mood1_pmc</span>, <span class='va'>stressor_pm</span>, <span class='va'>stressor</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
     <span class='fu'>psych</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/psych/man/pairs.panels.html'>pairs.panels</a></span><span class='op'>(</span>jiggle <span class='op'>=</span> <span class='cn'>TRUE</span>, factor <span class='op'>=</span> <span class='fl'>0.5</span>, ellipses <span class='op'>=</span> <span class='cn'>FALSE</span>,
                         cex.cor <span class='op'>=</span> <span class='fl'>1</span>, cex <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span>
 </code></pre>
@@ -2862,43 +2915,47 @@ stressor_pm
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Plotting mood</span>
-<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>stress_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>mood1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='va'>p1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>stress_data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>mood1</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># add lines to connect the data for each person</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, group <span class='op'>=</span> <span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, group <span class='op'>=</span> <span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># add a mean trajectory</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># suppress legend</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 <span class='co'># Plotting symptoms</span>
-<span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>stress_data</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<span class='va'>p2</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>stress_data</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># add lines to connect the data for each person</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, group <span class='op'>=</span> <span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, group <span class='op'>=</span> <span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># add a mean trajectory</span>
-  <span class='fu'>stat_summary</span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>fun <span class='op'>=</span> <span class='st'>"mean"</span>, col <span class='op'>=</span> <span class='st'>"red"</span>, size <span class='op'>=</span> <span class='fl'>1</span>, geom <span class='op'>=</span> <span class='st'>"line"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='co'># suppress legend</span>
-  <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 <span class='fu'>gridExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/gridExtra/man/arrangeGrob.html'>grid.arrange</a></span><span class='op'>(</span><span class='va'>p1</span>, <span class='va'>p2</span>, ncol <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode10_files/figure-html5/p1p2-1.png" width="624" /></p>
 </div>
-<p>We can see that there is not a clear trend across time, but instead fluctuations.</p>
-<p>We can also plot the trajectories for a random sample of individuals:</p>
+<p>We can see that there is not a clear trend across time, but instead
+fluctuations.</p>
+<p>We can also plot the trajectories for a random sample of
+individuals:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># randomly sample 40 individuals</span>
-  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'>%in%</span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, <span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
-  <span class='fu'>facet_wrap</span><span class='op'>(</span><span class='op'>~</span> <span class='va'>PersonID</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>PersonID</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/sample.html'>sample</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/unique.html'>unique</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span>, <span class='fl'>40</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>studyday</span>, y <span class='op'>=</span> <span class='va'>symptoms</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>  <span class='co'># add lines to connect the data for each person</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>PersonID</span>, ncol <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode10_files/figure-html5/facet-traj-1.png" width="624" /></p>
 </div>
 <h1 id="unconditional-models">Unconditional Models</h1>
-<p>The outcome is <code>symptoms</code>, and the time-varying predictors are <code>mood1</code> and <code>stressor</code>. Let’s look at the ICC for each of them.</p>
+<p>The outcome is <code>symptoms</code>, and the time-varying predictors
+are <code>mood1</code> and <code>stressor</code>. Let’s look at the ICC
+for each of them.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_symp</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>symptoms</span> <span class='op'>~</span> <span class='op'>(</span><span class='fl'>1</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>stress_data</span>,
@@ -2960,8 +3017,14 @@ stressor_pm
 &gt;# 0.6678696 0.3549095 0.4197914</code></pre>
 </div>
 <h1 id="check-the-trend-of-the-data">Check the Trend of the Data</h1>
-<p>One thing to consider with longitudinal data in a short time is whether there may be trends in the data due to contextual factors (e.g., weekend effect; shared life events in certain time). If this is the case, a common practice is to de-trend the data; otherwise associations between predictors and the outcome may be merely due to contextual factor happening on certain days.</p>
-<p>Here there is no strong reason to think the data contain trends, as shown in the graphs. We can further test the linear trend:</p>
+<p>One thing to consider with longitudinal data in a short time is
+whether there may be trends in the data due to contextual factors (e.g.,
+weekend effect; shared life events in certain time). If this is the
+case, a common practice is to de-trend the data; otherwise associations
+between predictors and the outcome may be merely due to contextual
+factor happening on certain days.</p>
+<p>Here there is no strong reason to think the data contain trends, as
+shown in the graphs. We can further test the linear trend:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>m0_trend</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/glmmTMB/man/glmmTMB.html'>glmmTMB</a></span><span class='op'>(</span><span class='va'>symptoms</span> <span class='op'>~</span> <span class='va'>studyday</span> <span class='op'>+</span> <span class='op'>(</span><span class='va'>studyday</span> <span class='op'>|</span> <span class='va'>PersonID</span><span class='op'>)</span>,
@@ -2996,7 +3059,8 @@ stressor_pm
 &gt;# ---
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
-<p>which was not significant. It there was a trend, we should include the time variable when studying the time-varying covariates.</p>
+<p>which was not significant. It there was a trend, we should include
+the time variable when studying the time-varying covariates.</p>
 <h1 id="covariance-structure-1">Covariance Structure</h1>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3020,19 +3084,24 @@ stressor_pm
 &gt;# Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 </div>
 <h1 id="time-varying-covariate">Time-Varying Covariate</h1>
-<p>Aka level-1 predictors; also put in the cross-level interaction with <code>women</code></p>
-<p>Level 1: <span class="math display">\[\text{symptoms}_{ti} = \beta_{0i} + \beta_{1i} \text{mood1_pmc}_{ti} + e_{ti}\]</span> Level 2: <span class="math display">\[
+<p>Aka level-1 predictors; also put in the cross-level interaction with
+<code>women</code></p>
+<p>Level 1: <span class="math display">\[\text{symptoms}_{ti} =
+\beta_{0i} + \beta_{1i} \text{mood1_pmc}_{ti} + e_{ti}\]</span> Level 2:
+<span class="math display">\[
   \begin{aligned}
-    \beta_{0i} &amp; = \gamma_{00} + \gamma_{01} \text{mood1_pm}_{i} + 
-                   \gamma_{02} \text{women}_i + 
-                   \gamma_{03} \text{mood1_pm}_{i} \times \text{women}_i 
+    \beta_{0i} &amp; = \gamma_{00} + \gamma_{01} \text{mood1_pm}_{i} +
+                   \gamma_{02} \text{women}_i +
+                   \gamma_{03} \text{mood1_pm}_{i} \times \text{women}_i
                    + u_{0i}  \\
     \beta_{1i} &amp; = \gamma_{10} + \gamma_{11} \text{women}_i + u_{1i}
   \end{aligned}
 \]</span></p>
 <ul>
-<li><span class="math inline">\(\gamma_{03}\)</span> = between-person interaction</li>
-<li><span class="math inline">\(\gamma_{11}\)</span> = cross-level interaction</li>
+<li><span class="math inline">\(\gamma_{03}\)</span> = between-person
+interaction</li>
+<li><span class="math inline">\(\gamma_{11}\)</span> = cross-level
+interaction</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -3130,18 +3199,18 @@ stressor_pm
 <h3 id="betweenwithin-effects">Between/Within effects</h3>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>mutate</span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-    <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1</span>, y <span class='op'>=</span> <span class='va'>symptoms</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>broom.mixed</span><span class='fu'>::</span><span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>m1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>mood1 <span class='op'>=</span> <span class='va'>mood1_pm</span> <span class='op'>+</span> <span class='va'>mood1_pmc</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1</span>, y <span class='op'>=</span> <span class='va'>symptoms</span>, color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
     <span class='co'># Add points</span>
-    <span class='fu'>geom_point</span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span>size <span class='op'>=</span> <span class='fl'>0.5</span>, alpha <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
     <span class='co'># Add within-cluster lines</span>
-    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
         method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>, size <span class='op'>=</span> <span class='fl'>0.5</span>
     <span class='op'>)</span> <span class='op'>+</span>
     <span class='co'># Add group means</span>
-    <span class='fu'>stat_summary</span><span class='op'>(</span>
-        <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1_pm</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/stat_summary.html'>stat_summary</a></span><span class='op'>(</span>
+        <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1_pm</span>, y <span class='op'>=</span> <span class='va'>.fitted</span>, fill <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>PersonID</span><span class='op'>)</span><span class='op'>)</span>,
         color <span class='op'>=</span> <span class='st'>"red"</span>, <span class='co'># add border</span>
         fun <span class='op'>=</span> <span class='va'>mean</span>,
         geom <span class='op'>=</span> <span class='st'>"point"</span>,
@@ -3150,14 +3219,14 @@ stressor_pm
         size <span class='op'>=</span> <span class='fl'>2.5</span>
     <span class='op'>)</span> <span class='op'>+</span>
     <span class='co'># Add between coefficient</span>
-    <span class='fu'>geom_smooth</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1_pm</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>mood1_pm</span>, y <span class='op'>=</span> <span class='va'>.fitted</span><span class='op'>)</span>,
         method <span class='op'>=</span> <span class='st'>"lm"</span>, se <span class='op'>=</span> <span class='cn'>FALSE</span>,
         color <span class='op'>=</span> <span class='st'>"black"</span>
     <span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>facet_grid</span><span class='op'>(</span><span class='op'>~</span><span class='va'>women</span><span class='op'>)</span> <span class='op'>+</span>
-    <span class='fu'>labs</span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Daily Symptoms"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span><span class='op'>(</span><span class='op'>~</span><span class='va'>women</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>y <span class='op'>=</span> <span class='st'>"Daily Symptoms"</span><span class='op'>)</span> <span class='op'>+</span>
     <span class='co'># Suppress legend</span>
-    <span class='fu'>guides</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span>, fill <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/guides.html'>guides</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"none"</span>, fill <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
 </code></pre>
 </div>
 <p><img src="rcode10_files/figure-html5/plot-bw-1.png" width="624" /></p>
@@ -3206,14 +3275,32 @@ stressor_pm
 </div>
 <p><img src="rcode10_files/figure-html5/plot-m2-2.png" width="624" /></p>
 </div>
-<h1 id="bonus-generalized-estimating-equations-gee">Bonus: Generalized Estimating Equations (GEE)</h1>
-<p>GEE is an alternative estimation method for clustered data, as discussed in 12.2 of Snijders and Bosker. It is a popular method especially for longitudinal data in some areas of research, as it offers some robustness against misspecification in the random effect structure (e.g., autoregressive errors, missing random slopes, etc). It accounts for the covariance structure by using a <em>working correlation matrix</em>, such as the <em>exchangeable</em> (aka compound symmetry) structure. On the other hand, it only estimates fixed effects (or sometimes called marginal effects), so we cannot known whether some slopes are different across persons, but only the average slopes. GEE estimates the fixed effects by iteratively calculating the working correlation matrix and updating the fixed effect estimates with OLS. At the end, it computes the standard errors using the cluster-robust sandwich estimator.</p>
-<p>GEE tends to require a relatively large sample size, and is usually less efficient than MLM for the same model (i.e., GEE gives larger standard errors, wider confidence intervals, and thus has less statistical power), which can be seen in the example below.</p>
-<p>Below is a quick demonstration of GEE using the <code>geepack</code> package in R.</p>
+<h1 id="bonus-generalized-estimating-equations-gee">Bonus: Generalized
+Estimating Equations (GEE)</h1>
+<p>GEE is an alternative estimation method for clustered data, as
+discussed in 12.2 of Snijders and Bosker. It is a popular method
+especially for longitudinal data in some areas of research, as it offers
+some robustness against misspecification in the random effect structure
+(e.g., autoregressive errors, missing random slopes, etc). It accounts
+for the covariance structure by using a <em>working correlation
+matrix</em>, such as the <em>exchangeable</em> (aka compound symmetry)
+structure. On the other hand, it only estimates fixed effects (or
+sometimes called marginal effects), so we cannot known whether some
+slopes are different across persons, but only the average slopes. GEE
+estimates the fixed effects by iteratively calculating the working
+correlation matrix and updating the fixed effect estimates with OLS. At
+the end, it computes the standard errors using the cluster-robust
+sandwich estimator.</p>
+<p>GEE tends to require a relatively large sample size, and is usually
+less efficient than MLM for the same model (i.e., GEE gives larger
+standard errors, wider confidence intervals, and thus has less
+statistical power), which can be seen in the example below.</p>
+<p>Below is a quick demonstration of GEE using the <code>geepack</code>
+package in R.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data_lw</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>drop_na</span><span class='op'>(</span><span class='va'>mood1_pm</span>, <span class='va'>mood1_pmc</span>, <span class='va'>women</span>, <span class='va'>stressor_pm</span>, <span class='va'>stressor</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>stress_data_lw</span> <span class='op'>&lt;-</span> <span class='va'>stress_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='va'>mood1_pm</span>, <span class='va'>mood1_pmc</span>, <span class='va'>women</span>, <span class='va'>stressor_pm</span>, <span class='va'>stressor</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
   <span class='co'># Also need to convert to a data frame (instead of tibble)</span>
   <span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>as.data.frame</a></span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
@@ -3713,6 +3800,7 @@ Num.Obs.
 513
 </td>
 <td style="text-align:center;">
+513
 </td>
 <td style="text-align:center;">
 </td>
@@ -3794,20 +3882,6 @@ Log.Lik.
 </tr>
 <tr>
 <td style="text-align:left;">
-F
-</td>
-<td style="text-align:center;">
-24.474
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 Std.Errors
 </td>
 <td style="text-align:center;">
@@ -3821,6 +3895,36 @@ GEE (Sandwich SE)
 </td>
 <td style="text-align:center;">
 GEE (Sandwich SE + small-sample correction)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n.clusters
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+105.000
+</td>
+<td style="text-align:center;">
+105.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+max.cluster.size
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+5.000
+</td>
+<td style="text-align:center;">
+5.000
 </td>
 </tr>
 <tr>
@@ -3853,55 +3957,36 @@ gamma
 1.323
 </td>
 </tr>
-<tr>
-<td style="text-align:left;">
-max.cluster.size
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-5.000
-</td>
-<td style="text-align:center;">
-5.000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n.clusters
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-</td>
-<td style="text-align:center;">
-105.000
-</td>
-<td style="text-align:center;">
-105.000
-</td>
-</tr>
 </tbody>
 </table>
 </div>
-<p>As shown above, for OLS regression, which ignores the temporal dependence of the data, the standard errors for the between-level coefficients are too small. The results with MLM and with GEE are comparable, although GEE only gives the fixed effect estimates. Overall, GEE tends to have larger standard errors, especially when taking into account the samll-sample correction. In sum, the pros and cons of GEE are:</p>
+<p>As shown above, for OLS regression, which ignores the temporal
+dependence of the data, the standard errors for the between-level
+coefficients are too small. The results with MLM and with GEE are
+comparable, although GEE only gives the fixed effect estimates. Overall,
+GEE tends to have larger standard errors, especially when taking into
+account the samll-sample correction. In sum, the pros and cons of GEE
+are:</p>
 <ul>
 <li>Pros:
 <ul>
 <li>Not requiring specification of the random part</li>
-<li>Robust to moderate degree of misspecification in the random-effect covariance structure</li>
+<li>Robust to moderate degree of misspecification in the random-effect
+covariance structure</li>
 <li>Likely valid inferences on the fixed effects</li>
 </ul></li>
 <li>Cons:
 <ul>
-<li>Loss of statistical power (which may not be a concern in really large samples)</li>
-<li>No results and predictions for individual-specific models, as the random effect part is not modeled</li>
+<li>Loss of statistical power (which may not be a concern in really
+large samples)</li>
+<li>No results and predictions for individual-specific models, as the
+random effect part is not modeled</li>
 <li>No likelihood-based statistical tools (e.g., AIC/BIC)</li>
 </ul>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
+<div class="sourceCode" id="cb23"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb24"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div></li>
 </ul>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -3928,7 +4013,10 @@ n.clusters
 <!--radix_placeholder_navigation_after_body-->
 <div class="distill-site-nav distill-site-footer">
 <p>© Copyright 2021 Hok Chio (Mark) Lai</p>
-<p>Template by <a href="https://github.com/distillpub/template/blob/master/AUTHORS">The Distill Template Authors</a> and <a href="https://www.rstudio.com">RStudio, Inc</a>.</p>
+<p>Template by <a
+href="https://github.com/distillpub/template/blob/master/AUTHORS">The
+Distill Template Authors</a> and <a
+href="https://www.rstudio.com">RStudio, Inc</a>.</p>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
 
