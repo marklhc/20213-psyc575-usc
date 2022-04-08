@@ -4,7 +4,7 @@ description: |
   PSYC 575 Multilevel Modeling (2021 Fall)
 output_dir: "_site"
 base_url: https://psyc575-2021fall.netlify.app
-google_analytics: "UA-103807117-1"
+google_analytics: "G-8XFQ84B3SP"
 include: ["helper.R"]
 exclude: ["primaryshieldwordmark.png"]
 navbar:
